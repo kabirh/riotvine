@@ -1,0 +1,31 @@
+<div class="share-btns event-page-share-btns" {% if not event.is_attending %}style="display:none"{% endif %}>
+    <div class="share-txt">Share:</div>
+	<div class="facebook share-btn">
+	  {% comment %}<fb:share-button class="url" href="{{ full_share_url }}" type="button_count"></fb:share-button>{% endcomment %}
+      <a class="fb_share_btn" name="fb_share" type="button_count" share_url="{{ full_share_url }}" href="http://www.facebook.com/sharer.php">Share</a>
+      <script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>
+	</div>
+	<div class="retweet share-btn">
+	  <script type="text/javascript">
+	    /* <![CDATA[ */
+	      {% if full_share_url %}
+	        var topsy_url = '{{ full_share_url }}';
+	      {% else %}
+  	        var topsy_url = '{{ event.get_absolute_url }}';
+  	      {% endif %}
+	      {% if share_url_or_none %}
+  	        var topsy_shorturl = '{{ share_url_or_none }}';
+  	      {% else %}
+  	        {% if event.get_short_url_or_none %}
+  	          var topsy_shorturl = '{{ event.get_short_url_or_none }}';
+  	        {% endif %}
+	      {% endif %}
+	      var topsy_nick = 'riotvine';
+	      var topsy_theme = "jade";
+	      var topsy_style = null;
+	      var topsy_title = "{{ event.title }}";
+	    /* ]]> */
+	  </script>
+	  <script type="text/javascript" src="http://cdn.topsy.com/button.js"></script>
+	</div>
+</div>

@@ -1,0 +1,29 @@
+{% extends "mobile/registration/base.html" %}
+
+{% block body-class %}login {{ block.super }}{% endblock %}
+
+{% block content %}
+  <p class="notice2">
+    Sign in or <a href="{% url signup %}?next={% if next %}{{ next }}{% else %}{{ request.get_full_path }}{% endif %}">Create an Account&nbsp;&raquo;</a>
+  </p>
+  
+  {% if form.errors %}
+    <p class="error">The entered username or password is invalid.</p>
+  {% endif %}
+  <form method="post" action="{% url mobile_login %}">{% csrf_token %}
+        {% for field in form %}
+          {% common_formfield_render_mobile field %}
+        {% endfor %}
+        <input name="next" value="{{ next }}" type="hidden"/>
+        <input type="submit" value="Sign in" />
+        <a href="{% url reset_password %}" class="cancel_btn">Forgot Password?</a>
+  </form>
+  
+  <div class="divider"><span>OR</span><hr/></div>
+  
+  
+  <div class="sso">
+    {% include "mobile/registration/tags/fb_login.html" %}
+    {% include "registration/tags/sso_initiate.html" %}
+  </div>
+{% endblock %}

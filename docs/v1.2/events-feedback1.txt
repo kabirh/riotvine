@@ -1,0 +1,87 @@
+>
+> Is it possible to get rid of that thin, white border around the badge?
+
+Yes. The reason for that was that when embedded on a dark page on an
+external site, the badges may not have enough separation. But, no
+problem removing the border.
+
+> And center the "Attending" count until it reaches double digits?
+
+Will do.
+
+> Is it possible to mix event badges with campaign badges? In other words,
+> don't separate them into 3 on top, 3 on the bottom.
+
+Great idea! Yes, it's perfectly doable. Would we limit them to one row
+of 3 badges or 2 rows totalling 6 badges?
+
+> They should mix somewhat
+> randomly. The reason for this is that I think Events will be posted much
+> more regularly and I want them to fill in space on the site and give the
+> front page plenty of revolving content.
+
+OK. I think that's doable too. Basically, here's how that might work:
+Each of the badge slots will pull in one of the recent approved
+campaign or event badges randomly. That might mean that sometimes it
+will be all 3 event badges and other times all 3 campaign badges. But
+most times they will be a mix. Because there will be more events than
+campaign at most times, you should generally get 2 events and 1
+campaign out of 3.
+
+> I know the embeddable music player is slated as an artist profile feature,
+> but can you add that to the event function? No other site on the internet
+> lets you see the details of a live show and immediately listen to the bands
+> that will be playing without being forced to follow a link or two. This
+> would be a field the artist can optionally fill in while creating the event.
+
+Sounds good. I will add that in.
+
+> I think we need to redo much of the language. Instead of "click here to
+> attend" on the badge, can you see how "are you in?" looks?
+
+Sure.
+
+> Same with the Attend Event button, change that to "Are you in?" The purpose
+> of this is that I don't want users confusing this for some sort of RSVP
+> function, or a way to get into the show for free. This is meant to show your
+> friends and other people that you are interested in this show, and to
+> support the band by bumping up their attending count. "Are you in?" is a
+> better way to express the sentiment of click through an Event listing.
+
+Great. Make sense and is trivial to change that.
+
+> After you click the Attend Event button, it asks me to fill in the form with
+> my name, but the site already has my name filled in. Is there a way to skip
+> this page if the information is already present in my profile?
+
+Yes. This was already something I was going to fix but thanks for
+catching it anyway :)
+
+>
+> During Event creation:
+>
+> The Event time function works but it will probably be confusing to people.
+> Most shows start at 9pm and run until 1am, so they cross days. Sites like
+> facebook are horrible at this because they force you to list the end date
+> and that is always the next day, causing confusion. Your approach is great,
+> but the one thing I would add is a function similar to the contribution
+> calculator from the campaign creation page; something that shows the user
+> what their start and end time will look like as they fill in the field, so
+> they are not confused or try compensating. And if it's possible to add 9pm
+> to the list of times that pop up when you click the watch, that would be
+> great. Does that make sense?
+
+Yes. Makes sense. I will try to add that in. The widget defaults to
+only the times you see. I will check if I can add 9pm there.
+
+How about removing the end time and asking them for the duration of
+the concert in hours and minutes? We can then internally calculate the
+end time and roll it over to the next day if necessary. Would that be
+more intuitive/less confusing to enter?
+
+> Will the Events also have SEO URLs?
+
+Yes. As soon as I do the SEO URLs for the campaigns (already a
+priority 1 item), the events will get the same feature.
+
+

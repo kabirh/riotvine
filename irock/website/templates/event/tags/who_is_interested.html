@@ -1,0 +1,31 @@
+{% if interested %}
+  <strong class="whos-in">Who's In:</strong>
+  <div class="twitter_heads">
+    <ul>      
+      {% for a in interested %}
+          {% if a.attendee_profile.use_fb_profile  %}
+            {% if not mobile %}
+                <li>
+		            <a href="{{ a.attendee_profile.get_absolute_url }}" title="{{ a.attendee_profile }}">
+		              <fb:profile-pic uid="{{ a.attendee_profile.fb_userid }}" facebook-logo="false" linked="false" size="square"></fb:profile-pic>
+		            </a>
+	            </li>
+            {% endif %}
+          {% else %}   
+            <li>       
+	            <a class="onsite-avatar" href="{{ a.attendee_profile.get_absolute_url }}" title="{{ a.attendee_profile }}">
+	              <img src="{{ a.attendee_profile.avatar_url }}" alt="{{ a.attendee_profile }}" width="48" height="48" />
+	            </a>
+            </li>
+          {% endif %}
+      {% endfor %}      
+      {% if show_more %}
+        <li class="more-faces">
+          <a href="{{ e.get_absolute_url }}" title="See everyone who's in">&nbsp;</a>
+        </li>
+      {% endif %}
+    </ul>
+    <div class="clear"></div>
+  </div>
+{% endif %}
+

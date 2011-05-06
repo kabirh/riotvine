@@ -1,0 +1,25 @@
+<script type="text/javascript">
+        /* <![CDATA[ */
+         $(document).ready(function() {
+            $("label.overlabel").overLabel();
+         });
+         $(document).ready(do_twitter);
+         // $(document).ready(do_view_hide);
+         $(document).ready(do_messages);
+         $(document).ready(do_event_calendar);
+         $(document).ready(do_fetch_calendar);
+         $(document).ready(do_recommended_events);
+         $(document).ready(do_popover);
+         {% if not user.is_authenticated %}
+            $(document).ready(do_sso);
+            $(document).ready(do_global_login);
+         {% endif %}
+       /* ]]> */
+      </script>
+      <!--[if lt IE 7]>
+          <script type="text/javascript">
+          /* <![CDATA[ */
+             $(document).ready(function() {DD_belatedPNG.fix('.png');});
+         /* ]]> */
+          </script>
+      <![endif]-->

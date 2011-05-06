@@ -1,0 +1,49 @@
+{% extends "website/base-site.html" %}
+
+{% block body-id %}fsq{% endblock %}
+
+{% block title %}Connect with Foursquare - {{ block.super }}{% endblock %}
+
+{% block primary-content %}  
+  {% common_flatpage "/4sq/top/" %}
+
+  <div class="fsq-steps">
+    <h2>1. Login / Sign-up</h2>
+    {% if request.user_profile %}
+    
+      <h3 class="done">Done! You're signed up and logged in.</h3>
+      
+      {% if not request.user_profile.fsq_userid %}
+         <h2>2. Setup Foursquare</h2>
+         <h3><a href="{% url fsq_authorize %}?next={% if next %}{{ next }}{% else %}{{ request.get_full_path }}{% endif %}">Connect your Foursquare account here&nbsp;&raquo;</a></h3>
+       {% else %}
+          <h2>2. Setup Foursquare</h2>
+          <h3 class="done">
+            Done! You've successfully connected your Foursquare account to RiotVine.
+          </h3>
+          <p>
+            You're all set to participate in our location unlocks beta program.<br/>
+            <a href="{% url list_events %}">Browse events&nbsp;&raquo;</a>
+          </p>
+       {% endif %}
+      
+    {% else %}
+    
+      <h3>
+        Have an account? <a href="{% url signin %}?next={% if next %}{{ next }}{% else %}{{ request.get_full_path }}{% endif %}">Login here&nbsp;&raquo;</a><br/>
+        Don't have an account? <a href="{% url signup %}?next={% if next %}{{ next }}{% else %}{{ request.get_full_path }}{% endif %}">Sign up now&nbsp;&raquo;</a>
+       </h3>
+       
+       <div class="disabled">
+         <h2>2. Setup Foursquare</h2>
+         <h3>Please complete step 1 first.</h3>
+       </div>
+       
+    {% endif %}    
+    
+  </div>
+{% endblock %}
+
+{% block secondary-content %}
+    {% common_flatpage "/4sq/sidebar/" %}
+{% endblock %}

@@ -1,0 +1,3 @@
+<a href="http://{% domain %}{{ campaign.get_absolute_url }}" rel="payment" style="border:none;">
+ <img src="http://{% domain %}{% url serve_badge_external campaign_id=campaign.id %}" alt="{{ campaign.title }}" width="{{ badge.image.width }}" height="{{ badge.image.height }}"/>
+</a>

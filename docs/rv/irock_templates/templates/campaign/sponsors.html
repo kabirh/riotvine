@@ -1,0 +1,41 @@
+{% extends "campaign/base.html" %}
+
+{% block title %}Campaign {{ campaign.sponsor_or_attendee }}s - {{ block.super }}{% endblock %}
+
+{% block h2 %}Campaign {{ campaign.sponsor_or_attendee }}s{% endblock %}
+
+{% block primary-content %}
+  <h3><a href="{{ campaign.get_absolute_url }}">{{ campaign.title }}</a></h3>
+  {% if page.paginator.count %}
+    <ul class="sponsorList">
+      {% for c in page.object_list %}
+        <li>
+          <a href="{{ campaign.get_absolute_url }}">
+            {% tcache UI_CACHE_TIMEOUT "ir-tpl-usr-avatar-with-uname" c.user.pk %}
+              <img src="{{ c.avatar_url }}" class="userAvatar" alt="{{ c.contributor.username }}"
+                width="{{ c.avatar_w }}" height="{{ c.avatar_h }}"/>
+	            <span class="username">{{ c.user.username|truncatestring:"8" }}</span>
+            {% endtcache %}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+    {% include "common/tags/pagination.html" %}
+  {% else %}
+    This campaign does not have any contributors yet.
+  {% endif %}
+{% endblock %}
+
+{% block secondary-content %}
+  {% if campaign %}
+    <div class="campaignDetail campaignOwner{{ is_owner }}">
+      {% tcache UI_CACHE_TIMEOUT "ir-campaign-summary-list" campaign.pk %}
+        {% campaign_summary campaign "" "" "" "" "show_detail_link" %}
+      {% endtcache %}
+    </div>
+  {% endif %}
+{% endblock %}
+
+
+
+

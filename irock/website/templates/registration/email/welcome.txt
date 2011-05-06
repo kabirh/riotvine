@@ -1,0 +1,16 @@
+{% autoescape off %}
+Hey {{ user.username|capfirst }},
+
+Thank you for signing up at {{ UI_SITE_TITLE }}!
+
+Your login name is:
+
+{{ user.username }}
+
+If you've got questions, please see the about section of our website: http://{{ site.domain }}/about/
+
+We love feedback, so send us some! http://{{ site.domain }}/contact/
+
+{{ EMAIL_SIGNATURE }}
+{% endautoescape %}
+

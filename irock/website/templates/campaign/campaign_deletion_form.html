@@ -1,0 +1,37 @@
+{% extends "campaign/base.html" %}
+
+{% block head-extra %}
+ {{ form.media|safe }}
+{% endblock %}
+
+{% block title %}Delete Campaign - {{ block.super }}{% endblock %}
+
+{% block h2 %}Delete Campaign{% endblock %}
+
+{% block pre-message %}{% endblock %}
+
+{% block primary-content %}
+  <h3>{{ campaign.title }}</h3>
+  
+  <p>Please use the form below to delete your campaign.</p>
+  
+  {% if form.errors %}
+    <p class="error">Please correct the errors below.</p>
+    {% if form.non_field_errors %}
+      <ul class="errorlist">
+        {{ form.non_field_errors.as_ul }}
+      </ul>
+    {% endif %}
+  {% endif %}
+  
+  <form method="post" action="">
+    <fieldset>
+      {% for field in form %}
+        {% common_formfield_render field %}
+      {% endfor %}
+      <input type="submit" value="Delete Campaign" class="submitButton"/>
+      <a href="{% url view_campaign campaign_id=campaign.pk %}" class="cancelButton">Cancel</a>
+    </fieldset>
+  </form>
+{% endblock %}
+

@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    {% block meta-fields %}
+	    {% tcache UI_CACHE_TIMEOUT "ir-site-keywords" %}
+	      <meta name="keywords" content="{% site_config "keywords" %}" />
+	      <meta name="description" content="{% site_config "description" %}" />
+	    {% endtcache %}
+    {% endblock %}
+    <meta name="MSSmartTagsPreventParsing" content="TRUE" />
+    <meta http-equiv="imagetoolbar" content="no" />
+    <style type="text/css" media="screen">
+		  @import "{{ MEDIA_URL }}ui/css/reset.css?v={{ UI_CSS_VERSION }}";
+      @import "{{ MEDIA_URL }}ui/css/ui-darkness/jquery-ui-1.7.2.custom.css?v={{ UI_CSS_VERSION }}";
+		  @import "{{ MEDIA_URL }}ui/css/main.css?v={{ UI_CSS_VERSION }}";
+      @import "{{ MEDIA_URL }}ui/css/event.css?v={{ UI_CSS_VERSION }}";
+    </style>
+
+    <!--[if lte ie 6]>
+    <style type="text/css" media="screen">
+      @import "{{ MEDIA_URL }}ui/css/ie6-fixes.css?v={{ UI_CSS_VERSION }}";
+    </style>
+    <![endif]-->
+
+    <!--[if lte ie 7]>
+    <style type="text/css" media="screen">
+		  @import "{{ MEDIA_URL }}ui/css/ie7-fixes.css?v={{ UI_CSS_VERSION }}";
+    </style>
+    <![endif]-->
+    {% if UI_DEV_MODE %}
+      <script type="text/javascript" src="{{ MEDIA_URL }}ui/js/jquery-1.3.2.min.js?v={{ UI_JS_VERSION }}"></script>
+      <script type="text/javascript" src="{{ MEDIA_URL }}ui/js/jquery-ui-1.7.1.custom.min.js?v={{ UI_JS_VERSION }}"></script>
+    {% else %}
+      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
+    {% endif %}
+    <!--[if IE 6]>
+      <script type="text/javascript" src="{{ MEDIA_URL }}ui/js/jquery.bgiframe.min.js?v={{ UI_JS_VERSION }}"></script>
+    <![endif]-->
+    <script type="text/javascript" src="{{ MEDIA_URL }}ui/js/jquery.form-2.25.min.js?v={{ UI_JS_VERSION }}"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}ui/js/site-features.js?v={{ UI_JS_VERSION }}"></script>
+    {% block base-script %}
+	    <script type="text/javascript">
+        /* <![CDATA[ */
+        if (top.location != location) {
+          top.location.href = document.location.href;
+        }
+        /* ]]> */
+      </script>
+    {% endblock %}
+    {% block pre-script %}{% endblock %}
+    <script type="text/javascript">
+      /* <![CDATA[ */
+       $(document).ready(do_twitter);
+       $(document).ready(do_view_hide);
+       $(document).ready(do_event_calendar);
+      /* ]]> */
+    </script>
+    {% block script %}{% endblock %}
+    {% block head-extra %}{% endblock %}
+    <title>{% block title %}{{ UI_SITE_TITLE }}{% endblock %}</title>
+  </head>
+  <body id="body-{% block body-id %}{% endblock %}" class="body-class-{% block body-class %}{% endblock %}">
+    <div id="container">
+      <div id="header">
+        {% if request.REQUEST.popup %}
+          <h1 id="logo">Illius Rock</h1>
+        {% else %}
+          <h1 id="logo"><a href="{% url home %}" rel="home">Illius Rock</a></h1>
+        {% endif %}
+        
+        {% if user.is_authenticated %}
+          <div class="messagesHolder">
+            <h3>Messages</h3>
+            <p class="editAction"><a href="{% url messages_inbox %}">view inbox</a></p>
+            <p class="new-messages">
+              {% if UNREAD_MESSAGE_COUNT %}
+                You have <a href="{% url messages_inbox %}">{{ UNREAD_MESSAGE_COUNT }} new</a> message{{ UNREAD_MESSAGE_COUNT|pluralize }}.
+              {% else %}
+                You have no new messages.
+              {% endif %}
+            </p>
+          </div>
+        {% endif %}
+        
+        {% block pre-message %}
+        {% endblock %}
+        
+        {% if messages or special_messages %}
+          <ul class="messages" id="header-messages">
+            {% for message in messages %}
+              <li>{{ message|safe }}</li>
+            {% endfor %}
+            {% for message in special_messages %}
+              <li class="specialMessage">{{ message|safe }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+        
+        <ul id="subNav">
+          {% if user.is_authenticated %}
+            {% if user.get_profile.is_artist %}
+                <li><a href="{% url artist_admin %}">Artist Admin</a></li>
+            {% else %}
+                <li><a href="{% url account %}">Your Account</a></li>
+            {% endif %}
+            <li class="last"><a href="{% url logout %}">Logout ({{ user.username }})</a></li>
+          {% else %}
+            <li>
+              <a class="memberLogin" href="{% url register %}?next={{ next }}">Member Login</a>
+	    </li>
+            <li class="last">
+              <a class="artistLogin" href="{% url artist_admin %}">Artist Login</a>
+            </li>
+          {% endif %}
+        </ul>
+        
+        <div id="topNavHolder">
+            <ul class="topNav">
+             {% if not user.is_authenticated %}
+                <li><a href="{% url register %}?next={{ next }}">Become a Member</a></li>
+                <li class="artistLogin last"><a href="{% url artist_admin %}">Create an Artist Account</a></li>
+             {% endif %}
+              <li><a href="{% url list_campaigns %}">What are campaigns?</a></li>
+              <li><a href="{% url list_events %}">Shows</a></li>
+		      {% if user.is_authenticated %}
+		        <li><a href="{% url create_member_event %}">Add a Show!</a></li>
+		      {% else %}
+		        <li><a href="{% url login %}?next={% url create_member_event %}">Add a Show!</a></li>
+		      {% endif %}
+              <li class="last"><a href="http://blog.illiusrock.com">News</a></li>
+            </ul>
+        </div> <!-- topNavHolder -->
+      </div><!-- header -->
+
+      <div class="mainContent">
+        <div id="contentWrapper">
+          {% block content %}
+          {% endblock content %}
+        </div>
+
+        <div class="googleAdsHolder">
+          {% block googleads %}
+            {% if not request.is_secure %}
+              <script type="text/javascript">
+                /* <![CDATA[ */
+                google_ad_client = "pub-2681129008432740";
+                /* 468x60, created 1/21/09 */
+                google_ad_slot = "5654731520";
+                google_ad_width = 468;
+                google_ad_height = 60;
+                /* ]]> */
+              </script>
+              <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+              </script>
+            {% endif %}
+          {% endblock googleads %}
+
+          {% comment %}
+            {% block googleads %}
+              <div class="leftAd">
+                <img src="{{ MEDIA_URL }}ui/images/ad_left.jpg" alt="image" width="468" height="60" />
+              </div> <!-- leftAd -->
+              <div class="rightAd">
+                <img src="{{ MEDIA_URL }}ui/images/ad_right.jpg" alt="image" width="234" height="60" />
+              </div> <!-- rightAd -->
+            {% endblock googleads %}
+          {% endcomment %}
+        </div> <!-- googleAds -->
+
+      </div> <!-- mainContent -->
+        
+      <div class="sidebar"> 
+        {% block sidebar %}
+        {% endblock sidebar %}
+      </div> <!-- sidebar -->
+      
+      <div id="footer">
+        {% block footer %}
+          <ul> 
+            <li><a href="{% url home %}" rel="home">Home</a></li>
+            <li><a href="http://blog.illiusrock.com">News</a></li>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/contact/">Contact</a></li>
+            <li><a href="/terms-of-use/">Terms</a></li>
+            <li><a href="{% url redeem_ticket %}">Redeem Ticket</a></li>
+             {% if user.is_authenticated and user.get_profile.is_artist %}
+                <li><a href="{% url artist_admin %}">Artist Admin</a></li>
+             {% endif %}
+            {% if user.is_authenticated %}
+              <li><a href="{% url account %}">Your Account</a></li>
+              <li class="last"><a href="{% url logout %}">Logout ({{ user.username }})</a></li>
+            {% else %}
+              <li class="last"><a href="{% url login %}">Login / Register</a></li>
+            {% endif %}
+          </ul>
+          <p class="copyright">{{ UI_SITE_COPYRIGHT|safe }}</p>
+        {% endblock footer %}
+      </div><!-- footer -->
+    
+    </div><!-- container -->
+    
+    {% block analytics %}
+      {% if not UI_DEV_MODE %}
+        <script type="text/javascript">
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+        </script>
+        <script type="text/javascript">
+        var pageTracker = _gat._getTracker("UA-5332137-4");
+        pageTracker._trackPageview();
+        </script>
+      {% endif %}
+    {% endblock %}
+  </body>
+</html> 

@@ -1,0 +1,19 @@
+<form method="post" action="{% url login %}">{% csrf_token %}
+  <fieldset>
+      <div class="required_field_true">
+        <label for="xid_username">Username or Email:</label>
+        <input id="xid_username" name="username" maxlength="150" type="text" class="textInput"/>
+      </div>
+      <div class="required_field_true">
+        <label for="xid_password">Password:</label>
+        <input id="xid_password" name="password" maxlength="30" type="password"  class="textInput"/>
+      </div>
+    <input name="next" value="{% if next %}{{ next }}{% else %}{{ request.get_full_path }}{% endif %}" type="hidden"/>
+	  <input value="Login" type="submit" class="submit_btn"/>
+    <a class="cancel_btn2" href="{% url reset_password %}">Forgot&nbsp;Password?</a>
+  </fieldset>
+</form>
+
+
+
+

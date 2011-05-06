@@ -1,0 +1,10 @@
+{% autoescape off %}
+Hey {{ user.first_name }},
+
+The event you submitted has been approved by our moderators and is viewable at {{ site.domain }}. 
+
+To see it live, please click here: http://{{ site.domain }}{{ event.get_absolute_url }}
+
+{{ EMAIL_SIGNATURE }}
+{% endautoescape %}
+

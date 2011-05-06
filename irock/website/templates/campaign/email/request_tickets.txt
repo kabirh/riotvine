@@ -1,0 +1,14 @@
+{% autoescape off %}
+Campaign tickets have been requested. Here are the details.
+
+Artist: {{ campaign.artist.name }}
+Campaign: {{ campaign.title }}
+Campaign ID: {{ campaign.pk }}
+
+Number of tickets requested: {{ num_tickets }}
+
+Print tickets: http://{% domain %}{% url login %}?next={% url print_campaign_tickets campaign_id=campaign.pk%}
+
+- Illius Rock
+{% endautoescape %}
+

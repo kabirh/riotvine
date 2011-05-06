@@ -1,0 +1,1262 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Tim O'Neil - ReverbNation</title>
+    <META http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <META NAME="AUTHOR" CONTENT="eMinor">
+    <META NAME="COPYRIGHT" CONTENT="Copyright (c) by eMinor">
+    <link rel="shortcut icon" href="http://cache.reverbnation.com/images/favicon.ico" >
+
+    <link href="http://cache.reverbnation.com/stylesheets/musicpimp.css?69" media="screen" rel="Stylesheet" type="text/css" />
+    <link href="http://cache.reverbnation.com/stylesheets/tabnav.css?69" media="screen" rel="Stylesheet" type="text/css" />
+    <link href="http://cache.reverbnation.com/stylesheets/upload_progress.css?69" media="screen" rel="Stylesheet" type="text/css" />
+    <link href="http://cache.reverbnation.com/stylesheets/calendar-win2k-cold-1.css?69" media="screen" rel="Stylesheet" type="text/css" />
+    <link href="http://cache.reverbnation.com/stylesheets/artist.css?69" media="screen" rel="Stylesheet" type="text/css" />
+    
+    <link href="http://cache.reverbnation.com/stylesheets/artist-ie.css?69" media="screen" rel="Stylesheet" type="text/css" />
+    
+
+<style>
+#yui-history-iframe { 
+  position:absolute; 
+  top:0; left:0; 
+  width:1px; height:1px; 
+  visibility:hidden; 
+} 
+</style>
+
+    <link href="http://cache.reverbnation.com/stylesheets/musicpimp-ie.css?69" media="screen" rel="Stylesheet" type="text/css" />
+<!--[if lt IE 7]>
+    <link href="http://cache.reverbnation.com/stylesheets/musicpimp-ie6.css?69" media="screen" rel="Stylesheet" type="text/css" />
+<![endif]-->
+
+    <script src="http://cache.reverbnation.com/javascripts/prototype.js?69" type="text/javascript"></script>
+<script src="http://cache.reverbnation.com/javascripts/effects.js?69" type="text/javascript"></script>
+<script src="http://cache.reverbnation.com/javascripts/dragdrop.js?69" type="text/javascript"></script>
+<script src="http://cache.reverbnation.com/javascripts/controls.js?69" type="text/javascript"></script>
+    <script src="http://cache.reverbnation.com/javascripts/tabnav.js?69" type="text/javascript"></script>
+    <script src="http://cache.reverbnation.com/javascripts/AC_OETags.js?69" type="text/javascript"></script>
+    <script src="http://cache.reverbnation.com/javascripts/flash_detect.js?69" type="text/javascript"></script>
+    <script src="http://cache.reverbnation.com/javascripts/musicpimp.js?69" type="text/javascript"></script>
+    <script src="http://cache.reverbnation.com/javascripts/inline_player.js?69" type="text/javascript"></script>
+    <script src="http://cache.reverbnation.com/javascripts/ajaxutils.js?69" type="text/javascript"></script>
+    <script src="http://cache.reverbnation.com/javascripts/calendar.js?69" type="text/javascript"></script>
+<script src="http://cache.reverbnation.com/javascripts/calendar-en.js?69" type="text/javascript"></script>
+<script src="http://cache.reverbnation.com/javascripts/calendar-setup.js?69" type="text/javascript"></script>
+    <script src="http://cache.reverbnation.com/javascripts/dimoverlay.js?69" type="text/javascript"></script>
+
+
+  <script type="text/javascript" src="http://yui.yahooapis.com/2.5.2/build/utilities/utilities.js"></script> 
+  <script type="text/javascript" src="http://yui.yahooapis.com/2.5.1/build/history/history-min.js"></script>
+
+    <script src="http://cache.reverbnation.com/javascripts/street_team_mission.js?69" type="text/javascript"></script>
+
+    <script src="http://cache.reverbnation.com/audio_player/JavaScriptFlashGateway.js?69" type="text/javascript"></script>
+    <script type="text/javascript">
+  CURRENT_PAGE_OBJECT = 'artist_33907';
+
+  function about_flash_stats()
+  {
+    info_dialog("<strong>Fans</strong> - includes Fans with ReverbNation profiles, Facebook profiles, and Available FanReach Fans from the Artist mailing list. <a href='http://www.reverbnation.com/fanreach'>About FanReach</a><br/><br/><strong>Visits</strong> - Total visits to Artist profile pages on ReverbNation and Facebook.<br/><br/><strong>Widget Hits</strong> - Total impressions of artist content via Artist widgets and banners. <a href='/controller/main/overview_widgets'>About Widgets</a><br/><br/><strong>Plays</strong> - Total song plays for this artist, including plays from Artist profile, TunePaks, ReverbRadio, and Widget Players.<br/><br/><strong>Video Plays</strong> - Total video plays initiated for this artist.", "Global Artist Stats");
+  }
+register_tab_url('artist_playlists','/controller/playlist/page_object_playlists/artist_33907');
+register_tab_url('artist_store','/controller/artist/store_front/artist_33907');
+register_tab_url('photos','/controller/artist/artist_photos/33907');
+register_tab_url('show_bills','/controller/show/artist_show_bills/33907');
+register_tab_url('blogs_buzz','/controller/artist/chatter/33907');
+register_tab_url('comments','/controller/artist/comments/33907');
+register_tab_url('artist_fans','/controller/artist/artist_fans/33907');
+register_tab_url('favorites','/controller/artist/favorites/33907');
+register_tab_url('street_team','/controller/artist/street_team/33907?show_profile_header=1');
+register_tab_url('widgets','/controller/artist/artist_widgets/33907');
+register_tab_url('banners','/controller/artist/page_object_banners/33907');
+
+
+
+
+function ensureLoggedIn(message, options)
+{
+  if (options == null) { options = {} }
+  if (message != null) { options.message = message; }
+  var userId = '';
+
+  return ensureLoggedInHelper(userId, options);
+}
+
+var global_dim_overlay;
+window.onload = function() {
+
+}
+    </script>
+
+
+
+  </head>
+  <body id="musicpimp" onunload="">
+   <div id="mainwrap">
+   <div id="maincontainer">
+
+     <div id="header" style="margin-bottom:15px;">
+       <div style="width:998px; height:80px; background-color:#444; text-align:left;"  >
+    <div id="reverbnation_home" style="width:100px; height:80px; float:left;">
+        <a href="/" class="button_reverbnation_home"></a>
+    </div>
+    <div style="float:left; width:620px;">
+        <div style="width:580px; height: 43px;">
+            <a href="/controller/main/signup" class="button_join_now_for_free"></a>
+            <a href="/main/features_tabs" class="button_features"></a>
+        </div>
+        <div>
+            <span style="color:#D8CEBA;">Search</span><br/>
+            <div style="width:625px; height:20px; float:left;">
+                <div id="search" style="float:left; margin-left:0px;">
+                <!-- 010923940019746136575:1pb4s9zvxde -->
+                    <!-- Google CSE Search Box Begins  -->
+                    <form action="/main/global_search" id="searchbox_010923940019746136575:1pb4s9zvxde" style="margin-left:0px;">
+                      <input type="hidden" name="cx" value="010923940019746136575:1pb4s9zvxde" />
+                      <input type="hidden" name="cof" value="FORID:11" />
+                      <input type="text" name="q" style="width:124px !important;font-size:10px;color:#222; margin-right:-1px; margin-left:0px; text-transform:none;" value=""/>
+                      <input type="submit" class="button_class" name="sa" value="GO" style="margin-left:0px;"/>
+                      <!--style="font-size:9px; text-transform:uppercase; margin-left:-1px;"--> 
+                    </form>
+                    <script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=010923940019746136575:1pb4s9zvxde"></script>
+                    <!-- Google CSE Search Box Ends -->
+                </div>
+
+                <div style="float:left;margin-left:20px;margin-top:2px;">
+                <table cellspacing="0" cellpadding="0" style="margin:0px;padding:0px;"><tr>
+                  <td><img alt="Browse" src="http://cache.reverbnation.com/images/header/browse.gif" style="margin-top:1px" /></td>
+                  <td><a href="/main/music_artists" class="button_browse_music_artists"></a></td>
+                  <td><img alt="Browse_divider" src="http://cache.reverbnation.com/images/header/browse_divider.gif" /></td>
+                  <td><a href="/main/fans" class="button_browse_fans"></a></td>
+                  <td><img alt="Browse_divider" src="http://cache.reverbnation.com/images/header/browse_divider.gif" /></td>
+                  <td><a href="/main/labels" class="button_browse_labels"></a></td>
+                  <td><img alt="Browse_divider" src="http://cache.reverbnation.com/images/header/browse_divider.gif" /></td>
+                  <td><a href="/main/management" class="button_browse_mgmt"></a></td>
+                  <td><img alt="Browse_divider" src="http://cache.reverbnation.com/images/header/browse_divider.gif" /></td>
+                  <td><a href="/main/venues" class="button_browse_venues"></a></td>
+                  <td><img alt="Browse_divider" src="http://cache.reverbnation.com/images/header/browse_divider.gif" /></td>
+                  <td><a href="/main/shows" class="button_browse_shows"></a></td>
+                  <td><img alt="Browse_divider" src="http://cache.reverbnation.com/images/header/browse_divider.gif" /></td>
+                  <td><a href="/main/music_artists?tab=Charts" class="button_browse_charts" style="margin-right:0px;"></a></td>
+                </tr></table>
+                </div>
+                <div style="clear:both;"></div>
+            </div>
+            
+         </div>
+    </div>
+    
+    <div style="width:270px; height:80px;color:#D8CEBA; font-size:11px !important; float:right;">
+    
+
+        <div class="form_18" style="float: right; margin: 4px 5px 0px 0px; display:inline;">
+
+        <form action="/controller/user/login_from_header" id="header2_login" method="post" onsubmit="new Ajax.Request('/controller/user/login_from_header', {asynchronous:true, evalScripts:true, parameters:Form.serialize(this)}); return false;">
+            <div id="login_form" style="width:230px;margin:0;line-height:22px;">
+                <input type="hidden" name="url_from" value="/timoneil">
+                <input id="user_login" name="user[login]" onblur=";if (this.value == '') {this.value = 'Login'; this.style.color='#AAAAAA';};" onfocus=";if (this.value == 'Login') { this.value = ''; }; this.style.color='black';" onkeypress="if (event.keyCode == 13) {this.form.onsubmit();}" size="30" style="width:120px; text-transform:none;;color:#AAAAAA;" type="text" value="Login" />
+                <br/>
+                    <input id="user_password_hidden" name="user[password]_hidden" onfocus="this.className='hidden';$('user_password').className='';$('user_password').focus();" style="width:120px; text-transform:none;color:#AAAAAA;" type="text" value="Password" /><input class=" hidden" id="user_password" name="user[password]" onblur=";if (this.value == '') {this.className = 'hidden';$('user_password_hidden').className = '';};" onkeypress="if (event.keyCode == 13) {this.form.onsubmit();}" size="30" style="width:120px; text-transform:none;" type="password" value="" />
+                    <input type="button" class="button_class" name="log in" value="LOGIN" onclick="$('header2_login').onsubmit();" style="font-size:9px;"/>
+                <br/>
+                <table cellspacing="0" style="margin-top:2px;_margin-left:-4px;"><tr>
+                <td><input checked="checked" id="remember_me" name="remember_me" style="height:13px;" type="checkbox" value="1" /></td>    
+                <td style="color:#D8CEBA">&nbsp;Remember Me</td>
+                </tr></table>
+            </div>
+            <div style="clear:both;"></div>
+            <div id="links" style="margin-top:2px;">
+                <a href="/user/forgot_password">FORGOT MY PASSWORD</a> | 
+                <a href="/controller/main/signup">Sign Up</a> | 
+                <a href="/main/help">HELP</a>
+            </div>
+            
+        </div>
+            
+    
+          <!--
+          <a href="http://forum.reverbnation.com" target="_blank">FORUMS</a> 
+          <a href="http://cache.reverbnation.com/data_public/tutorials/tutorials.htm" target="reverbnation_tutorials">TUTORIAL</a> 
+          <a href="/c./cms/FAQ?display=view_popup&amp;layout=popup" onclick="window.open(this.href,'_blank','height=700,width=630,top=150,left=50,scrollbars=yes,location=no,toolbar=no,menubar=no,status=no,directories=no');return false;">FAQ</a>
+          -->
+    
+         
+      </form>
+
+    </div>
+</div>
+<div style="width:998px;height:6px;background-color:#e53000;"><!-- --></div>
+<div style="width:998px;height:3px;background-color:#FFA017;"><!-- --></div>
+
+     </div>
+
+
+    <div id="main" >
+      
+      <div id="main_upper"><div><div>&nbsp;</div></div></div>
+      <div id="main_content">
+        
+<!-- ** (index artists) gigya here *** -->
+<script src="http://cdn.gigya.com/wildfire/js/wfapiv2.js"></script>
+
+
+
+
+
+
+
+<iframe id="yui-history-iframe" src="/images/blank.gif"></iframe> 
+
+<input id="yui-history-field" type="hidden"> 
+
+<div id="artist_header_container">
+  
+<div class="artist_main_header">
+    <div class="main_header_left_container">
+        <div style="float:left; width:420px;">
+            <div class="main_header_name_and_genre">
+
+                <img id="favorite_indicator" src="/images/heart_transparent.gif" alt="Fan" title="Fan" style="display:none">
+
+                Tim O'Neil
+            </div>
+            <div class="main_header_genres_div">
+                Clinton Township, MI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Classical / Ambient / Film
+            </div>
+        </div>
+        
+
+    </div>
+
+    <div class="main_header_stats" style="width:124px; margin-top:2;">
+
+
+      <script type="text/javascript">
+
+        embed_flash_with_detect("header_stats", "http://cache.reverbnation.com/images/header_stats?prm0=FANS__27380&prm1=VISITS__3202&prm2=PLAYS__15507&prm3=VIDEO+PLAYS__24&prm4=WIDGET+HITS__4181944",116, 32, 8,"prm0=FANS__27380&prm1=VISITS__3202&prm2=PLAYS__15507&prm3=VIDEO+PLAYS__24&prm4=WIDGET+HITS__4181944");
+      </script>
+
+    </div>
+</div>
+
+</div>
+
+<div id="basic_info">
+  <div id="basic_info_photo_content">
+    <div id='basic_info_photo'>
+  
+    <div id='profile_pic' style="position:absolute; top:0px; left:0px; zindex:1"><a href="javascript:viewPhotoPopup('artist_33907')"><img alt="Tim..." src="http://cache.reverbnation.com/data_public/artist/image/3/33907/small/Up_Close_Better_Flip.png" title="Tim O'Neil" /></a>
+    </div>  
+
+
+
+
+
+</div>
+</div>
+<div id="basic_info_buttons_content" align="center">
+    
+      <a class="button_become_a_fan_116x24" href="#" id="become_a_fan_button" onclick="modal_open(); new Ajax.Updater('general_edit_container', '/controller/artist/become_fan/33907', {asynchronous:true, evalScripts:true, onComplete:function(request){modal_center();}}); return false;" title="Become a Fan of this Artist"></a>
+
+
+
+      <a class="button_leave_comment_116x24" href="#" onclick="modal_open(); new Ajax.Updater('general_edit_container', '/controller/artist/add_comment/artist_33907', {asynchronous:true, evalScripts:true, onComplete:function(request){modal_center();switch_to_tab_name('comments');}}); return false;" title="Leave Comment"></a>
+
+
+
+
+      <a class="button_join_street_team_116x24" href="#" onclick="modal_open(); new Ajax.Updater('general_edit_container', '/controller/artist/become_street_team/33907?current_active_tab=street_team&amp;full_refresh=true&amp;receive_emails=1&amp;street_team=1', {asynchronous:true, evalScripts:true, onComplete:function(request){modal_center();}}); return false;" title="Join the Tim O'Neil Street Team"></a>
+                       
+
+
+      <a class="button_send_message_116x24" href="#" id="message_to_artist_33907" onclick="modal_open(); new Ajax.Updater('general_edit_container', '/controller/artist/message_to_fan/33907', {asynchronous:true, evalScripts:true, onComplete:function(request){modal_center();}}); return false;" title="Send a Message to Artist"></a>
+
+
+<div style="clear:both;"></div>
+
+</div>   
+<div>
+  <table width="244" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+    <td colspan="2">
+      <div id="basic_info_footer" style="padding-top:3px;">
+
+        <a href="javascript:launch_external('http://composertimoneil.com');" title="http://composertimoneil.com" rel="me">website</a>
+
+
+        <a href="#" onclick=";modal_open();; new Ajax.Updater('general_edit_container', '/controller/artist/get_email/artist_33907?email=-1044205329', {asynchronous:true, evalScripts:true, onComplete:function(request){modal_center();}}); return false;">email</a>       
+
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+
+    </td>
+  </tr>
+  </table>
+</div>
+
+</div>
+
+<div id="artist_top_tabs">
+  <div class="tabnav">
+ <div class="tabnav_imagetabs">
+    <ul>
+      <li><a id='artist_songs' class='tabHeader_here' title='13 Songs' href='#' onclick='switch_to_tab(this);;return false;'><div><div>Songs</div></div></a></li>
+      <li><a id='artist_playlists' class='tabHeader' href='' onclick="switch_to_tab(this);;return false;"><div><div>Playlists</div></div></a></li>
+
+      <li><a id='artist_store' class='tabHeader' href='' onclick="switch_to_tab(this);;return false;"><div><div>Store</div></div></a></li>
+
+      
+
+    </ul>
+  </div>
+</div>
+  
+<div class="tabnav_content_inline" id="artist_songs_content" style="display:block">
+  <div class="song_and_playlist_controls">
+  
+    <a class="button_above_play_all" href="#" title="Play All Songs" onClick="playSongNow('all_artist_songs_33907'); return false;"></a>
+    <a class="button_above_queue_all" href="#" title="Add All Songs to Player Queue" onClick="addSongToQueue('all_artist_songs_33907'); return false;"></a>
+    <a class="button_above_add_all" href="#" title="Add All Songs to Favorites" onClick="addSongsToMyLibrary('all_artist_songs_33907'); return false;"></a>
+    <a class="button_above_embed" href="#" onclick="modal_open(); new Ajax.Updater('general_edit_container', '/controller/artist/player_widget_select/artist_33907', {asynchronous:true, evalScripts:true, onComplete:function(request){modal_center();}}); return false;" title="Get Player Widget for Tim O'Neil"></a>
+    <a class="button_above_share" href="#" title="Share Songs with Friends" onClick="mailSongs('all_artist_songs_33907'); return false;"></a>
+
+
+
+    <a class="button_above_buy" href='#' title="Buy Songs" onclick="goto_tab('artist_store');return false;"></a>
+
+
+</div>
+
+<div class='clearfloats'></div>
+<div id="artist_songs_list">
+
+<ul class="song_list">
+  <li class="song_title">
+    <ul class="song_columns">
+      <li></li>
+      <li>Songs</li>
+
+    </ul>
+  </li>
+</ul>
+<div id="artist_songs_scrollable_wrapper">
+<div id="artist_songs_scrollable">
+
+<form id="artist_songs_form">
+  <ul id="table_artist_songs" class="song_list">
+    
+<li id="artist_song_row_1175902" class="song_row_here"
+    ondblclick="dblclick=true;playSongNow('1175902');"
+    
+    onmouseover="ie_hover_on(this, 'song_row');"
+    onmouseout="ie_hover_off(this, 'song_row');"
+    
+  
+>  
+  <ul class="song_columns">
+    <li></li>
+    <li>  
+      eLEMenT
+    </li>
+                           
+  <li class="right">
+    <a class='button_icon_info_disabled' href='#' title='Lyrics unavailable'></a>
+  </li>
+  <li class="right">
+    <a class='button_icon_video_disabled' href='#' title='Video unavailable'></a>
+  </li>
+  <li class="right">
+    <a class='button_icon_download_disabled' href='#' title='Download unavailable'></a>
+  </li>
+  <li class="right">
+    <a class="button_icon_add" href="#" onclick="addSongsToMyLibrary('1175902');;; return false;" title="Bookmark Song"></a>
+  </li>
+  <li class="right">
+    <a class="button_icon_queue" href="#" onclick="addSongToQueue('1175902');;; return false;" title="Add to Player Queue"></a>
+  </li>
+  <li class="right">
+    <a class="button_icon_play" href="" onclick="playSongNow('1175902');;; return false;" title="Play Song Now"></a>
+  </li>
+  </ul>
+    
+</li>
+
+<li id="artist_song_row_151612" class="song_row_here"
+    ondblclick="dblclick=true;playSongNow('151612');"
+    
+    onmouseover="ie_hover_on(this, 'song_row');"
+    onmouseout="ie_hover_off(this, 'song_row');"
+    
+  
+>  
+  <ul class="song_columns">
+    <li></li>
+    <li>  
+      Amelia's Song
+    </li>
+                           
+  <li class="right">
+    <a class='button_icon_info_disabled' href='#' title='Lyrics unavailable'></a>
+  </li>
+  <li class="right">
+    <a class='button_icon_video_disabled' href='#' title='Video unavailable'></a>
+  </li>
+  <li class="right">
+    <a class='button_icon_download_disabled' href='#' title='Download unavailable'></a>
+  </li>
+  <li class="right">
+    <a class="button_icon_add" href="#" onclick="addSongsToMyLibrary('151612');;; return false;" title="Bookmark Song"></a>
+  </li>
+  <li class="right">
+    <a class="button_icon_queue" href="#" onclick="addSongToQueue('151612');;; return false;" title="Add to Player Queue"></a>
+  </li>
+  <li class="right">
+    <a class="button_icon_play" href="" onclick="playSongNow('151612');;; return false;" title="Play Song Now"></a>
+  </li>
+  </ul>
+    
+</li>
+
+<li id="artist_song_row_636126" class="song_row_here"
+    ondblclick="dblclick=true;playSongNow('636126');"
+    
+    onmouseover="ie_hover_on(this, 'song_row');"
+    onmouseout="ie_hover_off(this, 'song_row');"
+    
+  
+>  
+  <ul class="song_columns">
+    <li></li>
+    <li>  
+      The Greys
+    </li>
+                           
+  <li class="right">
+    <a class='button_icon_info_disabled' href='#' title='Lyrics unavailable'></a>
+  </li>
+  <li class="right">
+    <a class='button_icon_video_disabled' href='#' title='Video unavailable'></a>
+  </li>
+  <li class="right">
+    <a class='button_icon_download_disabled' href='#' title='Download unavailable'></a>
+  </li>
+  <li class="right">
+    <a class="button_icon_add" href="#" onclick="addSongsToMyLibrary('636126');;; return false;" title="Bookmark Song"></a>
+  </li>
+  <li class="right">
+    <a class="button_icon_queue" href="#" onclick="addSongToQueue('636126');;; return false;" title="Add to Player Queue"></a>
+  </li>
+  <li class="right">
+    <a class="button_icon_play" href="" onclick="playSongNow('636126');;; return false;" title="Play Song Now"></a>
+  </li>
+  </ul>
+    
+</li>
+
+<li id="artist_song_row_598824" class="song_row_here"
+    ondblclick="dblclick=true;playSongNow('598824');"
+    
+    onmouseover="ie_hover_on(this, 'song_row');"
+    onmouseout="ie_hover_off(this, 'song_row');"
+    
+
+    style="height:40px;"
+     
+>  
+  <ul class="song_columns">
+    <li></li>
+    <li>  
+      Breaking Free
+    </li>
+                           
+  <li class="right">
+    <a class='button_icon_info_disabled' href='#' title='Lyrics unavailable'></a>
+  </li>
+  <li class="right">
+    <a class='button_icon_video_disabled' href='#' title='Video unavailable'></a>
+  </li>
+  <li class="right">
+    <a class='button_icon_download_disabled' href='#' title='Download unavailable'></a>
+  </li>
+  <li class="right">
+    <a class='button_icon_add_disabled' title='Bookmark Song' href='javascript:addSongsToMyLibrary("598824");'></a>
+  </li>
+  <li class="right">
+    <a class="button_icon_queue_exclusive" href="#" onclick="addSongToQueue('598824');;; return false;" title="Add to Player Queue"></a>
+  </li>
+  <li class="right">
+    <a class="button_icon_play_exclusive" href="" onclick="playSongNow('598824');;; return false;" title="Play Song Now"></a>
+  </li>
+  </ul>
+
+  <ul class="song_columns">
+    <img alt="Exclusive_star" src="http://cache.reverbnation.com/images/exclusive_star.png" style="margin-left:22px;" />&nbsp;
+    
+      <a href="#" onclick="modal_open(); new Ajax.Updater('general_edit_container', '/controller/artist/exclusive_content/598824', {asynchronous:true, evalScripts:true, onComplete:function(request){modal_center()}}); return false;" style="text-decoration:none;color:#485f7b;">Fan Exclusive</a>
+     
+  </ul>
+    
+</li>
+
+<li id="artist_song_row_134622" class="song_row_here"
+    ondblclick="dblclick=true;playSongNow('134622');"
+    
+    onmouseover="ie_hover_on(this, 'song_row');"
+    onmouseout="ie_hover_off(this, 'song_row');"
+    
+  
+>  
+  <ul class="song_columns">
+    <li></li>
+    <li>  
+      Come To Me
+    </li>
+                           
+  <li class="right">
+    <a class="button_icon_info" href="#" onclick="modal_open('/controller/artist/song_show_lyrics/134622');;; return false;" title="Lyrics"></a>
+  </li>
+  <li class="right">
+    <a class="button_icon_video" href="#" onclick="launch_video('134622');;; return false;" title="Show Video"></a>
+  </li>
+  <li class="right">
+    <a class='button_icon_download_disabled' href='#' title='Download unavailable'></a>
+  </li>
+  <li class="right">
+    <a class="button_icon_add" href="#" onclick="addSongsToMyLibrary('134622');;; return false;" title="Bookmark Song"></a>
+  </li>
+  <li class="right">
+    <a class="button_icon_queue" href="#" onclick="addSongToQueue('134622');;; return false;" title="Add to Player Queue"></a>
+  </li>
+  <li class="right">
+    <a class="button_icon_play" href="" onclick="playSongNow('134622');;; return false;" title="Play Song Now"></a>
+  </li>
+  </ul>
+    
+</li>
+
+<li id="artist_song_row_547205" class="song_row_here"
+    ondblclick="dblclick=true;playSongNow('547205');"
+    
+    onmouseover="ie_hover_on(this, 'song_row');"
+    onmouseout="ie_hover_off(this, 'song_row');"
+    
+
+    style="height:40px;"
+     
+>  
+  <ul class="song_columns">
+    <li></li>
+    <li>  
+      I Will Be With You
+    </li>
+                           
+  <li class="right">
+    <a class="button_icon_info" href="#" onclick="modal_open('/controller/artist/song_show_lyrics/547205');;; return false;" title="Lyrics"></a>
+  </li>
+  <li class="right">
+    <a class='button_icon_video_disabled' href='#' title='Video unavailable'></a>
+  </li>
+  <li class="right">
+    <a class="button_icon_download_exclusive" href="#" onclick="modal_open(); new Ajax.Updater('general_edit_container', '/controller/artist/exclusive_content/547205', {asynchronous:true, evalScripts:true, onComplete:function(request){modal_center();}}); return false;" title="Exclusive Content Download"></a>
+  </li>
+  <li class="right">
+    <a class='button_icon_add_disabled' title='Bookmark Song' href='javascript:addSongsToMyLibrary("547205");'></a>
+  </li>
+  <li class="right">
+    <a class="button_icon_queue_exclusive" href="#" onclick="addSongToQueue('547205');;; return false;" title="Add to Player Queue"></a>
+  </li>
+  <li class="right">
+    <a class="button_icon_play_exclusive" href="" onclick="playSongNow('547205');;; return false;" title="Play Song Now"></a>
+  </li>
+  </ul>
+
+  <ul class="song_columns">
+    <img alt="Exclusive_star" src="http://cache.reverbnation.com/images/exclusive_star.png" style="margin-left:22px;" />&nbsp;
+    
+      <a href="#" onclick="modal_open(); new Ajax.Updater('general_edit_container', '/controller/artist/exclusive_content/547205', {asynchronous:true, evalScripts:true, onComplete:function(request){modal_center()}}); return false;" style="text-decoration:none;color:#485f7b;">Fan Exclusive</a>
+     
+  </ul>
+    
+</li>
+
+<li id="artist_song_row_137884" class="song_row_here"
+    ondblclick="dblclick=true;playSongNow('137884');"
+    
+    onmouseover="ie_hover_on(this, 'song_row');"
+    onmouseout="ie_hover_off(this, 'song_row');"
+    
+  
+>  
+  <ul class="song_columns">
+    <li></li>
+    <li>  
+      <span title="Farwell - From &quot;Passion Is But A Fleeting Moment&quot;">Farwell - From &quot;Passion Is But ...</span>
+    </li>
+                           
+  <li class="right">
+    <a class='button_icon_info_disabled' href='#' title='Lyrics unavailable'></a>
+  </li>
+  <li class="right">
+    <a class='button_icon_video_disabled' href='#' title='Video unavailable'></a>
+  </li>
+  <li class="right">
+    <a class='button_icon_download_disabled' href='#' title='Download unavailable'></a>
+  </li>
+  <li class="right">
+    <a class="button_icon_add" href="#" onclick="addSongsToMyLibrary('137884');;; return false;" title="Bookmark Song"></a>
+  </li>
+  <li class="right">
+    <a class="button_icon_queue" href="#" onclick="addSongToQueue('137884');;; return false;" title="Add to Player Queue"></a>
+  </li>
+  <li class="right">
+    <a class="button_icon_play" href="" onclick="playSongNow('137884');;; return false;" title="Play Song Now"></a>
+  </li>
+  </ul>
+    
+</li>
+
+<li id="artist_song_row_151607" class="song_row_here"
+    ondblclick="dblclick=true;playSongNow('151607');"
+    
+    onmouseover="ie_hover_on(this, 'song_row');"
+    onmouseout="ie_hover_off(this, 'song_row');"
+    
+
+    style="height:40px;"
+     
+>  
+  <ul class="song_columns">
+    <li></li>
+    <li>  
+      Ptolomy's Death
+    </li>
+                           
+  <li class="right">
+    <a class='button_icon_info_disabled' href='#' title='Lyrics unavailable'></a>
+  </li>
+  <li class="right">
+    <a class='button_icon_video_disabled' href='#' title='Video unavailable'></a>
+  </li>
+  <li class="right">
+    <a class='button_icon_download_disabled' href='#' title='Download unavailable'></a>
+  </li>
+  <li class="right">
+    <a class='button_icon_add_disabled' title='Bookmark Song' href='javascript:addSongsToMyLibrary("151607");'></a>
+  </li>
+  <li class="right">
+    <a class="button_icon_queue_exclusive" href="#" onclick="addSongToQueue('151607');;; return false;" title="Add to Player Queue"></a>
+  </li>
+  <li class="right">
+    <a class="button_icon_play_exclusive" href="" onclick="playSongNow('151607');;; return false;" title="Play Song Now"></a>
+  </li>
+  </ul>
+
+  <ul class="song_columns">
+    <img alt="Exclusive_star" src="http://cache.reverbnation.com/images/exclusive_star.png" style="margin-left:22px;" />&nbsp;
+    
+      <a href="#" onclick="modal_open(); new Ajax.Updater('general_edit_container', '/controller/artist/exclusive_content/151607', {asynchronous:true, evalScripts:true, onComplete:function(request){modal_center()}}); return false;" style="text-decoration:none;color:#485f7b;">Fan Exclusive</a>
+     
+  </ul>
+    
+</li>
+
+<li id="artist_song_row_151536" class="song_row_here"
+    ondblclick="dblclick=true;playSongNow('151536');"
+    
+    onmouseover="ie_hover_on(this, 'song_row');"
+    onmouseout="ie_hover_off(this, 'song_row');"
+    
+  
+>  
+  <ul class="song_columns">
+    <li></li>
+    <li>  
+      The Heart That Beats Within Me
+    </li>
+                           
+  <li class="right">
+    <a class='button_icon_info_disabled' href='#' title='Lyrics unavailable'></a>
+  </li>
+  <li class="right">
+    <a class='button_icon_video_disabled' href='#' title='Video unavailable'></a>
+  </li>
+  <li class="right">
+    <a class='button_icon_download_disabled' href='#' title='Download unavailable'></a>
+  </li>
+  <li class="right">
+    <a class="button_icon_add" href="#" onclick="addSongsToMyLibrary('151536');;; return false;" title="Bookmark Song"></a>
+  </li>
+  <li class="right">
+    <a class="button_icon_queue" href="#" onclick="addSongToQueue('151536');;; return false;" title="Add to Player Queue"></a>
+  </li>
+  <li class="right">
+    <a class="button_icon_play" href="" onclick="playSongNow('151536');;; return false;" title="Play Song Now"></a>
+  </li>
+  </ul>
+    
+</li>
+
+<li id="artist_song_row_151594" class="song_row_here"
+    ondblclick="dblclick=true;playSongNow('151594');"
+    
+    onmouseover="ie_hover_on(this, 'song_row');"
+    onmouseout="ie_hover_off(this, 'song_row');"
+    
+
+    style="height:40px;"
+     
+>  
+  <ul class="song_columns">
+    <li></li>
+    <li>  
+      Queen Of The Nile
+    </li>
+                           
+  <li class="right">
+    <a class='button_icon_info_disabled' href='#' title='Lyrics unavailable'></a>
+  </li>
+  <li class="right">
+    <a class='button_icon_video_disabled' href='#' title='Video unavailable'></a>
+  </li>
+  <li class="right">
+    <a class='button_icon_download_disabled' href='#' title='Download unavailable'></a>
+  </li>
+  <li class="right">
+    <a class='button_icon_add_disabled' title='Bookmark Song' href='javascript:addSongsToMyLibrary("151594");'></a>
+  </li>
+  <li class="right">
+    <a class="button_icon_queue_exclusive" href="#" onclick="addSongToQueue('151594');;; return false;" title="Add to Player Queue"></a>
+  </li>
+  <li class="right">
+    <a class="button_icon_play_exclusive" href="" onclick="playSongNow('151594');;; return false;" title="Play Song Now"></a>
+  </li>
+  </ul>
+
+  <ul class="song_columns">
+    <img alt="Exclusive_star" src="http://cache.reverbnation.com/images/exclusive_star.png" style="margin-left:22px;" />&nbsp;
+    
+      <a href="#" onclick="modal_open(); new Ajax.Updater('general_edit_container', '/controller/artist/exclusive_content/151594', {asynchronous:true, evalScripts:true, onComplete:function(request){modal_center()}}); return false;" style="text-decoration:none;color:#485f7b;">Fan Exclusive</a>
+     
+  </ul>
+    
+</li>
+
+<li id="artist_song_row_151625" class="song_row_here"
+    ondblclick="dblclick=true;playSongNow('151625');"
+    
+    onmouseover="ie_hover_on(this, 'song_row');"
+    onmouseout="ie_hover_off(this, 'song_row');"
+    
+  
+>  
+  <ul class="song_columns">
+    <li></li>
+    <li>  
+      No Place To Go
+    </li>
+                           
+  <li class="right">
+    <a class='button_icon_info_disabled' href='#' title='Lyrics unavailable'></a>
+  </li>
+  <li class="right">
+    <a class='button_icon_video_disabled' href='#' title='Video unavailable'></a>
+  </li>
+  <li class="right">
+    <a class='button_icon_download_disabled' href='#' title='Download unavailable'></a>
+  </li>
+  <li class="right">
+    <a class="button_icon_add" href="#" onclick="addSongsToMyLibrary('151625');;; return false;" title="Bookmark Song"></a>
+  </li>
+  <li class="right">
+    <a class="button_icon_queue" href="#" onclick="addSongToQueue('151625');;; return false;" title="Add to Player Queue"></a>
+  </li>
+  <li class="right">
+    <a class="button_icon_play" href="" onclick="playSongNow('151625');;; return false;" title="Play Song Now"></a>
+  </li>
+  </ul>
+    
+</li>
+
+<li id="artist_song_row_151617" class="song_row_here"
+    ondblclick="dblclick=true;playSongNow('151617');"
+    
+    onmouseover="ie_hover_on(this, 'song_row');"
+    onmouseout="ie_hover_off(this, 'song_row');"
+    
+  
+>  
+  <ul class="song_columns">
+    <li></li>
+    <li>  
+      <span title="A Girl, A Bridge and Cherry Blossoms">A Girl, A Bridge and Cherry Blo...</span>
+    </li>
+                           
+  <li class="right">
+    <a class='button_icon_info_disabled' href='#' title='Lyrics unavailable'></a>
+  </li>
+  <li class="right">
+    <a class='button_icon_video_disabled' href='#' title='Video unavailable'></a>
+  </li>
+  <li class="right">
+    <a class='button_icon_download_disabled' href='#' title='Download unavailable'></a>
+  </li>
+  <li class="right">
+    <a class="button_icon_add" href="#" onclick="addSongsToMyLibrary('151617');;; return false;" title="Bookmark Song"></a>
+  </li>
+  <li class="right">
+    <a class="button_icon_queue" href="#" onclick="addSongToQueue('151617');;; return false;" title="Add to Player Queue"></a>
+  </li>
+  <li class="right">
+    <a class="button_icon_play" href="" onclick="playSongNow('151617');;; return false;" title="Play Song Now"></a>
+  </li>
+  </ul>
+    
+</li>
+
+<li id="artist_song_row_151623" class="song_row_here"
+    ondblclick="dblclick=true;playSongNow('151623');"
+    
+    onmouseover="ie_hover_on(this, 'song_row');"
+    onmouseout="ie_hover_off(this, 'song_row');"
+    
+  
+>  
+  <ul class="song_columns">
+    <li></li>
+    <li>  
+      Passion Is But A Fleeting Moment
+    </li>
+                           
+  <li class="right">
+    <a class='button_icon_info_disabled' href='#' title='Lyrics unavailable'></a>
+  </li>
+  <li class="right">
+    <a class='button_icon_video_disabled' href='#' title='Video unavailable'></a>
+  </li>
+  <li class="right">
+    <a class='button_icon_download_disabled' href='#' title='Download unavailable'></a>
+  </li>
+  <li class="right">
+    <a class="button_icon_add" href="#" onclick="addSongsToMyLibrary('151623');;; return false;" title="Bookmark Song"></a>
+  </li>
+  <li class="right">
+    <a class="button_icon_queue" href="#" onclick="addSongToQueue('151623');;; return false;" title="Add to Player Queue"></a>
+  </li>
+  <li class="right">
+    <a class="button_icon_play" href="" onclick="playSongNow('151623');;; return false;" title="Play Song Now"></a>
+  </li>
+  </ul>
+    
+</li>
+
+  </ul>
+</form>
+
+
+</div> <!- artist_songs_scrollable -->
+</div> <!- artist_songs_scrollable_wrapper -->
+</div>
+
+
+</div>
+<div class="tabnav_content_inline" id="artist_playlists_content">
+  <div class="loading_message">Loading...</div>
+</div>
+<div class="tabnav_content_inline" id="fan_tunepaks_content">
+  <div class="loading_message">Loading...</div>
+</div>
+<div class="tabnav_content_inline" id="artist_store_content" style="overflow:auto">
+  <div class="loading_message">Loading...</div>
+</div>
+
+</div>
+
+<div id="campaign_banner">
+  
+
+</div>
+
+<div id="artist_status_box">
+  
+
+</div>
+ 
+<div class="column_3x_left" id="artist_maintabs">
+  
+
+<script type="text/javascript">
+var ARTIST_ID = 33907;
+</script>
+<div class="tabnav">
+<div class="tabnav_imagetabs">
+  <ul>
+      <li><a id='tabnav_rich_text' class='tabHeader' href='' onclick="navigate_to_tab('tab', this);;return false;"><div><div>general</div></div></a></li>
+      <li><a id='photos' class='tabHeader' href='' onclick="navigate_to_tab('tab', this);;return false;"><div><div>Photos</div></div></a></li>
+      <li><a id='show_bills' class='tabHeader' href='' onclick="navigate_to_tab('tab', this);;return false;"><div><div>Shows</div></div></a></li>
+      <li><a id='blogs_buzz' class='tabHeader' href='' onclick="navigate_to_tab('tab', this);;return false;"><div><div>Blog/Buzz</div></div></a></li>
+      <li><a id='comments' class='tabHeader' href='' onclick="navigate_to_tab('tab', this);;return false;"><div><div>Comments</div></div></a></li>
+      <li><a id='artist_fans' class='tabHeader' href='' onclick="navigate_to_tab('tab', this);;return false;"><div><div>Fans</div></div></a></li>
+      <li><a id='favorites' class='tabHeader' href='' onclick="navigate_to_tab('tab', this);;return false;"><div><div>Favorites</div></div></a></li>
+
+      <li><a id='street_team' class='tabHeader' href='' onclick="navigate_to_tab('tab', this);;return false;"><div><div>Street Team</div></div></a></li>
+
+      <li><a id='widgets' class='tabHeader' href='' onclick="navigate_to_tab('tab', this);;return false;"><div><div>Widgets</div></div></a></li>
+      <li><a id='banners' class='tabHeader' href='' onclick="navigate_to_tab('tab', this);;return false;"><div><div>Banners</div></div></a></li>
+  </ul>
+</div>
+<div class="tabnav_content_inline" id="rich_text_content" style="display:block">
+
+
+
+
+<div id="rich_text_contentonly">
+
+  
+<!--div class="general_panel" id="artist_info_panel" style="width:452px;" -->
+<table class='general_table' width='698'>
+    <tr>
+        <td width=452 style=''>
+  <h1>
+    <div style="float:left">Artist Info</div>
+  </h1>
+  <div class="pad5px">
+
+    <div>    
+    <b>Members:</b> Tim O'Neil
+    </div>    
+
+    <div style="line-height:1;">    
+
+    <b>You can also find me at: </b>
+    <a href="http://apps.facebook.com/reverbnation_fb/artist/timoneil" target="_blank" title="Facebook"><img alt="Facebook_16x16" src="http://cache.reverbnation.com/images/website_logos/facebook_16x16.jpg" /></a>
+<a href="http://apps.bebo.com/my-band/artist/timoneil" target="_blank" title="Bebo"><img alt="Bebo_16x16" src="http://cache.reverbnation.com/images/website_logos/bebo_16x16.jpg" /></a>
+<a href="http://composertimoneil.com" target="_blank" title="Artist Website"><img alt="Artist website_16x16" src="http://cache.reverbnation.com/images/website_logos/artist website_16x16.jpg" /></a>
+
+    </div>    
+
+
+  </div>
+        </td>
+        <td width=5 style='border:0px;'></td>
+
+        <td>
+  <h1>Join the Mailing List</h1>
+  <div class="pad5px" style='line-height:16px;'>
+    <form action="/controller/fan_reach/add_email_direct_internal/artist_33907" method="post" onsubmit="new Ajax.Request('/controller/fan_reach/add_email_direct_internal/artist_33907', {asynchronous:true, evalScripts:true, parameters:Form.serialize(this)}); return false;">
+      <input id="email" name="email" onblur="if ($F('email') == '') { $('email').value = 'Enter Email Address'; }" onfocus="if ($F('email') == 'Enter Email Address') { $('email').value = ''; }" style="width:220px; font-size:9px;" type="text" value="Enter Email Address" /><br/>
+      <input id="become_fan_street_team" name="street_team" type="checkbox" value="1" />
+      Join the Street Team&nbsp;&nbsp;
+      <input class="mailing_list_submit" name="commit" type="submit" value="Submit" />
+      <br/>
+      <a href="/controller/fan_reach/privacy/artist_33907" onclick="launch_external('/controller/fan_reach/privacy/artist_33907'); return false;">Privacy Policy</a>
+    </form>
+  </div>
+<!--/div-->
+       </td>
+
+  </tr>
+</table>
+
+<!--div style="clear:both"></div-->
+
+
+  
+<div class="general_panel" style="float:left;width:692px;margin-bottom:5px" >
+  <h1>
+    <div style="float:left">More About The Artist</div>
+
+  </h1>
+<div class="rich_text_content_only">
+  <div class="tabnav_content_inline_padded">
+
+    <p><font face='Times New Roman'><font size='6' color='#ff0000'><strong>F</strong></font><font size='4'>irst let me take a moment and welcome you to my Reverb Nation Page.&nbsp; ReverbNation is a great way for you to keep track of me professionally.&nbsp; This site is designed to help&nbsp;me&nbsp;identify&nbsp;what regions my music is doing well in and help me find people&nbsp;to&nbsp;aid me&nbsp;with the production of my&nbsp;show in their hometown.&nbsp; It is my sincere hope to put a touring production together for 2008; but it takes the energy of several engaged individuals.&nbsp; If you are interested in helping or just want general information... sign up today!&nbsp; By doing so, you are helping me a great deal!~</font></font></p>
+<p><font face='Times New Roman'><font size='4'><font size='5'><strong><font size='6' color='#ff0000'>N</font></strong>ow, a bit about <u>me</u>...</font></font></font></p>
+<p><font face='Times New Roman'><font size='4'><font color='#ff0000'><font size='6'><strong>I</strong> </font></font>am proficient in several instruments including the piano, trumpet, euphonium, cornet, secondary percussion, and bass. I started writing music at the age of four, using theory... no short cuts. I write roughly four hundred musical pieces per year, with a two to three average per day. My record daily amount for compositions stands at twenty-three. Music is a strange mistress; I hear six pieces/compositions at any given time running manically through my head and can compose instantly on the spot in any key. I enjoy practicing and writing anywhere from two to six hours a day, depending on my schedule. I also maintain a mental library of which over one thousand are pieces memorized from all genres.</font></font></p>
+<p><font face='Times New Roman' size='5'><strong><font size='6' color='#ff0000'>I </font></strong><font size='4'>have been musician since the age of three; ever since I could remember actually.&nbsp; I enjoy writing more than anything else... it is the one simple joy in my musical life.&nbsp; People are the main source of my inspiration... my music is a direct reflection of what my soul feels when I interact with people... think of it like a musical sketch.&nbsp; It is how I read people and deal with the ups and downs of life.&nbsp; I enjoy meeting people... it was once said about me that "I had never met a stranger;" and today... that still holds true.&nbsp; I really to enjoy hearing from my friends who genuinely like my music. It amazes me to hear some of the responses I get to people hearing my music; it truthfully blows me away each time I hear a good word!&nbsp; I encourage you to write and&nbsp;because of it... I will write&nbsp;more music.</font></font></p>
+<p><font face='Times New Roman' size='4'><font size='6' color='#ff0000'><strong>T</strong></font>hank you for taking the time to read this little introduction; I hope that it inspires you to sign up and befriend me through RN!&nbsp; It is the one true way to get me to play in your hometown!</font></p>
+<p><font face='Times New Roman' size='4'><font size='6' color='#ff0000'><strong>B</strong></font>e well... I look forward to hearing from you!</font></p>
+<p><font face='Times New Roman' size='4'><font size='6' color='#0000ff'>T</font>.</font></p>
+<a href='http://www.myspace.com/composertimoneil'>Click here to view my MYSPACE homepage!<br />
+<img src='http://i107.photobucket.com/albums/m290/themzcman1969/TimProjectAddToFriends.jpg' border='0' alt='Add to Friends' /></a><br />
+<a href='http://myspacetv.com/index.cfm?fuseaction=vids.individual&videoid=24557403'>Come To Me - Video Composite of Tim</a><br />
+<br />
+<object type='application/x-shockwave-flash' allowscriptaccess='never' allownetworking='all' height='386' data='http://lads.myspace.com/videos/vplayer.swf' width='480'>
+<param name='allowScriptAccess' value='never' />
+<param name='allowNetworking' value='all' />
+<param name='movie' value='http://lads.myspace.com/videos/vplayer.swf' />
+<param name='flashvars' value='m=24557403&type=video&v=2' /></object><br />
+<br />
+<a href='http://myspacetv.com/index.cfm?fuseaction=vids.addToProfileConfirm&videoid=24557403&title=Come To Me'></a>
+    <br clear="all"/>
+
+  </div>
+</div>
+</div>
+<div style="clear:both"></div>
+
+</div>
+
+</div>
+<div class="tabnav_content_inline" id="blogs_buzz_content">
+    <script type="text/javascript">
+//<![CDATA[
+var blog_loaded=false;
+//]]>
+</script>
+    <div class="loading_message">Loading...</div>
+</div>
+<div class="tabnav_content_inline" id="comments_content">
+    <div class="loading_message">Loading...</div>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+var songPreviews = new Array();
+//]]>
+</script>
+<div class="tabnav_content_inline" id="show_bills_content">
+    <div class="loading_message">Loading...</div>
+</div>
+<div class="tabnav_content_inline" id="photos_content">
+    <div class="loading_message">Loading...</div>
+</div>
+<div class="tabnav_content_inline" id="artist_fans_content">
+    <div class="loading_message">Loading...</div>
+</div>
+<div class="tabnav_content_inline" id="favorites_content">
+    <div class="loading_message">Loading...</div>
+</div>
+
+<div class="tabnav_content_inline" id="street_team_content">
+    <div class="loading_message">Loading...</div>
+</div>
+
+
+<div class="tabnav_content_inline" id="widgets_content">
+    <div class="loading_message">Loading...</div>
+</div>
+<div class="tabnav_content_inline" id="banners_content">
+    <div class="loading_message">Loading...</div>
+</div>
+<div class="tabnav_content_inline" id="press_content">
+    <div class="loading_message">Loading...</div>
+</div>
+</div> <!-- tabnav -->
+
+</div>
+
+<script type="text/javascript">
+  initialize_tab_navigation('rich_text', 'tab');
+</script>
+
+      </div>
+      <div id="main_lower"><div><div>&nbsp;</div></div></div>
+
+    
+        <br/>&nbsp;<br/>
+        <div style="margin-bottom:2px;"> <img alt="Advertisement728" src="http://cache.reverbnation.com/images/advertisement728.gif" /></div>
+
+               
+<script type="text/javascript"><!--
+google_ad_client = "pub-0969215577981622";
+google_ad_slot = "2903812148";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+ 
+        
+    </div>
+    
+    <div id="rightColumn">
+       <div id="player">
+  
+<div>
+  <script type="text/javascript">
+    embed_flash_with_detect("inlinePlayer", "/audio_player/inlinePlayer250?browser=IE&webServer=", 250, 276, 8);
+  </script>
+</div>
+
+
+
+</div>
+
+  <div id="artist_recommendations">
+      
+<div style="width:250px;margin:15px 0px 0px 0px;background-color:#333;">
+  <div class="dark_pane_upper"><div><div>&nbsp;</div></div></div>
+  <div class="dark_pane_content">
+    <div class="dark_pane_header" style="width:248px;">
+      <h1>Recommended</h1>
+      <div style="margin-left:11px;clear:both;margin-bottom:6px;line-height:10px; font-size:10px;">
+        by Tim O'Neil
+      </div>
+    </div>
+    <div class="clearfloats"></div>
+    <div style="margin-left:10px;width:235px;">
+
+
+      
+<div class="artist_thumb" id="artist_item_wp_61004" style="margin-top:5px;">
+  <div class="artist_thumb_photo">
+    <a href="/beibei" class=""><img alt="Bei..." src="http://cache.reverbnation.com/data_public/artist/image/6/61004/thumb/_5.png" title="Bei Bei" /></a>
+  </div>
+  <div class="artist_thumb_content" style="width:160px; margin-top:-2px; line-height:11px;">
+    <p><a href="/beibei" class="">Bei Bei</a></p>
+    <p><span title="Classical / Hip Hop / Electronica">Classical / Hip Hop / E...</span></p>
+    <p>Los Angeles, CA</p>
+      
+      <div >
+          <div class="play_and_option_buttons">
+      <a class="button_icon_play" href="" id="button_stack_play_225198_30822" onclick="playSongNow('225198');hide_item('button_stack_225198_30822');new Effect.QuickPulsate('button_stack_play_225198_30822');;; return false;" title="Play Song Now"></a>
+      <a class="button_icon_reveal_options" href="#" onclick="return false" onmouseover="show_div('button_stack_225198_30822');"
+         onmouseout="delay_hide_item('button_stack_225198_30822');"></a>
+  </div>
+  <div style="position:relative;float:left;width:0px;">
+  <div id="button_stack_225198_30822" class="button_stack_holder" onmouseover="clear_delay_hide_item();"
+       onmouseout="dynamic_hide_item('button_stack_225198_30822', event);">
+    <div class="stacked_button_holder">
+        <div class="button_icon"><a class="button_icon_play stacked_button_menu" href="" onclick="playSongNow('225198');hide_item('button_stack_225198_30822');new Effect.QuickPulsate('button_stack_play_225198_30822');;; return false;" title="Play Song Now">Play Now</a></div>
+    </div>
+    <div class="stacked_button_holder">
+        <div class="button_icon"><a class="button_icon_queue stacked_button_menu" href="#" onclick="addSongToQueue('225198');hide_item('button_stack_225198_30822');new Effect.QuickPulsate('button_stack_play_225198_30822');;; return false;" title="Add to Player Queue">Queue Song</a></div>
+    </div>
+    <div class="stacked_button_holder">
+        <div class="button_icon"><a class="button_icon_add stacked_button_menu" href="#" onclick="addSongsToMyLibrary('225198');hide_item('button_stack_225198_30822');new Effect.QuickPulsate('button_stack_play_225198_30822');;; return false;" title="Bookmark Song">Bookmark Song</a></div>
+    </div>
+</div></div>
+      </div>  
+      
+  </div>
+</div>
+
+
+    </div>
+    <div class="clearfloats"></div>
+  </div>    
+  <div class="dark_pane_lower"><div><div>&nbsp;</div></div></div>
+</div>
+
+
+  </div>
+
+
+
+        
+  <div class="adImageDiv" align="center">
+     <div style="margin-bottom:2px; margin-top:20px; clear:both;"><img src="http://cache.reverbnation.com/images/advertisement250.gif"></div>
+      <!-- BEGIN TAG - 250x250 - www.reverbnation.com - DO NOT MODIFY -->
+<script type="text/javascript" src="http://optimizedby.rmxads.com/st?ad_type=ad&ad_size=250x250&section=230716"></script>
+<!-- END TAG -->
+
+
+
+     <div style="width:250px;margin:15px 0px 0px 0px;background-color:#0000FF;">
+  <div class="dark_pane_upper"><div><div>&nbsp;</div></div></div>
+  <div class="dark_pane_content">
+    <div class="dark_pane_header" style="width:248px;">
+      <h1>Contests/Events</h1>
+    </div>
+    <div class="clearfloats"></div>
+    
+            <div style="text-align:center;">
+            <div class="contests_events_div" style="margin-left:9px;height:50px">
+                <a href="http://www.reverbnation.com/c./a4/780190/458/Artist/458/Artist/link" target="_blank"><img alt="ReverbNation" border="0" src="http://www.reverbnation.com/c./a3/780190/458/Artist/458/Artist/res.gif" /></a><a href="http://www.quantcast.com/p-05---xoNhTXVc" target="_blank"><img src="http://pixel.quantserve.com/pixel/p-05---xoNhTXVc.gif" style="display: none" border="0" height="1" width="1" alt="Quantcast"/></a><img style="visibility:hidden;width:0px;height:0px;" border=0 width=0 height=0 src="http://counters.gigya.com/wildfire/IMP/CXNID=2000002.0NXC/bT*xJmx*PTEyMzYzNzM3OTcwNTQmcHQ9MTIzNjM3MzgxMzU1OCZwPTI3MDgxJmQ9YmFubmVyX2ZpcnN*X2dlbiZnPTEmdD*mbz1kMGRhMDM*ZTc3OTc*MmE4OTg3NTgxMmZmZTY1YTgzZQ==.gif" />
+            </div>
+            <div class="contests_events_div" style="margin-left:9px;height:80px">
+              <a href="http://www.carolinabluegrassfestival.com/" target="_blank"><img alt="Carolina_bluegrass_fest_230x80" height="80" src="http://cache.reverbnation.com/images/contests_events/carolina_bluegrass_fest_230x80.png" width="230" /></a>
+            </div>
+            <div class="contests_events_div" style="margin-left:9px;height:70px">
+              <a href="http://www.redgorillamusic.com/" target="_blank"><img alt="Red_gorilla" height="70" src="http://cache.reverbnation.com/images/contests_events/red_gorilla.png" width="230" /></a>
+            </div>
+        </div>
+        
+    <div class="clearfloats"></div>
+  </div>    
+  <div class="dark_pane_lower"><div><div>&nbsp;</div></div></div>
+</div>
+     <!--  -->
+
+    </div>
+  <div class='adImageDiv'><span class='adImage' adposition='7' adcount='1' ></span></div><div class='adImageDiv'><span class='adImage' adposition='14' adcount='1' ></span></div><div class='adImageDiv'><span class='adImage' adposition='2' adcount='1' ></span></div><br>
+<!--other ad goes here if needed-->
+        
+
+    </div>
+    
+    <div id="footer" style="clear:both;">
+       
+
+
+<center> 
+<br>
+    <span class="copyright">
+
+
+        <a href="/c./cms/PrivacyPolicy?display=view_popup&amp;layout=popup" onclick="window.open(this.href,'_blank','height=700,width=630,top=150,left=50,scrollbars=yes,location=no,toolbar=no,menubar=no,status=no,directories=no');return false;">Privacy</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href='mailto:abuse@reverbnation.com?subject=Abuse%20on%20page%20/timoneil'>Report Abuse</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="/main/advertising">Advertisers</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="/main/about">About</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="/main/press">Press</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="/c./cms/Terms?display=view_popup&amp;layout=popup" onclick="window.open(this.href,'_blank','height=700,width=630,top=150,left=50,scrollbars=yes,location=no,toolbar=no,menubar=no,status=no,directories=no');return false;">Terms &amp; Conditions</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="/main/resources">Logos</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="/main/careers">Careers</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="http://forum.reverbnation.com/">Forums</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="/main/help">Help</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        
+        <br/><br/> 
+        &copy; 2008 eMinor Inc.
+        <br/><span style="color:#0C0701;">v.15157 aretha.reverbnation.com - RAILS 1.2.6</span> 
+
+    </span> 
+</center>
+
+    </div>
+   </div> <!-- maincontainer -->
+   </div> <!-- mainwrap -->
+   <div id="general_edit_container" class="float_edit_holder">&nbsp;</div>
+   <div id="general_edit_container2" class="float_edit_holder">&nbsp;</div>
+   <div id="dim_overlay" style="">&nbsp;</div>
+   
+<div class="float_hidden_holder" id="playlist_select_inline_player" style="display:none;">     
+</div>
+
+    
+<script type="text/javascript">
+  global_dim_overlay = new dimoverlay();
+  
+</script>
+
+    
+
+    <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+      var pageTracker = _gat._getTracker("UA-750054-1");
+      pageTracker._initData();
+
+      pageTracker._trackPageview();
+      
+    </script>
+
+
+    <!-- Start Quantcast tag -->
+<script type="text/javascript" src="http://edge.quantserve.com/quant.js"></script>
+<script type="text/javascript">_qacct="p-05---xoNhTXVc";quantserve();</script>
+<noscript>
+<a href="http://www.quantcast.com/p-05---xoNhTXVc" target="_blank"><img src="http://pixel.quantserve.com/pixel/p-05---xoNhTXVc.gif" style="display: none" border="0" height="1" width="1" alt="Quantcast"/></a>
+</noscript>
+<!-- End Quantcast tag -->
+  </body>
+</html>

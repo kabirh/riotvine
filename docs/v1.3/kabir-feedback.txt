@@ -1,0 +1,20 @@
+Hey Rajesh,
+This looks good. Here's my feedback:
+
+For the email notification when you get a new message, make the subject just "New message!" Also, please add From: to the body of the email, so users know who sent them he message, and "To reply to this message, head here: http://preview.illiusrock.com/messages/inbox/" at the bottom.
+
+On the create event page, http://preview.illiusrock.com/event/create/:
+Please change the title to "Add a Show"
+
+ 
+The URL field text should read: 
+
+URL:
+
+http://illiusrock.com/shows/
+ 
+The bottom of this page says "Preview" but automatically posts the show. Can you change this to Submit? Also, editing the event still requires admin approval; can you eliminate that?
+Can you move the "Embed this badge" text to the right of the badge instead of underneath it? I want it to show up underneath the Overview.
+
+Please get rid of the "Event auto-approved for illiusrock" email. The event is live email is fantastic, btw. 
+I hope you're not feeling too overwhelmed at the moment, but let me know if you are. Great work, as always.

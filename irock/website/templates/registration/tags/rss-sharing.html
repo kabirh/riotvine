@@ -1,0 +1,22 @@
+<div class="rss-sharing">
+	{% if show_favorites_feed %}
+		<div class="sharing"><strong>Add event feed to: </strong>
+			<a href="http://fusion.google.com/add?feedurl=http://{{ current_site.domain }}/event-feeds/favorites/{{ profile.pk }}/{{ favorites_sig }}/"><img src="{{ MEDIA_URL }}ui/images/rss/rss-google.gif" alt="iGoogle"></a>
+			<a href="http://add.my.yahoo.com/rss?url=http://{{ current_site.domain }}/event-feeds/favorites/{{ profile.pk }}/{{ favorites_sig }}/"><img src="{{ MEDIA_URL }}ui/images/rss/rss-yahoo.gif" alt="My Yahoo"></a>
+			<a href="http://my.msn.com/addtomymsn.armx?id=rss&amp;ut=http://{{ current_site.domain }}/event-feeds/favorites/{{ profile.pk }}/{{ favorites_sig }}/"><img src="{{ MEDIA_URL }}ui/images/rss/rss-msn.gif" alt="My MSN"></a>
+			<a href="http://feeds.my.aol.com/add.jsp?url=http://{{ current_site.domain }}/event-feeds/favorites/{{ profile.pk }}/{{ favorites_sig }}/"><img src="{{ MEDIA_URL }}ui/images/rss/rss-aol.gif" alt="My AOL"></a>
+			<a href="http://{{ current_site.domain }}/event-feeds/favorites/{{ profile.pk }}/{{ favorites_sig }}/"><img src="{{ MEDIA_URL }}ui/images/rss/rss-icon.gif" alt="RSS"></a>
+		</div>
+		<div class="clearer"></div>
+	{% endif %}
+	{% if show_friends_favorites_feed %}
+	  <div class="sharing2 sharing"><strong>Add friends' event feed to: </strong>
+			<a href="http://fusion.google.com/add?feedurl=http://{{ current_site.domain }}/event-feeds/friends-favorites/{{ profile.pk }}/{{ friends_favorites_sig }}/"><img src="{{ MEDIA_URL }}ui/images/rss/rss-google.gif" alt="iGoogle"></a>
+			<a href="http://add.my.yahoo.com/rss?url=http://{{ current_site.domain }}/event-feeds/friends-favorites/{{ profile.pk }}/{{ friends_favorites_sig }}/"><img src="{{ MEDIA_URL }}ui/images/rss/rss-yahoo.gif" alt="My Yahoo"></a>
+			<a href="http://my.msn.com/addtomymsn.armx?id=rss&amp;ut=http://{{ current_site.domain }}/event-feeds/friends-favorites/{{ profile.pk }}/{{ friends_favorites_sig }}/"><img src="{{ MEDIA_URL }}ui/images/rss/rss-msn.gif" alt="My MSN"></a>
+			<a href="http://feeds.my.aol.com/add.jsp?url=http://{{ current_site.domain }}/event-feeds/friends-favorites/{{ profile.pk }}/{{ friends_favorites_sig }}/"><img src="{{ MEDIA_URL }}ui/images/rss/rss-aol.gif" alt="My AOL"></a>
+			<a href="http://{{ current_site.domain }}/event-feeds/friends-favorites/{{ profile.pk }}/{{ friends_favorites_sig }}/"><img src="{{ MEDIA_URL }}ui/images/rss/rss-icon.gif" alt="RSS"></a>
+	  </div>
+	  <div class="clearer"></div>
+	{% endif %}
+</div>

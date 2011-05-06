@@ -1,0 +1,12 @@
+{% extends "website/base-site.html" %}
+
+{% block body-id %}campaign{% endblock %}
+
+
+{% block pre-message %}
+  {% if not campaign.is_event and not is_owner %}
+    <ul class="messages pre-messages">
+      <li>Your contributions go <em>directly</em> to musicians. Illius Rock does not take a cut.</li>
+    </ul>
+  {% endif %}
+{% endblock %}

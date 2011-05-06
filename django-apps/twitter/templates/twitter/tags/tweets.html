@@ -1,0 +1,21 @@
+{% if tweets %}
+  <div class="tweetsWrapper">
+    <h3 class="tweets">Recent {{ term }} tweets</h3>
+    <ul class="tweets-by-{{ qtype }} tweets commentList">
+      {% for t in tweets %}
+        <li class="{% cycle 'evenRow' 'oddRow' %} comment">
+          <h4>
+            <span class="author authorAvatar">
+                <img class="avatar twitterAvatar" src="{{ t.profile_image_url }}"/>
+                {{ t.from_user }}
+              </span>
+            <span class="timestamp">{{ t.created_at|std_date:"M j, Y \a\t P" }}</span>
+          </h4>
+          <div class="commentBody">
+            {{ t.text|safe|urlize }}
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endif %}

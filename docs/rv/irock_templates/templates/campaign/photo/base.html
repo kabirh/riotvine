@@ -1,0 +1,15 @@
+{% extends "campaign/base.html" %}
+
+{% block body-id %}campaign-photo{% endblock %}
+
+{% block pre-message %}{% endblock %}
+
+{% block secondary-content %}
+  {% if campaign %}
+    <div class="campaignDetail campaignOwner{{ is_owner }}">
+      {% tcache UI_CACHE_TIMEOUT "ir-campaign-summary-list" campaign.pk %}
+        {% campaign_summary campaign "" "" "" "" "show_detail_link" %}
+      {% endtcache %}
+    </div>
+  {% endif %}
+{% endblock %}

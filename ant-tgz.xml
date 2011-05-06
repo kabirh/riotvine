@@ -1,0 +1,41 @@
+<project name="TGZ Creator" default="all" basedir=".">
+	<description>TGZ creator</description>
+	<property name="basedir" location="." />
+	<property name="destfile" location="dist/ir-deploy.tgz" />
+	<property name="deployedrootdir" value="irock" />
+	
+	<target name="tgz" description="generate tar.gz archive">
+		<mkdir dir="dist"/>
+		<delete file="${destfile}"/>
+		<tar longfile="gnu" destfile="${destfile}" compression="gzip">
+			<tarfileset dir="${basedir}/django-apps" prefix="${deployedrootdir}/django-apps">
+				<exclude name="**/*.py"/>
+			</tarfileset>
+			<tarfileset dir="${basedir}/django-apps" prefix="${deployedrootdir}/django-apps">
+				<include name="**/runhttp.py"/>
+			</tarfileset>
+			<tarfileset dir="${basedir}/irock" prefix="${deployedrootdir}/irock">
+				<exclude name="**/*.py"/>
+			</tarfileset>
+			<tarfileset dir="${basedir}/irock" prefix="${deployedrootdir}/irock">
+				<include name="settings.py"/>
+				<include name="custom_settings.py"/>
+			</tarfileset>
+			<tarfileset dir="${basedir}/ui" prefix="${deployedrootdir}/ui"/>
+			<tarfileset dir="${basedir}/deployment" prefix="${deployedrootdir}/deployment" filemode="755">
+			  <include name="*.sh"/>
+			</tarfileset>
+			<tarfileset dir="${basedir}/deployment" prefix="${deployedrootdir}/deployment">
+			  <exclude name="*.sh"/>
+			</tarfileset>
+			<tarfileset dir="${basedir}/deployment/preview" prefix="${deployedrootdir}/deployment/preview" filemode="755">
+			  <include name="*.sh"/>
+			</tarfileset>
+			<tarfileset dir="${basedir}/deployment/preview" prefix="${deployedrootdir}/deployment/preview">
+			  <exclude name="*.sh"/>
+			</tarfileset>
+		</tar>
+	</target>
+	
+	<target name="all" depends="tgz" />
+</project>

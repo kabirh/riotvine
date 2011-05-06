@@ -1,0 +1,34 @@
+{% extends "registration/base.html" %}
+
+{% block title %}Your Account - {{ user_profile.username }} - {{ block.super }}{% endblock %}
+
+{% block body-class %}tertiary{% endblock %}
+
+{% block primary-content %}
+  {% if user.is_authenticated %}    
+    <ul class="tools account-tools"><h2>My Account</h2>
+      <li><a class="btn" href="{% url create_member_event %}">Add Event</a></li>
+      {% if request.session.fb_uid %}
+        <li><a class="btn" href="{% url fb_invite_friends %}">Invite Friends</a></li>
+      {% endif %}
+      <li><a class="btn" href="{% url friends %}">View Friends</a></li>
+      <li><a class="btn" href="{% url update_user_profile %}">Update Account</a></li>      
+      <li><a class="btn" href="{{ user_profile.get_absolute_url }}">View Profile</a></li>      
+      <li><a class="btn" href="{% url change_password %}">Change Password</a></li>
+    </ul>
+    <br/>
+    <div class="clear"></div>
+    <div class="sso">
+	    {% if user_profile.has_twitter_access_token and user_profile.fb_userid  %}
+	    {% else %}
+	      <h3 class="connect-accounts">Connect other accounts</h3>
+	    {% endif %}
+	    {% if not user_profile.fb_userid %}
+		  {% include "fb/tags/fb_connect.html" %}		  
+	    {% endif %}
+	    {% if not user_profile.has_twitter_access_token %}
+		  {% include "social/tags/twitter_connect.html" %}
+	    {% endif %}
+	  {% endif %}  
+  </div>
+{% endblock %}

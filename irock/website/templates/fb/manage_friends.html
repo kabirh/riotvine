@@ -1,0 +1,101 @@
+{% extends "registration/base.html" %}
+
+{% block title %}Manage Friends - {{ user_profile.username }} - {{ block.super }}{% endblock %}
+
+
+{% block body-class %}tertiary{% endblock %}
+
+{% block alert-message %}{% endblock %}
+
+
+{% block primary-content %}
+  <div class="breadcrumbs"><a href="{% url account %}">My&nbsp;Account</a>&nbsp;&raquo;&nbsp;Friends</div>
+  
+    <table class="form_table_stacked" width="830px">
+	<tbody>
+		<tr>
+			<td class="tabbed_steps">
+				<a href="{% url fb_invite_friends %}">Invite Friends</a>
+				<a class="selected" href="{% url fb_manage_friends %}">Share With Friends</a>
+				<a href="{% url friends %}">View Friends</a>
+			</td>
+	    </tr>
+  
+        <tr>
+          <td>
+              {% if request.session.fb_uid %}
+				  <form class="manage-friends" action="" method="post">
+				    {% if pending_friends %}
+				      <h2>Pending requests from your friends</h2>
+				      <p>Friends who have shared their events with you and are waiting for you to accept.</p>
+				      <fieldset>
+				        {% for f in pending_friends %}
+				          <div class="fb-user">
+				            <input type="checkbox" name="pending" checked="checked" value="{{ f }}"/>
+				            <fb:profile-pic uid="{{ f }}" facebook-logo="false" linked="false" size="square"></fb:profile-pic>	
+				            <fb:name uid="{{ f }}" useyou="false" linked="false"></fb:name>		
+				          </div>
+				        {% endfor %}
+				      </fieldset>
+				    {% endif %}
+				    
+				    {% if recommended_friends %}
+				      <h2>Suggested friends</h2>
+				      <fieldset>
+				        {% for f in recommended_friends %}
+				          <div class="fb-user">
+				            <input type="checkbox" name="recommended" checked="checked" value="{{ f }}"/>
+				            <fb:profile-pic uid="{{ f }}" facebook-logo="false" linked="false" size="square"></fb:profile-pic>	
+				            <fb:name uid="{{ f }}" useyou="false" linked="false"></fb:name>		
+				          </div>
+				        {% endfor %}
+				      </fieldset>
+				    {% endif %}
+				    
+				    {% if app_friends %}
+				      <h2>Friends you are sharing events with</h2>
+				      <fieldset>
+				        {% for f in app_friends %}
+				          <div class="fb-user">
+				            <input type="checkbox" name="current" checked="checked" value="{{ f }}"/>
+				            <fb:profile-pic uid="{{ f }}" facebook-logo="false" linked="false" size="square"></fb:profile-pic>	
+				            <fb:name uid="{{ f }}" useyou="false" linked="false"></fb:name>		
+				          </div>
+				        {% endfor %}
+				      </fieldset>
+				    {% endif %}
+				    
+				    {% if invited_friends %}
+				      <h2>Your pending requests</h2>
+				      <p>Friends with whom you've shared your events. We are waiting for them to accept.</p>
+				      <fieldset>
+				        {% for f in invited_friends %}
+				          <div class="fb-user">
+				            <input type="checkbox" name="invited" checked="checked" value="{{ f }}"/>
+				            <fb:profile-pic uid="{{ f }}" facebook-logo="false" linked="false" size="square"></fb:profile-pic>	
+				            <fb:name uid="{{ f }}" useyou="false" linked="false"></fb:name>		
+				          </div>
+				        {% endfor %}
+				      </fieldset>
+				    {% endif %}
+				    
+				    {% if pending_friends or recommended_friends or app_friends or invited_friends %}
+				      <div class="clearer">
+	  				      <input type="hidden" name="next" value="{{ next }}"/>
+					      <input type="submit" name="submit" value="OK, share with these friends"/>
+				      </div>
+				    {% else %}
+				      <p>
+					      Ummm... None of your friends are on RiotVine yet. <a href="{% url fb_invite_friends %}">Invite some now&nbsp;&raquo;</a>
+					    </p>
+				    {% endif %}
+				  </form>
+			  {% else %}
+			    This feature is only available to Facebook-connected users at the moment. 
+          Meanwhile, you can always <a href="/lnk/tweet-us/">invite your Twitter friends&nbsp;&raquo;</a>
+			  {% endif %}
+		  </td>
+	  </tr>
+    </tbody>
+  </table>
+{% endblock %}

@@ -1,0 +1,21 @@
+<form id="myspacepostto" method="post" action="{{ MYSPACE_POST_URL }}">
+  <fieldset class="hiddenFields">
+    <input type="hidden" name="t" value="{{ event.title }}" />
+    <input type="hidden" name="c" value='<center>{% event_external_badge_code event %}</center>' />
+    {% comment %}
+      <input type="hidden" name="u" value="http://{% domain %}{{ event.get_absolute_url }}" />
+    {% endcomment %}
+    <input type="hidden" name="l" value="{{ MYSPACE_POST_TYPE }}" />
+  </fieldset>
+  <fieldset class="myspacePostFieldset">
+    <script type="text/javascript">
+      /* <![CDATA[ */
+      document.write("<div class=\"buttonMuted\"><a href=\"#\" onclick=\"document.getElementById(\'myspacepostto\').submit();return false;\"><img src=\"{{ MEDIA_URL }}ui/images/myspace_32.gif\" border=\"0\" alt=\"\" width=\"32\" height=\"32\" /> <span>Post to MySpace</span></a></div>");
+      /* ]]> */
+    </script>
+    <noscript>
+      <input type="submit" value="Post to MySpace" class="submitButton submitButtonMuted"/>
+    </noscript>
+  </fieldset>
+</form>
+

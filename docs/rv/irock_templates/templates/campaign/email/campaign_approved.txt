@@ -1,0 +1,18 @@
+{% autoescape off %}
+Hey {{ user.first_name }},
+
+The campaign you submitted has been approved by our moderators and is viewable at {{ site.domain }}. 
+
+To see it live, please click here: http://{{ site.domain }}{{ campaign.get_absolute_url }}
+
+Also, we've made it easy for you to promote your campaign with a Campaign Badge. Feel free to copy and paste the text below into your webpage and on to your MySpace/Facebook or favorite social networking site:
+
+<!--- Cut Here --->
+{% campaign_external_badge_code campaign %}
+<!--- To Here --->
+
+If you have trouble viewing your campaign or embedding your Campaign Badge on other websites, please e-mail us at help@{{ UI_SITE_DOMAIN }}.
+
+{{ EMAIL_SIGNATURE }}
+{% endautoescape %}
+

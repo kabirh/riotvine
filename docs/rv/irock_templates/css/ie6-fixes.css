@@ -1,0 +1,66 @@
+.featuresHolder{
+   left: -40px;
+   width: 780px;
+}
+
+.mainContent{
+   overflow: hidden;
+}
+
+#footer{
+   padding-bottom: 10px;
+}
+
+#home #footer{
+   position: relative;
+   top: -10px;
+}
+
+.newestCampaignsBottom, .newestHolderBottom {
+   top: -10px;
+   margin: 0 0 0px 0;
+   overflow: hidden;
+}
+
+.newestContributorsHolder {padding-bottom:8px;}
+.newestContributorsHolderBottom {top:0;}
+
+a.helpButton, a:visited.helpButton {
+   top: 16px;
+}
+
+.secondaryContent {overflow:hidden;}
+
+.feature img {
+   top: 15px;
+}
+
+.submitButton {
+   margin-left: 82px;
+}
+
+.embedForm {
+	margin-left:10px;
+}
+.embedForm textarea{
+   position: relative;
+   left: -20px;
+   margin-left:20px;
+}
+
+.adminOptions {height:auto;clear:both;overflow:hidden;}
+.adminGroupProfile {clear:both;overflow:hidden;height:auto;}
+
+.userOptions li,
+.adminOptions li {width:auto;width:233px;display:block;height:auto;}
+
+li.buttonForm {padding:0;}
+
+.memberPhotoGroupUL {padding-bottom:3px;}
+
+.sidebar .eventAttendeeForm .checkboxInput {position:relative;top:0px;}
+.sidebar .eventAttendeeForm .ctrlHolder {position:relative;top:-1.5em;}
+
+.offeringWrapper .userOptions, .offeringWrapper, .commentList .comment {zoom:1}
+
+

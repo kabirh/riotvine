@@ -1,0 +1,41 @@
+{% extends "event/base.html" %}
+
+{% block title %}Interested - {{ block.super }}{% endblock %}
+
+{% block h2 %}Interested...{% endblock %}
+
+{% block primary-content %}
+  <h3><a href="{{ event.get_absolute_url }}">{{ event.title }}</a></h3>
+  {% if page.paginator.count %}
+    <ul class="attendeeList">
+      {% for c in page.object_list %}
+        <li>
+          <a href="{{ event.get_absolute_url }}">
+            {% tcache UI_CACHE_TIMEOUT "ir-tpl-usr-avatar-with-uname" c.user.pk %}
+              <img src="{{ c.avatar_url }}" class="userAvatar" alt="{{ c.attendee.username }}"
+                width="{{ c.avatar_w }}" height="{{ c.avatar_h }}"/>
+	            <span class="username">{{ c.user.username|truncatestring:"8" }}</span>
+            {% endtcache %}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+    {% include "common/tags/pagination.html" %}
+  {% else %}
+    This event does not have any interested users yet.
+  {% endif %}
+{% endblock %}
+
+{% block secondary-content %}
+  {% if event %}
+    <div class="eventDetail eventOwner{{ is_owner }}">
+      {% tcache UI_CACHE_TIMEOUT "ir-event-summary-list" event.pk %}
+        {% event_summary event "" "" "" "" "show_detail_link" %}
+      {% endtcache %}
+    </div>
+  {% endif %}
+{% endblock %}
+
+
+
+

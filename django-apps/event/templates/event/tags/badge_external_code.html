@@ -1,0 +1,3 @@
+<a href="http://{% domain %}{{ event.get_absolute_url }}" style="border:none;">
+ <img src="http://{% domain %}{% url serve_event_badge_external event_id=event.id %}" alt="{{ event.title }}" width="{{ badge.img_width }}" height="{{ badge.img_height }}"/>
+</a>

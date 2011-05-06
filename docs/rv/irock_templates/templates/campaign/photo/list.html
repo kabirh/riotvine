@@ -1,0 +1,49 @@
+{% extends "campaign/photo/base.html" %}
+
+{% block title %}Campaign Photos - {{ block.super }}{% endblock %}
+
+{% block h2 %}Campaign Photos{% endblock %}
+
+{% block primary-content %}
+  {% include "campaign/tags/campaign_signature.html" %}
+  
+  <ul class="thumbnailPhotoListing">
+    {% for thumbnail in page.object_list %}
+      <li class="photoListItem">
+        <a href="{% url view_photo thumbnail_id=thumbnail.pk %}">
+          <img src="{{ thumbnail.image.url }}" width="{{ thumbnail.width }}" height="{{ thumbnail.height }}" alt="{{ thumbnail.alt_text }}"/>
+        </a>
+      </li>
+    {% endfor %}
+    {% if is_owner %}
+      <li class="photoListItem photoListItemAction">
+        <a href="{% url upload_campaign_photo campaign_id=campaign.pk %}">
+          upload another<br/>
+          photo&nbsp;<span class="arrow">&raquo;</span>
+        </a>
+      </li>
+    {% endif %}
+  </ul>
+  
+  {% include "common/tags/pagination.html" %}
+{% endblock %}
+
+{% block secondary-content %}
+  {% if is_owner %}
+    <ul class="adminOptions">
+      <li class="buttonMuted">
+        <a href="{% url upload_campaign_photo campaign_id=campaign.pk %}">
+          Upload photos
+        </a>
+      </li>
+	  {% if paginator.count %}
+		  <li class="buttonMuted">
+		    <a href="{% url edit_campaign_photos campaign_id=campaign.pk %}">
+		      Manage Photos
+		    </a>
+		  </li>
+	  {% endif %}
+    </ul>
+  {% endif %}
+  {{ block.super }}
+{% endblock %}

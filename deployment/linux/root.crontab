@@ -1,0 +1,5 @@
+TERM=linux
+MAILTO=rajesh.dhawan+rvcron@gmail.com
+
+# m h  dom mon dow   command
+22 4 */3 * * /etc/init.d/memcached restart 2>&1

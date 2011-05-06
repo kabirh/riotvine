@@ -1,0 +1,128 @@
+upstream dev_server {
+	server web02:80  weight=50 fail_timeout=30s;
+        server 127.0.0.1:9191 fail_timeout=30s;
+        server 127.0.0.1:9192 fail_timeout=30s;
+        server 127.0.0.1:9193 fail_timeout=30s;
+        server 127.0.0.1:9194 fail_timeout=30s;
+}
+
+server {
+	    listen 80;
+	    server_name www.riotvine.com;
+	    rewrite ^/(.*) http://riotvine.com/$1 permanent;
+}
+
+server {
+	    listen 80;
+	    server_name newyork.riotvine.com;
+	    rewrite ^/(.*) http://ny.riotvine.com/$1 permanent;
+}
+
+server {
+	    listen 80;
+	    server_name losangeles.riotvine.com;
+	    rewrite ^/(.*) http://la.riotvine.com/$1 permanent;
+}
+
+server {
+	    listen 80;
+	    server_name sanfrancisco.riotvine.com;
+	    rewrite ^/(.*) http://sf.riotvine.com/$1 permanent;
+}
+
+server {
+        listen       80 default;
+
+		server_name boston.riotvine.com austin.riotvine.com sf.riotvine.com ny.riotvine.com la.riotvine.com riotvine.com;
+        charset utf-8;
+
+        location /tpv {
+                internal;
+        }
+
+        location /hif {
+                internal;
+        }
+		      
+        location /media/ui {
+            alias   /home/web/public/ui;
+		    expires max;
+        }
+
+        location /media {
+            root   /home/web/public;
+            index  index.html index.htm;
+        }
+        
+        location /admin-media {
+            root   /home/web/public;
+            index  index.html index.htm;
+            expires  15d;
+        }
+        
+        # redirect server error pages to the static page /50x.html
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   /var/www/nginx-default;
+        }
+
+        # proxy Django requests to WSGI server listening on on dev_server proxy set
+        location / {
+            proxy_pass   http://dev_server;
+    	    proxy_set_header X-FORWARDED_PROTO http;
+
+	    proxy_set_header X-Forwarded-Host $host; # $server_name;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header Host $http_host;
+	    	proxy_redirect   default;
+        }
+}
+
+
+server {
+        ssl                  on;
+        ssl_certificate      /etc/ssl/certs/riotvine.com.cert;
+        ssl_certificate_key  /etc/ssl/private/riotvine.com.key;
+        ssl_session_timeout  8m;
+        ssl_protocols  SSLv2 SSLv3 TLSv1;
+        ssl_ciphers  ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv2:+EXP;
+        ssl_prefer_server_ciphers   on;
+        listen       443;
+        server_name  riotvine.com;
+        charset utf-8;
+
+        location /media/ui {
+            alias   /home/web/public/ui;
+		    expires max;
+        }
+
+        location /media {
+            root   /home/web/public;
+            index  index.html index.htm;
+        }
+        
+        location /admin-media {
+            root   /home/web/public;
+            index  index.html index.htm;
+            expires  15d;
+        }
+        
+        # redirect server error pages to the static page /50x.html
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   /var/www/nginx-default;
+        }
+
+        # proxy Django requests to WSGI server listening on on dev_server proxy set
+        location / {
+            proxy_pass   http://dev_server;
+    	    proxy_set_header X-FORWARDED_PROTO https;
+
+	    	proxy_set_header X-Forwarded-Host $host; # $server_name;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header Host $http_host;
+	    	proxy_redirect   default;
+        }
+}

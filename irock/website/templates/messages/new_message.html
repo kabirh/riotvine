@@ -1,0 +1,7 @@
+{% load i18n %}From: {{ message.sender.get_profile.username }}
+
+{{ message.body|safe }}
+
+--
+To reply to this message, head here: {{ site_url }}{% url messages_inbox %}
+{% blocktrans %}Sent from {{ site_url }}{% endblocktrans %}

@@ -1,0 +1,23 @@
+{% if c.is_active and not is_owner %}
+  {% if not c.is_sold_out %}
+    <li class="attendEvent">
+      <form id="idEventAttendeeForm" class="eventAttendeeForm" method="get" action="{% url attend_event event_id=c.pk %}">
+        <fieldset>
+          <input class="submitButton" value="Add to My Shows" type="submit"/>
+          {% comment %}
+            {% if request.user.get_profile.has_twitter_access_token %}
+              <div class="ctrlHolder checkboxTrue requiredFalse">
+              <input id="id_post_to_tweeter" class="checkboxInput" name="post_to_tweeter" type="checkbox" value="True" checked="checked"/>
+              <label for="id_post_to_tweeter">Post to Twitter</label>
+              </div>
+            {% endif %}
+          {% endcomment %}
+        </fieldset>
+      </form>
+    </li>
+  {% else %}
+	  <li class="sold-out-error">
+		  {% event_error_message "SoldOutError" %}
+	  </li>
+  {% endif %}
+{% endif %}

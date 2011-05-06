@@ -1,0 +1,28 @@
+{% extends "website/base-site.html" %}
+
+{% load markup %}
+
+{% block title %}{{ flatpage.title }} - {{ block.super }}{% endblock %}
+{% block body-id %}flatpage{% endblock %}
+{% block body-class %}{% if request.REQUEST.popup %}popup{% endif %}{% endblock %}
+
+{% block primary-content %}
+    <div class="flatpage">
+      {% if user.is_staff %}
+        {{ flatpage.content|markdown }}
+      {% else %}
+	      {% tcache UI_CACHE_TIMEOUT "rv-flatpage" flatpage.url %}
+	        {{ flatpage.content|markdown }}
+	      {% endtcache %}
+      {% endif %}
+      
+      {% if request.REQUEST.popup %}
+        <p class="button"><a href="#" onclick="self.close()" onkeypress="self.close()">Close Window</a></p>
+      {% endif %}
+    </div>
+{% endblock primary-content %}
+
+
+{% block secondary-content %}
+    {% common_flatpage flatpage.url "" "sidebar/" %}
+{% endblock %}

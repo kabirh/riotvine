@@ -1,0 +1,46 @@
+{% extends "campaign/base.html" %}
+
+{% block head-extra %}
+ {{ form.media|safe }}
+{% endblock %}
+
+{% block body-id %}redeem-ticket{% endblock %}
+
+{% block title %}Redeem Campaign Ticket - {{ block.super }}{% endblock %}
+
+{% block h2 %}Redeem Campaign Ticket{% endblock %}
+
+{% block pre-message %}{% endblock %}
+
+{% block primary-content %}
+  <p>Please redeem your campaign ticket below.</p>
+  
+  {% if form.errors %}
+    <p class="error">
+      Please correct the errors below. If you continue to have problems 
+      redeeming your ticket, please send an email to 
+      <a href="mailto:help@illiusrock.com">help@illiusrock.com</a>
+    </p>
+    {% if form.non_field_errors %}
+      <ul class="errorlist">
+        {{ form.non_field_errors.as_ul }}
+      </ul>
+    {% endif %}
+  {% endif %}
+  
+  <form class="redeemTicketForm" method="post" action="">
+    <fieldset>
+      {% for field in form %}
+        {% common_formfield_render field %}
+      {% endfor %}
+      <input type="submit" value="Redeem Campaign Ticket" class="submitButton"/>
+    </fieldset>
+  </form>
+{% endblock %}
+
+
+{% block secondary-content %}
+  <div class="sidebar-flatpage">
+    {% common_flatpage "/help/campaign/redeem-ticket/" %}
+  </div>
+{% endblock %}

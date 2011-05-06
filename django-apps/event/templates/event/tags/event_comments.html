@@ -1,0 +1,38 @@
+{% if comments %}
+  <ul>
+    {% for comment in comments %}
+      <li class="{% cycle 'evenRow' 'oddRow' %} comment comment_first_{{ forloop.first|lower }} comment_last{{ forloop.last|lower }} {% ifequal comment.user event.owner %}comment_event_owner{% endifequal %}" id="c{{ comment.pk }}">
+        {% if comment.from_user %}<!-- tweet -->
+          <a href="http://twitter.com/{{ comment.from_user }}"><img src="{{ comment.get_profile_image_url }}" alt="{{ comment.from_user }}" width="48" height="48" class="thumbnail" title="@{{ comment.from_user }}" /></a>
+          <div class="comment_body">{{ comment.text|safe|twitterize }}</div>
+          <span class="event_details">
+            {{ comment.added_on|date:"P \E\T | m.d.y" }}  |
+            Posted by <a href="http://twitter.com/{{ comment.from_user }}" class="userlink">{{ comment.from_user }}</a>
+            {% if comment_form %}| <a href="#post_comment" class="comment_reply graylink">@reply</a>{% endif %}
+            {% comment %}
+              <!-- 
+              | <a href="#" title="ReTweet this Message!"><img src="images/ico_RT.gif" alt="Retweet" width="28" height="11" class="retweet-btn" /></a> 
+              -->
+            {% endcomment %}
+          </span>
+        {% else %} <!-- in-site comment -->
+          <a href="{{ comment.user.get_profile.get_absolute_url }}"><img src="{{ comment.user.get_profile.avatar_url }}" alt="{{  comment.user.get_profile.username }}" width="{{ comment.user.get_profile.avatar_w }}" height="{{ comment.user.get_profile.avatar_h }}" class="thumbnail" title="@{{ comment.user.get_profile.username }}" /></a>
+          <div class="comment_body">{{ comment.comment|twitterize }}</div>
+          <span class="event_details">
+            {{ comment.submit_date|date:"P \E\T | m.d.y" }}  |
+            Posted by <a href="{{ comment.user.get_profile.get_absolute_url }}" class="userlink">{{ comment.user.get_profile.username }}</a>
+            {% if comment_form %}| <a href="#post_comment" class="comment_reply graylink">@reply</a>{% endif %}
+            {% comment %}
+              <!-- 
+              | <a href="#" title="ReTweet this Message!"><img src="images/ico_RT.gif" alt="Retweet" width="28" height="11" class="retweet-btn" /></a> 
+              -->
+            {% endcomment %}
+            {% if is_admin %}
+                <span class="comment_actions"><a href="{% url home %}admin/comments/comment/{{ comment.pk }}/delete/">delete</a></span>
+            {% endif %}
+          </span>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}

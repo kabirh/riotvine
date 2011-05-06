@@ -1,0 +1,46 @@
+User profile located at riotvine.com/username. Includes: 
+
+User is viewing own profile:
+	profile image 
+	friends you are sharing with (forgot to mention on phone but this would be nice)
+	your favorites 
+	rss feed links for friends favorites and your favorites (use the RSS icon to denote), 
+	Share buttons, including google buzz feed.
+	Flatpage space at the top
+	Also include past events here if it's easy to add and display.
+
+Anonymous user is viewing a profile:
+	profile image 
+	friends you are sharing with (forgot to mention on phone but this would be nice)
+	Flatpage space at the top
+	Add as friend (when viewed by another user)
+
+Logged in friend is viewing a profile:
+	profile image 
+	friends you are sharing with (forgot to mention on phone but this would be nice)
+	your favorites
+	RSS feed links ONLY for Your Favorites, so I can subscribe to YOUR event list (use the RSS icon to denote), 
+	Share buttons, including google buzz feed.
+	Also include past events here if it's easy to add and display.
+
+Logged in non-friend is viewing a profile:
+	profile image 
+	friends you are sharing with (forgot to mention on phone but this would be nice)
+	Flatpage space at the top
+	Add as friend (when viewed by another user)
+
+
+All categories:
+	profile image 
+	friends you are sharing with (forgot to mention on phone but this would be nice)
+	your favorites 
+	rss feed links for friends favorites and your favorites (use the RSS icon to denote), 
+	Share buttons, including google buzz feed.
+	Flatpage space at the top
+	Add as friend (when viewed by another user)
+	Also include past events here if it's easy to add and display.
+
+Also, please update the links on all the RiotVine event pages to point to the users' profile, and not their FB/Twitter page.
+
+Under My Account, the setting can be "Who can see my profile":
+	Everyone / Only Friends / Only RiotVine users

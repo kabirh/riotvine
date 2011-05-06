@@ -1,0 +1,10 @@
+{% extends "registration/base.html" %}
+
+{% block title %}Logged Out - {{ block.super }}{% endblock %}
+
+{% block h2 %}You've logged out{% endblock %}
+
+{% block primary-content %}
+  <p class="button"><a href="{% url signin %}">Log back in</a></p>
+{% endblock %}
+

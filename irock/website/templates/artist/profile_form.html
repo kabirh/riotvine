@@ -1,0 +1,63 @@
+{% extends "artist/base.html" %}
+
+{% block head-extra %}
+ {{ form.media|safe }}
+{% endblock %}
+
+{% block title %}Update Account - {{ block.super }}{% endblock %}
+
+{% block h2-container %}
+    <h2 {% if user_profile.avatar %}class="avatarHeader"{% endif %}>
+      {% if user_profile.avatar %}
+        <img class="avatar" src="{{ user_profile.avatar.url }}" width="{{ user_profile.avatar_width }}" height="{{ user_profile.avatar_height }}" alt="{{ user_profile.username }}"/>
+      {% endif %}
+      Update Account
+    </h2>
+{% endblock %}
+
+{% block primary-content %}
+  {% if not user_profile.is_artist %}
+    <div class="warning">
+      <p>
+        The page you are trying to access is <strong>for artists only.</strong>
+      </p>
+      <ul>
+        <li>Convert your existing account to an Artist account by filling out the form below.</li>
+        <li>Or cancel and return to the <a href="{% url home %}" rel="home">home page.</a></li>
+      </ul>
+    </div>
+  {% endif %}
+
+  <p>{{ UI_SITE_TITLE }} will never publish your personal information.
+  See our <a href="/terms-of-use/?popup=y#privacy-policy" {% popup %}>privacy policy.</a></p>
+
+  <p>Please fill out the form below to update your account.</p>
+
+  {% if form.errors %}
+    <p class="error">Please correct the errors below.</p>
+    {% if form.non_field_errors %}
+      <ul class="errorlist">
+        {{ form.non_field_errors.as_ul }}
+      </ul>
+    {% endif %}
+  {% endif %}
+  
+  {% common_flatpage "/help/artist/profile/update/main/" %}
+
+  <form method="post" action="" {% if form.is_multipart %}enctype="multipart/form-data"{% endif %}>
+    <fieldset>
+      {% for field in form %}
+        {% common_formfield_render field %}
+      {% endfor %}
+      <input type="submit" value="Update" class="submitButton"/>
+      <a href="{% url artist_admin %}" class="cancelButton">Cancel</a>
+    </fieldset>
+  </form>
+  
+  {% include "artist/auto_url_js.html" %}
+{% endblock %}
+
+{% block secondary-content %}
+  {% common_flatpage "/help/artist/profile/update/sidebar/" %}
+{% endblock %}
+

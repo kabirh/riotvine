@@ -1,0 +1,19 @@
+{% if contributors %}
+  <h3 class="sponsorsTitle">{{ n }} {{ campaign.sponsor_or_attendee|title }}{{ n|pluralize }}</h3>
+  <ul class="sponsorsUl">
+    {% for c in contributors %}
+      <li>
+        <a href="{% url list_sponsors campaign_id=campaign.pk %}">
+          {% tcache context.UI_CACHE_TIMEOUT "ir-tpl-usr-avatar" c.contributor.pk %}
+            <img src="{{ c.contributor.get_profile.avatar_url }}" class="userAvatar" alt="{{ c.contributor.username }}"
+              width="{{ c.contributor.get_profile.avatar_w }}" height="{{ c.contributor.get_profile.avatar_h }}"/>
+          {% endtcache %}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+  <p class="readMore">
+    <a href="{% url list_sponsors campaign_id=campaign.pk %}">View all {{ campaign.sponsor_or_attendee }}s&nbsp;&raquo;</a>
+  </p>
+{% endif %}
+

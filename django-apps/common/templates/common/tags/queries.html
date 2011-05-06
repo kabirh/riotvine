@@ -1,0 +1,12 @@
+<table class="queries">
+    <caption>{{ queries|length }} Queries</caption>
+    <tr>
+      <th>Time</th><th>Query</th>
+    </tr>
+	{% for q in queries %}
+	  <tr>
+	    <td>{{ q.time }}</td>
+	    <td>{{ q.sql }}</td>
+	  </tr>
+	{% endfor %}
+</table>

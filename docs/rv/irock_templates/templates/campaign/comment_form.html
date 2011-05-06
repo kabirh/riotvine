@@ -1,0 +1,28 @@
+{% extends "campaign/base.html" %}
+
+{% block head-extra %}
+ {{ comment_form.media|safe }}
+{% endblock %}
+
+{% block title %}Post Comment - {{ block.super }}{% endblock %}
+
+{% block h2 %}Post Comment{% endblock %}
+
+{% block primary-content %}
+  {% if form.errors %}
+    <p class="error">Please correct the errors below.</p>
+    {% if form.non_field_errors %}
+      <ul class="errorlist">
+        {{ form.non_field_errors.as_ul }}
+      </ul>
+    {% endif %}
+  {% endif %}
+
+  {% include "campaign/tags/comment_form.html" %}
+{% endblock %}
+
+{% block secondary-content %}
+  <div class="campaignDetail campaignOwnerFalse">
+    {% campaign_summary campaign %}
+  </div>
+{% endblock %}

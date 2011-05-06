@@ -1,0 +1,17 @@
+{% if asins %}
+<div class="amazon-widget">
+  <script type='text/javascript'>
+      var amzn_wdgt={widget:'MP3Clips'};
+      amzn_wdgt.tag='{{ associate_tag }}';
+      amzn_wdgt.widgetType='ASINList';
+      amzn_wdgt.ASIN='{{ asins }}';
+      amzn_wdgt.title="Listen...";
+      amzn_wdgt.width='250';
+      amzn_wdgt.height='250';
+      amzn_wdgt.shuffleTracks='True';
+      amzn_wdgt.marketPlace='US';
+  </script>
+  <script type='text/javascript' src='http://wms.assoc-amazon.com/20070822/US/js/swfobject_1_5.js'>
+  </script>
+</div>
+{% endif %}

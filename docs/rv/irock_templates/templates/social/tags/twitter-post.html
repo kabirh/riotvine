@@ -1,0 +1,32 @@
+{% if user.get_profile.has_twitter_access_token %}
+  <li class="postToTwitter">
+    <form id="idTwitterForm" class="twitterPostForm" method="post" action="{% url twitter_post_status %}">
+      <fieldset>
+        <div class="ctrlHolder checkboxFalse requiredTrue">
+          <label for="id_twitter_status">{{ twitter_label|default:"What are you listening to?" }}</label>
+          <textarea id="id_twitter_status" name="status_text" rows="2" cols="15" 
+            class="textAreaNarrow">{% if twitter_status %}{{ twitter_status }}{% else %}♫♫{% endif %}</textarea>
+        </div>
+        <div class="tw_message" style="display:none;"></div>
+        <input id="idPostToTwitter" value="Post to Twitter" type="submit" class="submitButton"/>
+        <input name="next" value="{{ request.path|urlencode }}" type="hidden"/>
+      </fieldset>
+    </form>
+  </li>
+{% else %}
+  {% if user.is_authenticated %}
+	  <li class="button">
+	    <a href="{% url twitter_authorize %}?next={{ request.path|urlencode }}">Connect to Twitter</a>
+	  </li>
+   {% else %}
+    {% if twitter_status %}
+      <li class="twitterPostTo buttonMuted buttonForm socialPostTo">
+        <a href="{{ TWITTER_SHARER }}?status={{ twitter_status|urlencode }}">
+          <img src="{{ MEDIA_URL }}ui/images/twitter_32b.png" alt="" />
+          <span>Post to Twitter</span>
+        </a>
+      </li>
+    {% endif %}
+   {% endif %}
+{% endif %}
+

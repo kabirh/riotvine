@@ -1,0 +1,24 @@
+{% extends "mobile/registration/base.html" %}
+
+{% block body-class %}signup signup1 {{ block.super }}{% endblock %}
+
+{% block content %}
+  <p class="notice2">
+    Create an Account or <a href="{% url signin %}?next={% if next %}{{ next }}{% else %}{{ request.get_full_path }}{% endif %}">Sign in&nbsp;&raquo;</a>
+  </p>
+  
+  <p class="notice3">
+    RiotVine helps you discover events and share them with your friends.
+  </p>
+  
+  {% if form.errors %}
+    <p class="error">Please correct the errors shown below.</p>
+  {% endif %}
+  <form method="post" action="">{% csrf_token %}
+        {% for field in form %}
+          {% common_formfield_render_mobile field %}
+        {% endfor %}
+        <input name="next" value="{{ next }}" type="hidden"/>
+        <input type="submit" value="Next" />
+  </form>
+{% endblock %}

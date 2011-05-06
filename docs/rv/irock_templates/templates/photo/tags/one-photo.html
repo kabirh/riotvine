@@ -1,0 +1,14 @@
+<div class="imageWrapper">
+  <div class="next-photo-link" style="display:none;">
+    <a style="width:{{ photo.width }}px;" href="#">next&nbsp;&raquo;</a>
+  </div>
+  <a class="photoLink" href="{{ request.path }}?page={{ page.next_page_number }}">
+    <img src="{{ photo.image.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt_text }}"/>
+  </a>
+  {% if photo.title %}
+    <span class="title">{{ photo.title }}</span>
+  {% endif %}
+</div>
+{% if photo.caption %}
+  <div class="caption">{{ photo.caption|linebreaks }}</div>
+{% endif %}

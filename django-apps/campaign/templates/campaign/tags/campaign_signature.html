@@ -1,0 +1,11 @@
+<div class="campaignSig">
+	<h3 class="campaignTitle"><a href="{{ campaign.get_absolute_url }}">{{ campaign.title }}</a></h3>
+	{% if campaign.is_free %}
+	  <p><em>Free campaign!</em></p>
+	{% endif %}
+    <h4 class="bandName">
+      <img class="bandAvatar" src="{{ campaign.artist.user_profile.avatar_url }}" class="userAvatar" alt="{{ campaign.artist.name }}"
+                width="{{ campaign.artist.user_profile.avatar_w }}" height="{{ campaign.artist.user_profile.avatar_h }}"/>
+      <span class="byLine">By <a href="{{ campaign.artist.get_absolute_url }}">{{ campaign.artist.name }}</a></span>
+    </h4>
+</div>

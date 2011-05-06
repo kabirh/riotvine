@@ -1,0 +1,50 @@
+{% extends "registration/base.html" %}
+
+{% block head-extra %}
+ {{ form.media|safe }}
+{% endblock %}
+
+{% block title %}Create Account - {{ block.super }}{% endblock %}
+
+{% block h2 %}Create Account{% endblock %}
+
+{% block primary-content %}
+
+  {% if not form.open_profile %}
+    <h3>New! Login with your Twitter account!</h3>
+    <p>
+     <a href="{% url twitter_authorize %}">Click here to connect to <strong>Twitter</strong></a>
+    </p>
+  {% endif %}
+  
+  <p>
+    Please fill out the form below to create a new <em>member account</em>.
+    <a href="{% url artist_admin %}?next={{ next }}">Artists register here&nbsp;<span class="arrow">&raquo;</span></a>
+  </p>
+  
+  {% if form.errors %}
+    <p class="error">Please correct the errors below.</p>
+    {% if form.non_field_errors %}
+      <ul class="errorlist">
+        {{ form.non_field_errors.as_ul }}
+      </ul>
+    {% endif %}
+  {% endif %}
+
+  <form method="post" action="" {% if form.is_multipart %}enctype="multipart/form-data"{% endif %}>
+    <fieldset>
+      {% for field in form %}
+        {% common_formfield_render field %}
+      {% endfor %}
+      <input type="hidden" name="next" value="{{ next }}"/>
+      <input type="submit" value="Register" class="submitButton" />
+    </fieldset>    
+  </form>
+{% endblock %}
+
+{% block secondary-h2 %}<h2>Sign-in</h2>{% endblock %}
+{% block secondary-content %}
+  <p>If you already have an account, please sign-in below</p>
+  {% include "registration/tags/login_tag.html" %}
+{% endblock %}
+

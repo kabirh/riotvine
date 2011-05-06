@@ -1,0 +1,43 @@
+{% extends "event/photo/base.html" %}
+
+{% block head-extra %}
+ {{ form.media|safe }}
+{% endblock %}
+
+{% block title %}Upload Event Photo - {{ block.super }}{% endblock %}
+
+{% block primary-content %}
+  <h2>Upload Event Photo</h2>
+  
+  <p>Use the form below to upload a photo from your computer.</p>
+
+  {% if form.errors %}
+    <p class="error">Please correct the errors below.</p>
+    {% if form.non_field_errors %}
+      <ul class="errorlist">
+        {{ form.non_field_errors.as_ul }}
+      </ul>
+    {% endif %}
+  {% endif %}
+
+  <form method="post" action="." {% if form.is_multipart %}enctype="multipart/form-data"{% endif %}>
+    <table width="100%" class="form_table">
+      <tbody>
+        {% for field in form %}
+          {% common_formfield_render_tr field %}
+        {% endfor %}
+        <tr>
+          <td>&nbsp;</td>
+          <td>
+            {% if allow_another %}
+              <input type="submit" name="submit" value="Save &amp; Add Another"/>
+            {% endif %}
+            <input type="submit" name="submit" value="Save &amp; Finish"/>
+            <a href="{% url view_event event_id=event.pk %}" class="cancel_btn">Cancel</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+{% endblock %}
+

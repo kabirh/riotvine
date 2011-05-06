@@ -1,0 +1,21 @@
+{% extends "website/base.html" %}
+
+{% block body-id %}{% endblock %}
+
+{% block content %}
+  <div class="primaryContent">
+    {% block h2-container %}<h2>{% block h2 %}{% endblock %}</h2>{% endblock %}
+    {% block primary-content %}
+    {% endblock %}
+  </div>
+{% endblock %}
+
+{% block sidebar %}
+  <div class="secondaryContent">
+    {% block secondary-h2 %}{% endblock %}
+    {% block secondary-content %}
+    {% endblock %}
+  </div>
+{% endblock %}
+
+

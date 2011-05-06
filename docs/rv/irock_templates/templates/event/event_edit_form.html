@@ -1,0 +1,62 @@
+{% extends "event/base.html" %}
+
+{% block head-extra %}
+ <script type="text/javascript">
+    /* <![CDATA[ */
+    var VENUE_SEARCH_URL = "{% url event_venue_search %}";
+
+    $(document).ready(function() {
+      var desc = $("#id_description");
+      if (desc[0]) {
+        var oFCKeditor = new FCKeditor('id_description');
+        oFCKeditor.BasePath = "{{ MEDIA_URL }}ui/js/fckeditor/";
+        oFCKeditor.Config["CustomConfigurationsPath"] = "{{ MEDIA_URL }}ui/js/fckeditor_custom_config.js?v={{ UI_JS_VERSION }}";
+        oFCKeditor.ReplaceTextarea();
+      }
+    });
+    /* ]]> */
+ </script>
+
+ {{ form.media|safe }}
+{% endblock %}
+
+{% block title %}Edit Event - {{ block.super }}{% endblock %}
+
+{% block h2 %}Edit Event{% endblock %}
+
+{% block primary-content %}
+  <p>Make changes to your event below.</p>
+
+  {% if form.errors %}
+    <p class="error">Please correct the errors below.</p>
+    {% if form.non_field_errors %}
+      <ul class="errorlist">
+        {{ form.non_field_errors.as_ul }}
+      </ul>
+    {% endif %}
+  {% endif %}
+
+  <form method="post" action="" {% if form.is_multipart %}enctype="multipart/form-data"{% endif %}>
+    <fieldset>
+      {% for field in form %}
+        {% common_formfield_render field %}
+      {% endfor %}
+      <input type="submit" value="{{ mode|title }}" class="submitButton"/>
+      {% if event %}
+        <a href="{% url view_event event_id=event.pk %}" class="cancelButton">Cancel</a>
+      {% else %}
+        <a href="{% url artist_admin %}" class="cancelButton">Cancel</a>
+      {% endif %}
+    </fieldset>
+  </form>
+  
+  {% include "campaign/auto_url_js.html" %}
+{% endblock %}
+
+{% block secondary-content %}
+  {% if event %}
+    <div class="eventDetail eventOwnerTrue">
+      {% event_summary event "" "is_owner" %}
+    </div>
+  {% endif %}
+{% endblock %}

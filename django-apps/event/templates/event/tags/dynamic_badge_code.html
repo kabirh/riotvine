@@ -1,0 +1,6 @@
+{% spaceless %}{% filter force_escape %}{% ifequal badgetype "JAVASCRIPT" %}<script type="text/javascript">
+{% if showdomain %}  var rv_url = '{{ domain }}';
+{% endif %}  var rv_event = '{{ e.pk }}';
+</script>
+<script type="text/javascript" src="http://{{ domain }}{{ MEDIA_URL }}ui/js/v{{ version }}/badge.js">
+</script>{% else %}<iframe src="http://{{ domain }}{% url event_badge event_id=e.pk %}" class="riotvine" style="width:227px;height:330px;" width="227" height="330" frameborder="0" scrolling="no"></iframe>{% endifequal %}{% endfilter %}{% endspaceless %}

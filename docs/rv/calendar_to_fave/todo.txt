@@ -1,0 +1,33 @@
+DONE: 12/19/2009 Release
+-------------------------------------------------------
+* Let's change the "Who's on board?" text on the left to "Favorite'd by:"
+
+* Add "How RiotVine Works" to the link bar at the bottom. Point it to the flatpage for this: /flat/how-it-works/
+
+* Update AJAX login popup to include EULA text
+
+* Bring up the unified popup straight from the landing page
+
+* I just noticed the main signup form from the landing page still uses the old AJAX popup. We should try to 
+combine that AJAX popup with the new one, so that users that choose twitter don't receive two popups. I think it's 
+okay to get rid of the old Twitter AJAX popup. When we launched it, oauth wasn't nearly as prevalent and now it's 
+everywhere so users are getting used to it.
+
+* On the new AJAX sign-in, we should switch the panels around so Twitter and Facebook are on the left, and 
+include text above them saying,
+
+	  Header: Sign in with your Twitter or Facebook account
+      Gray subtext: Don't worry, we NEVER update your status behind your back.
+
+* Rename Ripe Picks accordingly to Friends' Favorites. If that's too long for any field, Friends' Favs works. 
+
+* Add the star for anonymous users and then just prompt them to sign up via the new unified AJAX popup 
+as soon as they click it.
+
+* Add to Favorites: * Comments: o Share: RT FB
+
+* Make the comment bubble a clickable link that scrolls down to the tweets. If you can do this for the 
+city pages as well as the event pages, that would be perfect.
+
+* Add the green sign-up button and text from the landing page to the city page. This should look like it 
+does on the event pages. 

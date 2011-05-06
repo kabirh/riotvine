@@ -1,0 +1,25 @@
+<form class="comment_form" method="post" action="{% url post_event_comment event_id=event.pk %}" {% if comment_form.is_multipart %}enctype="multipart/form-data"{% endif %}>
+  <table width="100%" class="form_table">
+    <tbody>
+      {% for field in comment_form %}{% common_formfield_render_tr field %}{% endfor %}
+      {% if user.is_authenticated and not request.user_profile.has_twitter_access_token %}
+        <tr>
+          <td>&nbsp;</td>
+          <td>
+            <div class="tw_connect">
+              <a href="{% url twitter_authorize %}?next={{ request.path|urlencode }}">Connect to Twitter</a>
+              to tweet your comment
+            </div>
+          </td>
+        </tr>
+      {% endif %}
+      <tr>
+        <td>&nbsp;</td>
+        <td>
+          <input type="submit" value="Post Comment"/>
+          <a href="{{ event.get_absolute_url }}" class="cancel_btn">Cancel</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</form>

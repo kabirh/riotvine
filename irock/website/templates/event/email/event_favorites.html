@@ -1,0 +1,45 @@
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+  <title>RiotVine: Event Reminder!</title>
+</head>
+<body style="background:#ffffff;color:#333333;margin:2px 4px;padding:2px 8px 2px 8px;border:2px solid #ffffff;" bgcolor="#ffffff">
+  <p>
+    <span style="font-size:130%;">
+      Hey {% if data.attendee__first_name %}{{ data.attendee__first_name }}{% else %}{{ data.attendee__username }}{% endif %}!
+    </span>
+    <br><br>
+    Check out the events your friends are interested in. If you see something you like, add it to your favorites and let your friends know!
+  </p>
+
+  <p style="border-top:1px dashed #ccc;">
+     <br>
+      <span style="font-size:140%;">
+        <a style="color:#ff6600;" href="http://{{ site.domain }}{% url search_events %}?filter=recommended&src=email"><b>Friends' Events:</b></a>
+      </span><br>
+      {% for r in data.ripe_picks %}
+        <br>
+  	        {% if r.num_friends %}{{ r.num_friends|safe }}:<br>{% endif %}
+        <a href="{{ r.event__event_url }}?src=email"><b>{{ r.event__title }}</b></a><br>	        
+        {{ r.event__event_date }} @ {{ r.event__event_start_time }} {{ r.event__event_timezone }}
+        <br>
+      {% endfor %}
+      <br>
+      <a href="http://{{ site.domain }}{% url search_events %}?filter=recommended&src=email">View more...</a>
+  </p>
+  
+  <p style="border-top:1px dashed #ccc;">
+    <br>
+    Don't want to receive these reminders by email? 
+    <a href="http://{{ site.domain }}{% url update_user_profile %}?src=email">Turn&nbsp;them&nbsp;off&nbsp;here&nbsp;&raquo;</a>
+  </p>
+  
+  <p>
+    {{ EMAIL_SIGNATURE|linebreaksbr }}
+    <br>
+    <a href="http://{{ site.domain }}/"><img src="http://{{ site.domain }}{{ MEDIA_URL }}ui/images/logo-rv.png" alt="" border="0" style="border:none;"></a>
+  </p>
+</body>
+</html>
+
+

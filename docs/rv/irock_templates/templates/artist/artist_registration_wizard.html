@@ -1,0 +1,67 @@
+{% extends "artist/base.html" %}
+
+{% block head-extra %}
+ {{ form.media|safe }}
+{% endblock %}
+
+{% block title %}Create Artist Account - {{ block.super }}{% endblock %}
+
+{% block h2 %}Create Artist Account{% endblock %}
+
+{% block primary-content %}
+  <h3>
+    {% blocktrans %}Step {{ step }} of {{ step_count }}:{% endblocktrans %} {{ form.title }}
+  </h3>
+  
+  {% ifequal step 2 %}
+    <p>
+      {{ UI_SITE_TITLE }} will never share or publish your personal information. See our <a href="/terms-of-use/?popup=y#privacy-policy" {% popup %}>privacy policy.</a>
+    </p>
+  {% endifequal %}
+  
+  {% if form.message %}
+    <ul class="errorlist">
+      <li>{{ form.message }}</li>
+    </ul>
+  {% endif %}
+  
+  {% if form.errors %}
+    {% if form.non_field_errors %}
+      <ul class="errorlist">
+        {{ form.non_field_errors.as_ul }}
+      </ul>
+    {% else %}
+      <p class="error">Please correct the errors below.</p>
+    {% endif %}
+  {% endif %}
+  
+  {% common_flatpage "/help/registration/step/%s/main/" step %}
+  
+  <form method="post" action="" {% if form.is_multipart %}enctype="multipart/form-data"{% endif %}>  
+    <fieldset>
+      {% for field in form %}
+        {% common_formfield_render field %}
+      {% endfor %}
+      <input type="hidden" name="{{ step_field }}" value="{{ step0 }}" />
+      {{ previous_fields|safe }}
+      <input type="hidden" name="next" value="{{ next }}"/>
+      <input type="submit" value="{% ifequal step step_count %}Finish{% else %}Next{% endifequal %}" class="submitButton"/>
+    </fieldset>
+  </form>
+  
+  {% include "artist/auto_url_js.html" %}
+{% endblock %}
+
+{% block secondary-content %}
+  {% ifequal step 1 %}
+    <p>
+       Already have an artist account?<br/>
+       <a href="{% url login %}?next={{ next }}">Log in&nbsp;<span class="arrow">&raquo;</span></a>
+    </p>
+    <p>
+      {{ UI_SITE_TITLE }} will never publish your personal information. See our <a href="/terms-of-use/?popup=y#privacy-policy" {% popup %}>privacy policy.</a>
+    </p>
+  {% endifequal %}
+  {% common_flatpage "/help/registration/step/%s/" step %}
+{% endblock %}
+

@@ -1,0 +1,13 @@
+{% autoescape off %}Hey {{ data.attendee__first_name }},
+
+Here's your event reminder:
+
+- {{ data.event__title }}
+- {{ data.event__event_date }} @ {{ data.event__event_start_time }} {{ data.event__event_timezone }}
+- {{ data.event__venue__name }}
+
+Details: http://{{ site.domain }}{% url view_event event_id=data.event_id %}
+
+{{ EMAIL_SIGNATURE }}
+{% endautoescape %}
+

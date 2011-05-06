@@ -1,0 +1,12 @@
+{% autoescape off %}
+The following campaign has been changed. You will need to approve these changes before they are made public.
+
+Artist: {{ campaign.artist.name }}
+Campaign: {{ campaign.title }}
+Campaign ID: {{ campaign.pk }}
+
+Link: http://{% domain %}{% url login %}?next={{ campaign.get_absolute_url }}
+
+- Illius Rock
+{% endautoescape %}
+

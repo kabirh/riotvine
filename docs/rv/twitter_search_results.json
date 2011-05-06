@@ -1,0 +1,29 @@
+{
+"results":
+[{"text":"YAY CHUCK is BACK! but after Olympics, its gunna be a long 10 months of waiting!!! #chuck &gt;GO RED WINGS&lt; #redwings",
+  "to_user_id":null,
+  "from_user":"cattycat13",
+  "id":1849394921,
+  "from_user_id":6738543,
+  "iso_language_code":"en",
+  "source":"&lt;a href=&quot;http:\/\/twitter.com\/&quot;&gt;web&lt;\/a&gt;",
+  "profile_image_url":"http:\/\/s3.amazonaws.com\/twitter_production\/profile_images\/183265019\/me-haircutnew_normal.jpg",
+  "created_at":"Tue, 19 May 2009 17:27:20 +0000"},
+
+{"text":"#sports #nhl #blackhawks #redwings Detroit has Chris Osgood in goal tonight (2.06 GAA) vs Chicago's Nikolai Khabibulin (2.86 GAA)","to_user_id":null,"from_user":"TweetWager","id":1849388726,"from_user_id":5516027,"iso_language_code":"en","source":"&lt;a href=&quot;http:\/\/twitter.com\/&quot;&gt;web&lt;\/a&gt;","profile_image_url":"http:\/\/s3.amazonaws.com\/twitter_production\/profile_images\/207046361\/Picture_4_normal.png","created_at":"Tue, 19 May 2009 17:26:42 +0000"},
+
+{"text":"Looking forward to a good Game 2 tonight between the Chicago Blackhawks and the Detroit Red Wings!  #nhl #hockey #redwings #hawks #playoffs","to_user_id":null,"from_user":"speakofthedevs","id":1849286863,"from_user_id":11367889,"iso_language_code":"en","source":"&lt;a href=&quot;http:\/\/twitter.com\/&quot;&gt;web&lt;\/a&gt;","profile_image_url":"http:\/\/s3.amazonaws.com\/twitter_production\/profile_images\/136420225\/IMG_0491_normal.jpg","created_at":"Tue, 19 May 2009 17:16:30 +0000"}
+
+],
+
+"since_id":1775138472,
+"max_id":1849394921,
+"refresh_url":"?since_id=1849394921&q=%23redwings",
+"results_per_page":15,
+"next_page":"?page=2&max_id=1849394921&lang=en&q=%23redwings",
+"warning":"adjusted since_id, it was older than allowed since_id removed for pagination.",
+"completed_in":0.020946,
+"page":1,
+"query":"%23redwings"
+}
+

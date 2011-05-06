@@ -1,0 +1,24 @@
+{% autoescape off %}
+Hey {{ user.username|capfirst }},
+
+Thanks for joining! We're looking forward to seeing you create awesome new campaigns to engage your fans, and bring new ones onboard.
+
+To get started:
+
+Go straight to creating a new campaign. http://{{ site.domain }}{% url create_campaign %}
+
+See campaign examples. http://{{ site.domain }}{% url list_campaigns %}
+
+Update your profile.  http://{{ site.domain }}{% url update_artist_profile %}
+
+If you have questions, please hit up our artist's FAQ: http://{{ site.domain }}/help/artist/faq/
+
+Also, we love feedback so feel free to share! http://{{ site.domain }}/contact/
+
+And for the record, your login name at IlliusRock.com is:
+
+{{ user.username }}
+
+{{ EMAIL_SIGNATURE }}
+{% endautoescape %}
+

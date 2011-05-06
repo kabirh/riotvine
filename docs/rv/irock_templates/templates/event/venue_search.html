@@ -1,0 +1,21 @@
+<div id="venue_search_results">
+  {% if not results %}
+    <div class="notice">No venues found.</div>
+  {% endif %}
+  {% for r in results %}
+    <div class="venue result">
+      <strong class="title">{{ r.titleNoFormatting|truncatestring:"35" }}</strong><br/>
+      <span class="adr">{{ r.streetAddress }}</span><br/>
+      <span class="city">{{ r.city }}</span>, <span class="state">{{ r.region }}</span>
+      <span class="vjson" style="display:none;">{{ r|jsonify|safe }}</span>
+      <span class="source" style="display:none;">google-maps</span>
+    </div>
+  {% endfor %}
+  <div class="venue result result_user_defined">
+    <em>Use the venue I entered:</em><br/>
+    <strong class="title">{{ q }}</strong>
+    <span class="vjson" style="display:none;"></span>
+    <span class="source" style="display:none;">user-defined</span>
+  </div>
+</div>
+

@@ -1,0 +1,15 @@
+/* ---------------------------------------
+Global reset
+--------------------------------------- */
+body,div,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,
+form,fieldset,input,textarea,p,blockquote,th,td { margin:0; padding:0; }
+
+img { border:0; }
+
+ul, ol {list-style: none;clear:both;}
+
+body{font: 12px/150% Arial, Helvetica, Verdana, sans-serif;}
+
+button{
+	cursor: pointer;
+}

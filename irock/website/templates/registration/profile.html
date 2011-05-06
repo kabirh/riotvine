@@ -1,0 +1,161 @@
+{% extends "registration/base.html" %}
+{% load pagination_tags %}
+
+{% block headattribute %}profile="http://gmpg.org/xfn/11"{% endblock %}
+
+{% block head-extra %}
+  {% if profile.google_username and googlebot %}
+    <link rel="me" type="text/html" href="http://www.google.com/profiles/{{ profile.google_username }}"/>
+    <link rel="alternate" type="application/rss+xml" title="{{ profile.username|capfirst }} is in for" href="http://{{ current_site.domain }}/event-feeds/favorites/{{ profile.pk }}/{{ favorites_sig }}/" />
+   {% else %}
+	  {% if show_favorites_feed %}
+	    <link rel="alternate" type="application/rss+xml" title="{{ profile.username|capfirst }} is in for" href="http://{{ current_site.domain }}/event-feeds/favorites/{{ profile.pk }}/{{ favorites_sig }}/" />
+	  {% endif %}
+  {% endif %}
+  {% if show_friends_favorites_feed %}
+    <link rel="alternate" type="application/rss+xml" title="{{ profile.username|capfirst }}’s friends are in for" href="http://{{ current_site.domain }}/event-feeds/friends-favorites/{{ profile.pk }}/{{ friends_favorites_sig }}/" />
+  {% endif %}
+{% endblock %}
+
+{% block title %}{{ profile.username }} - {{ block.super }}{% endblock %}
+
+{% block body-class %}profile{% endblock %}
+
+{% block primary-content %}
+  <div class="profile-flatpage">    
+    {% if restricted %}
+      {% common_flatpage "/help/user-profile/restricted/" %}
+      {% common_flatpage "/help/user-profile/%s/restricted/" viewer %}
+    {% else %}
+      {% common_flatpage "/help/user-profile/" %}    
+      {% common_flatpage "/help/user-profile/%s/" viewer %}
+    {% endif %}
+  </div>
+  
+  {% ifequal profile.username|lower "trishofthetrade" %}
+      <h3 class="user-highlight">
+        {% if profile.user.first_name %}{{ profile.user.first_name }}{% else %}{{ profile.username }}{% endif %} has posted {{ profile.event_set.count }} events. She is <strong class="num">#1</strong>
+      </h3>
+  {% endifequal %}
+  
+  <div class="profile-image">    
+    <div class="image">
+	    {% if profile.use_fb_profile %}
+	      <fb:profile-pic uid="{{ profile.fb_userid }}" facebook-logo="false" linked="false" size="square"></fb:profile-pic>
+	    {% else %}
+	      <img src="{{ profile.avatar_medium_url }}" width="60" height="60" class="thumbnail" />
+	    {% endif %}
+    </div>
+    <div class="username">
+	    <strong class="username">{{ profile.username }}</strong>
+	    <div class="num-stats">
+		    {% if num_friends %}
+		      <div class="num">{{ num_friends }} friend{{ num_friends|pluralize }}</div>
+		    {% endif %}
+		    {% if num_friends and num_followers %}
+		      <div class="num sep">|</div>
+		    {% endif %}
+		    {% if num_followers %}
+		      <div class="num">{{ num_followers }} follower{{ num_followers|pluralize }}</div>
+		    {% endif %}
+	    </div>
+	    
+	    {% ifequal viewer "self" %}
+		    <div class="profile-permission">
+		      <strong>{{ profile.get_permission_display }} can see this profile.</strong><br/><a href="{% url update_user_profile %}">Change permission&nbsp;&raquo;</a>
+		    </div>
+		{% else %}
+		  {% if viewer_desc %}<div class="viewer-desc">{{ viewer_desc }}</div>{% endif %}
+		  <div class="friending-actions">		    
+		      <form action="{% url do_friending profile.user.username %}" method="post">
+				  {% if show_friend_action %}
+				    <input type="submit" name="action" value="Add to Friends"/>
+				  {% endif %}
+				  {% if show_unfriend_action %}
+				    <input type="submit" name="action" value="Remove from Friends"/>
+				  {% endif %}
+				  {% if show_follow_action %}
+				    <input type="submit" name="action" value="Follow"/>
+				  {% endif %}
+				  {% if show_unfollow_action %}
+				    <input type="submit" name="action" value="Unfollow"/>
+				  {% endif %}
+			  </form>
+		  </div>
+	    {% endifequal %}
+    </div>
+    {% include "registration/tags/rss-sharing.html" %}    
+    <div class="clear"></div> 
+  </div>
+  
+	  
+   
+  {% if favorites %}
+    {% if rpp %}
+      {% autopaginate favorites rpp %}
+    {% else %}
+      {% autopaginate favorites 25 %}
+    {% endif %}
+     <h2 class="favorite-events">{{ profile.username|capfirst }} Is In For:</h2>
+	 <div class="favorites search-listings">
+	    <ul>
+	      {% for e in favorites %}
+		      <li class="city-event">
+    	        {% include "event/tags/city_event_excerpt.html" %}	          
+		      </li>
+	      {% endfor %}
+      </ul>
+      {% paginate %}
+	  </div><!--  favorites  -->
+	  
+  {% endif %}
+    
+{% endblock %}
+
+
+{% block secondary-content %}
+
+    {% if friendships %}
+	  <div class="friends">
+	      <h2>{{ num_friends }} Friend{{ num_friends|pluralize }}</h2>
+		  <div class="twitter_heads">    
+		    <ul>
+		      {% for f in friendships %}
+		        <li>
+		          <a href="{{ f.user_profile2.get_absolute_url }}" title="{{ f.user_profile2.user.username }}">
+			          {% if f.user_profile2.use_fb_profile %}
+			            <fb:profile-pic uid="{{ f.user_profile2.fb_userid }}" facebook-logo="false" linked="false" size="square"></fb:profile-pic>
+			          {% else %}
+			            <img src="{{ f.user_profile2.avatar_url }}" alt="{{ f.user_profile2 }}" width="48" height="48" />
+			          {% endif %}
+		          </a>
+		        </li>
+		      {% endfor %}
+		    </ul>
+		  </div>
+		  <div class="clear"></div>
+	  </div>
+  {% endif %}
+  
+  {% if followers %}
+	  <div class="friends followers">
+	      <h2>{{ num_followers }} Follower{{ num_followers|pluralize }}</h2>
+		  <div class="twitter_heads">    
+		    <ul>
+		      {% for f in followers %}
+		        <li>
+		          <a href="{{ f.user_profile2.get_absolute_url }}" title="{{ f.user_profile2.user.username }}">
+			          {% if f.user_profile2.use_fb_profile %}
+			            <fb:profile-pic uid="{{ f.user_profile2.fb_userid }}" facebook-logo="false" linked="false" size="square"></fb:profile-pic>
+			          {% else %}
+			            <img src="{{ f.user_profile2.avatar_url }}" alt="{{ f.user_profile2 }}" width="48" height="48" />
+			          {% endif %}
+		          </a>
+		        </li>
+		      {% endfor %}
+		    </ul>
+		  </div>
+		  <div class="clear"></div>
+	  </div>
+  {% endif %}
+{% endblock %}

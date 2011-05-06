@@ -1,0 +1,140 @@
+{% extends "website/base.html" %}
+
+{% block body-id %}home{% endblock %}
+
+{% block content %}
+  <div class="featuresHolder">
+    {% tcache UI_CACHE_TIMEOUT "ir-tpl-hp-top3-boxes" %}
+      {% for obj in top3 %}
+        {% if obj.venue %}
+          {% event_badge_internal obj %}
+        {% else %}
+          {% campaign_badge_internal obj %}
+        {% endif %}
+      {% endfor %}
+    {% endtcache %}
+  </div><!-- featuresHolder -->
+  
+  <div class="campaignOptionsHolder">
+    <ul>
+      <li>
+        <a href="{% url list_campaigns %}">View more campaigns</a>
+      </li>
+      <li>
+        <a href="{% url list_events %}">View more shows</a>
+      </li>
+      <li class="socialLinks">
+        <span>Follow us on:&nbsp;</span>
+        <a href="http://www.facebook.com/pages/Illius-Rock/34294708924" title="Facebook">
+          <img src="{{ MEDIA_URL }}ui/images/facebook_32b.png" width="32" height="32" alt="Facebook">
+        </a>
+        <a href="http://www.myspace.com/illiusrock" title="MySpace">
+          <img src="{{ MEDIA_URL }}ui/images/myspace_32b.png" width="32" height="32" alt="MySpace">
+        </a>
+        <a href="http://twitter.com/riotvine" title="Twitter">
+          <img src="{{ MEDIA_URL }}ui/images/twitter_32b.png" width="32" height="32" alt="Twitter">
+        </a>
+      </li>
+    </ul>
+  </div> <!-- campaignOptionsHolder -->
+  
+  <div class="promoSpace">
+    <div class="introText">
+      {% common_flatpage "/site/homepage-intro/" %}
+    </div> <!-- introText -->
+    <div class="promoImage">
+      <a href="/rsvp/">
+        <img src="{{ MEDIA_URL }}ui/images/televandalshomepageintro.jpg" alt="image" width="478" height="241" />
+      </a>
+    </div> <!-- promoImage -->
+  </div>  <!-- promoSpace -->
+  
+  <div class="mixedFeed">
+    {% tcache UI_CACHE_TIMEOUT "ir-tpl-mixed-feed" %}
+      {% for c in mixed_feed %}
+	  	<div class="eventDetail">
+	        {% if c.venue %}
+	          {% tcache UI_CACHE_TIMEOUT "ir-event-summary-list" c.pk %}
+	            {% event_summary c "" "" "" "include_title" "show_detail_link" %}
+	          {% endtcache %}
+	        {% else %}
+	          {% tcache UI_CACHE_TIMEOUT "ir-campaign-summary-list" c.pk %}
+	            {% campaign_summary c "" "" "" "include_title" "show_detail_link" %}
+	          {% endtcache %}
+	        {% endif %}
+		</div>
+      {% endfor %}
+    {% endtcache %}
+  </div><!-- featuresHolder -->
+  
+  <div class="campaignOptionsHolder">
+    <ul>
+      <li>
+        <a href="{% url list_campaigns %}">View more campaigns</a>
+      </li>
+      <li>
+        <a href="{% url list_events %}">View more shows</a>
+      </li>
+    </ul>
+  </div>
+  
+{% endblock content %}
+
+{% block sidebar %}
+  <ul class="buttonsList">
+    <li class="button registerDonationButton">
+      <a href="{% url redeem_ticket %}">Redeem Campaign Ticket</a>
+    </li>
+    {% if user.is_authenticated %}
+      {% include "social/tags/twitter-post.html" %}
+      {% comment %}
+        <li class="button">
+          <a href="{% url account %}">Your Account</a>
+        </li>
+      {% endcomment %}
+    {% else %}
+      <li class="joinButton">
+        <a href="{% url register %}">Join Today - it's free!</a>
+      </li>
+    {% endif %}
+  </ul>
+  
+  <div class="newestHolder newestContributorsHolder">
+    <h2 class="titleNewest" id="titleNewestContributors">Just Contributed</h2>
+    {% tcache UI_CACHE_TIMEOUT "ir-tpl-hp-newest-contributors" %}
+      {% campaign_contributors_latest "3" %}
+    {% endtcache %}
+  </div>
+  <div class="newestHolderBottom newestContributorsHolderBottom"></div>
+
+  
+  <div class="newestHolder newestCampaignsHolder">
+    <h2 class="titleNewest" id="titleNewestCampaigns">Newest Campaigns</h2>
+    {% tcache UI_CACHE_TIMEOUT "ir-tpl-hp-newest-campaigns" %}
+      {% campaign_blurbs_latest "3" %}
+    {% endtcache %}
+
+    <div class="campaignOptionsHolder2">
+      <ul>
+        <li>
+          <a href="{% url list_campaigns %}">View more campaigns</a>
+        </li>
+      </ul>
+    </div> <!-- campaignOptionsHolder -->
+  </div> <!-- newestCampaignsHolder -->
+  <div class="newestHolderBottom"></div>
+  
+  {% if photos %}
+    {% tcache UI_CACHE_TIMEOUT "ir-tpl-hp-newest-photos" %}
+      <div class="newestHolder2 newestPhotosHolder">
+          {% for thumbnail in photos %}
+              <a href="{{ thumbnail.photo.content_object.get_absolute_url }}">
+                <img src="{{ thumbnail.image.url }}" width="{{ thumbnail.width }}" height="{{ thumbnail.height }}" alt="{{ thumbnail.title }}"/>
+              </a>
+          {% endfor %}
+      </div>
+      <div class="newestHolder2Bottom"></div>
+    {% endtcache %}
+  {% endif %}
+{% endblock sidebar %}
+

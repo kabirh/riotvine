@@ -1,0 +1,27 @@
+{% extends "messages/base.html" %} 
+{% load i18n %} 
+
+{% block title %}{% trans "Sent Messages" %} - {{ block.super }}{% endblock %}
+{% block h2 %}{% trans "Sent Messages" %}{% endblock %}
+{% block primary-content %}
+  <table class="messages">
+    <thead>
+        <tr><th>{% trans "Recipient" %}</th><th>{% trans "Subject" %}</th><th>{% trans "Sent" %}</th><th>{% trans "Action" %}</th></tr>
+    </thead>
+    <tbody>
+      {% for message in message_list %} 
+        <tr class="{% cycle 'evenRow' 'oddRow' %}">
+            <td><a href="{{ message.get_absolute_url }}">{{ message.recipient }}</a></td>
+            <td>
+              <a href="{{ message.get_absolute_url }}">{{ message.subject }}</a>
+            </td>
+            <td>{{ message.sent_at|date:_("DATETIME_FORMAT") }}</td>
+            <td><a href="{% url messages_delete message.id %}?next={% url messages_outbox %}">{% trans "delete" %}</a></td>
+        </tr>
+      {% endfor %}
+      {% if not message_list %}
+        <tr class="rowNoMessages"><td colspan="4">{% trans 'No messages here.' %}</td></tr>
+      {% endif %}
+    </tbody>
+  </table>
+{% endblock %}

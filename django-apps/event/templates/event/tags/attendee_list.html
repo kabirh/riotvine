@@ -1,0 +1,15 @@
+{% if attendees %}
+  <ul class="attendeesUl eventsUl blurbsUl">
+    {% for c in attendees %}
+      <li>
+        <a href="{{ c.event.get_absolute_url }}" class="eventAvatarLink" title="{{ c.attendee_profile.username }} is attending {{ c.event.title }}">
+          {% tcache context.UI_CACHE_TIMEOUT "ir-tpl-attendee" c.attendee.pk c.event.pk %}
+            <img src="{{ c.attendee_profile.avatar_url }}" class="userAvatar" alt="{{ c.attendee_profile.username }}"
+              width="{{ c.attendee_profile.avatar_w }}" height="{{ c.attendee_profile.avatar_h }}"/>
+	          <img src="{{ c.event.image_avatar_url }}" class="eventAvatar" alt=""/>
+          {% endtcache %}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}

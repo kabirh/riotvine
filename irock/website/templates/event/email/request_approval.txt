@@ -1,0 +1,12 @@
+{% autoescape off %}
+An event has been submitted. Here are the details.
+
+Artist: {{ event.artist.name }}
+Event: {{ event.title }}
+Event ID: {{ event.pk }}
+Approved: {% if event.is_approved %}Yes{% else %}No; needs approval{% endif %}
+
+Link: http://{% domain %}{% url login %}?next={{ event.get_absolute_url }}
+
+{% endautoescape %}
+

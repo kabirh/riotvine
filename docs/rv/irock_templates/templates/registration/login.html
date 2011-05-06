@@ -1,0 +1,36 @@
+{% extends "registration/base.html" %}
+
+{% block title %}Log in / Register - {{ block.super }}{% endblock %}
+
+{% comment %}
+  {% block h2 %}Log in / Register{% endblock %}
+{% endcomment %}
+{% block h2-container %}{% endblock %}
+
+{% block primary-content %}
+  {% ifequal next "/artist/" %}
+    {% common_flatpage "/help/registration/" %}
+  {% else %}
+    <h2>Sign-in / Register</h2>
+    <p class="button"><a href="{% url register_artist %}?next={{ next }}">Create an Artist Account</a></p>
+    <p class="button"><a href="{% url register %}?next={{ next }}">Create a Member Account</a></p>   
+  {% endifequal %}
+{% endblock %}
+
+{% block secondary-h2 %}<h2>Sign-in</h2>{% endblock %}
+{% block secondary-content %}
+  {% if form.errors %}
+    <p class="error">The entered username or password is invalid.</p>
+  {% endif %}
+  <form method="post" action="{% url login %}">
+    <fieldset>
+      {% for field in form %}
+        {% common_formfield_render field %}
+      {% endfor %}
+      <input type="submit" value="Login" class="submitButton"/>
+      <a href="{% url reset_password %}" class="forgotPassword">Forgot Password?</a>
+      <input type="hidden" name="next" value="{{ next }}"/>
+    </fieldset>
+  </form>
+{% endblock %}
+

@@ -1,0 +1,142 @@
+{% event_badge_internal event classes is_owner is_admin %}{% load twittertags %}
+<div class="eventDetailsWrapper eventOwner{{ is_owner }}">
+  {% if include_title %}
+    {% include "event/tags/event_signature.html" %}
+  {% else %}
+    <h3>Show Overview</h3>
+    {% if show_detail_link %}
+      <p class="viewDetail"><a href="{{ event.get_absolute_url }}">view detail</a></p>
+    {% endif %}
+  {% endif %}
+  
+  <table class="eventSummaryTable">
+    <tbody>
+      {% if changes.venue or changes.zip_code %}
+        <tr class="changedTrue">
+        		<th>Where*</th>
+            <td>
+              {% if changes.venue %}
+                {{ changes.venue }}
+              {% else %}
+                <a href="{{ event.venue.map_url }}" {% popup %}>{{ event.venue }}</a>
+              {% endif %}
+              {% comment %}&nbsp;{% if changes.zip_code %}{{ changes.zip_code }}{% else %}{{ event.zip_code }}{% endif %}{% endcomment %}
+            </td>
+        </tr>
+      {% else %}
+        <tr><th>Where</th><td><a href="{{ event.venue.map_url }}" {% popup %}>{{ event.venue }}</a></td></tr>
+      {% endif %}
+      {% if changes.event_date or changes.event_start_time %}
+        <tr class="changedTrue"><th>When*</th>
+          <td>
+            {% if changes.event_date %}{{ changes.event_date|date:"l, N j, Y" }}{% else %}{{ event.event_date|date:"l, N j, Y" }}{% endif %} 
+            @ 
+            {% if changes.event_start_time %}{{ changes.event_start_time|time }}{% else %}{{ event.event_start_time|time }}{% endif %} 
+            {% if changes.event_timezone %}{{ changes.event_timezone }}{% else %}{{ event.event_timezone }}{% endif %}
+          </td>
+        </tr>
+      {% else %}
+        <tr><th>When</th><td>{{ event.event_date|date:"l, N j, Y" }} <span class="event-time">@ {{ event.event_start_time|time }} {{ event.event_timezone }}</span></td></tr>
+      {% endif %}
+      {% if changes.max_attendees %}
+        <tr class="changedTrue"><th>Max spots*</th><td>{{ changes.max_attendees }}</td></tr>
+      {% else %}
+        {% if event.max_attendees %}
+          <tr><th>Max spots</th><td>{{ event.max_attendees }}</td></tr>
+        {% endif %}
+      {% endif %}
+
+      {% if event.price_text or event.ticket_url %}
+        <tr>
+          <th>Price</th>
+          <td>
+            {{ event.price_text }}
+            {% if event.ticket_url %}
+              <span class="ticketUrl"><a href="{{ event.ticket_url|referer_url }}">Buy Tickets</a></span>
+            {% endif %}
+          </td>
+        </tr>
+      {% endif %}
+
+      {% if event.hashtag %}
+        <tr>
+          <th>Twitter</th>
+          <td class="hashtag">
+            {% for h in event.hashtags %}
+              <a href="http://search.twitter.com/search?lang=all&q={{ h|twitter_q|urlencode }}">{{ h }}</a>{% if not forloop.last %}, {% endif %}
+            {% endfor %}
+          </td>
+        </tr>
+      {% endif %}
+      
+      {% comment %}
+        {% if event.stats.num_attendees %}
+          <tr>
+            <th>Interested</th>
+            <td>
+              {{ event.stats.num_attendees }} {{ event.stats.num_attendees|pluralize:"person,people" }}
+              {% if event.is_sold_out %} <strong class="soldOut">(SOLD OUT!)</strong>{% endif %}
+            </td>
+          </tr>
+        {% endif %}
+      {% endcomment %}
+      
+      {% if event.artist.website %}
+        <tr>
+          <th>{{ event.artist.artist_or_band }} website</th>
+          <td><a class="artistWebsite externalLink" href="{{ event.artist.website }}">{{ event.artist.website_hostname }}</a></td>
+        </tr>
+      {% endif %}
+      {% if is_owner and event.stats.views and not event.is_member_generated %}
+        <tr class="num-views"><th>Viewed</th><td>{{ event.stats.views }} time{{ event.stats.views|pluralize }} </td></tr>
+      {% endif %}
+      {% if event.edited_on %}
+        <tr class="edit-date"><th>Edited on</th><td>{{ event.edited_on|date:"fA T, n/d/y" }}</td></tr>
+      {% endif %}
+      {% if event.mp3_url %}
+        <tr class="mp3-url">
+          <th>Listen</th>
+          <td>{% mp3_url_player event.mp3_url %}</td>
+        </tr>
+      {% endif %}
+      {% if event.is_public and user.is_authenticated %}
+        {% if event.is_attending %}
+          <tr class="calendar_action">
+            <td colspan="2">
+              <form class="calendar_remove_form calendar_form" method="post" action="{% url event_add_to_calendar event_id=event.pk %}">
+                <input type="hidden" name="next" value="{{ request.get_full_path|urlencode }}"/>
+                <input class="remove_event" type="hidden" name="remove" value="yes"/>
+                <input class="submit_calform" type="submit" name="submit" value="remove from calendar"/>
+              </form>
+            </td>
+          </tr>
+        {% else %}
+          <tr class="calendar_action">
+            <td colspan="2">
+              <form class="calendar_add_form calendar_form" method="post" action="{% url event_add_to_calendar event_id=event.pk %}">
+                <input type="hidden" name="next" value="{{ request.get_full_path|urlencode }}"/>
+                <input class="submit_calform" type="submit" name="submit" value="add to calendar"/>
+              </form>
+            </td>
+          </tr>
+        {% endif %}
+      {% endif %}
+      {% if not separate_description %}
+        <tr class="last description">
+          <td colspan="2">
+            {{ event.description|html2text|truncatewords:"8" }}
+            <p class="viewDetail"><a href="{{ event.get_absolute_url }}">view detail</a></p>
+          </td>
+        </tr>
+      {% else %}
+        {% if event.is_public %}
+          <tr>
+            <td colspan="2">
+              <p class="embed-link"><a href="{{ event.get_absolute_url }}#external-badge"><span class="leftArrow arrow">&larr;&nbsp;</span>Embed this badge on your webpage!</a></p>
+            </td>
+          </tr>
+        {% endif %}
+      {% endif %}
+    </tbody>
+  </table>
+</div>

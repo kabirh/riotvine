@@ -1,0 +1,53 @@
+{% extends "registration/base.html" %}
+
+{% block head-extra %}
+ {{ form.media|safe }}
+{% endblock %}
+
+{% block title %}Create Account - {{ block.super }}{% endblock %}
+
+{% block primary-content %}
+  <h2>Create Account</h2>
+
+  {% comment %}
+	  {% if not form.open_profile %}
+	    <p>
+	      <strong>New! Login with your Twitter account!</strong><br/>
+	      <a href="{% url twitter_authorize %}">Link your Twitter account to RiotVine&nbsp;&raquo;</a>
+	    </p>    
+	  {% endif %}
+  {% endcomment %}
+  
+  
+  {% if form.errors %}
+    <p class="error">Please correct the errors below.</p>
+    {% if form.non_field_errors %}
+      <ul class="errorlist">
+        {{ form.non_field_errors.as_ul }}
+      </ul>
+    {% endif %}
+  {% endif %}
+  
+  <form class="registration_form" method="post" action="" {% if form.is_multipart %}enctype="multipart/form-data"{% endif %}>{% csrf_token %}
+    <table width="100%" class="form_table">
+      <tbody>
+        {% for field in form %}
+          {% common_formfield_render_tr field %}
+        {% endfor %}
+        <tr>
+          <td>&nbsp;</td>
+          <td>
+            <input name="next" value="{{ next }}" type="hidden"/>
+            <input type="submit" value="Create Account" />
+            <a href="{% if next %}{{ next }}{% else %}{% url home %}{% endif %}" class="cancel_btn">Cancel</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+
+{% endblock %}
+
+{% block secondary-content %}
+{% endblock %}
+

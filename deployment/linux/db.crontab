@@ -1,0 +1,19 @@
+TERM=linux
+MAILTO=rajesh.dhawan+rvdbcron@gmail.com
+
+# m h  dom mon dow   command
+05 3 * * * /home/web/bin/event-cleanup.sh 2>&1
+#49 4 */2 * * /home/web/bin/start-app.sh 2>&1
+31 6 * * * /home/web/bin/runamqp.sh 2>&1
+2 5 * * * /home/web/bin/lastfm.sh 2>&1
+31 5 * * * /home/web/bin/session-cleanup.sh 2>&1
+2 6 * * * /home/web/bin/backup.sh 2>&1
+35 * * * * /home/web/bin/fetch_event_tweets.sh 2>&1 > /dev/null
+55 */6 * * * /home/web/bin/twitter_search_count.sh 2>&1
+32 * * * * /home/web/bin/build_friendships.sh 2>&1 > /dev/null
+5 15,23 * * * /home/web/bin/build_recommendations.sh 2>&1
+#2 8 * * * /home/web/bin/send_event_reminders.sh 2>&1 
+45 */3 * * * /home/web/bin/twitter_rate_limit.sh 2>&1
+30 8 */2 * * /bin/df --si 2>&1
+48 */2 * * * /usr/bin/top -b -n 9 -d 6 2>&1
+

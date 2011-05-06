@@ -1,0 +1,39 @@
+<div class="action-display action-display-main action-display-main-city event-options" style="display:block;">
+ {% if e.is_active %}
+    {% if user.is_authenticated %}
+        {% if e.is_attending %}
+          <a href="{% url event_remove_from_calendar event_id=e.pk %}" class="calendarlink remove_from_calendar">I'm Out</a>
+    {% else %}
+      <a href="{% url event_add_to_calendar event_id=e.pk %}" class="calendarlink add_to_calendar">I'm In!</a>
+    {% endif %}
+{% else %}
+  <a href="{% url event_add_to_calendar event_id=e.pk %}" class="calendarlink add_to_calendar login_dialog">I'm In!</a>
+        {% endif %}
+    {% endif %}	             
+</div>
+ 
+<a href="{{ e.get_absolute_url }}"><img src="{{ e.image_square_medium_url }}" alt="{{ e.title }}" width="110" height="110" class="thumbnail" title="{{ e.title }}" /></a> 
+<span class="event_details">
+  {{ e.event_date|date:"D m.d.y" }}{% if e.has_start_time %}&nbsp;@&nbsp;{{ e.event_start_time|time }} {{ e.event_timezone }}{% endif %}
+  {% if e.show_creator %}|  Posted by <a href="{{ e.creator.get_absolute_url }}" class="userlink">{{ e.creator }}</a>{% endif %}
+</span>
+
+<br />
+<a href="{{ e.get_absolute_url }}" class="event_title">{{ e.title_with_tinyurl }}</a>
+<span class="event_details">
+  <span class="tweet_count"><a href="{{ e.get_absolute_url }}#event-comments">{{ e.tweet_count }}</a></span>
+	{% comment %}{% if e.interested_count %}| <span class="interested_count">{{ e.interested_count }} Interested</span>{% endif %}{% endcomment %}
+	{% if request.user_profile %}{% event_friends e request.user_profile %}{% endif %}
+	{% ifequal rpp 100 %}{% else %}<span class="rv-sm city-retweet rv_theme_jade {% if e.is_attending %}attending-true{% endif %}">| <a class="rv-sm-retweet" href="{{ TWITTER_SHARER }}?status={{ e.title|urlencode }}+{{ e.get_short_url }}" title="Tweet this Event!" {% popup %}>tweet</a></span>{% endifequal %}	
+	{% if e.show_checkins and e.venue.fsq_checkins %}
+	  | <span class="checkins">{{ e.venue.fsq_checkins }} {{ e.venue.fsq_checkins|pluralize:"person's,people are" }} here now <span class="gender-ratio">{{ e.venue.fsq_ratio_display|safe }}</span></span>
+	{% endif %}
+	{% if e.interested_count %}
+	  <span class="interested_count x-interested">{{ e.interested_count }} {{ e.interested_count|pluralize:"person is,people are" }} in:</span>
+	{% endif %}	
+	{% event_interested_users e request.user_profile %}
+</span>
+
+
+
+	      

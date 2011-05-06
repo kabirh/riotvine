@@ -1,0 +1,27 @@
+{% if events %}
+	<a href="{% url search_events %}?filter=recommended" class="reco_header"><strong>Friends' Events:</strong></a> <!-- <a href="#" class="graylink">(all)</a> -->
+	{% for e in events %}
+	  <div class="feature_top">
+	    <a href="{{ e.get_absolute_url }}"><img src="{{ e.image_avatar_url }}" alt="recommended" width="50" height="50" class="thumbnail" title="{{ e.title }}" /></a>
+	    <a href="{{ e.get_absolute_url }}" class="event_title">{{ e.title_with_tinyurl }}</a>
+	  </div>
+	  <div class="feature_bottom">
+	    <span class="event_date">{{ e.event_date|date:"D m.d" }}</span> 
+	    {% if e.show_creator %}Posted by <a href="{{ e.creator.get_absolute_url }}" class="userlink">{{ e.creator }}</a>{% endif %}<br />
+	    <span class="tweet_count"><a href="{{ e.get_absolute_url }}#event-comments">{{ e.tweet_count }}</a></span> 
+	    {% if e.interested_count %}| <span class="interested_count">{{ e.interested_count }} Interested</span>{% endif %}
+	    {% if request.user_profile %}{% event_friends e request.user_profile %}{% endif %}
+	    <div class="action-display">
+	      {% if e.is_active and user.is_authenticated %}
+	        {% if e.is_attending %}
+	          <a href="{% url event_remove_from_calendar event_id=e.pk %}" class="calendarlink remove_from_calendar">I'm Out</a>
+	        {% else %}
+	          <a href="{% url event_add_to_calendar event_id=e.pk %}" class="calendarlink add_to_calendar">I'm In!</a>
+	        {% endif %}
+	      {% endif %}
+          <a href="{{ TWITTER_SHARER }}?status={{ e.title|urlencode }}+{{ e.get_short_url }}" title="ReTweet this Event!"><img src="{{ MEDIA_URL }}ui/images/ico_RT.gif" alt="Retweet" width="28" height="11" class="retweet-btn" /></a>
+	    </div>
+	  </div>
+	{% endfor %}
+  <div class="view-more"><a href="{% url search_events %}?filter=recommended">View more&nbsp;&raquo;</a></div>
+{% endif %}

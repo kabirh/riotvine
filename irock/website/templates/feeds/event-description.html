@@ -1,0 +1,9 @@
+<p>
+	{{ obj.event_date|date:"D m.d.y" }}{% if obj.has_start_time %}&nbsp;@&nbsp;{{ obj.event_start_time|time }} {{ obj.event_timezone }}{% endif %}<br/>
+    <a href="{{ obj.venue.map_url }}">{{ obj.venue.name }}</a>{% if obj.venue.address %}, {{ obj.venue.address }}{% endif %}{% if obj.venue.citystatezip %}, {{ obj.venue.citystatezip }}{% endif %}<br/>
+    <br/><a href="{{ obj.get_absolute_url }}">Details&nbsp;&raquo;</a>
+</p>
+
+<div class="desc">
+  {{ obj.description|truncatewords_html:50|safe }}
+</div>

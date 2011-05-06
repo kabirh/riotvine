@@ -1,0 +1,40 @@
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+  <title>You have a new follower!</title>
+</head>
+<body style="background:#ffffff;color:#333333;margin:2px 4px;padding:2px 8px 2px 8px;border:2px solid #ffffff;" bgcolor="#ffffff">
+  <p>
+    <span style="font-size:130%;">
+      Hey {{ user_profile.username }},
+    </span>
+  </p>
+  
+  <p>
+    <strong><span style="font-size:130%;">
+      <a href="http://{{ site.domain }}{{ profile2.get_absolute_url }}?email=y">{{ profile2.username|capfirst }}</a> is now following you on {{ UI_SITE_TITLE }}!
+    </span></strong>
+    {% if friendship_needed %}
+      <br>You may <a href="http://{{ site.domain }}{{ profile2.get_absolute_url }}?email=y">follow back {{ profile2.username }} here</a>, if you'd like them to see the events you're in for.
+    {% else %}
+      <br>You may <a href="http://{{ site.domain }}{{ profile2.get_absolute_url }}?email=y">follow back {{ profile2.username }} here&nbsp;&raquo;</a>
+    {% endif %}
+    <br>
+  </p>
+  
+  <p style="border-top:1px dashed #ccc;">
+    <br>
+    If you want only friends to see the events you're in for, 
+    <a href="http://{{ site.domain }}{% url update_user_profile %}?src=email">adjust your <strong>privacy settings</strong> here.</a>
+  </p>
+  
+  <p>
+    Cheers, <br>
+    Everyone at {{ UI_SITE_TITLE }}<br>
+    http://{{ site.domain }}/
+    <br>
+    <a href="http://{{ site.domain }}/?email=y"><img src="http://{{ site.domain }}{{ MEDIA_URL }}ui/images/logo-rv.png" alt="" border="0" style="border:none;"></a>
+  </p>
+</body>
+</html>
+

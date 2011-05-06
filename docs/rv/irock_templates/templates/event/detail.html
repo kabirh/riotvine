@@ -1,0 +1,263 @@
+{% extends "event/base.html" %}
+
+{% load comments %}
+{% load oembedtags %}
+{% load twittertags %}
+
+{% block meta-fields %}   
+  <meta name="title" content="{{ c.title }} - Illius Rock" />
+  <meta name="description" content="" />
+{% endblock %}
+
+
+{% block head-extra %}
+ {% if event.is_public %}
+   <meta name="medium" content="image" />
+   <link rel="image_src" href="http://{% domain %}{% url serve_event_badge_external event_id=event.id %}" />
+   <script type="text/javascript">
+      /* <![CDATA[ */
+       $(document).ready(function() {
+          var c_id = $("#id_event_comments");
+          if (c_id) {
+            $.get("{% url event_comments event_id=event.pk %}", function(data) {
+              c_id.html(data);
+            }, "html"); // get
+          }
+       }); // ready
+      /* ]]> */
+    </script>
+ {% endif %}
+ {% if comment_form %}
+    {{ comment_form.media|safe }}
+    <script type="text/javascript">
+      /* <![CDATA[ */
+       $(document).ready(function() {
+            var textarea = $(".commentForm textarea");
+            $("a.commentReply").click(function() {
+                var username = $(".authorUsername", $(this).parent("h4"));
+                var replyname = '@' + username.text();
+                textarea.text(replyname);			  
+                textarea.focus();
+                return true;
+            }); // on click
+       }); // ready
+      /* ]]> */
+    </script>
+ {% endif %}
+{% endblock %}
+
+{% block title %}{{ c.title }} - {{ block.super }}{% endblock %}
+
+{% block h2 %}
+  <a href="{{ c.get_absolute_url }}" rel="bookmark">
+    {% if changes.title %}
+      <span class="changedTrue">{{ changes.title }}*</span>
+    {% else %}
+      {{ c.title }}
+    {% endif %}
+  </a>
+{% endblock %}
+
+{% block primary-content %}
+  {% if c.is_member_generated %}
+    {% if not c.is_auto_generated %}
+      <h3 class="bandName">
+        <img src="{{ c.creator.avatar_url }}" class="bandAvatar userAvatar" alt="{{ c.creator }}"
+                    width="{{ c.creator.avatar_w }}" height="{{ c.creator.avatar_h }}"/>
+        <span class="byLine">Submitted by {{ c.creator }}</span>
+      </h3>
+    {% endif %}
+  {% else %}
+    <h3 class="bandName">
+      <img src="{{ c.artist.user_profile.avatar_url }}" class="bandAvatar userAvatar" alt="{{ c.artist.name }}"
+                  width="{{ c.artist.user_profile.avatar_w }}" height="{{ c.artist.user_profile.avatar_h }}"/>
+      <span class="byLine">By <a href="{{ c.artist.get_absolute_url }}">{{ c.artist.name }}</a></span>
+    </h3>
+  {% endif %}
+  
+  <div class="eventDetail eventOwner{{ is_owner }}" id="eventId{{ c.pk }}">
+    {% event_summary c "" is_owner is_admin "" "" "separate_description" changes %}
+  </div>
+  
+  <div class="descriptionWrapper offeringWrapper">
+    {% if changes.description %}
+      <h3 class="description changedTrue">Description*</h3>
+      {{ changes.description|safe }}
+    {% else %}
+      {{ event.description|safe }}
+    {% endif %}
+    <ul class="userOptions">
+      {% include "event/tags/attend_buttons.html" %}
+    </ul>
+  </div>
+  
+  <div class="eventMultimedia">
+
+    {% if changes.audio_player_embed %}
+      <p class="listenToArtist">
+        Listen to this artist:
+      </p>
+      <div class="multimediaAudio changedTrue">
+        {{ changes.audio_player_embed|safe }}
+      </div>
+    {% else %}
+      {% if c.audio_player_embed %}
+        <p class="listenToArtist">
+          Listen to this artist:
+        </p>
+        <div class="multimediaAudio">
+          {{ c.audio_player_embed|safe }}
+        </div>
+      {% endif %}
+    {% endif %}
+	
+   
+    <div class="clearer audioMultimediaSeparator"></div>
+    
+    {% if changes.embed_url %}
+      <div class="multimediaVideo changedTrue">
+        {% oembed changes.embed_service_latest changes.embed_url %}
+      </div>
+    {% else %}
+      {% if c.embed_url %}
+        <div class="multimediaVideo">
+          {% oembed c.embed_service c.embed_url %}
+        </div>
+      {% endif %}
+    {% endif %}
+    <div class="multimediaPhotos multimediaPhotosNarrow{% if c.embed_url %}True{% endif %}">
+      {% tcache UI_CACHE_TIMEOUT "ir-event-photo-thumbnails" c.pk "square" "18" %}
+        {% event_photo_thumbnails c "square" "Photos" 12 %}
+      {% endtcache %}
+	  {% if is_owner %}
+      <div class="memberPhotoUpload">
+        <a href="{% url upload_event_photo event_id=c.pk %}">
+          Add your own pictures to this show!
+        </a>
+      </div>
+    {% else %}
+      <div class="memberPhotoUpload">
+        <a href="{% url upload_event_photo_member event_id=c.pk %}">
+          Add your own pictures to this show!
+        </a>
+      </div>
+	  {% endif %}
+    </div>
+  </div>
+
+  {% if event.is_public %}
+	  <div class="eventComments commentsWrapper" id="eventCommentsWrapper">
+      <div id="id_event_comments"><img src="{{ MEDIA_URL }}ui/images/loading.gif" alt=""/></div><!-- AJAX comment space -->
+	    <h4 id="post-comment">Post comment</h4>
+	    {% if user.is_authenticated %}
+	      {% if not is_owner and not c.is_member_generated %}
+	        <p class="postCommentP">You can also <a href="{% url messages_compose_to recipient=c.artist.user_profile.user.username %}">send a private message</a> to this {{ event.artist.artist_or_band }}.</p>
+	      {% endif %}
+	      {% include "event/tags/comment_form.html" %}
+	    {% else %}
+	      <p class="postCommentP"><a href="{% url login %}?next={{ event.get_absolute_url }}%23post-comment">Log in now</a> to post a comment.</p>
+	    {% endif %}
+      
+	  </div>
+  {% endif %}
+  
+ {% if event.is_public %}
+   {% event_badge_external c "embeddableBadgeWrapper" "show_code" "Embeddable Badge" is_owner is_admin %}
+   <p class="back-to-top"><a href="#container">&uarr;&nbsp;back to top</a></p>
+ {% endif %}
+{% endblock primary-content %}
+
+
+{% block secondary-content %}
+  <ul class="userOptions">
+    {% include "event/tags/attend_buttons.html" %}
+    {% if event.is_public %}
+      {% include "social/tags/twitter-post.html" %}
+      <li class="myspacePostTo buttonForm socialPostTo">
+        {% include "event/tags/myspace-post.html" %}
+      </li>
+      <li class="buttonMuted facebookPostTo socialPostTo">
+        <a href="{{ FACEBOOK_SHARER }}?u=http://{% domain %}{{ c.get_absolute_url|urlencode }}?src=fb&t={{ c.title|urlencode }}" {% popup %}>
+          <img src="{{ MEDIA_URL }}ui/images/facebook_32.gif" alt="" />
+          <span>Post to Facebook</span>
+        </a>
+      </li>
+    {% endif %}
+    {% if request.user.is_authenticated and not is_owner and not c.is_member_generated %}
+      <li class="buttonMuted">
+        <a href="{% url messages_compose_to recipient=c.artist.user_profile.user.username %}">Send Message</a>
+      </li>
+    {% endif %}
+  </ul>
+  
+  {% event_attendees event %}
+  
+  <div class="actions" id="actions{{ c.pk }}">    
+    {% if is_owner or is_admin %}
+      <h3 class="sidebarTitle">Actions Available </h3>
+      <ul class="adminOptions">
+        {% if is_owner and c.is_editable %}
+          <li class="buttonMuted"><a href="{% url edit_event event_id=c.pk %}">Edit Event</a></li>
+        {% endif %}
+        {% if not c.is_submitted and is_owner %}
+          <li class="buttonForm">
+            <form action="{% url request_event_approval event_id=c.pk %}" method="post">
+              <fieldset>
+                <p>
+                  This event has not yet been submitted for approval. It will not show in the public
+                  areas of Illius Rock until an administrator has approved it. Once you are ready to 
+                  request approval, please use the button below.
+                </p>
+                <input type="submit" value="Request Approval" class="submitButton submitButtonMuted"/>
+              </fieldset>
+            </form>
+          </li>
+        {% else %}
+          {% if c.is_submitted and not c.is_approved %}
+            <li class="message">This event is awaiting approval by Illius Rock admins.</li>
+          {% endif %}
+          {% if perms.event.can_manage_events %}
+            {% if changes %}
+              <li class="buttonMuted">
+                <a href="{% url home %}admin/event/eventchange/{{ changes.pk }}/">Approve Changes</a>
+              </li>
+            {% endif %}
+            {% if not c.is_approved and c.is_submitted %}
+              <li class="buttonMuted">
+                <a href="{% url home %}admin/event/event/{{ c.pk }}/">Approve Event</a>
+              </li>
+            {% endif %}
+          {% endif %}
+        {% endif %}
+        {% if is_owner and not c.has_ended %}
+          <li class="buttonMuted">
+            <a href="{% url delete_event event_id=c.pk %}">Delete Event!</a>
+          </li>
+        {% endif %}
+        {% if perms.event.can_manage_events %}
+          <li class="buttonMuted">
+            <a href="{% url home %}admin/event/event/{{ c.pk }}/">Event Admin</a>
+          </li>
+        {% endif %}
+        {% if is_owner %}
+          <li class="buttonMuted"><a href="{% url upload_event_photo event_id=c.pk %}">Upload photos</a></li>
+          {% if event.has_photos %}
+            <li class="buttonMuted">
+              <a href="{% url edit_event_photos event_id=event.pk %}">
+                Manage Photos
+              </a>
+            </li>
+          {% endif %}
+          {% if event.is_public and not c.is_member_generated %}
+            <li class="buttonMuted"><a href="{% url list_attendees_report event_id=c.pk %}">Attendees</a></li>
+          {% endif %}
+        {% endif %}
+      </ul>
+      {% if event.is_public %}
+        <p><a href="#external-badge">Embeddable badge code&nbsp;<span class="arrow">&raquo;</span></a></p>
+      {% endif %}
+    {% endif %}    
+  </div>  
+{% endblock secondary-content %}
+
+

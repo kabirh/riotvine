@@ -1,0 +1,19 @@
+{% if attendees %}
+  <h3 class="attendeesTitle sponsorsTitle">Interested</h3>
+  <ul class="attendeesUl">
+    {% for c in attendees %}
+      <li>
+        <a href="{% url list_attendees event_id=event.pk %}">
+          {% tcache context.UI_CACHE_TIMEOUT "ir-tpl-usr-avatar" c.attendee.pk %}
+            <img src="{{ c.attendee_profile.avatar_url }}" class="userAvatar" alt="{{ c.attendee_profile.username }}"
+              width="{{ c.attendee_profile.avatar_w }}" height="{{ c.attendee_profile.avatar_h }}"/>
+          {% endtcache %}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+  <p class="readMore">
+    <a href="{% url list_attendees event_id=event.pk %}">View all&nbsp;&raquo;</a>
+  </p>
+{% endif %}
+

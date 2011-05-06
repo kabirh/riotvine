@@ -1,0 +1,58 @@
+{% extends "event/base.html" %}
+
+{% block title %}Event attendees/interested users - {{ block.super }}{% endblock %}
+
+{% block h2 %}Event attendees/interested users{% endblock %}
+
+{% block primary-content %}
+  <h3>{{ event.title }}</h3>
+  {% if page.paginator.count %}
+    <p class="downloadOption">
+      The list of event attendees/interested users is also available as a downloadable CSV file. 
+      You will be able to open it in Excel, Google Docs, OpenOffice, and other spreadsheet applications. 
+      The CSV file contains further contact details of each attendee. <a href="{% url list_attendees_report event_id=event.pk %}?format=csv">&raquo;&nbsp;Download CSV</a>
+    </p>
+    <table class="eventListing attendeeListing">
+      <thead>
+        <tr>
+          <th>Login name</th>
+          <th>First name</th>
+          <th>Last name</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for c in page.object_list %}
+        <tr>
+          <td>
+            <a href="{% url messages_compose_to recipient=c.attendee.username %}" title="Message this attendee">
+              {{ c.attendee.username }}
+            </a>
+          </td>
+          <td>{{ c.attendee.first_name }}</td>
+          <td>{{ c.attendee.last_name }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    {% include "common/tags/pagination.html" %}
+  {% else %}
+    This event does not have any attendees yet.
+  {% endif %}
+{% endblock %}
+
+{% block secondary-content %}
+  {% if page.paginator.count %}
+    <ul class="userOptions">
+      <li class="buttonMuted">
+        <a href="{% url list_attendees_report event_id=event.pk %}?format=csv">Download CSV</a>
+      </li>
+      <li class="buttonMuted">
+        <a href="{% url message_attendees event_id=event.pk %}">Message Attendees</a>
+      </li>
+    </ul>
+  {% endif %}
+{% endblock secondary-content %}
+
+
+
+

@@ -1,0 +1,68 @@
+{% extends "campaign/base.html" %}
+
+{% block title %}Campaign {{ campaign.contributor_or_attendee }}s - {{ block.super }}{% endblock %}
+
+{% block h2 %}Campaign {{ campaign.contributor_or_attendee }}s{% endblock %}
+
+{% block pre-message %}{% endblock %}
+
+{% block primary-content %}
+  <h3>{{ campaign.title }}</h3>
+  {% if page.paginator.count %}
+    <p class="downloadOption">
+      The list of campaign {{ campaign.contributor_or_attendee }}s is also available as a downloadable CSV file. 
+      You will be able to open it in Excel, Google Docs, OpenOffice, and other spreadsheet applications. 
+      The CSV file contains further contact details of each contributor. <a href="{% url list_contributors campaign_id=campaign.pk %}?format=csv">&raquo;&nbsp;Download CSV</a>
+    </p>
+    <table class="campaignListing contributorListing">
+      <thead>
+        <tr>
+          <th>Login name</th>
+          <th>First name</th>
+          <th>Last name</th>
+		  {% if not campaign.is_free %}<th>Type</th>{% endif %}
+        </tr>
+      </thead>
+      <tbody>
+      {% for c in page.object_list %}
+        <tr>
+          <td>
+          	{% ifnotequal c.contributor.username 'anonymous' %}
+	          	{% if c.contributor.is_active %}
+		            <a href="{% url messages_compose_to recipient=c.contributor.username %}" title="Message this contributor">
+		              {{ c.contributor.username }}
+		            </a>
+				{% endif %}
+			{% endifnotequal %}
+          </td>
+          <td>{{ c.contributor.first_name }}</td>
+          <td>{{ c.contributor.last_name }}</td>
+		  {% if not campaign.is_free %}
+		  	<td>{{ c.contrib_type }}</td>
+		  {% endif %}
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    {% include "common/tags/pagination.html" %}
+  {% else %}
+    This campaign does not have any {{ campaign.contributor_or_attendee }}s yet.
+  {% endif %}
+{% endblock %}
+
+{% block secondary-content %}
+  {% if page.paginator.count %}
+    <ul class="userOptions">
+      <li class="buttonMuted">
+        <a href="{% url list_contributors campaign_id=campaign.pk %}?format=csv">Download CSV</a>
+      </li>
+      <li class="buttonMuted">
+        <a href="{% url message_contributors campaign_id=campaign.pk %}">Message {{ campaign.contributor_or_attendee|title }}s</a>
+      </li>
+    </ul>
+  {% endif %}
+{% endblock secondary-content %}
+
+
+
+

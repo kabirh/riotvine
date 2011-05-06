@@ -1,0 +1,96 @@
+{% campaign_badge_internal campaign classes is_owner is_admin %}
+<div class="campaignDetailsWrapper campaignOwner{{ is_owner }}">
+  {% if include_title %}
+    {% include "campaign/tags/campaign_signature.html" %}
+  {% else %}
+    {% if campaign.is_event %}
+      <h3>Details</h3>
+    {% else %}
+      <h3>Campaign Overview</h3>
+    {% endif %}
+    {% if campaign.is_free %}
+      <p><em>Free campaign!</em></p>
+    {% endif %}
+    {% if show_detail_link %}
+      <p class="viewDetail"><a href="{{ campaign.get_absolute_url }}">view detail</a></p>
+    {% endif %}
+  {% endif %}
+  
+  <table class="campaignSummaryTable">
+    <tbody>
+      {% if changes.start_date %}
+          <tr class="changedTrue"><th>Start date*</th><td>{{ changes.start_date|date }}</td></tr>
+      {% else %}
+        {% if campaign.is_active %}
+            <tr><th>Countdown</th><td>{{ campaign.end_date|daysleft }} left!</td></tr>
+        {% else %}
+            <tr><th>Start date</th><td>{{ campaign.start_date|date }}</td></tr>
+        {% endif %}
+      {% endif %}
+      
+      {% if changes.end_date %}
+        <tr class="changedTrue"><th>End date*</th><td>{{ changes.end_date|date }}</td></tr>
+      {% else %}
+        <tr><th>End date</th><td>{{ campaign.end_date|date }}</td></tr>
+      {% endif %}
+      
+      {% if not campaign.is_event %}
+        {% if changes.max_contributions %}
+          <tr class="changedTrue"><th>Maximum number of contributions*</th><td>{{ changes.max_contributions }}</td></tr>
+        {% else %}
+          <tr><th>Maximum number of contributions</th><td>{{ campaign.max_contributions }}</td></tr>
+        {% endif %}
+  
+        <tr>
+          <th>Contributions to date</th>
+          <td>
+            {{ campaign.stats.num_contributions|default:"None" }}
+            {% if campaign.is_sold_out %} <strong class="soldOut">(SOLD OUT!)</strong>{% endif %}
+          </td>
+        </tr>
+        {% if not campaign.is_free %}
+          {% if changes.target_amount %}
+            <tr class="changedTrue"><th>Target amount*</th><td>${{ changes.target_amount|stringformat:".2f" }}</td></tr>
+          {% else %}
+            <tr><th>Target amount</th><td>${{ campaign.target_amount|stringformat:".2f" }}</td></tr>
+          {% endif %}
+          {% if changes.contribution_amount %}
+            <tr class="changedTrue"><th>Amount per contribution*</th><td>${{ changes.contribution_amount|stringformat:".2f" }}</td></tr>
+          {% else %}
+            <tr><th>Amount per contribution</th><td>${{ campaign.contribution_amount|stringformat:".2f" }}</td></tr>
+          {% endif %}
+          {% comment %}
+            <tr class="amount-raised"><th>Amount raised</th><td>${{ campaign.amount_raised|stringformat:".2f" }}</td></tr>
+          {% endcomment %}
+        {% endif %}
+        {% if campaign.artist.website %}
+          <tr>
+            <th>{{ campaign.artist.artist_or_band|capfirst }} website</th>
+            <td><a class="artistWebsite externalLink" href="{{ campaign.artist.website }}">{{ campaign.artist.website_hostname }}</a></td>
+          </tr>
+        {% endif %}
+      {% endif %}
+      {% if is_owner and campaign.stats.views %}
+        <tr class="num-views"><th>Viewed</th><td>{{ campaign.stats.views }} time{{ campaign.stats.views|pluralize }} </td></tr>
+      {% endif %}
+      {% if campaign.edited_on %}
+        <tr class="edit-date"><th>Edited on</th><td>{{ campaign.edited_on|date:"fA T, n/d/y" }}</td></tr>
+      {% endif %}
+      {% if not separate_offering %}
+        <tr class="last offering">
+          <td colspan="2">
+            <strong>Offering</strong><br/>
+            {{ campaign.offering|html2text|truncatewords:"8" }}
+            <p class="viewDetail"><a href="{{ campaign.get_absolute_url }}">view detail</a></p>
+          </td>
+        </tr>
+      {% else %}
+        {% if campaign.is_public %}
+          <td colspan="2">
+            <p class="embed-link"><a href="#external-badge"><span class="leftArrow arrow">&larr;&nbsp;</span>Embed this badge on your webpage!</a></p>
+          </td>
+        {% endif %}
+      {% endif %}
+    </tbody>
+  </table>
+</div>

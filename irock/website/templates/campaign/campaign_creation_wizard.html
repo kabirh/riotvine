@@ -1,0 +1,56 @@
+{% extends "campaign/base.html" %}
+
+{% block head-extra %}
+ {{ form.media|safe }}
+ 
+ {% ifequal step 1 %}
+   <script type="text/javascript">
+    /* <![CDATA[ */
+    window.onload = function() {
+      var oFCKeditor = new FCKeditor('id_0-offering');
+      oFCKeditor.BasePath = "{{ MEDIA_URL }}ui/js/fckeditor/";
+      oFCKeditor.Config["CustomConfigurationsPath"] = "{{ MEDIA_URL }}ui/js/fckeditor_custom_config.js?v={{ UI_JS_VERSION }}";
+      oFCKeditor.ReplaceTextarea();
+    }
+    /* ]]> */
+  </script>
+ {% endifequal %}
+{% endblock %}
+
+{% block title %}Create Campaign - {{ block.super }}{% endblock %}
+
+{% block pre-message %}{% endblock %}
+
+{% block h2 %}Create Campaign{% endblock %}
+
+{% block primary-content %}
+  {% comment %}<p>Step {{ step }} of {{ step_count }}</p>{% endcomment %}
+
+  {% if form.errors or wizard_error %}
+    <p class="error">Please correct the errors below.</p>
+    {% if form.non_field_errors %}
+      <ul class="errorlist">
+        {{ form.non_field_errors.as_ul }}
+      </ul>
+    {% endif %}
+    {% if wizard_error %}
+      <ul class="errorlist">
+          <li>{{ wizard_error }}</li>
+      </ul>
+    {% endif %}
+  {% endif %}
+  
+  <form method="post" action="" {% if form.is_multipart %}enctype="multipart/form-data"{% endif %}>
+    <fieldset>
+      {% for field in form %}
+        {% common_formfield_render field %}
+      {% endfor %}
+      <input type="hidden" name="{{ step_field }}" value="{{ step0 }}" />
+      {{ previous_fields|safe }}
+      <input type="submit" value="{% ifequal step step_count %}Preview{% else %}Next{% endifequal %}" class="submitButton"/>
+    </fieldset>
+  </form>
+  
+  {% include "campaign/auto_url_js.html" %}
+{% endblock %}
+

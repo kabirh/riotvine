@@ -1,0 +1,144 @@
+{% extends "mobile/base.html" %}
+{% load pagination_tags %}
+{% load mobiletags %}
+
+{% block head-extra %}
+ <script type="text/javascript">
+    /* <![CDATA[ */
+    $(document).ready(do_event_date_picker);
+    /* ]]> */
+ </script>
+{% endblock %}
+
+{% block title %}{{ title }} - {{ location_name }} - {{ block.super }}{% endblock %}
+
+{% block body-class %}city{% endblock %}
+
+{% block logo %}
+  {{ block.super }}
+  <div class="current-city">
+	  what's up in
+      <h1>{{ location_name }}</h1>
+	  <small class="change-cities">
+	    {% if UI_SXSX_ENABLED %}
+		    {% ifequal request.location "austin" %}
+		      <a href="{% url search_events %}?q=%23sxsw">SXSW</a> |
+		    {% endifequal %}
+	    {% endif %}
+	    <a href="{% url home %}">change cities&nbsp;&raquo;</a>
+      </small>	  
+  </div>
+{% endblock logo %}
+
+{% block content %}
+  {% if flatcontent %}
+    <div class="flat-content">
+      {{ flatcontent|safe }}
+    </div>
+    <div class="clear"></div>
+  {% endif %}
+ <ul class="nav{% if num_ff %} nav-has-num{% endif %}">
+    <li><a href="{% url search_events %}?filter=favorites">I'm&nbsp;In&nbsp;For</a></li>
+    <li><a href="{% url search_events %}?filter=recommended">My&nbsp;Friends&nbsp;Are&nbsp;In&nbsp;For{% if num_ff %}&nbsp;<sup class="num">{{ num_ff }}</sup>{% endif %}</a></li>
+  </ul>
+  <ul class="nav nav2">
+    <li><a href="{% url list_events %}">All&nbsp;Events</a></li>
+    <li><a href="{% url search_events %}?limit=30">Starting&nbsp;Soon</a></li>
+    <li><a href="{% url search_events %}?sort=checkins">Most&nbsp;Checkins</a></li>
+ </ul>  
+  <div class="search">
+    <form action="{% url search_events %}" method="get">
+        <input type="search" autocapitalize="off" autocorrect="off" name="q" id="search" maxlength="120" length="30" value="{{ q }}" />
+        <input type="submit" name="search_submit" value="Search" />
+     </form>
+    <form class="jump-to-date" action="{% url search_events %}" method="get">
+      <input type="hidden" name="filter" value="date"/>
+      <input type="hidden" name="date" value="" class="event-date"/>      
+    </form>    
+  </div>
+  
+  <div class="search-listings" id="start">
+    {% autopaginate events 10 %}
+    <h2>{{ title }}</h2>
+    
+    <ul>
+      {% if not events %}
+        <li>
+          {% if searched %}
+            No events matched your search criteria. Please try something else.
+          {% else %}
+            Sorry. No events here at the moment.
+          {% endif %}
+        </li>
+      {% endif %}
+      {% for e in events %}
+	      <li class="city-event">
+	        <a class="event-image" href="{{ e.get_absolute_url }}"><img src="{{ e.image_square_medium_url }}" alt="{{ e.title }}" width="110" height="110" class="thumbnail" title="{{ e.title }}" /></a> 
+	        <span class="event_details event-time">
+	          {{ e.event_date|date:"D m.d" }}{% if e.has_start_time %}<em>@</em>{{ e.event_start_time|time }} {{ e.event_timezone }}{% endif %}
+	          <a class="map-link" href="{{ e.venue.map_url|mobilize_map_url }}"><img src="{{ MEDIA_URL }}ui/images/map-pin.png" width="12" height="20"/></a>
+	        </span>	           
+	        <a href="{{ e.get_absolute_url }}" class="event_title">{{ e.title_with_tinyurl }}</a>
+	        <span class="event_details">
+	          <div class="action-display action-display-main event-options" style="display:block;">
+		          <span class="posted-by">{% if e.show_creator %}Posted by <a href="{{ e.creator.get_absolute_url }}" class="userlink">{{ e.creator }}</a>{% endif %}</span>
+	              {% if e.is_active %}
+	                {% if user.is_authenticated %}
+		                {% if e.is_attending %}
+		                  <span href="{% url event_remove_from_calendar event_id=e.pk %}" class="calendarlink remove_from_calendar">I'm Out</span>
+		                {% else %}
+		                  <span href="{% url event_add_to_calendar event_id=e.pk %}" class="calendarlink add_to_calendar">I'm In!</span>
+		                {% endif %}
+	                {% else %}
+	                  <a href="{% url event_add_to_calendar event_id=e.pk %}" class="calendarlink add_to_calendar login_dialog">I'm In!</a>
+	                {% endif %}
+	              {% endif %}
+	          </div>
+	          
+	          {% if e.show_checkins and e.venue.fsq_checkins %}
+		          {% if user.is_authenticated %}
+		            <div class="event_checkins">
+			            <span class="checkins">
+			                {{ e.venue.fsq_checkins }} {{ e.venue.fsq_checkins|pluralize:"person's,people are" }} here now 
+			                <span class="gender-ratio">{{ e.venue.fsq_ratio_display|safe }}</span>
+						 </span>
+			            {% if e.whos_here %}			              
+				            <div class="faces">
+					            {% for p in e.whos_here %}
+					              <img src="{{ p|safe }}" class="face" width="45" height="45"/>
+					            {% endfor %}
+				            </div>				          
+			            {% endif %}
+			           </div>
+				  {% else %}
+				      <div class="event_checkins">
+			            <span class="checkins">
+			                {{ e.venue.fsq_checkins }} {{ e.venue.fsq_checkins|pluralize:"person's,people are" }} here now 
+			                <span class="gender-ratio">{{ e.venue.fsq_ratio_display|safe }}</span>
+						 </span>
+						 <span class="signin2see">
+			                 <a href="{% url signin %}?next={% if next %}{{ next }}{% else %}{{ request.get_full_path }}{% endif %}">Sign in</a> or 
+						      <a href="{% url signup %}?next={% if next %}{{ next }}{% else %}{{ request.get_full_path }}{% endif %}">create an account</a> 
+						      to see them.
+						  </span>
+			           </div>
+		          {% endif %}
+		      {% else %}
+		        {% if e.interested_count %}
+				  <span class="interested_count x-interested">{{ e.interested_count }} {{ e.interested_count|pluralize:"person is,people are" }} in:</span>
+				{% endif %}
+		        {% event_interested_users e request.user_profile %}
+              {% endif %}
+	        </span>
+	      </li>
+      {% endfor %}
+    </ul>
+    {% if events %}
+	    {% if is_search %}
+	      {% paginate 2 %}
+	    {% else %}
+	      <div class="pagination"><a class="next" href="{% url search_events %}?page=2">More&nbsp;&raquo;</a></div>
+	    {% endif %}  
+    {% endif %}
+  </div>
+{% endblock %}

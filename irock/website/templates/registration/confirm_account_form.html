@@ -1,0 +1,42 @@
+{% extends "registration/base.html" %}
+
+{% block head-extra %}
+ {{ form.media|safe }}
+{% endblock %}
+
+{% block alert-message %}{% endblock %}
+
+{% block title %}Confirm Account  - {{ block.super }}{% endblock %}
+
+
+{% block primary-content %}
+  <h2>Confirm Account</h2>
+  Type in the confirmation code you received in the welcome email we sent when you signed up.
+  
+  {% if form.errors %}
+    <p class="error">Please correct the errors below.</p>
+    {% if form.non_field_errors %}
+      <ul class="errorlist">
+        {{ form.non_field_errors.as_ul }}
+      </ul>
+    {% endif %}
+  {% endif %}
+  
+  <form method="post" action="">{% csrf_token %}
+    <table width="100%" class="form_table">
+      <tbody>
+        {% for field in form %}
+          {% common_formfield_render_tr field %}
+        {% endfor %}
+        <tr>
+          <td>&nbsp;</td>
+          <td>
+            <input name="next" value="{{ next }}" type="hidden"/>
+            <input type="submit" value="Confirm" />
+            <a href="{% url account %}" class="cancel_btn">Cancel</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+{% endblock %}

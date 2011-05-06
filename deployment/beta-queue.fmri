@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE service_bundle SYSTEM "/usr/share/lib/xml/dtd/service_bundle.dtd.1">
+<service_bundle type="manifest" name="beta_irock">
+	<service name="appl/beta-queue" type="service" version="1">
+		<create_default_instance enabled="true" />
+		
+		<dependency name="loopback" grouping="require_all" restart_on="error" type="service">
+			<service_fmri value="svc:/network/loopback:default"/>
+		</dependency>
+		<dependency name="physical" grouping="optional_all" restart_on="error" type="service">
+			<service_fmri value="svc:/network/physical:default"/>
+		</dependency>
+		<dependency name="multiuser-server" grouping="require_all" restart_on="error" type="service">
+			<service_fmri value="svc:/milestone/multi-user-server:default"/>
+		</dependency>
+		<dependency name="postgresql" grouping="require_all" restart_on="error" type="service">
+			<service_fmri value="svc:/network/postgresql:default"/>
+		</dependency>
+		
+		<exec_method type="method" name="start" exec="/home/illiusrock/bin/beta-queue.sh" timeout_seconds="60">
+			<method_context working_directory="/home/illiusrock/bin">
+				<method_credential user="illiusrock" group="illiusrock" />
+			</method_context>
+		</exec_method>
+		
+		<exec_method type="method" name="stop" exec=":kill -15" timeout_seconds="20">
+			<method_context />
+		</exec_method>
+	</service>
+</service_bundle>

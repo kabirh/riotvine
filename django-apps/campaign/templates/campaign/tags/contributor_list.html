@@ -1,0 +1,18 @@
+{% if contributors %}
+  <ul class="contributorsUl campaignsUl blurbsUl">
+    {% for c in contributors %}
+      <li>
+        <div class="row">
+          <a href="{{ c.campaign.get_absolute_url }}" class="campaignAvatarLink" title="{{ c.contributor.username|capfirst }} contributed ${{ c.amount|stringformat:".2f"}} to {{ c.campaign.title }}">
+            {% tcache context.UI_CACHE_TIMEOUT "ir-tpl-contrib" c.contributor.pk c.campaign.pk %}
+              <img src="{{ c.contributor.get_profile.avatar_url }}" class="userAvatar" alt="{{ c.contributor.username }}"
+                width="{{ c.contributor.get_profile.avatar_w }}" height="{{ c.contributor.get_profile.avatar_h }}"/>
+              <img class="contributorArrow" src="{{ context.MEDIA_URL }}ui/images/payment_indicator.png" width="50" height="50" alt='${{ c.amount|stringformat:".2f"}}'/>
+              <img src="{{ c.campaign.image_avatar_url }}" class="campaignAvatar" alt="{{ c.campaign.title }}"/>
+            {% endtcache %}
+          </a>
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}

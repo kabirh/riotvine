@@ -1,0 +1,15 @@
+{% extends "website/base-site.html" %}
+{% load i18n %}
+
+{% block title %}Messages - {{ block.super }}{% endblock %}
+{% block body-id %}messages{% endblock %}
+{% block bodyclass %}messages{% endblock %}
+
+{% block secondary-content %}
+  <ul class="userOptions">
+      <li class="button"><a href="{% url messages_inbox %} ">{% trans "Inbox" %}</a></li>
+      <li class="buttonMuted"><a href="{% url messages_outbox %} ">{% trans "Sent Messages" %}</a></li>
+      <li class="buttonMuted"><a href="{% url messages_compose %} ">{% trans "Compose New Message" %}</a></li>
+      <li class="buttonMuted"><a href="{% url messages_trash %} ">{% trans "Trash" %}</a></li>
+  </ul>
+{% endblock %}

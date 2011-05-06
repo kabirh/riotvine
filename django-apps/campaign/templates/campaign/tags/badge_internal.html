@@ -1,0 +1,8 @@
+{% if badge %}
+  <div class="badge badge-internal {{ classes }}">
+    <a href="{{ campaign.get_absolute_url }}" rel="payment">
+      <img src="{% url serve_badge_internal campaign_id=campaign.id %}{{ query_string }}" alt="{{ campaign.title }}"
+           width="{{ badge.image.width }}" height="{{ badge.image.height }}"/>
+    </a>
+  </div>
+{% endif %}

@@ -1,0 +1,5 @@
+<div class="fb_sso mobile-button">
+{% comment %}<a href="http://m.facebook.com/tos.php?api_key={{ FB_API_KEY }}&v=1.0&next=.{% filter slice:"0:"|urlencode_full %}{% url fb_login_mobile %}{% endfilter %}&cancel={% filter urlencode_full %}http://{{ TRUE_HOSTNAME_AND_PORT }}{{ next }}{% endfilter %}">Sign-in&nbsp;with&nbsp;Facebook</a>{% endcomment %}
+{% comment %}<a href="http://m.facebook.com/tos.php?api_key={{ FB_API_KEY }}&v=1.0&next=http://{{ TRUE_HOSTNAME_AND_PORT }}{% filter slice:"0:"|urlencode_full %}{% url fb_login_mobile %}{% endfilter %}&cancel={% filter urlencode_full %}http://{{ TRUE_HOSTNAME_AND_PORT }}{{ next }}{% endfilter %}">Sign-in&nbsp;with&nbsp;Facebook</a>{% endcomment %}
+<a href="http://m.facebook.com/tos.php?api_key={{ FB_API_KEY }}&v=1.0&next={% filter urlencode_full %}http://{{ TRUE_HOSTNAME_AND_PORT }}/{% endfilter %}&cancel={% filter urlencode_full %}http://{{ TRUE_HOSTNAME_AND_PORT }}{{ next }}{% endfilter %}">Sign-in&nbsp;with&nbsp;Facebook</a>
+</div>

@@ -1,0 +1,35 @@
+Hi Kabir,
+
+I've got a question with reference to steps #5 and #6 below.
+
+When a user Alice invites a friend Bob to sign up with RV, we will be storing that invite in our system so that Alice doesn't end up sending repetitive invites to Bob. I am wondering if we should use this stored data to do the following:
+
+If Bob signs up, we automatically assume that Alice has sent him an invite and that if he accepts it, their friendship will be fully established on the site. This way, step #6 gets simplified because the two users don't have to reaccept each other. Only the second user has to do it.
+
+Let me know if this makes sense.
+
+-Rajesh
+
+====================================
+
+Steps for our Facebook implementation v2: 
+1. Connect with Facebook - Initial authorization, happens after they push "Sign-in with Facebook. 
+
+2. Ask for email address – deferred until FB updates their API. If possible, allow users to skip this step.
+
+3. Friending page - User sees friends, selects the ones they want to share with. By default, all should be selected. Relevant FB pages: http://wiki.developers.facebook.com/index.php/Friends.getAppUsers & http://wiki.developers.facebook.com/index.php/Linking_Accounts_and_Finding_Friends
+
+4. When a user is selected, we should send them an email and/or site message saying that %User Name% has shared his Favorite events with you.
+
+5. (see email message above) Invites other users - Allow user to bring up the friend selector to send invites to their friends they would like to share events with. Relevant FB page: http://wiki.developers.facebook.com/index.php/Connect/Integrating_an_Invite_Form_into_Your_Website
+
+6. (see email message above) After a friend has accepted and signed up, display "New friends!" notification. This can appear in the top right area where we currently have the login box. Clicking this takes them back to the friending page with the Newest friends clearly marked or at the top of the list. By default check these friends off and ask the user to accept. 
+
+7.  Notify those friends that they have new people sharing events with them.
+
+8. It looks like FB allows an extra integration step for "Constant Authorization", which is referred to as offline_access in their docs. I think this will let us recalculate the user's friends on the site overnight like we do with our Twitter integration, and then notify them periodically to share events with these friends. We should do this step last, and account for users denying this permission just in case. Here's the relevant page: http://wiki.developers.facebook.com/index.php/Extended_permissions
+
+If we can provide copy for any of these steps, let me know and I'll write it up. Likewise, if you want Joe to work on the friending page design, let me know. I think re-using the template he's working on for the tabs interface will do perfectly.
+
+
+

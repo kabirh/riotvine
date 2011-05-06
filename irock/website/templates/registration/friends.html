@@ -1,0 +1,52 @@
+{% extends "registration/base.html" %}
+
+{% block title %}Friends - {{ user_profile.username }} - {{ block.super }}{% endblock %}
+
+{% block body-class %}tertiary{% endblock %}
+
+{% block primary-content %}
+  <div class="breadcrumbs"><a href="{% url account %}">My&nbsp;Account</a>&nbsp;&raquo;&nbsp;Friends</div>
+  
+  <table class="form_table_stacked" width="830px">
+	<tbody>
+		<tr>
+			<td class="tabbed_steps">
+        {% if request.session.fb_uid %}
+          <a href="{% url fb_invite_friends %}">Invite Friends</a>
+          <a href="{% url fb_manage_friends %}">Share With Friends</a>
+        {% else %}
+          <a href="/lnk/tweet-us/">Invite Friends</a>
+        {% endif %}
+				<a class="selected" href="{% url friends %}">View Friends</a>
+			</td>
+	    </tr>
+  
+        <tr>
+          <td>
+					  {% if friends %}
+					    <div class="twitter_heads">
+					      <ul>
+					      {% for f in friends %}
+					        <li>
+					          <a href="{{ f.user_profile2.get_absolute_url }}" title="{{ f.user_profile2 }}">
+						          {% if f.user_profile2.use_fb_profile %}
+						            <fb:profile-pic uid="{{ f.user_profile2.fb_userid }}" facebook-logo="false" linked="false" size="square"></fb:profile-pic>
+						          {% else %}
+						            <img src="{{ f.user_profile2.avatar_url }}" alt="{{ f.user_profile2 }}" width="48" height="48" />
+						          {% endif %}
+					          </a>
+                  </li>
+                 {% endfor %}
+					       </ul>
+                </div>
+					  {% else %}
+					    <p>
+					      Ummm... None of your friends are on RiotVine yet. <a href={% if request.session.fb_uid %}"{% url fb_invite_friends %}"{% else %}"/lnk/tweet-us/"{% endif %}>Round them up now&nbsp;&raquo;</a>
+					    </p>
+					  {% endif %}
+			  </td>
+	  </tr>
+    </tbody>
+  </table>
+{% endblock %}
+

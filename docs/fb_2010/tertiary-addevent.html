@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>RiotVine - city template</title>
+<link href="css/reset.css" rel="stylesheet" type="text/css" />
+<link href="css/general.css" rel="stylesheet" type="text/css" />
+<!--[if lte IE 7]>
+   <link rel="stylesheet" type="text/css" href="css/ie67_fixes.css">
+<![endif]-->
+<!--[if IE 6]>
+	<script type="text/javascript" src="./js/supersleight-min.js"></script>
+<![endif]-->
+</head>
+<body id="tertiary">
+<div class="master_container">
+  <div class="utility_nav"><a href="#">RiotVine</a> / <a href="#">Add An Event</a></div>
+  <div class="primary_content">
+    <div class="masthead">
+      <div class="login_container" id="logged_in">
+        <div class="headshot_box"> <a href="#"><img src="images/user_med.jpg" width="60" height="60" class="thumbnail" /></a>
+          <div class="title">Welcome Kabir</div>
+          <a href="#">My Account</a> | <a href="#">Logout</a></div>
+        <div class="mail_alert">You have <a href="#">1 new message</a> | <a href="#" class="inbox">view inbox</a></div>
+      </div>
+      <a href="index.html" title="RiotVine is your best source for event networking"><img src="images/logo.png" alt="RiotVine Logo" width="236" height="82" align="left" class="logo" /></a></div>
+  </div>
+  <div class="secondary_content-wrapper">
+    <div class="secondary_content">
+      <h2>Add An Event</h2>
+      <form id="id_event_edit_form" method="post" action="" >
+        <div style='display:none;'>
+          <input type='hidden' id='csrfmiddlewaretoken' name='csrfmiddlewaretoken' value='5db84081cf946dd5beeece073da94820' />
+        </div>
+        <table width="100%" class="form_table_stacked">
+          <tbody>
+            <tr class="required_field_true ">
+              <td colspan="2" class="tabbed_steps"><a href="#" class="selected">1. Create Your Event</a><a href="#">2. Customize Your Event...</a><a href="#">3. Add More Detail...</a></td>
+            </tr>
+            <tr id="id_tr_title" class="required_field_true ">
+              <td colspan="2"><p>
+                  <label for="id_title"><strong>Title</strong></label>
+                  <br />
+                  <small>A title for your event. 120 characters max. For example: Live show!, etc.</small><br />
+                  <input name="title" type="text" id="id_title" class="fullwidth" maxlength="120" />
+                </p>
+                <p>
+                  <label for="id_event_date"><strong>Date</strong></label>
+                  <br />
+                  <small>In the format M/D/YYYY or YYYY-M-D. For example, 7/21/2008 or 2008-7-21.</small><br />
+                  <input id="id_event_date" type="text" class="date_field" name="event_date" />
+                </p>
+                <p>
+                  <label for="id_description"><strong>Description</strong></label>
+                  <br />
+                  <small>A longer description of this event.</small><br />
+                  <textarea id="id_description" rows="10" class="fullwidth" name="description"></textarea>
+                </p>
+                <p>
+                  <label for="id_venue_name"><strong>Venue</strong></label>
+                  <br />
+                  <small>Type in the venue name and click search. Include the city and state for best results.</small><br />
+                  <input name="venue_name" type="text" id="id_venue_name" size="40" maxlength="255" /><input type="submit" value="Search" />
+                </p></td>
+            </tr>
+            <tr>
+              <td class="submitrow"><input type="reset" name="venue_source" value="Cancel" id="" /> <small><a href="/" class="redlink">Delete This Event</a></small>
+                <!--<a href="/" class="cancel_btn">Cancel</a>--> </td>
+              <td align="right" class="submitrow"><input type="hidden" name="venue_source" value="user-entered" id="id_venue_source" class="nextbtn" />
+                <input type="hidden" name="venue_params" id="id_venue_params" />
+                <input type="submit" value="Next Step >" class="nextbtn" /></td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+      <div class="clear"></div>
+    </div>
+  </div>
+  <div class="footer_content"><a href="#">Home</a> | <a href="#">News</a> | <a href="#">About</a> | <a href="#">Contact</a> | <a href="#">Terms</a> | <a href="#">Redeem Ticket</a> | <a href="#">Login / Register</a></div>
+  <div class="subfooter_content">Copyright &copy; 2009 RiotVine, Inc. All rights reserved.</div>
+</div>
+</body>
+</html>

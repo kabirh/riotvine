@@ -1,0 +1,14 @@
+<form class="login_form" method="post" action="{% url login %}">
+  <fieldset>
+    Sign in here or <a href="{% url register %}?next={% if next %}{{ next }}{% else %}{{ request.get_full_path }}{% endif %}" title="Signing up is quick and easy!"><strong>Create an Account for Free!</strong></a><br />
+    <label for="uname" class="overlabel">Username or Email</label>
+    <input name="username" type="text" value="" id="uname"/><br />
+    <label for="pword" class="overlabel">Password</label>
+    <input name="password" type="password" value="" id="pword"/><br />
+    <input name="next" value="{% if next %}{{ next }}{% else %}{{ request.get_full_path }}{% endif %}" type="hidden"/>
+    <div class="submit_area"><br />
+    <input name="submit" type="submit" value="Sign In" class="submit_btn png"/><br />
+    <a href="{% url reset_password %}" title="forgot password?">umm...help?</a>
+    </div>
+  </fieldset>
+</form>

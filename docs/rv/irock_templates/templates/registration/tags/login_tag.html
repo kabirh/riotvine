@@ -1,0 +1,19 @@
+<form method="post" action="{% url login %}">
+  <fieldset>
+      <div class="ctrlHolder checkboxFalse requiredTrue">
+        <label for="xid_username">Login name or E-mail:</label>
+        <input id="xid_username" name="username" maxlength="150" type="text" class="textInput"/>
+      </div>
+      <div class="ctrlHolder checkboxFalse requiredTrue">
+        <label for="xid_password">Password:</label>
+        <input id="xid_password" name="password" maxlength="30" type="password"  class="textInput"/>
+      </div>
+	  <input value="Login" type="submit" class="submitButton"/>
+      <p><a href="{% url reset_password %}">Forgot Password?</a></p>
+	  <input name="next" value="{{ next }}" type="hidden"/>
+  </fieldset>
+</form>
+
+
+
+

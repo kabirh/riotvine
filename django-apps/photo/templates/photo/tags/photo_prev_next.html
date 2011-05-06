@@ -1,0 +1,46 @@
+<ul class="photoPrevNext">
+  <li class="photoNext">
+    {% if previous_object %}
+      <span class="thumb">
+        <a class="photoLink" href="{{ request.path }}?page={{ page.previous_page_number }}">
+          <img src="{{ previous_object.square_thumbnail.image.url }}"
+               width="{{ previous_object.square_thumbnail.width }}"
+               height="{{ previous_object.square_thumbnail.height }}"
+               alt="previous photo"/>
+        </a>
+      </span>
+      <span class="pageLink">
+        <a class="photoLink" href="{{ request.path }}?page={{ page.previous_page_number }}"><span class="arrow">&laquo;</span>&nbsp;previous</a>
+      </span>
+    {% else %}
+      <span class="dummyThumb"></span>
+      <span class="dummyPageLink"><span class="arrow">&laquo;</span>&nbsp;previous</span>
+    {% endif %}
+  </li>
+  <li class="photoIndex">    
+    {% if index_link %}
+      <span class="dummyThumb"><a href="{{ index_link }}">&nbsp;</a></span>
+      <span class="pageLink">
+        <a href="{{ index_link }}">index&nbsp;<span class="arrow">&uarr;</span></a>
+      </span>
+    {% endif %}
+  </li>
+  <li class="photoNext">
+    {% if next_object %}
+      <span class="thumb">
+        <a class="photoLink" href="{{ request.path }}?page={{ page.next_page_number }}">
+          <img src="{{ next_object.square_thumbnail.image.url }}"
+               width="{{ next_object.square_thumbnail.width }}"
+               height="{{ next_object.square_thumbnail.height }}"
+               alt="next photo"/>
+        </a>
+      </span>
+      <span class="pageLink">
+        <a class="photoLink" href="{{ request.path }}?page={{ page.next_page_number }}">next&nbsp;<span class="arrow">&raquo;</span></a>
+      </span>
+    {% else %}
+      <span class="dummyThumb"></span>
+      <span class="dummyPageLink"><span class="arrow">next&nbsp;<span class="arrow">&raquo;</span></span>
+    {% endif %}
+  </li>
+</ul>

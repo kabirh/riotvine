@@ -1,0 +1,25 @@
+{% extends "event/base.html" %}
+
+{% block body-id %}event_badge{% endblock %}
+{% block jquery-css %}{% endblock jquery-css %}
+{% block main-script %}{% endblock main-script %}
+{% block title %}{{ event.title }} - {{ block.super }}{% endblock %}
+
+
+{% block full-content %}
+  <div class="three-column event_badge">
+    <div class="column">
+      <div class="feature_top">
+        <a href="{{ event.get_absolute_url }}" target="_blank"><img src="{{ event.image_square_url }}" alt="badge" width="200" height="200" class="thumbnail" title="{{ event.title }}" /></a>
+        <a href="{{ event.get_absolute_url }}" class="event_title" target="_blank">{{ event.title }}</a>
+      </div>
+      <div class="feature_bottom">
+        <span class="event_date">{{ event.event_date|date:"D m.d" }}</span> 
+        {% if not event.is_auto_generated %}Posted by {{ event.creator }}{% endif %}<br />
+        <span class="tweet_count">{{ event.tweet_count }}</span> 
+        {% if event.interested_count %}| <span class="interested_count">{{ event.interested_count }} Interested</span>{% endif %}
+      </div>
+    </div>
+  </div>
+{% endblock full-content %}
+

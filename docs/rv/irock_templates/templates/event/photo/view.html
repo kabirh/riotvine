@@ -1,0 +1,51 @@
+{% extends "event/photo/base.html" %}
+
+{% block title %}Event Photo - {{ block.super }}{% endblock %}
+
+{% block head-extra %}
+  {% ifnotequal paginator.num_pages 1 %}
+     <script type="text/javascript">
+        /* <![CDATA[ */
+        var photo_num_pages = {{ paginator.num_pages }};
+        var photo_view_url = "{{ request.path }}?page=";
+        var photo_next_page = {{ page.next_page_number }};
+        var photo_current_pk = 0;
+        $(document).ready(do_photos);
+        /* ]]> */
+      </script>
+  {% endifnotequal %}
+{% endblock %}
+
+{% block h2-container %}{% endblock %}
+
+{% block primary-content %}
+  {% ifnotequal paginator.num_pages 1 %}
+    <div id="id-static-paginator">
+      {% photo_prev_next request paginator page index_link %}
+    </div>
+  {% endifnotequal %}
+
+  <ul class="mediumPhotoListing photoListing">
+    {% for photo in page.object_list %}
+      <li class="photoListItem" id="id-image-wrapper">
+        {% include "photo/tags/one-photo.html" %}
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
+
+{% block secondary-content %}
+  <p><a href="{% url list_event_photos event_id=event.pk %}">View all photos&nbsp;<span class="arrow">&raquo;</span></a></p>
+  {% if user.is_staff or is_owner %}
+    {% for photo in page.object_list %}
+      <form method="post" action="{% url delete_event_photo event_id=event.pk %}">
+        <fieldset>
+          <input id="id-delete-photo" type="hidden" name="photo_id" value="{{ photo.pk }}"/>
+          <input class="submitButton" type="submit" name="submit" value="Delete Photo!"/>
+        </fieldset>
+      </form>
+    {% endfor %}
+  {% endif %}
+  {{ block.super }}
+{% endblock %}
+

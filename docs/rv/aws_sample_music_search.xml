@@ -1,0 +1,72 @@
+<?xml version="1.0" ?>
+<ItemSearchResponse xmlns="http://webservices.amazon.com/AWSECommerceService/2008-08-19">
+	<OperationRequest>
+		<HTTPHeaders>
+			<Header Name="UserAgent" Value="Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; F-6.0SP2-20041109; InfoPath.1; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)"></Header>
+		</HTTPHeaders>
+		<RequestId>eaec4f3a-acfd-4f8f-97c6-0bf23cbe9412</RequestId>
+		<Arguments>
+			<Argument Name="Operation" Value="ItemSearch"></Argument>
+			<Argument Name="Service" Value="AWSECommerceService"></Argument>
+			<Argument Name="Signature" Value="kPkWM4RIcnCj4LBcg2oNO3WVp/yuw1/77wlVi6Qvfrg="></Argument>
+			<Argument Name="Version" Value="2008-08-19"></Argument>
+			<Argument Name="Keywords" Value="Will Dailey"></Argument>
+			<Argument Name="Sort" Value="-releasedate"></Argument>
+			<Argument Name="SignatureMethod" Value="HmacSHA256"></Argument>
+			<Argument Name="IdType" Value="ASIN"></Argument>
+			<Argument Name="AWSAccessKeyId" Value="113ANC87BN82Q5CTP3R2"></Argument>
+			<Argument Name="Timestamp" Value="2009-11-16T15:17:51"></Argument>
+			<Argument Name="ResponseGroup" Value="ItemIds"></Argument>
+			<Argument Name="SearchIndex" Value="MP3Downloads"></Argument>
+			<Argument Name="SignatureVersion" Value="2"></Argument>
+		</Arguments>
+		<RequestProcessingTime>0.0775740000000000</RequestProcessingTime>
+	</OperationRequest>
+	<Items>
+		<Request>
+			<IsValid>True</IsValid>
+			<ItemSearchRequest>
+				<Condition>New</Condition>
+				<DeliveryMethod>Ship</DeliveryMethod>
+				<Keywords>Will Dailey</Keywords>
+				<MerchantId>Amazon</MerchantId>
+				<ResponseGroup>ItemIds</ResponseGroup>
+				<ReviewSort>-SubmissionDate</ReviewSort>
+				<SearchIndex>MP3Downloads</SearchIndex>
+				<Sort>-releasedate</Sort>
+			</ItemSearchRequest>
+		</Request>
+		<TotalResults>57</TotalResults>
+		<TotalPages>6</TotalPages>
+		<Item>
+			<ASIN>B002RDA9Q8</ASIN>
+		</Item>
+		<Item>
+			<ASIN>B002RX7OH0</ASIN>
+		</Item>
+		<Item>
+			<ASIN>B002RX7OHU</ASIN>
+		</Item>
+		<Item>
+			<ASIN>B002BOJAOU</ASIN>
+		</Item>
+		<Item>
+			<ASIN>B002BOG24G</ASIN>
+		</Item>
+		<Item>
+			<ASIN>B002BOC9FC</ASIN>
+		</Item>
+		<Item>
+			<ASIN>B002BOC9EI</ASIN>
+		</Item>
+		<Item>
+			<ASIN>B002BOABUC</ASIN>
+		</Item>
+		<Item>
+			<ASIN>B002BOJANG</ASIN>
+		</Item>
+		<Item>
+			<ASIN>B002BOHXPI</ASIN>
+		</Item>
+	</Items>
+</ItemSearchResponse>

@@ -1,0 +1,23 @@
+a.helpButton, a:visited.helpButton {
+   top: 16px;
+}
+
+.feature img {
+   top: 15px;
+}
+
+.embedForm textarea{
+   position: relative;
+   left: -20px;
+}
+
+.userOptions,
+.adminOptions {height:auto;clear:both;overflow:hidden;}
+.adminGroupProfile {clear:both;overflow:hidden;height:auto;}
+
+.userOptions li,
+.adminOptions li {width:auto;width:233px;display:block;height:auto;zoom:1;}
+
+li.socialPostTo a img {margin-top:8px;}
+
+.commentList .comment {zoom:1}

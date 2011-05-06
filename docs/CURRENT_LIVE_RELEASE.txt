@@ -1,0 +1,11 @@
+Path: .
+URL: https://piermontweb.com/svn/irock/trunk
+Repository Root: https://piermontweb.com/svn/irock
+Repository UUID: a35f3acd-6b4c-0410-81dc-987f6f21ea69
+Revision: 1413
+Node Kind: directory
+Schedule: normal
+Last Changed Author: rajd
+Last Changed Rev: 1413
+Last Changed Date: 2010-02-04 14:45:03 -0500 (Thu, 04 Feb 2010)
+

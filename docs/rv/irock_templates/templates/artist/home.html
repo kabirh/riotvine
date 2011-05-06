@@ -1,0 +1,39 @@
+{% extends "artist/base.html" %}
+
+{% block title %}{{ artist.name }} - {{ block.super }}{% endblock %}
+
+{% block h2-container %}
+    <h2 {% if artist.user_profile.avatar %}class="avatarHeader"{% endif %}>
+      {% if artist.user_profile.avatar %}
+        <img class="avatar" src="{{ artist.user_profile.avatar.url }}" width="{{ artist.user_profile.avatar_width }}" height="{{ artist.user_profile.avatar_height }}" alt="{{ artist.username }}"/>
+      {% endif %}
+      {{ artist.name }}
+    </h2>
+{% endblock %}
+
+{% block primary-content %}
+  {% campaigns_active artist %}
+{% endblock %}
+
+{% block secondary-content %}
+  {% if request.user.is_authenticated %}
+    {% ifequal request.user artist.user_profile.user %}
+      <p>This is your own home page at {{ UI_SITE_TITLE_UNBROKEN|safe }}!</p>
+    {% else %}
+      <ul class="userOptions">
+        <li class="buttonMuted">
+          <a href="{% url messages_compose_to recipient=artist.user_profile.user.username %}">Send Message</a>
+        </li>
+      </ul>
+    {% endifequal %}
+  {% endif %}
+  {% if artist.website %}
+    <ul class="userOptions">
+      <li>
+        Visit {{ artist.artist_or_band }} website: 
+        <a class="artistWebsite" href="{{ artist.website }}">{{ artist.website_hostname }}&nbsp;&raquo;</a>
+      </li>
+    </ul>
+  {% endif %}
+{% endblock %}
+

@@ -1,0 +1,27 @@
+I want to put all the info we NEED to create a show and put it on the first page, step 1. The goal will be to get an event created and posted in this first step, and then let the user add info in step 2.
+
+Step 1 would need:
+===================
+1) Title: let's adjust the character limit to 120 to accomodate the bit.ly URL, and can we allow all english characters? Basically, any character that can be tweeted should be allowed.
+2) URL
+3) Venue: let's go back to the intial plan on this, by making it search google maps and come up with a venue name. My only concern is that I would like to keep track of all venues so that in the future, we can provide a list of all shows at a particular venue. Limit the list of returned entries to 9.
+4) Date
+5) Description
+
+Step 2:
+===========
+1) Price
+2) Ticket URL
+3) Twitter comments
+4) Event time, Time zone: I'd like to redesign this a bit to be more user friendly and not use the military time option if we can find a good workaround.
+5) Direct mp3 URL
+6) Embedded video: Mockup, https://sites.google.com:443/a/illiusrock.com/files/Home/EmbedVideo.jpg?attredirects=0
+
+Step 3:
+===========
+Flyer: I'd like to update this process so that even if a user doesn't have an image, we can create a useful badge. I also want the badges generated to have the event title on them. For now, we can use a stock image from istockphoto.com and use the badge generation code to overlay the event title. 
+
+Missing from this process is a field to enter the artist name. I want to revisit this later when we can make effective use of the data without too much overhead for the user.
+
+Get rid of external embedded audio player for reverbnation/imeem. Get rid of max attendees and minimum age. I might bring back minimum age later to let under 21 year olds find events that they can go to, but I'm not concerned about it for now.
+

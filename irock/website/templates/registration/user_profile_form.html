@@ -1,0 +1,56 @@
+{% extends "registration/base.html" %}
+
+{% block head-extra %}
+ {{ form.media|safe }}
+{% endblock %}
+
+{% block title %}Update Account - {{ block.super }}{% endblock %}
+
+{% block body-class %}tertiary{% endblock %}
+
+{% block primary-content %}
+  <div class="breadcrumbs"><a href="{% url account %}">My&nbsp;Account</a>&nbsp;&raquo;&nbsp;Update&nbsp;Account</div>
+  
+  <h2>
+    {% if user_profile.avatar %}
+      <img class="avatar" src="{{ user_profile.avatar.url }}" width="{{ user_profile.avatar_width }}" height="{{ user_profile.avatar_height }}" alt="{{ user_profile.username }}"/>
+    {% endif %}
+    Update Account
+  </h2>
+    
+  <p>Please fill out the form below to update your account.</p>
+
+  {% if form.errors %}
+    <p class="error">Please correct the errors below.</p>
+    {% if form.non_field_errors %}
+      <ul class="errorlist">
+        {{ form.non_field_errors.as_ul|linebreaksbr }}
+      </ul>
+    {% endif %}
+  {% endif %}
+  
+  <form method="post" action="" {% if form.is_multipart %}enctype="multipart/form-data"{% endif %}>{% csrf_token %}
+    <table width="100%" class="form_table">
+      <tbody>
+        {% for field in form %}
+          {% common_formfield_render_tr field %}
+        {% endfor %}
+        <tr>
+          <td>&nbsp;</td>
+          <td>
+            <input type="submit" value="Update" />
+            {% if next %}
+              <a href="{{ next }}" class="cancel_btn">Cancel</a>
+            {% else %}
+              <a href="{% url account %}" class="cancel_btn">Cancel</a>
+            {% endif %}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+  
+  <p>
+  To cancel your account, email us at <a href="mailto:help@riotvine.com">help@riotvine.com</a>.
+  </p>
+{% endblock %}

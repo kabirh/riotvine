@@ -1,0 +1,34 @@
+Single sign-on users should be able to:
+
+* tweet from event pages
+* get ripe picks
+* show up in the On Board section with other interested users
+
+For this last bullet, I'm not sure the best way to structure this flow. I'm picturing 
+different things to direct users on what to do:
+
+
+Before SSO:
+================
+* Text that explains what SSO provides and directs them to click an "Interested" button
+* An "Interested" button, when clicked produces an AJAX popup to explain SSO, similar to our registration.
+* The empty My Calendar prompt remains the same
+
+
+After SSO:
+================
+* Remove text that explains what SSO provides
+* Leave Interested button, which adds their profile pic to On Board
+* The empty My Calendar prompt remains the same. When users click it, they are directed to registration page, but without the AJAX popup.
+
+For the text that explains what SSO provides, use this:
+
+Going to this event? 
+Want to tweet directly from this page?
+Find other events your friends on Twitter are interested in?
+Click below!
+
+This text should appear in the right side bar, above the Interested button.
+
+
+

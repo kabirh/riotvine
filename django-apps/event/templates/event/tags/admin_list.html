@@ -1,0 +1,20 @@
+<h3>{{ title }}</h3>
+{% if events %}
+  <p class="editAction"><a href="{% url list_artist_events category=event_type %}">view all</a></p>
+  <ul class="eventsUl blurbsUl eventList{{ event_type }}">
+    {% for c in events %}
+      <li>
+        <a href="{{ c.get_absolute_url }}" class="avatarLink">
+          <img src="{{ c.image_avatar_url }}" class="avatar" alt="{{ c.title }}"/>
+        </a>
+        <p><a href="{{ c.get_absolute_url }}">{{ c.title }}</a></p>
+		{% if c.stats.views %}
+			<p class="num-views">Viewed {{ c.stats.views }} time{{ c.stats.views|pluralize }}</p>
+      	{% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p class="artistNoEvents">There are no shows in this category.</p>
+{% endif %}
+

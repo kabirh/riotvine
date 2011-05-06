@@ -1,0 +1,255 @@
+http://b.static.ak.fbcdn.net/images/share/facebook_share_icon.gif?7:26981
+
+GCO
+
+2008-07-30 19:18:15,614: campaign.views INFO fan1 - Pending Google Checkout contribution recorded: 7, fan1, 1.00
+[30/Jul/2008 19:18:15] "POST /campaign/contribute/7/google/ HTTP/1.1" 200 4701
+[30/Jul/2008 19:18:15] "GET /media/ui/css/reset.css?v=1.3.1 HTTP/1.1" 304 0
+[30/Jul/2008 19:18:15] "GET /media/ui/css/main.css?v=1.3.1 HTTP/1.1" 304 0
+[30/Jul/2008 19:18:15] "GET /media/ui/css/updates.css?v=1.3.1 HTTP/1.1" 304 0
+2008-07-30 19:18:57,437: campaign.views DEBUG ANON - Google Checkout IPN Headers: {'HTTP_AUTHORIZATION': 'Basic NjIxODk4OTg2OTQ5NTM1OktWVGpoX3c0eW5mcEdDcDdvbzdUdEE=', 'wsgi.multiprocess': False, 'RUN_MAIN': 'true', 'GNOME_DESKTOP_SESSION_ID': 'Default', 'SERVER_PROTOCOL': 'HTTP/1.0', 'SERVER_SOFTWARE': 'WSGIServer/0.1 Python/2.5.2', 'SCRIPT_NAME': u'', 'REQUEST_METHOD': 'POST', 'LOGNAME': 'rajesh', 'USER': 'rajesh', 'HOME': '/home/rajesh', 'QUERY_STRING': '', 'PATH': '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/bin/X11:/usr/games', 'LD_LIBRARY_PATH': '/usr/lib/firefox', 'LANG': 'en_US.UTF-8', 'SHELL': '/bin/bash', 'TZ': 'America/New_York', 'XDG_SESSION_COOKIE': '3cd44956de7df17f54578700472cb783-1217456284.846688-611294223', 'SERVER_NAME': 'localhost', 'SESSION_MANAGER': 'local/knight:/tmp/.ICE-unix/7055', 'SHLVL': '0', 'DISPLAY': ':0.0', 'wsgi.url_scheme': 'http', 'HTTP_VIA': '1.1 proxy.google.com:80 (squid)', 'WINDOWPATH': '7', 'SERVER_PORT': '8020', 'GPG_AGENT_INFO': '/tmp/seahorse-bkO9N6/S.gpg-agent:7126:1', 'wsgi.run_once': False, 'USERNAME': 'rajesh', 'CONTENT_LENGTH': '2043', 'GDM_XSERVER_LOCATION': 'local', 'CONTENT_TYPE': 'application/x-www-form-urlencoded', 'PYTHONPATH': '/home/rajesh/.eclipse/org.eclipse.sdk.ide/updates/eclipse/plugins/org.python.pydev_1.3.18/PySrc/pydev_sitecustomize:/home/rajesh/workspace/python/django-svn:/home/rajesh/workspace/python/irock/django-apps:/home/rajesh/workspace/python/irock/irock:/home/rajesh/workspace/python/irock/local:/home/rajesh/Development/p/tpl/django-messages:/home/rajesh/.eclipse/org.eclipse.sdk.ide/updates/eclipse/plugins/org.python.pydev.debug_1.3.18/pysrc:/usr/lib/python2.5:/usr/lib/python2.5/lib-dynload:/usr/lib/python2.5/lib-tk:/usr/lib/python2.5/plat-linux2:/usr/lib/python2.5/site-packages:/usr/lib/python2.5/site-packages:/usr/lib/python2.5/site-packages/BeautifulSoup-3.0.5-py2.5.egg:/usr/lib/python2.5/site-packages/Numeric:/usr/lib/python2.5/site-packages/PIL:/usr/lib/python2.5/site-packages/gst-0.10:/usr/lib/python2.5/site-packages/gtk-2.0:/usr/lib/python2.5/site-packages/pyparsing-1.4.10-py2.5.egg:/usr/lib/python25.zip:/usr/local/lib/python2.5/site-packages', 'SSH_AUTH_SOCK': '/tmp/keyring-ki1N6X/ssh', 'GNOME_KEYRING_SOCKET': '/tmp/keyring-ki1N6X/socket', 'GDMSESSION': 'default', 'wsgi.input': <socket._fileobject object at 0x87cb56c>, 'HTTP_USER_AGENT': 'Google Checkout Notification Agent 1.0', 'HTTP_HOST': 'piermontweb.dnsdojo.com:8020', 'wsgi.multithread': True, 'HTTP_CONNECTION': 'keep-alive', 'HTTP_CACHE_CONTROL': 'max-age=259200', 'DBUS_SESSION_BUS_ADDRESS': 'unix:abstract=/tmp/dbus-Xxxsw5lQYm,guid=8d2ef2c9ffe345566a65364b4890e89f', 'MOZILLA_FIVE_HOME': '/usr/lib/firefox', 'XAUTHORITY': '/home/rajesh/.Xauthority', 'DESKTOP_SESSION': 'default', 'JAVA_HOME': '/usr/lib/jvm/java-gcj', 'wsgi.version': (1, 0), 'GNOME_KEYRING_PID': '7054', 'GATEWAY_INTERFACE': 'CGI/1.1', 'HTTP_X_FORWARDED_FOR': 'unknown', 'OLDPWD': '/home/rajesh', 'REMOTE_ADDR': '74.125.64.136', 'GDM_LANG': 'en_US.UTF-8', 'XDG_DATA_DIRS': '/usr/local/share/:/usr/share/:/usr/share/gdm/', 'PWD': '/home/rajesh', 'DJANGO_SETTINGS_MODULE': 'irock.settings', 'GTK_RC_FILES': '/etc/gtk/gtkrc:/home/rajesh/.gtkrc-1.2-gnome2', 'wsgi.file_wrapper': <class 'django.core.servers.basehttp.FileWrapper'>, 'REMOTE_HOST': '', 'wsgi.errors': <open file '<stderr>', mode 'w' at 0xb7dd50b0>, 'PATH_INFO': u'/campaign/google-notification/'}
+2008-07-30 19:18:57,437: campaign.views DEBUG ANON - Google Checkout IPN data: 
+
+<QueryDict: {u'buyer-billing-address.region': [u'NY'], u'buyer-shipping-address.company-name': [u''], u'buyer-billing-address.company-name': [u''], u'buyer-shipping-address.fax': [u''], u'shopping-cart.items.item-1.quantity': [u'1'], u'buyer-shipping-address.phone': [u'845 613-0670'], u'shopping-cart.items': [u'shopping-cart.items.item-1'], u'buyer-shipping-address.structured-name.first-name': [u'Rajesh'], u'buyer-shipping-address.postal-code': [u'10990'], u'buyer-billing-address.city': [u'Nyack'], u'buyer-billing-address.structured-name.last-name': [u'AVS+FULL'], u'google-order-number': [u'168713772056995'], u'order-adjustment.total-tax.currency': [u'USD'], u'buyer-shipping-address.structured-name.last-name': [u'Dhawan'], u'buyer-billing-address.contact-name': [u'AVS+FULL'], u'buyer-billing-address.email': [u'Rajesh-bp8251d9hnq@sandbox.google.com'], u'order-total': [u'1.0'], u'shopping-cart.items.item-1.item-name': [u'Dire Straits: Test campaign wizard'], u'buyer-billing-address.fax': [u''], u'order-adjustment.adjustment-total': [u'0.0'], u'buyer-shipping-address.contact-name': [u'Rajesh Dhawan'], u'financial-order-state': [u'REVIEWING'], u'buyer-shipping-address.city': [u'Nyack'], u'buyer-id': [u'213265199630080'], u'shopping-cart.items.item-1.unit-price.currency': [u'USD'], u'buyer-billing-address.country-code': [u'US'], u'_type': [u'new-order-notification'], u'buyer-shipping-address.address1': [u'1 My Way'], u'buyer-shipping-address.address2': [u''], u'timestamp': [u'2008-07-30T23:18:53.448Z'], u'order-adjustment.total-tax': [u'0.0'], u'order-adjustment.adjustment-total.currency': [u'USD'], u'buyer-billing-address.phone': [u'845 613-0670'], u'buyer-billing-address.postal-code': [u'10990'], u'shopping-cart.items.item-1.merchant-item-id': [u'7'], u'buyer-billing-address.address1': [u'AVS+FULL'], u'buyer-billing-address.address2': [u''], u'buyer-marketing-preferences.email-allowed': [u'false'], u'buyer-shipping-address.email': [u'Rajesh-bp8251d9hnq@sandbox.google.com'], u'buyer-shipping-address.country-code': [u'US'], u'shopping-cart.items.item-1.unit-price': [u'1.0'], u'shopping-cart.merchant-private-data': [u'28~fan1~71217459895283'], u'buyer-billing-address.structured-name.first-name': [u''], u'order-total.currency': [u'USD'], u'fulfillment-order-state': [u'NEW'], u'serial-number': [u'168713772056995-00001-7\r\n'], u'shopping-cart.items.item-1.item-description': [u'Illius Rock campaign: Dire Straits: Test campaign wizard'], u'buyer-shipping-address.region': [u'NY']}>
+
+[30/Jul/2008 19:18:57] "POST /campaign/google-notification/ HTTP/1.0" 200 73
+2008-07-30 19:19:58,261: campaign.views DEBUG ANON - Google Checkout IPN Headers: {'HTTP_AUTHORIZATION': 'Basic NjIxODk4OTg2OTQ5NTM1OktWVGpoX3c0eW5mcEdDcDdvbzdUdEE=', 'wsgi.multiprocess': False, 'RUN_MAIN': 'true', 'GNOME_DESKTOP_SESSION_ID': 'Default', 'SERVER_PROTOCOL': 'HTTP/1.0', 'SERVER_SOFTWARE': 'WSGIServer/0.1 Python/2.5.2', 'SCRIPT_NAME': u'', 'REQUEST_METHOD': 'POST', 'LOGNAME': 'rajesh', 'USER': 'rajesh', 'HOME': '/home/rajesh', 'QUERY_STRING': '', 'PATH': '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/bin/X11:/usr/games', 'LD_LIBRARY_PATH': '/usr/lib/firefox', 'LANG': 'en_US.UTF-8', 'SHELL': '/bin/bash', 'TZ': 'America/New_York', 'XDG_SESSION_COOKIE': '3cd44956de7df17f54578700472cb783-1217456284.846688-611294223', 'SERVER_NAME': 'localhost', 'SESSION_MANAGER': 'local/knight:/tmp/.ICE-unix/7055', 'SHLVL': '0', 'DISPLAY': ':0.0', 'wsgi.url_scheme': 'http', 'HTTP_VIA': '1.1 proxy.google.com:80 (squid)', 'WINDOWPATH': '7', 'SERVER_PORT': '8020', 'GPG_AGENT_INFO': '/tmp/seahorse-bkO9N6/S.gpg-agent:7126:1', 'wsgi.run_once': False, 'USERNAME': 'rajesh', 'CONTENT_LENGTH': '299', 'GDM_XSERVER_LOCATION': 'local', 'CONTENT_TYPE': 'application/x-www-form-urlencoded', 'PYTHONPATH': '/home/rajesh/.eclipse/org.eclipse.sdk.ide/updates/eclipse/plugins/org.python.pydev_1.3.18/PySrc/pydev_sitecustomize:/home/rajesh/workspace/python/django-svn:/home/rajesh/workspace/python/irock/django-apps:/home/rajesh/workspace/python/irock/irock:/home/rajesh/workspace/python/irock/local:/home/rajesh/Development/p/tpl/django-messages:/home/rajesh/.eclipse/org.eclipse.sdk.ide/updates/eclipse/plugins/org.python.pydev.debug_1.3.18/pysrc:/usr/lib/python2.5:/usr/lib/python2.5/lib-dynload:/usr/lib/python2.5/lib-tk:/usr/lib/python2.5/plat-linux2:/usr/lib/python2.5/site-packages:/usr/lib/python2.5/site-packages:/usr/lib/python2.5/site-packages/BeautifulSoup-3.0.5-py2.5.egg:/usr/lib/python2.5/site-packages/Numeric:/usr/lib/python2.5/site-packages/PIL:/usr/lib/python2.5/site-packages/gst-0.10:/usr/lib/python2.5/site-packages/gtk-2.0:/usr/lib/python2.5/site-packages/pyparsing-1.4.10-py2.5.egg:/usr/lib/python25.zip:/usr/local/lib/python2.5/site-packages', 'SSH_AUTH_SOCK': '/tmp/keyring-ki1N6X/ssh', 'GNOME_KEYRING_SOCKET': '/tmp/keyring-ki1N6X/socket', 'GDMSESSION': 'default', 'wsgi.input': <socket._fileobject object at 0x87cb56c>, 'HTTP_USER_AGENT': 'Google Checkout Notification Agent 1.0', 'HTTP_HOST': 'piermontweb.dnsdojo.com:8020', 'wsgi.multithread': True, 'HTTP_CONNECTION': 'keep-alive', 'HTTP_CACHE_CONTROL': 'max-age=259200', 'DBUS_SESSION_BUS_ADDRESS': 'unix:abstract=/tmp/dbus-Xxxsw5lQYm,guid=8d2ef2c9ffe345566a65364b4890e89f', 'MOZILLA_FIVE_HOME': '/usr/lib/firefox', 'XAUTHORITY': '/home/rajesh/.Xauthority', 'DESKTOP_SESSION': 'default', 'JAVA_HOME': '/usr/lib/jvm/java-gcj', 'wsgi.version': (1, 0), 'GNOME_KEYRING_PID': '7054', 'GATEWAY_INTERFACE': 'CGI/1.1', 'HTTP_X_FORWARDED_FOR': 'unknown', 'OLDPWD': '/home/rajesh', 'REMOTE_ADDR': '74.125.64.136', 'GDM_LANG': 'en_US.UTF-8', 'XDG_DATA_DIRS': '/usr/local/share/:/usr/share/:/usr/share/gdm/', 'PWD': '/home/rajesh', 'DJANGO_SETTINGS_MODULE': 'irock.settings', 'GTK_RC_FILES': '/etc/gtk/gtkrc:/home/rajesh/.gtkrc-1.2-gnome2', 'wsgi.file_wrapper': <class 'django.core.servers.basehttp.FileWrapper'>, 'REMOTE_HOST': '', 'wsgi.errors': <open file '<stderr>', mode 'w' at 0xb7dd50b0>, 'PATH_INFO': u'/campaign/google-notification/'}
+
+2008-07-30 19:19:58,262: campaign.views DEBUG ANON - Google Checkout IPN data: <QueryDict: {u'previous-financial-order-state': [u'REVIEWING'], u'_type': [u'order-state-change-notification'], u'previous-fulfillment-order-state': [u'NEW'], u'new-fulfillment-order-state': [u'NEW'], u'serial-number': [u'168713772056995-00005-1\r\n'], u'timestamp': [u'2008-07-30T23:19:54.544Z'], u'new-financial-order-state': [u'CHARGEABLE'], u'google-order-number': [u'168713772056995']}>
+
+2008-07-30 19:19:58,262: campaign.views DEBUG ANON - Ignored unsupported IPN type order-state-change-notification.
+
+[30/Jul/2008 19:19:58] "POST /campaign/google-notification/ HTTP/1.0" 200 73
+2008-07-30 19:19:59,231: campaign.views DEBUG ANON - Google Checkout IPN Headers: {'HTTP_AUTHORIZATION': 'Basic NjIxODk4OTg2OTQ5NTM1OktWVGpoX3c0eW5mcEdDcDdvbzdUdEE=', 'wsgi.multiprocess': False, 'RUN_MAIN': 'true', 'GNOME_DESKTOP_SESSION_ID': 'Default', 'SERVER_PROTOCOL': 'HTTP/1.0', 'SERVER_SOFTWARE': 'WSGIServer/0.1 Python/2.5.2', 'SCRIPT_NAME': u'', 'REQUEST_METHOD': 'POST', 'LOGNAME': 'rajesh', 'USER': 'rajesh', 'HOME': '/home/rajesh', 'QUERY_STRING': '', 'PATH': '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/bin/X11:/usr/games', 'LD_LIBRARY_PATH': '/usr/lib/firefox', 'LANG': 'en_US.UTF-8', 'SHELL': '/bin/bash', 'TZ': 'America/New_York', 'XDG_SESSION_COOKIE': '3cd44956de7df17f54578700472cb783-1217456284.846688-611294223', 'SERVER_NAME': 'localhost', 'SESSION_MANAGER': 'local/knight:/tmp/.ICE-unix/7055', 'SHLVL': '0', 'DISPLAY': ':0.0', 'wsgi.url_scheme': 'http', 'HTTP_VIA': '1.1 proxy.google.com:80 (squid)', 'WINDOWPATH': '7', 'SERVER_PORT': '8020', 'GPG_AGENT_INFO': '/tmp/seahorse-bkO9N6/S.gpg-agent:7126:1', 'wsgi.run_once': False, 'USERNAME': 'rajesh', 'CONTENT_LENGTH': '936', 'GDM_XSERVER_LOCATION': 'local', 'CONTENT_TYPE': 'application/x-www-form-urlencoded', 'PYTHONPATH': '/home/rajesh/.eclipse/org.eclipse.sdk.ide/updates/eclipse/plugins/org.python.pydev_1.3.18/PySrc/pydev_sitecustomize:/home/rajesh/workspace/python/django-svn:/home/rajesh/workspace/python/irock/django-apps:/home/rajesh/workspace/python/irock/irock:/home/rajesh/workspace/python/irock/local:/home/rajesh/Development/p/tpl/django-messages:/home/rajesh/.eclipse/org.eclipse.sdk.ide/updates/eclipse/plugins/org.python.pydev.debug_1.3.18/pysrc:/usr/lib/python2.5:/usr/lib/python2.5/lib-dynload:/usr/lib/python2.5/lib-tk:/usr/lib/python2.5/plat-linux2:/usr/lib/python2.5/site-packages:/usr/lib/python2.5/site-packages:/usr/lib/python2.5/site-packages/BeautifulSoup-3.0.5-py2.5.egg:/usr/lib/python2.5/site-packages/Numeric:/usr/lib/python2.5/site-packages/PIL:/usr/lib/python2.5/site-packages/gst-0.10:/usr/lib/python2.5/site-packages/gtk-2.0:/usr/lib/python2.5/site-packages/pyparsing-1.4.10-py2.5.egg:/usr/lib/python25.zip:/usr/local/lib/python2.5/site-packages', 'SSH_AUTH_SOCK': '/tmp/keyring-ki1N6X/ssh', 'GNOME_KEYRING_SOCKET': '/tmp/keyring-ki1N6X/socket', 'GDMSESSION': 'default', 'wsgi.input': <socket._fileobject object at 0x87cb56c>, 'HTTP_USER_AGENT': 'Google Checkout Notification Agent 1.0', 'HTTP_HOST': 'piermontweb.dnsdojo.com:8020', 'wsgi.multithread': True, 'HTTP_CONNECTION': 'keep-alive', 'HTTP_CACHE_CONTROL': 'max-age=259200', 'DBUS_SESSION_BUS_ADDRESS': 'unix:abstract=/tmp/dbus-Xxxsw5lQYm,guid=8d2ef2c9ffe345566a65364b4890e89f', 'MOZILLA_FIVE_HOME': '/usr/lib/firefox', 'XAUTHORITY': '/home/rajesh/.Xauthority', 'DESKTOP_SESSION': 'default', 'JAVA_HOME': '/usr/lib/jvm/java-gcj', 'wsgi.version': (1, 0), 'GNOME_KEYRING_PID': '7054', 'GATEWAY_INTERFACE': 'CGI/1.1', 'HTTP_X_FORWARDED_FOR': 'unknown', 'OLDPWD': '/home/rajesh', 'REMOTE_ADDR': '74.125.64.136', 'GDM_LANG': 'en_US.UTF-8', 'XDG_DATA_DIRS': '/usr/local/share/:/usr/share/:/usr/share/gdm/', 'PWD': '/home/rajesh', 'DJANGO_SETTINGS_MODULE': 'irock.settings', 'GTK_RC_FILES': '/etc/gtk/gtkrc:/home/rajesh/.gtkrc-1.2-gnome2', 'wsgi.file_wrapper': <class 'django.core.servers.basehttp.FileWrapper'>, 'REMOTE_HOST': '', 'wsgi.errors': <open file '<stderr>', mode 'w' at 0xb7dd50b0>, 'PATH_INFO': u'/campaign/google-notification/'}
+
+2008-07-30 19:19:59,232: campaign.views DEBUG ANON - Google Checkout IPN data: <QueryDict: {u'risk-information.billing-address.region': [u'NY'], u'_type': [u'risk-information-notification'], u'risk-information.billing-address.contact-name': [u'AVS+FULL'], u'risk-information.billing-address.phone': [u'845 613-0670'], u'risk-information.eligible-for-protection': [u'true'], u'serial-number': [u'168713772056995-00005-5\r\n'], u'timestamp': [u'2008-07-30T23:19:54.544Z'], u'risk-information.billing-address.country-code': [u'US'], u'risk-information.billing-address.company-name': [u''], u'risk-information.cvn-response': [u'M'], u'risk-information.billing-address.fax': [u''], u'risk-information.billing-address.email': [u'Rajesh-bp8251d9hnq@sandbox.google.com'], u'risk-information.billing-address.postal-code': [u'10990'], u'risk-information.buyer-account-age': [u'1'], u'risk-information.billing-address.address2': [u''], u'risk-information.billing-address.address1': [u'AVS+FULL'], u'risk-information.ip-address': [u'68.196.185.225'], u'risk-information.avs-response': [u'Y'], u'risk-information.partial-cc-number': [u'8368'], u'risk-information.billing-address.city': [u'Nyack'], u'google-order-number': [u'168713772056995']}>
+
+2008-07-30 19:19:59,233: campaign.views DEBUG ANON - Ignored unsupported IPN type risk-information-notification.
+
+[30/Jul/2008 19:19:59] "POST /campaign/google-notification/ HTTP/1.0" 200 73
+2008-07-30 19:20:02,385: campaign.views DEBUG ANON - Google Checkout IPN Headers: {'HTTP_AUTHORIZATION': 'Basic NjIxODk4OTg2OTQ5NTM1OktWVGpoX3c0eW5mcEdDcDdvbzdUdEE=', 'wsgi.multiprocess': False, 'RUN_MAIN': 'true', 'GNOME_DESKTOP_SESSION_ID': 'Default', 'SERVER_PROTOCOL': 'HTTP/1.0', 'SERVER_SOFTWARE': 'WSGIServer/0.1 Python/2.5.2', 'SCRIPT_NAME': u'', 'REQUEST_METHOD': 'POST', 'LOGNAME': 'rajesh', 'USER': 'rajesh', 'HOME': '/home/rajesh', 'QUERY_STRING': '', 'PATH': '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/bin/X11:/usr/games', 'LD_LIBRARY_PATH': '/usr/lib/firefox', 'LANG': 'en_US.UTF-8', 'SHELL': '/bin/bash', 'TZ': 'America/New_York', 'XDG_SESSION_COOKIE': '3cd44956de7df17f54578700472cb783-1217456284.846688-611294223', 'SERVER_NAME': 'localhost', 'SESSION_MANAGER': 'local/knight:/tmp/.ICE-unix/7055', 'SHLVL': '0', 'DISPLAY': ':0.0', 'wsgi.url_scheme': 'http', 'HTTP_VIA': '1.1 proxy.google.com:80 (squid)', 'WINDOWPATH': '7', 'SERVER_PORT': '8020', 'GPG_AGENT_INFO': '/tmp/seahorse-bkO9N6/S.gpg-agent:7126:1', 'wsgi.run_once': False, 'USERNAME': 'rajesh', 'CONTENT_LENGTH': '307', 'GDM_XSERVER_LOCATION': 'local', 'CONTENT_TYPE': 'application/x-www-form-urlencoded', 'PYTHONPATH': '/home/rajesh/.eclipse/org.eclipse.sdk.ide/updates/eclipse/plugins/org.python.pydev_1.3.18/PySrc/pydev_sitecustomize:/home/rajesh/workspace/python/django-svn:/home/rajesh/workspace/python/irock/django-apps:/home/rajesh/workspace/python/irock/irock:/home/rajesh/workspace/python/irock/local:/home/rajesh/Development/p/tpl/django-messages:/home/rajesh/.eclipse/org.eclipse.sdk.ide/updates/eclipse/plugins/org.python.pydev.debug_1.3.18/pysrc:/usr/lib/python2.5:/usr/lib/python2.5/lib-dynload:/usr/lib/python2.5/lib-tk:/usr/lib/python2.5/plat-linux2:/usr/lib/python2.5/site-packages:/usr/lib/python2.5/site-packages:/usr/lib/python2.5/site-packages/BeautifulSoup-3.0.5-py2.5.egg:/usr/lib/python2.5/site-packages/Numeric:/usr/lib/python2.5/site-packages/PIL:/usr/lib/python2.5/site-packages/gst-0.10:/usr/lib/python2.5/site-packages/gtk-2.0:/usr/lib/python2.5/site-packages/pyparsing-1.4.10-py2.5.egg:/usr/lib/python25.zip:/usr/local/lib/python2.5/site-packages', 'SSH_AUTH_SOCK': '/tmp/keyring-ki1N6X/ssh', 'GNOME_KEYRING_SOCKET': '/tmp/keyring-ki1N6X/socket', 'GDMSESSION': 'default', 'wsgi.input': <socket._fileobject object at 0x87cb56c>, 'HTTP_USER_AGENT': 'Google Checkout Notification Agent 1.0', 'HTTP_HOST': 'piermontweb.dnsdojo.com:8020', 'wsgi.multithread': True, 'HTTP_CONNECTION': 'keep-alive', 'HTTP_CACHE_CONTROL': 'max-age=259200', 'DBUS_SESSION_BUS_ADDRESS': 'unix:abstract=/tmp/dbus-Xxxsw5lQYm,guid=8d2ef2c9ffe345566a65364b4890e89f', 'MOZILLA_FIVE_HOME': '/usr/lib/firefox', 'XAUTHORITY': '/home/rajesh/.Xauthority', 'DESKTOP_SESSION': 'default', 'JAVA_HOME': '/usr/lib/jvm/java-gcj', 'wsgi.version': (1, 0), 'GNOME_KEYRING_PID': '7054', 'GATEWAY_INTERFACE': 'CGI/1.1', 'HTTP_X_FORWARDED_FOR': 'unknown', 'OLDPWD': '/home/rajesh', 'REMOTE_ADDR': '74.125.64.136', 'GDM_LANG': 'en_US.UTF-8', 'XDG_DATA_DIRS': '/usr/local/share/:/usr/share/:/usr/share/gdm/', 'PWD': '/home/rajesh', 'DJANGO_SETTINGS_MODULE': 'irock.settings', 'GTK_RC_FILES': '/etc/gtk/gtkrc:/home/rajesh/.gtkrc-1.2-gnome2', 'wsgi.file_wrapper': <class 'django.core.servers.basehttp.FileWrapper'>, 'REMOTE_HOST': '', 'wsgi.errors': <open file '<stderr>', mode 'w' at 0xb7dd50b0>, 'PATH_INFO': u'/campaign/google-notification/'}
+
+2008-07-30 19:20:02,386: campaign.views DEBUG ANON - Google Checkout IPN data: <QueryDict: {u'previous-financial-order-state': [u'CHARGEABLE'], u'_type': [u'order-state-change-notification'], u'previous-fulfillment-order-state': [u'NEW'], u'new-fulfillment-order-state': [u'PROCESSING'], u'serial-number': [u'168713772056995-00006-1\r\n'], u'timestamp': [u'2008-07-30T23:19:54.573Z'], u'new-financial-order-state': [u'CHARGEABLE'], u'google-order-number': [u'168713772056995']}>
+
+2008-07-30 19:20:02,386: campaign.views DEBUG ANON - Ignored unsupported IPN type order-state-change-notification.
+
+[30/Jul/2008 19:20:02] "POST /campaign/google-notification/ HTTP/1.0" 200 73
+2008-07-30 19:20:04,363: campaign.views DEBUG ANON - Google Checkout IPN Headers: {'HTTP_AUTHORIZATION': 'Basic NjIxODk4OTg2OTQ5NTM1OktWVGpoX3c0eW5mcEdDcDdvbzdUdEE=', 'wsgi.multiprocess': False, 'RUN_MAIN': 'true', 'GNOME_DESKTOP_SESSION_ID': 'Default', 'SERVER_PROTOCOL': 'HTTP/1.0', 'SERVER_SOFTWARE': 'WSGIServer/0.1 Python/2.5.2', 'SCRIPT_NAME': u'', 'REQUEST_METHOD': 'POST', 'LOGNAME': 'rajesh', 'USER': 'rajesh', 'HOME': '/home/rajesh', 'QUERY_STRING': '', 'PATH': '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/bin/X11:/usr/games', 'LD_LIBRARY_PATH': '/usr/lib/firefox', 'LANG': 'en_US.UTF-8', 'SHELL': '/bin/bash', 'TZ': 'America/New_York', 'XDG_SESSION_COOKIE': '3cd44956de7df17f54578700472cb783-1217456284.846688-611294223', 'SERVER_NAME': 'localhost', 'SESSION_MANAGER': 'local/knight:/tmp/.ICE-unix/7055', 'SHLVL': '0', 'DISPLAY': ':0.0', 'wsgi.url_scheme': 'http', 'HTTP_VIA': '1.1 proxy.google.com:80 (squid)', 'WINDOWPATH': '7', 'SERVER_PORT': '8020', 'GPG_AGENT_INFO': '/tmp/seahorse-bkO9N6/S.gpg-agent:7126:1', 'wsgi.run_once': False, 'USERNAME': 'rajesh', 'CONTENT_LENGTH': '312', 'GDM_XSERVER_LOCATION': 'local', 'CONTENT_TYPE': 'application/x-www-form-urlencoded', 'PYTHONPATH': '/home/rajesh/.eclipse/org.eclipse.sdk.ide/updates/eclipse/plugins/org.python.pydev_1.3.18/PySrc/pydev_sitecustomize:/home/rajesh/workspace/python/django-svn:/home/rajesh/workspace/python/irock/django-apps:/home/rajesh/workspace/python/irock/irock:/home/rajesh/workspace/python/irock/local:/home/rajesh/Development/p/tpl/django-messages:/home/rajesh/.eclipse/org.eclipse.sdk.ide/updates/eclipse/plugins/org.python.pydev.debug_1.3.18/pysrc:/usr/lib/python2.5:/usr/lib/python2.5/lib-dynload:/usr/lib/python2.5/lib-tk:/usr/lib/python2.5/plat-linux2:/usr/lib/python2.5/site-packages:/usr/lib/python2.5/site-packages:/usr/lib/python2.5/site-packages/BeautifulSoup-3.0.5-py2.5.egg:/usr/lib/python2.5/site-packages/Numeric:/usr/lib/python2.5/site-packages/PIL:/usr/lib/python2.5/site-packages/gst-0.10:/usr/lib/python2.5/site-packages/gtk-2.0:/usr/lib/python2.5/site-packages/pyparsing-1.4.10-py2.5.egg:/usr/lib/python25.zip:/usr/local/lib/python2.5/site-packages', 'SSH_AUTH_SOCK': '/tmp/keyring-ki1N6X/ssh', 'GNOME_KEYRING_SOCKET': '/tmp/keyring-ki1N6X/socket', 'GDMSESSION': 'default', 'wsgi.input': <socket._fileobject object at 0x87cb56c>, 'HTTP_USER_AGENT': 'Google Checkout Notification Agent 1.0', 'HTTP_HOST': 'piermontweb.dnsdojo.com:8020', 'wsgi.multithread': True, 'HTTP_CONNECTION': 'keep-alive', 'HTTP_CACHE_CONTROL': 'max-age=259200', 'DBUS_SESSION_BUS_ADDRESS': 'unix:abstract=/tmp/dbus-Xxxsw5lQYm,guid=8d2ef2c9ffe345566a65364b4890e89f', 'MOZILLA_FIVE_HOME': '/usr/lib/firefox', 'XAUTHORITY': '/home/rajesh/.Xauthority', 'DESKTOP_SESSION': 'default', 'JAVA_HOME': '/usr/lib/jvm/java-gcj', 'wsgi.version': (1, 0), 'GNOME_KEYRING_PID': '7054', 'GATEWAY_INTERFACE': 'CGI/1.1', 'HTTP_X_FORWARDED_FOR': 'unknown', 'OLDPWD': '/home/rajesh', 'REMOTE_ADDR': '74.125.64.136', 'GDM_LANG': 'en_US.UTF-8', 'XDG_DATA_DIRS': '/usr/local/share/:/usr/share/:/usr/share/gdm/', 'PWD': '/home/rajesh', 'DJANGO_SETTINGS_MODULE': 'irock.settings', 'GTK_RC_FILES': '/etc/gtk/gtkrc:/home/rajesh/.gtkrc-1.2-gnome2', 'wsgi.file_wrapper': <class 'django.core.servers.basehttp.FileWrapper'>, 'REMOTE_HOST': '', 'wsgi.errors': <open file '<stderr>', mode 'w' at 0xb7dd50b0>, 'PATH_INFO': u'/campaign/google-notification/'}
+
+2008-07-30 19:20:04,363: campaign.views DEBUG ANON - Google Checkout IPN data: <QueryDict: {u'previous-financial-order-state': [u'CHARGEABLE'], u'_type': [u'order-state-change-notification'], u'previous-fulfillment-order-state': [u'PROCESSING'], u'new-fulfillment-order-state': [u'PROCESSING'], u'serial-number': [u'168713772056995-00008-1\r\n'], u'timestamp': [u'2008-07-30T23:19:54.605Z'], u'new-financial-order-state': [u'CHARGING'], u'google-order-number': [u'168713772056995']}>
+
+2008-07-30 19:20:04,364: campaign.views DEBUG ANON - Ignored unsupported IPN type order-state-change-notification.
+
+[30/Jul/2008 19:20:04] "POST /campaign/google-notification/ HTTP/1.0" 200 73
+2008-07-30 19:20:08,364: campaign.views DEBUG ANON - Google Checkout IPN Headers: {'HTTP_AUTHORIZATION': 'Basic NjIxODk4OTg2OTQ5NTM1OktWVGpoX3c0eW5mcEdDcDdvbzdUdEE=', 'wsgi.multiprocess': False, 'RUN_MAIN': 'true', 'GNOME_DESKTOP_SESSION_ID': 'Default', 'SERVER_PROTOCOL': 'HTTP/1.0', 'SERVER_SOFTWARE': 'WSGIServer/0.1 Python/2.5.2', 'SCRIPT_NAME': u'', 'REQUEST_METHOD': 'POST', 'LOGNAME': 'rajesh', 'USER': 'rajesh', 'HOME': '/home/rajesh', 'QUERY_STRING': '', 'PATH': '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/bin/X11:/usr/games', 'LD_LIBRARY_PATH': '/usr/lib/firefox', 'LANG': 'en_US.UTF-8', 'SHELL': '/bin/bash', 'TZ': 'America/New_York', 'XDG_SESSION_COOKIE': '3cd44956de7df17f54578700472cb783-1217456284.846688-611294223', 'SERVER_NAME': 'localhost', 'SESSION_MANAGER': 'local/knight:/tmp/.ICE-unix/7055', 'SHLVL': '0', 'DISPLAY': ':0.0', 'wsgi.url_scheme': 'http', 'HTTP_VIA': '1.1 proxy.google.com:80 (squid)', 'WINDOWPATH': '7', 'SERVER_PORT': '8020', 'GPG_AGENT_INFO': '/tmp/seahorse-bkO9N6/S.gpg-agent:7126:1', 'wsgi.run_once': False, 'USERNAME': 'rajesh', 'CONTENT_LENGTH': '309', 'GDM_XSERVER_LOCATION': 'local', 'CONTENT_TYPE': 'application/x-www-form-urlencoded', 'PYTHONPATH': '/home/rajesh/.eclipse/org.eclipse.sdk.ide/updates/eclipse/plugins/org.python.pydev_1.3.18/PySrc/pydev_sitecustomize:/home/rajesh/workspace/python/django-svn:/home/rajesh/workspace/python/irock/django-apps:/home/rajesh/workspace/python/irock/irock:/home/rajesh/workspace/python/irock/local:/home/rajesh/Development/p/tpl/django-messages:/home/rajesh/.eclipse/org.eclipse.sdk.ide/updates/eclipse/plugins/org.python.pydev.debug_1.3.18/pysrc:/usr/lib/python2.5:/usr/lib/python2.5/lib-dynload:/usr/lib/python2.5/lib-tk:/usr/lib/python2.5/plat-linux2:/usr/lib/python2.5/site-packages:/usr/lib/python2.5/site-packages:/usr/lib/python2.5/site-packages/BeautifulSoup-3.0.5-py2.5.egg:/usr/lib/python2.5/site-packages/Numeric:/usr/lib/python2.5/site-packages/PIL:/usr/lib/python2.5/site-packages/gst-0.10:/usr/lib/python2.5/site-packages/gtk-2.0:/usr/lib/python2.5/site-packages/pyparsing-1.4.10-py2.5.egg:/usr/lib/python25.zip:/usr/local/lib/python2.5/site-packages', 'SSH_AUTH_SOCK': '/tmp/keyring-ki1N6X/ssh', 'GNOME_KEYRING_SOCKET': '/tmp/keyring-ki1N6X/socket', 'GDMSESSION': 'default', 'wsgi.input': <socket._fileobject object at 0x87cb56c>, 'HTTP_USER_AGENT': 'Google Checkout Notification Agent 1.0', 'HTTP_HOST': 'piermontweb.dnsdojo.com:8020', 'wsgi.multithread': True, 'HTTP_CONNECTION': 'keep-alive', 'HTTP_CACHE_CONTROL': 'max-age=259200', 'DBUS_SESSION_BUS_ADDRESS': 'unix:abstract=/tmp/dbus-Xxxsw5lQYm,guid=8d2ef2c9ffe345566a65364b4890e89f', 'MOZILLA_FIVE_HOME': '/usr/lib/firefox', 'XAUTHORITY': '/home/rajesh/.Xauthority', 'DESKTOP_SESSION': 'default', 'JAVA_HOME': '/usr/lib/jvm/java-gcj', 'wsgi.version': (1, 0), 'GNOME_KEYRING_PID': '7054', 'GATEWAY_INTERFACE': 'CGI/1.1', 'HTTP_X_FORWARDED_FOR': 'unknown', 'OLDPWD': '/home/rajesh', 'REMOTE_ADDR': '74.125.64.136', 'GDM_LANG': 'en_US.UTF-8', 'XDG_DATA_DIRS': '/usr/local/share/:/usr/share/:/usr/share/gdm/', 'PWD': '/home/rajesh', 'DJANGO_SETTINGS_MODULE': 'irock.settings', 'GTK_RC_FILES': '/etc/gtk/gtkrc:/home/rajesh/.gtkrc-1.2-gnome2', 'wsgi.file_wrapper': <class 'django.core.servers.basehttp.FileWrapper'>, 'REMOTE_HOST': '', 'wsgi.errors': <open file '<stderr>', mode 'w' at 0xb7dd50b0>, 'PATH_INFO': u'/campaign/google-notification/'}
+
+2008-07-30 19:20:08,365: campaign.views DEBUG ANON - Google Checkout IPN data: <QueryDict: {u'previous-financial-order-state': [u'CHARGING'], u'_type': [u'order-state-change-notification'], u'previous-fulfillment-order-state': [u'PROCESSING'], u'new-fulfillment-order-state': [u'PROCESSING'], u'serial-number': [u'168713772056995-00010-1\r\n'], u'timestamp': [u'2008-07-30T23:19:54.717Z'], u'new-financial-order-state': [u'CHARGED'], u'google-order-number': [u'168713772056995']}>
+2008-07-30 19:20:08,365: campaign.views DEBUG ANON - Ignored unsupported IPN type order-state-change-notification.
+[30/Jul/2008 19:20:08] "POST /campaign/google-notification/ HTTP/1.0" 200 73
+2008-07-30 19:20:08,616: campaign.views DEBUG ANON - Google Checkout IPN Headers: {'HTTP_AUTHORIZATION': 'Basic NjIxODk4OTg2OTQ5NTM1OktWVGpoX3c0eW5mcEdDcDdvbzdUdEE=', 'wsgi.multiprocess': False, 'RUN_MAIN': 'true', 'GNOME_DESKTOP_SESSION_ID': 'Default', 'SERVER_PROTOCOL': 'HTTP/1.0', 'SERVER_SOFTWARE': 'WSGIServer/0.1 Python/2.5.2', 'SCRIPT_NAME': u'', 'REQUEST_METHOD': 'POST', 'LOGNAME': 'rajesh', 'USER': 'rajesh', 'HOME': '/home/rajesh', 'QUERY_STRING': '', 'PATH': '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/bin/X11:/usr/games', 'LD_LIBRARY_PATH': '/usr/lib/firefox', 'LANG': 'en_US.UTF-8', 'SHELL': '/bin/bash', 'TZ': 'America/New_York', 'XDG_SESSION_COOKIE': '3cd44956de7df17f54578700472cb783-1217456284.846688-611294223', 'SERVER_NAME': 'localhost', 'SESSION_MANAGER': 'local/knight:/tmp/.ICE-unix/7055', 'SHLVL': '0', 'DISPLAY': ':0.0', 'wsgi.url_scheme': 'http', 'HTTP_VIA': '1.1 proxy.google.com:80 (squid)', 'WINDOWPATH': '7', 'SERVER_PORT': '8020', 'GPG_AGENT_INFO': '/tmp/seahorse-bkO9N6/S.gpg-agent:7126:1', 'wsgi.run_once': False, 'USERNAME': 'rajesh', 'CONTENT_LENGTH': '342', 'GDM_XSERVER_LOCATION': 'local', 'CONTENT_TYPE': 'application/x-www-form-urlencoded', 'PYTHONPATH': '/home/rajesh/.eclipse/org.eclipse.sdk.ide/updates/eclipse/plugins/org.python.pydev_1.3.18/PySrc/pydev_sitecustomize:/home/rajesh/workspace/python/django-svn:/home/rajesh/workspace/python/irock/django-apps:/home/rajesh/workspace/python/irock/irock:/home/rajesh/workspace/python/irock/local:/home/rajesh/Development/p/tpl/django-messages:/home/rajesh/.eclipse/org.eclipse.sdk.ide/updates/eclipse/plugins/org.python.pydev.debug_1.3.18/pysrc:/usr/lib/python2.5:/usr/lib/python2.5/lib-dynload:/usr/lib/python2.5/lib-tk:/usr/lib/python2.5/plat-linux2:/usr/lib/python2.5/site-packages:/usr/lib/python2.5/site-packages:/usr/lib/python2.5/site-packages/BeautifulSoup-3.0.5-py2.5.egg:/usr/lib/python2.5/site-packages/Numeric:/usr/lib/python2.5/site-packages/PIL:/usr/lib/python2.5/site-packages/gst-0.10:/usr/lib/python2.5/site-packages/gtk-2.0:/usr/lib/python2.5/site-packages/pyparsing-1.4.10-py2.5.egg:/usr/lib/python25.zip:/usr/local/lib/python2.5/site-packages', 'SSH_AUTH_SOCK': '/tmp/keyring-ki1N6X/ssh', 'GNOME_KEYRING_SOCKET': '/tmp/keyring-ki1N6X/socket', 'GDMSESSION': 'default', 'wsgi.input': <socket._fileobject object at 0x87cb56c>, 'HTTP_USER_AGENT': 'Google Checkout Notification Agent 1.0', 'HTTP_HOST': 'piermontweb.dnsdojo.com:8020', 'wsgi.multithread': True, 'HTTP_CONNECTION': 'keep-alive', 'HTTP_CACHE_CONTROL': 'max-age=259200', 'DBUS_SESSION_BUS_ADDRESS': 'unix:abstract=/tmp/dbus-Xxxsw5lQYm,guid=8d2ef2c9ffe345566a65364b4890e89f', 'MOZILLA_FIVE_HOME': '/usr/lib/firefox', 'XAUTHORITY': '/home/rajesh/.Xauthority', 'DESKTOP_SESSION': 'default', 'JAVA_HOME': '/usr/lib/jvm/java-gcj', 'wsgi.version': (1, 0), 'GNOME_KEYRING_PID': '7054', 'GATEWAY_INTERFACE': 'CGI/1.1', 'HTTP_X_FORWARDED_FOR': 'unknown', 'OLDPWD': '/home/rajesh', 'REMOTE_ADDR': '74.125.64.136', 'GDM_LANG': 'en_US.UTF-8', 'XDG_DATA_DIRS': '/usr/local/share/:/usr/share/:/usr/share/gdm/', 'PWD': '/home/rajesh', 'DJANGO_SETTINGS_MODULE': 'irock.settings', 'GTK_RC_FILES': '/etc/gtk/gtkrc:/home/rajesh/.gtkrc-1.2-gnome2', 'wsgi.file_wrapper': <class 'django.core.servers.basehttp.FileWrapper'>, 'REMOTE_HOST': '', 'wsgi.errors': <open file '<stderr>', mode 'w' at 0xb7dd50b0>, 'PATH_INFO': u'/campaign/google-notification/'}
+
+2008-07-30 19:20:08,616: campaign.views DEBUG ANON - Google Checkout IPN data: <QueryDict: {u'_type': [u'charge-amount-notification'], u'latest-promotion-charge-amount.currency': [u'USD'], u'latest-charge-amount.currency': [u'USD'], u'timestamp': [u'2008-07-30T23:19:54.717Z'], u'total-charge-amount': [u'1.0'], u'latest-charge-amount': [u'1.0'], u'serial-number': [u'168713772056995-00010-2\r\n'], u'total-charge-amount.currency': [u'USD'], u'latest-promotion-charge-amount': [u'0.0'], u'google-order-number': [u'168713772056995']}>
+
+2008-07-30 19:20:08,617: campaign.views DEBUG ANON - Ignored unsupported IPN type charge-amount-notification.
+[30/Jul/2008 19:20:08] "POST /campaign/google-notification/ HTTP/1.0" 200 73
+
+==================================
+
+Command 1:
+curl -d '_type=hello'
+  https://MERCHANT_ID:MERCHANT_KEY@sandbox.google.com/checkout/api/checkout/v2/requestForm/Merchant/MERCHANT_ID
+
+Command 2:
+curl -d '_type=hello'
+  https://MERCHANT_ID:MERCHANT_KEY@checkout.google.com/api/checkout/v2/requestForm/Merchant/MERCHANT_ID
+
+
+2008-07-29 19:17:15,040: campaign.views DEBUG ANON - Google Checkout IPN Headers: {'HTTP_AUTHORIZATION': 'Basic NjIxODk4OTg2OTQ5NTM1OktWVGpoX3c0eW5mcEdDcDdvbzdUdEE=', 'wsgi.multiprocess': False, 'RUN_MAIN': 'true', 'GNOME_DESKTOP_SESSION_ID': 'Default', 'SERVER_PROTOCOL': 'HTTP/1.0', 'SERVER_SOFTWARE': 'WSGIServer/0.1 Python/2.5.2', 'SCRIPT_NAME': u'', 'REQUEST_METHOD': 'POST', 'LOGNAME': 'rajesh', 'USER': 'rajesh', 'HOME': '/home/rajesh', 'QUERY_STRING': '', 'PATH': '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/bin/X11:/usr/games', 'LD_LIBRARY_PATH': '/usr/lib/firefox', 'LANG': 'en_US.UTF-8', 'SHELL': '/bin/bash', 'TZ': 'America/New_York', 'XDG_SESSION_COOKIE': '3cd44956de7df17f54578700472cb783-1217193758.132488-89303621', 'SERVER_NAME': 'localhost', 'SESSION_MANAGER': 'local/knight:/tmp/.ICE-unix/7294', 'SHLVL': '0', 'DISPLAY': ':0.0', 'wsgi.url_scheme': 'http', 'HTTP_VIA': '1.1 proxy.google.com:80 (squid)', 'WINDOWPATH': '7', 'SERVER_PORT': '8020', 'GPG_AGENT_INFO': '/tmp/seahorse-doCpFR/S.gpg-agent:7367:1', 'wsgi.run_once': False, 'USERNAME': 'rajesh', 'CONTENT_LENGTH': '2043', 'GDM_XSERVER_LOCATION': 'local', 'CONTENT_TYPE': 'application/x-www-form-urlencoded', 'PYTHONPATH': '/home/rajesh/.eclipse/org.eclipse.sdk.ide/updates/eclipse/plugins/org.python.pydev_1.3.18/PySrc/pydev_sitecustomize:/home/rajesh/workspace/python/django-svn:/home/rajesh/workspace/python/irock/django-apps:/home/rajesh/workspace/python/irock/irock:/home/rajesh/workspace/python/irock/local:/home/rajesh/Development/p/tpl/django-messages:/home/rajesh/.eclipse/org.eclipse.sdk.ide/updates/eclipse/plugins/org.python.pydev.debug_1.3.18/pysrc:/usr/lib/python2.5:/usr/lib/python2.5/lib-dynload:/usr/lib/python2.5/lib-tk:/usr/lib/python2.5/plat-linux2:/usr/lib/python2.5/site-packages:/usr/lib/python2.5/site-packages:/usr/lib/python2.5/site-packages/BeautifulSoup-3.0.5-py2.5.egg:/usr/lib/python2.5/site-packages/Numeric:/usr/lib/python2.5/site-packages/PIL:/usr/lib/python2.5/site-packages/gst-0.10:/usr/lib/python2.5/site-packages/gtk-2.0:/usr/lib/python2.5/site-packages/pyparsing-1.4.10-py2.5.egg:/usr/lib/python25.zip:/usr/local/lib/python2.5/site-packages', 'SSH_AUTH_SOCK': '/tmp/keyring-WrZo29/ssh', 'GNOME_KEYRING_SOCKET': '/tmp/keyring-WrZo29/socket', 'GDMSESSION': 'default', 'wsgi.input': <socket._fileobject object at 0x89af02c>, 'HTTP_USER_AGENT': 'Google Checkout Notification Agent 1.0', 'HTTP_HOST': 'piermontweb.dnsdojo.com:8020', 'wsgi.multithread': True, 'HTTP_CONNECTION': 'keep-alive', 'HTTP_CACHE_CONTROL': 'max-age=259200', 'DBUS_SESSION_BUS_ADDRESS': 'unix:abstract=/tmp/dbus-rlTjbC3P1e,guid=fb19b9156c42abfacbcb1080488ce722', 'MOZILLA_FIVE_HOME': '/usr/lib/firefox', 'XAUTHORITY': '/home/rajesh/.Xauthority', 'DESKTOP_SESSION': 'default', 'JAVA_HOME': '/usr/lib/jvm/java-gcj', 'wsgi.version': (1, 0), 'GNOME_KEYRING_PID': '7293', 'GATEWAY_INTERFACE': 'CGI/1.1', 'HTTP_X_FORWARDED_FOR': 'unknown', 'OLDPWD': '/home/rajesh', 'REMOTE_ADDR': '74.125.64.136', 'GDM_LANG': 'en_US.UTF-8', 'XDG_DATA_DIRS': '/usr/local/share/:/usr/share/:/usr/share/gdm/', 'PWD': '/home/rajesh', 'DJANGO_SETTINGS_MODULE': 'irock.settings', 'GTK_RC_FILES': '/etc/gtk/gtkrc:/home/rajesh/.gtkrc-1.2-gnome2', 'wsgi.file_wrapper': <class 'django.core.servers.basehttp.FileWrapper'>, 'REMOTE_HOST': '', 'wsgi.errors': <open file '<stderr>', mode 'w' at 0xb7d010b0>, 'PATH_INFO': u'/campaign/google-notification/'}
+2008-07-29 19:17:15,041: campaign.views DEBUG ANON - Google Checkout IPN data: <QueryDict: {u'buyer-billing-address.region': [u'NY'], u'buyer-shipping-address.company-name': [u''], u'buyer-billing-address.company-name': [u''], u'buyer-shipping-address.fax': [u''], u'shopping-cart.items.item-1.quantity': [u'1'], u'buyer-shipping-address.phone': [u'845 613-0670'], u'shopping-cart.items': [u'shopping-cart.items.item-1'], u'buyer-shipping-address.structured-name.first-name': [u'Rajesh'], u'buyer-shipping-address.postal-code': [u'10990'], u'buyer-billing-address.city': [u'Nyack'], u'buyer-billing-address.structured-name.last-name': [u'AVS+FULL'], u'google-order-number': [u'603174808013526'], u'order-adjustment.total-tax.currency': [u'USD'], u'buyer-shipping-address.structured-name.last-name': [u'Dhawan'], u'buyer-billing-address.contact-name': [u'AVS+FULL'], u'buyer-billing-address.email': [u'Rajesh-bp8251d9hnq@sandbox.google.com'], u'order-total': [u'1.0'], u'shopping-cart.items.item-1.item-name': [u'Dire Straits: Test campaign wizard'], u'buyer-billing-address.fax': [u''], u'order-adjustment.adjustment-total': [u'0.0'], u'buyer-shipping-address.contact-name': [u'Rajesh Dhawan'], u'financial-order-state': [u'REVIEWING'], u'buyer-shipping-address.city': [u'Nyack'], u'buyer-id': [u'213265199630080'], u'shopping-cart.items.item-1.unit-price.currency': [u'USD'], u'buyer-billing-address.country-code': [u'US'], u'_type': [u'new-order-notification'], u'buyer-shipping-address.address1': [u'1 My Way'], u'buyer-shipping-address.address2': [u''], u'timestamp': [u'2008-07-29T23:16:45.356Z'], u'order-adjustment.total-tax': [u'0.0'], u'order-adjustment.adjustment-total.currency': [u'USD'], u'buyer-billing-address.phone': [u'845 613-0670'], u'buyer-billing-address.postal-code': [u'10990'], u'shopping-cart.items.item-1.merchant-item-id': [u'7'], u'buyer-billing-address.address1': [u'AVS+FULL'], u'buyer-billing-address.address2': [u''], u'buyer-marketing-preferences.email-allowed': [u'false'], u'buyer-shipping-address.email': [u'Rajesh-bp8251d9hnq@sandbox.google.com'], u'buyer-shipping-address.country-code': [u'US'], u'shopping-cart.items.item-1.unit-price': [u'1.0'], u'shopping-cart.merchant-private-data': [u'27~fan1~71217373294273'], u'buyer-billing-address.structured-name.first-name': [u''], u'order-total.currency': [u'USD'], u'fulfillment-order-state': [u'NEW'], u'serial-number': [u'603174808013526-00001-7\r\n'], u'shopping-cart.items.item-1.item-description': [u'Illius Rock campaign: Dire Straits: Test campaign wizard'], u'buyer-shipping-address.region': [u'NY']}>
+
+'HTTP_AUTHORIZATION':'Basic NjIxODk4OTg2OTQ5NTM1OktWVGpoX3c0eW5mcEdDcDdvbzdUdEE='
+'CONTENT_TYPE': 'application/x-www-form-urlencoded'
+request.METHOD == 'POST'
+
+
+{u'_type': [u'new-order-notification'],
+ u'buyer-billing-address.address1': [u'AVS+FULL'],
+ u'buyer-billing-address.address2': [u''],
+ u'buyer-billing-address.city': [u'Nyack'],
+ u'buyer-billing-address.company-name': [u''],
+ u'buyer-billing-address.contact-name': [u'AVS+FULL'],
+ u'buyer-billing-address.country-code': [u'US'],
+ u'buyer-billing-address.email': [u'Rajesh-bp8251d9hnq@sandbox.google.com'],
+ u'buyer-billing-address.fax': [u''],
+ u'buyer-billing-address.phone': [u'845 613-0670'],
+ u'buyer-billing-address.postal-code': [u'10990'],
+ u'buyer-billing-address.region': [u'NY'],
+ u'buyer-billing-address.structured-name.first-name': [u''],
+ u'buyer-billing-address.structured-name.last-name': [u'AVS+FULL'],
+ u'buyer-id': [u'213265199630080'],
+ u'buyer-marketing-preferences.email-allowed': [u'false'],
+ u'buyer-shipping-address.address1': [u'1 My Way'],
+ u'buyer-shipping-address.address2': [u''],
+ u'buyer-shipping-address.city': [u'Nyack'],
+ u'buyer-shipping-address.company-name': [u''],
+ u'buyer-shipping-address.contact-name': [u'Rajesh Dhawan'],
+ u'buyer-shipping-address.country-code': [u'US'],
+ u'buyer-shipping-address.email': [u'Rajesh-bp8251d9hnq@sandbox.google.com'],
+ u'buyer-shipping-address.fax': [u''],
+ u'buyer-shipping-address.phone': [u'845 613-0670'],
+ u'buyer-shipping-address.postal-code': [u'10990'],
+ u'buyer-shipping-address.region': [u'NY'],
+ u'buyer-shipping-address.structured-name.first-name': [u'Rajesh'],
+ u'buyer-shipping-address.structured-name.last-name': [u'Dhawan'],
+ u'financial-order-state': [u'REVIEWING'],
+ u'fulfillment-order-state': [u'NEW'],
+ u'google-order-number': [u'603174808013526'],
+ u'order-adjustment.adjustment-total': [u'0.0'],
+ u'order-adjustment.adjustment-total.currency': [u'USD'],
+ u'order-adjustment.total-tax': [u'0.0'],
+ u'order-adjustment.total-tax.currency': [u'USD'],
+ u'order-total': [u'1.0'],
+ u'order-total.currency': [u'USD'],
+ u'serial-number': [u'603174808013526-00001-7\r\n'],
+ u'shopping-cart.items': [u'shopping-cart.items.item-1'],
+ u'shopping-cart.items.item-1.item-description': [u'Illius Rock campaign: Dire Straits: Test campaign wizard'],
+ u'shopping-cart.items.item-1.item-name': [u'Dire Straits: Test campaign wizard'],
+ u'shopping-cart.items.item-1.merchant-item-id': [u'7'],
+ u'shopping-cart.items.item-1.quantity': [u'1'],
+ u'shopping-cart.items.item-1.unit-price': [u'1.0'],
+ u'shopping-cart.items.item-1.unit-price.currency': [u'USD'],
+ u'shopping-cart.merchant-private-data': [u'27~fan1~71217373294273'],
+ u'timestamp': [u'2008-07-29T23:16:45.356Z']}
+
+
+================================
+>>> import Image
+>>> bg = Image.new("RGB", (400, 300), (100, 100, 100))
+>>> fg = Image.new("RGB", (380, 200), (100, 20, 20))
+>>> c=bg.paste(fg, (10, 90))
+>>> c
+>>> bg.save("C:\\temp\\merged.jpg", jpeg_quality=95)
+>>> import ImageDraw
+>>> t = ImageDraw.Draw(bg)
+>>> t
+<ImageDraw.ImageDraw instance at 0x00B36710>
+>>> t.text((5, 5), "Help them raise $1000")
+>>> bg.save("C:\\temp\\merged-t.jpg", jpeg_quality=95)
+>>>
+>>> import ImageFont
+>>> font = ImageFont.truetype("arial.ttf", 12)
+>>> #font = ImageFont.truetype(fontfile, font_size, encoding="unic")
+>>> font
+<ImageFont.FreeTypeFont instance at 0x00B43990>
+>>> t.text((5, 15), "Help them raise $1000", font=font)
+>>> bg.save("C:\\temp\\merged-t2.jpg", jpeg_quality=95)
+
+
+def ipn(request):
+    """PayPal IPN (Instant Payment Notification)
+    Cornfirms that payment has been completed and marks invoice as paid.
+    Adapted from IPN cgi script provided at http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/456361"""
+    payment_module = config_get_group('PAYMENT_PAYPAL')
+    if payment_module.LIVE.value:
+        log.debug("Live IPN on %s", payment_module.KEY.value)
+        url = payment_module.POST_URL.value
+        account = payment_module.BUSINESS.value
+    else:
+        log.debug("Test IPN on %s", payment_module.KEY.value)
+        url = payment_module.POST_TEST_URL.value
+        account = payment_module.BUSINESS_TEST.value
+    PP_URL = url
+
+    try:
+        data = request.POST
+        log.debug("PayPal IPN data: " + repr(data))
+        if not confirm_ipn_data(data, PP_URL):
+            return HttpResponse()
+
+        if not 'payment_status' in data or not data['payment_status'] == "Completed":
+            # We want to respond to anything that isn't a payment - but we won't insert into our database.
+             log.info("Ignoring IPN data for non-completed payment.")
+             return HttpResponse()
+
+        try:
+            invoice = data['invoice']
+        except:
+            invoice = data['item_number']
+
+        gross = data['mc_gross']
+        txn_id = data['txn_id']
+
+        if not OrderPayment.objects.filter(transaction_id=txn_id).count():
+            # If the payment hasn't already been processed:
+            order = Order.objects.get(pk=invoice)
+            
+            payment_module = config_get_group('PAYMENT_PAYPAL')
+            record_payment(order, payment_module, amount=gross, transaction_id=txn_id)
+            
+            if 'memo' in data:
+                if order.notes:
+                    notes = order.notes + "\n"
+                else:
+                    notes = ""
+                
+                order.notes = notes + _('---Comment via Paypal IPN---') + u'\n' + data['memo']
+                order.save()
+                log.debug("Saved order notes from Paypal")
+            
+            order.add_status(status='Pending', notes=_("Paid through PayPal."))
+            for item in order.orderitem_set.filter(product__subscriptionproduct__recurring=True, completed=False):
+                item.completed = True
+                item.save()
+            for cart in Cart.objects.filter(customer=order.contact):
+                cart.empty()
+                
+            if order.paid_in_full:
+                send_order_confirmation(order)
+
+    except:
+        log.exception(''.join(format_exception(*exc_info())))
+
+    return HttpResponse()
+
+def confirm_ipn_data(data, PP_URL):
+    # data is the form data that was submitted to the IPN URL.
+
+    newparams = {}
+    for key in data.keys():
+        newparams[key] = data[key]
+
+    newparams['cmd'] = "_notify-validate"
+    params = urlencode(newparams)
+
+    req = urllib2.Request(PP_URL)
+    req.add_header("Content-type", "application/x-www-form-urlencoded")
+    fo = urllib2.urlopen(PP_URL, params)
+
+    ret = fo.read()
+    if ret == "VERIFIED":
+        log.info("PayPal IPN data verification was successful.")
+    else:
+        log.info("PayPal IPN data verification failed.")
+        return False
+
+    return True
+
+
+# WinPDB
+import rpdb2; rpdb2.start_embedded_debugger('debug')
+
+# PyDev
+import pydevd;pydevd.settrace()
+
+find . -name "*.py" -exec grep "getLogger" '{}' \; -print
+
+# Solaris:
+find ./ -name "*.pyc"  | xargs rm
+
+# ipython:
+import compileall as c
+c.compile_dir(".", force=1)
+
+# Del src:
+find ./ -name "[vfm]*.py"  | xargs rm
+

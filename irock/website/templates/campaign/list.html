@@ -1,0 +1,34 @@
+{% extends "campaign/base.html" %}
+
+{% block title %}{{ title }} - {{ block.super }}{% endblock %}
+
+{% block h2-container %}{% endblock %}
+
+{% block primary-content %}
+  
+  <div class="campaignsIntro">
+    {% common_flatpage "/site/campaigns-intro/" %}
+  </div> <!-- introText -->
+
+  <ul class="campaignListing">
+    {% for c in page.object_list %}
+      <li class="campaignListItem campaignDetail" id="campaignId{{ c.pk }}">
+      {% if is_owner %}
+        {% campaign_summary c "" is_owner "" "include_title" "show_detail_link" %}
+      {% else %}
+        {% tcache UI_CACHE_TIMEOUT "ir-campaign-summary-list" c.pk %}
+          {% campaign_summary c "" "" "" "include_title" "show_detail_link" %}
+        {% endtcache %}
+      {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+  
+  {% include "common/tags/pagination.html" %}
+{% endblock %}
+
+{% block secondary-content %}
+  <div class="campaignsSidebar">
+    {% common_flatpage "/site/campaigns-sidebar/" %}
+  </div> <!-- introText -->
+{% endblock %}

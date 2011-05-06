@@ -1,0 +1,221 @@
+/* ---------------------------------------
+event options - search and start
+--------------------------------------- */
+
+.eventOptionsHolder {
+   float: left;
+   height: 38px;
+   line-height: 38px;
+   margin: 0px 0 20px 0px;
+   background-color: #262626;
+   width: 100%;
+   /*-moz-opacity:.60; filter:alpha(opacity=60); opacity:.60;*/
+   text-indent: 20px;
+   border-bottom: 1px solid #131313;
+   border-top: 1px solid #131313;
+}
+
+.eventOptionsHolder li {
+   float: left;
+}
+
+.eventOptionsHolder a, .eventOptionsHolder a:visited {
+   padding: 0 15px 0 0;
+   font-size: 10px;
+   font-weight: bold;
+   color: #fff;
+}
+
+.eventOptionsHolder a:hover {
+   text-decoration: underline;
+}
+
+
+/* ---------------------------------------
+Newest events
+--------------------------------------- */
+
+#titleNewestEvents {
+   width: 233px;
+   height: 46px;
+   background: url(../images/title_newest_events.gif) 0 0 no-repeat;
+   display: block;
+   text-indent: -9999px;
+   margin: 0 0 5px 0;
+   padding: 0;
+}
+
+.newestEventsHolder {
+   float: left;
+   width: 233px;
+   min-height: 165px;
+   background: url(../images/bg_newest_events.jpg) 0 0 repeat-y;
+}
+
+.newestEventsBottom {
+   width: 233px;
+   height: 6px;
+   background: url(../images/bg_newest_events_bottom.gif) 0 0 no-repeat;
+   float: left;
+   position: relative;
+   top: -4px;
+   margin: 0 0 -4px 0;
+}
+
+.eventsUl {
+   padding: 0 20px 0 20px;
+}
+
+.eventsUl li {
+   float: left;
+   margin: 0 0 20px 0;
+
+}
+
+.eventsUl li img {
+   border: 1px solid #7e7e7e;
+   float: left;
+   margin: 0 10px 0 0;
+}
+
+.eventsUl li a img:hover {
+   border: 1px solid #fff;
+}
+
+.eventsUl li h3 {
+   font-size: 12px;
+   line-height: 12px;
+   height: 12px;
+   margin: 0;
+   float: left;
+   width: 138px;
+   overflow:hidden;
+}
+
+.eventsUl li h3 a, .eventsUl li h3 a:visited {
+   color: #fff;
+}
+
+.eventsUl li h3 a:hover {
+   color: #fff;
+}
+
+.eventsUl a:hover {
+   text-decoration: underline;
+}
+
+.eventsUl li p {
+   font-size: 11px;
+   line-height: 18px;
+   height: 18px;
+   margin: 0;
+   float: left;
+   width: 138px;
+   overflow:hidden;
+   clear: none;
+}
+
+
+/* ---------------------------------------
+event options - in newest events
+--------------------------------------- */
+
+.eventOptionsHolder2 {
+   float: left;
+   width: 233px;
+   height: 37px;
+   line-height: 37px;
+   margin: 9px 0 0px 0px;
+   background: url(../images/bg_event_options2.gif) 0 0 repeat-x;
+
+}
+
+.eventOptionsHolder2 ul {
+   margin: 0 0 0 16px;
+}
+
+.eventOptionsHolder2 li {
+   float: left;
+}
+
+.eventOptionsHolder2 a, .eventOptionsHolder2 a:visited {
+   padding: 0 20px 0 0;
+   font-size: 10px;
+   font-weight: bold;
+   color: #c6c6c6;
+}
+
+.eventOptionsHolder2 a:hover {
+   text-decoration: underline;
+}
+
+.eventsUl li h3 {clear:none;width:auto;overflow:hidden;height:auto;float:none;}
+.eventsUl li p {clear:none;width:auto;overflow:hidden;height:auto;float:none;}
+.eventsUl li {padding:0px;width:195px;}
+
+.eventSig .bandName,
+.eventListing .bandName {line-height:1.5;margin:0 0 12px 0;}
+.eventListItem {overflow:auto;margin:0 0 1em 0;}
+.eventDetail {clear:both;}
+
+.eventDetailsWrapper {float:left;overflow:hidden;border-top:1px solid #6c6c6c;margin:0 0 0 10px;padding:10px 0 0 0;width:470px;}
+.sidebar .eventDetailsWrapper {width:220px;}
+
+.eventDetailsWrapper p {margin:.25em 0;}
+.eventDetailsWrapper h3 {font-size:20px;font-weight:normal;margin:0 0 10px 0;}
+.eventDetailsWrapper dl {margin:0;clear:left;float:left;overflow:hidden;width:99%;}
+
+.eventDetailsWrapper dt {width:183px;color:#BBBBBB;}
+.sidebar .eventDetailsWrapper dt {width:220px;margin:.25em 0 0 0;}
+
+.eventDetailsWrapper dd {float:none;width:240px;}
+.sidebar .eventDetailsWrapper dd {width:220px;border-bottom:1px solid #555;margin:0;}
+
+.sidebar tr span.event-time {display:block;}
+
+.eventDetailsWrapper dd.last {border-bottom:none;}
+.eventDetailsWrapper dd p {font-size:12px;}
+
+table.eventSummaryTable {border:none;background:transparent;font-size:13px;}
+table.eventSummaryTable th {vertical-align:top;font-weight:bold;color:#ccc;border-color:#444;background:transparent;padding:0 .5em 0 0;line-height:22px;}
+.sidebar table.eventSummaryTable th {width:50%;padding-left:0;}
+table.eventSummaryTable td {vertical-align:top;color:#ccc;border-color:#444;padding:0 .5em;line-height:22px;}
+table.eventSummaryTable tr.last th, table.eventSummaryTable tr.last td {border:none;padding:0 .5em 0 0;}
+table.eventSummaryTable p {font-size:13px;line-height:22px;}
+.sidebar table.eventSummaryTable tr.last td {padding-left:0;}
+
+.descriptionWrapper {margin:2em .5em 2em 0;padding:.25em .5em;border:1px solid #444;color:#ccc;}
+.descriptionWrapper, h3.description {clear:both;}
+h3.description {color:#fff;font-size:20px;font-weight:normal;margin:0 0 10px 0;}
+.descriptionWrapper p {margin:.5em 0;}
+.descriptionWrapper ul {list-style-type:square;margin-left:2em;}
+.descriptionWrapper ol li {padding-left:.125em;}
+
+/* Event attendees sidebar */
+.attendeesUl {overflow:hidden;margin:.5em 0 1em 0;}
+.attendeesUl li {width:50px;height:50px;float:left;background:#000;margin:0 6px 6px 0;}
+.attendeesUl li a {display:block;}
+
+/* Event attendees page */
+.attendeeList {overflow:hidden;margin:1em 0;}
+.attendeeList li {float:left;margin:0 6px 6px 0;width:50px;height:80px;}
+.attendeeList li .username {display:block;text-align:center;font-size:.8em;}
+
+.changedTrue,
+tr.changedTrue th {color:#f40!important;}
+.eventMultimedia div.changedTrue {border:1px solid #f40!important;}
+
+.clockbox h2 {font-size:1.2em;background:#999;color:#eee;margin:0;padding:2px 4px;}
+
+.sidebar .eventAttendeeForm .checkboxTrue label {margin:0 0 0 .25em;padding:0;font-size:1.1em;font-weight:bold;line-height:1.0;}
+.sidebar .eventAttendeeForm .checkboxInput {margin:0 0 0 0;padding:0;line-height:1.0;position:relative;top:-2px;width:1.2em;background:none;border:none;}
+.sidebar .eventAttendeeForm .attendeeSubmit {cursor:pointer;background:none;border:none;color:#fff;font-weight:bold;font-size:1.1em;margin:.5em 0 0 0;}
+.sidebar .eventAttendeeForm .ctrlHolder {cursor:pointer;margin:0 auto;padding:0 0 0 0;position:relative;top:-1.25em;text-align:center;}
+
+#venue_search_results {overflow:hidden;margin:.25em;padding:0;}
+#venue_search_results .venue {width:29%;float:left;height:7em;overflow:auto;padding:.25em .5em 0 .5em;
+					margin:2px;border:1px solid #444;background:#333;}
+#venue_search_results .over {background:#000;cursor:pointer;}
+
+li.headliner {font-size:120%;font-weight:bold;}
+ul.artist_list {margin:0 0 1em 1.5em;}

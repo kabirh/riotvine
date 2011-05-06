@@ -1,0 +1,48 @@
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+  <title>RiotVine: Event Reminder!</title>
+</head>
+<body style="background:#ffffff;color:#333333;margin:2px 4px;padding:2px 8px 2px 8px;border:2px solid #ffffff;" bgcolor="#ffffff">
+  <p>
+    <span style="font-size:130%;">
+       Hey {% if firstname %}{{ firstname|capfirst }}{% else %}{{ username }}{% endif %},
+    </span>
+  </p>
+  
+  <p>
+    <strong>{{ creator }} wants to start a riot!</strong>
+  </p>
+
+  <p>
+    <span style="font-size:140%;">
+      <a style="color:#14719f;" href="{{ event_url }}?src=email"><b>{{ event.title }}</b></a>
+    </span><br>
+    {% if data.num_friends %}{{ data.num_friends|safe }}<br><br>{% endif %}
+    {{ event.event_date|date:"l, N j, Y" }}{% if event.event_start_time %} @ {{ event.event_start_time|time }} {{ event.event_timezone|default:"" }}{% endif %}<br>
+    <a href="{{ event.venue.map_url }}">{{ event.venue.name }}</a><br>
+    {% if event.venue.address %}{{ event.venue.address }}<br>{% endif %}
+    {% if event.venue.citystatezip %}{{ event.venue.citystatezip }}<br>{% endif %}    
+    <br>
+    {% if event.ticket_or_tm_url %}
+      <a href="http://{{ site.domain }}{% url event_buy_tickets event_id=event.pk %}?src=email">Buy&nbsp;Tickets!</a> | 
+    {% endif %}
+    {% if event.venue.map_url %}<a href="{{ event.venue.map_url }}">Map</a> |{% endif %}
+    <a href="{{ event_url }}?src=email">More Info</a><br>
+  </p>
+    
+  <p style="border-top:1px dashed #ccc;">
+    <br>
+    Don't want to receive these reminders by email? 
+    <a href="http://{{ site.domain }}{% url update_user_profile %}?src=email">Turn&nbsp;them&nbsp;off&nbsp;here&nbsp;&raquo;</a>
+  </p>
+  
+  <p>
+    {{ EMAIL_SIGNATURE|linebreaksbr }}
+    <br>
+    <a href="http://{{ site.domain }}/"><img src="http://{{ site.domain }}{{ MEDIA_URL }}ui/images/logo-rv.png" alt="" border="0" style="border:none;"></a>
+  </p>
+</body>
+</html>
+
+

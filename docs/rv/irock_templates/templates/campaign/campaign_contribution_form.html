@@ -1,0 +1,45 @@
+{% extends "campaign/base.html" %}
+
+{% block head-extra %}
+ {{ form.media|safe }}
+{% endblock %}
+
+{% block title %}{{ c.action_name|title }} - {{ block.super }}{% endblock %}
+
+{% block h2 %}{{ c.action_name|title }}{% endblock %}
+
+{% block primary-content %}
+  <h3>{{ c.title }}</h3>
+  <h4>By <a href="{{ c.artist.get_absolute_url }}">{{ c.artist.name }}</a></h4>
+  
+  <p>Please fill out the form below to {{ c.action_name }}.</p>
+  
+  {% if not c.is_free %}
+    <p class="amount-warning">
+      Your credit card will be charged for the amount <strong>${{ c.contribution_amount|stringformat:".2f" }} per contribution.</strong>
+    </p>
+  {% else %}
+    <p class="amount-warning">
+      This is a <strong>free</strong> campaign. You will not be charged for joining it.
+    </p>
+  {% endif %}
+
+  {% if form.errors %}
+    <p class="error">Please correct the errors below.</p>
+    {% if form.non_field_errors %}
+      <ul class="errorlist">
+        {{ form.non_field_errors.as_ul }}
+      </ul>
+    {% endif %}
+  {% endif %}
+  
+  <form method="post" action="" enctype="multipart/form-data">
+    <fieldset>
+      {% for field in form %}
+        {% common_formfield_render field %}
+      {% endfor %}
+      <input type="submit" value="{{ c.action_name|title }}" class="submitButton"/>
+    </fieldset>
+  </form>
+{% endblock %}
+

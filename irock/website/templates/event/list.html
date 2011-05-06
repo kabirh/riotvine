@@ -1,0 +1,251 @@
+{% extends "event/base.html" %}
+{% load pagination_tags %}
+
+{% block body-id %}secondary{% endblock %}
+
+{% block title %}{{ title }} - {{ location_name }} - {{ block.super }}{% endblock %}
+
+{% block head-extra %}
+ {{ block.super }}
+ <script type="text/javascript">
+    /* <![CDATA[ */
+     $(document).ready(city_event_hover);
+    /* ]]> */
+  </script>
+{% endblock %}
+
+{% block primary-content %}
+  {% if flatcontent %}
+    <div class="flat-content">
+      {{ flatcontent|safe }}
+    </div>
+    <div class="clear"></div>
+  {% endif %}
+  
+  
+  <span id="city-start">What's Up in</span>
+  <div class="page_display_title">
+    <h1>{{ location_name }}</h1>
+    Other Cities: 
+    {{ other_cities|safe }}
+  </div>
+  
+  {% if popular %}
+    <div class="column">
+      <div class="feature_top">
+        <a href="{% url search_events %}?filter=most-popular" class="whitelink">Most Popular &raquo;</a>
+        <a href="{{ popular.get_absolute_url }}"><img src="{{ popular.image_square_url }}" alt="popular" width="200" height="200" class="thumbnail" title="{{ popular.title }}" /></a>
+        <a href="{{ popular.get_absolute_url }}" class="event_title">{{ popular.title_with_tinyurl }}</a>
+      </div>
+      <div class="feature_bottom">
+        <span class="event_date">{{ popular.event_date|date:"D m.d" }}</span> 
+        {% if popular.show_creator %}Posted by <a href="{{ popular.creator.get_absolute_url }}" class="userlink">{{ popular.creator }}</a>{% endif %}<br />
+        <span class="tweet_count"><a href="{{ popular.get_absolute_url }}#event-comments">{{ popular.tweet_count }}</a></span>
+        {% if popular.interested_count %}| <span class="interested_count">{{ popular.interested_count }} Interested</span>{% endif %}
+        {% if request.user_profile %}{% event_friends popular request.user_profile %}{% endif %}
+        <div class="action-display">
+          {% if popular.is_active %}
+            {% if user.is_authenticated %}
+	            {% if popular.is_attending %}
+	              <a href="{% url event_remove_from_calendar event_id=popular.pk %}" class="calendarlink remove_from_calendar">I'm Out</a>
+	            {% else %}
+	              <a href="{% url event_add_to_calendar event_id=popular.pk %}" class="calendarlink add_to_calendar">I'm In!</a>
+	            {% endif %}
+            {% else %}
+              <a href="{% url event_add_to_calendar event_id=popular.pk %}" class="calendarlink add_to_calendar login_dialog">I'm In!</a>
+            {% endif %}
+          {% endif %}
+          <a href="{{ TWITTER_SHARER }}?status={{ popular.title|urlencode }}+{{ popular.get_short_url }}" title="ReTweet this Event!"><img src="{{ MEDIA_URL }}ui/images/ico_RT.gif" alt="Retweet" width="28" height="11" class="retweet-btn" /></a>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+  
+  {% if ourpick %}
+    <div class="column">
+      <div class="feature_top">
+        <a href="{% url search_events %}?filter=our-picks" class="whitelink">Our Picks &raquo;</a>
+        <a href="{{ ourpick.get_absolute_url }}"><img src="{{ ourpick.image_square_url }}" alt="ourpick" width="200" height="200" class="thumbnail" title="{{ ourpick.title }}" /></a>
+        <a href="{{ ourpick.get_absolute_url }}" class="event_title">{{ ourpick.title_with_tinyurl }}</a>
+      </div>
+      <div class="feature_bottom">
+        <span class="event_date">{{ ourpick.event_date|date:"D m.d" }}</span> 
+        {% if ourpick.show_creator %}Posted by <a href="{{ ourpick.creator.get_absolute_url }}" class="userlink">{{ ourpick.creator }}</a>{% endif %}<br />
+        <span class="tweet_count"><a href="{{ ourpick.get_absolute_url }}#event-comments">{{ ourpick.tweet_count }}</a></span> 
+        {% if ourpick.interested_count %}| <span class="interested_count">{{ ourpick.interested_count }} Interested</span>{% endif %}
+        {% if request.user_profile %}{% event_friends ourpick request.user_profile %}{% endif %}
+        <div class="action-display">
+          {% if ourpick.is_active %}
+            {% if user.is_authenticated %}
+		        {% if ourpick.is_attending %}
+		          <a href="{% url event_remove_from_calendar event_id=ourpick.pk %}" class="calendarlink remove_from_calendar">I'm Out</a>
+		        {% else %}
+		          <a href="{% url event_add_to_calendar event_id=ourpick.pk %}" class="calendarlink add_to_calendar">I'm In!</a>
+		        {% endif %}
+	        {% else %}
+	          <a href="{% url event_add_to_calendar event_id=ourpick.pk %}" class="calendarlink add_to_calendar login_dialog">I'm In!</a>
+	        {% endif %}
+          {% endif %}
+          <a href="{{ TWITTER_SHARER }}?status={{ ourpick.title|urlencode }}+{{ ourpick.get_short_url }}" title="ReTweet this Event!"><img src="{{ MEDIA_URL }}ui/images/ico_RT.gif" alt="Retweet" width="28" height="11" class="retweet-btn" /></a>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+  
+  {% if destination %}
+    <div class="column">
+      <div class="feature_top">
+        <a href="{% url search_events %}?filter=destination" class="whitelink">Destination Events &raquo;</a>
+        <a href="{{ destination.get_absolute_url }}"><img src="{{ destination.image_square_url }}" alt="destination" width="200" height="200" class="thumbnail" title="{{ destination.title }}" /></a>
+        <a href="{{ destination.get_absolute_url }}" class="event_title">{{ destination.title_with_tinyurl }}</a>
+      </div>
+      <div class="feature_bottom">
+        <span class="event_date">{{ destination.event_date|date:"D m.d" }}</span> 
+        {% if destination.show_creator %}Posted by <a href="{{ destination.creator.get_absolute_url }}" class="userlink">{{ destination.creator }}</a>{% endif %}<br />
+        <span class="tweet_count"><a href="{{ destination.get_absolute_url }}#event-comments">{{ destination.tweet_count }}</a></span> 
+        {% if destination.interested_count %}| <span class="interested_count">{{ destination.interested_count }} Interested</span>{% endif %}
+        {% if request.user_profile %}{% event_friends destination request.user_profile %}{% endif %}
+        <div class="action-display">
+          {% if destination.is_active %}
+            {% if user.is_authenticated %}
+	            {% if destination.is_attending %}
+	              <a href="{% url event_remove_from_calendar event_id=destination.pk %}" class="calendarlink remove_from_calendar">I'm Out</a>
+	            {% else %}
+	              <a href="{% url event_add_to_calendar event_id=destination.pk %}" class="calendarlink add_to_calendar">I'm In!</a>
+	            {% endif %}
+	        {% else %}
+	          <a href="{% url event_add_to_calendar event_id=destination.pk %}" class="calendarlink add_to_calendar login_dialog">I'm In!</a>
+	        {% endif %}
+          {% endif %}
+          <a href="{{ TWITTER_SHARER }}?status={{ destination.title|urlencode }}+{{ destination.get_short_url }}" title="ReTweet this Event!"><img src="{{ MEDIA_URL }}ui/images/ico_RT.gif" alt="Retweet" width="28" height="11" class="retweet-btn" /></a>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+  <div class="clear"></div>
+
+  
+  <!--Event listings-->
+  <div class="search-listings" id="start">
+    {% if rpp %}
+      {% autopaginate events rpp %}
+    {% else %}
+      {% autopaginate events 10 %}
+    {% endif %}
+    {% if is_search %}
+      {% paginate %}
+    {% else %}
+      <div class="pagination"><a class="next" href="{% url search_events %}?page=2">More&nbsp;&raquo;</a></div>
+    {% endif %}
+    <h2>{{ title }}</h2>
+    
+    <div class="search_filters">
+      <div class="header">
+        <h4>Filters</h4>
+      </div>
+      <div class="body"><br />
+        <div class="filter_criteria">
+          {% comment %}<strong>Show Only:</strong>{% endcomment %}
+          <a href="{% url search_events %}?sort=new">New</a> | 
+          <a href="{% url search_events %}?filter=today">Today</a> | 
+          <a href="{% url search_events %}?filter=tomorrow">Tomorrow</a> |
+          <a href="{% url search_events %}?filter=this-week">This&nbsp;Week</a> |
+          <a href="{% url search_events %}?filter=this-weekend">This&nbsp;Weekend</a> |
+          <a href="{% url search_events %}?filter=next-week">Next&nbsp;Week</a> | 
+          <a href="{% url search_events %}?sort=checkins">By&nbsp;Checkins</a> | 
+          <a href="{% url list_events %}">All</a>
+        </div>
+      </div>
+      <div class="sidebar">
+        <strong>Search</strong>
+        <div class="filter_criteria">
+          <form action="{% url search_events %}" method="get">
+            <input type="text" name="q" id="search" maxlength="120" length="30" value="{{ q }}" />
+            <input type="image" src="{{ MEDIA_URL }}ui/images/ico_search.png" name="search_submit" id="search_submit" />
+          </form>
+          <div class="clear"></div>
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+
+    <ul>
+      {% if not events %}
+        <li>
+          {% if searched %}
+            No events matched your search criteria. Please try something else.
+          {% else %}
+            Sorry. No events here at the moment.
+          {% endif %}
+        </li>
+      {% endif %}
+      {% for e in events %}
+	      <li class="city-event">	        
+	        {% include "event/tags/city_event_excerpt.html" %}	          
+	      </li>
+      {% endfor %}
+    </ul>
+    {% if is_search %}
+      {% paginate %}
+    {% else %}
+      <div class="pagination"><a class="next" href="{% url search_events %}?page=2">More&nbsp;&raquo;</a></div>
+    {% endif %}
+  </div>
+{% endblock primary-content %}
+
+
+{% block secondary-content %}
+  {% if not user.is_authenticated %}
+    <div class="sso sidebar-sso" style="display:block;">
+      <a href="{% url signup %}?next={% if next %}{{ next }}{% else %}{{ request.get_full_path }}{% endif %}" class="login_dialogx"><img src="{{ MEDIA_URL }}ui/images/startnow_sidebar.png" alt="Start Now" width="206" height="78" class="png"/></a><br />
+      <span class="subheadline">It’s quick and easy because you use your existing Facebook or Twitter account.</span><br/> 
+      <a href="{% url signup %}?next={% if next %}{{ next }}{% else %}{{ request.get_full_path }}{% endif %}" class="login_dialogx signup-narrow">Sign me up for free &raquo;</a>
+      <a href="{% url signin %}?next={% if next %}{{ next }}{% else %}{{ request.get_full_path }}{% endif %}"class="login_dialogx">Already signed up? Login here!</a><br/><br/>
+      <a href="/flat/how-it-works/">How does RiotVine work?</a><br />
+      <a href="/lnk/tweet-us/">Tweet about RiotVine&nbsp;&raquo;</a> 
+    </div>
+  {% endif %}
+  
+  <a href="{% url create_member_event %}" class="call_to_action promote png"><strong>Add</strong> an Event</a>
+  {% comment %}<a href="{% url list_events %}" class="call_to_action find png"><strong>Find</strong> an Event</a>{% endcomment %}
+  
+  {% ifequal request.location "boston" %}
+    <div class="twitter_feed twitter_feed2">
+      <ul>
+        <li><a href="http://twitter.com/riotvineboston" class="twitter_link">Follow @RiotVineBoston on Twitter for Event Updates</a></li>
+      </ul>
+    </div>
+  {% endifequal %}
+  
+  {% if UI_SXSX_ENABLED %}
+	  {% ifequal request.location "austin" %}
+	    <h2 style="margin-top:1em;"><a href="/sxsw/">SXSW&nbsp;Guide&nbsp;&raquo;</a></h2>
+	  {% endifequal %}
+  {% endif %}
+  
+  {% if user.is_authenticated %}  
+    <div class="recommended">
+      <div id="id_recommended"><img src="{{ MEDIA_URL }}ui/images/loading.gif" alt="loading..."/></div><!-- AJAX recommendation space -->
+    </div>
+    
+    <div class="calendar">
+      <div id="id_calendar"><img src="{{ MEDIA_URL }}ui/images/loading.gif" alt="loading..."/></div><!-- AJAX calendar space -->
+    </div>    
+    
+  {% else %}
+    <div class="calendar">
+      <a href="{% url signup %}?next={% if next %}{{ next }}{% else %}{{ request.get_full_path }}{% endif %}" class="calendar_header"><strong>Favorites</strong></a><br/>
+		  <p>
+        <a href="{% url signup %}?next={% if next %}{{ next }}{% else %}{{ request.get_full_path }}{% endif %}" class="login_dialogx">Sign Up or Login</a> to build your event favorites 
+        and get reminders for upcoming events.
+      </p>
+    </div>
+  {% endif %}
+{% endblock secondary-content %}
+
+{% block sponsored-content %}
+{% endblock sponsored-content %}
+
+{% block mobile-available %}
+  {% include "website/tags/mobile-available.html" %}
+{% endblock %}

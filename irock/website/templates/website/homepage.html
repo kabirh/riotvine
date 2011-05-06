@@ -1,0 +1,244 @@
+{% extends "website/base.html" %}
+
+{% block script %}
+<script type="text/javascript" charset="utf-8">
+  /* <![CDATA[ */
+  var is_ssl = ("https:" == document.location.protocol);
+  var asset_host = is_ssl ? "https://s3.amazonaws.com/getsatisfaction.com/" : "http://s3.amazonaws.com/getsatisfaction.com/";
+  document.write(unescape("%3Cscript src='" + asset_host + "javascripts/feedback-v2.js' type='text/javascript'%3E%3C/script%3E"));
+  /* ]]> */
+</script>
+
+<script type="text/javascript" charset="utf-8">
+  /* <![CDATA[ */
+  var feedback_widget_options = {};
+  feedback_widget_options.display = "overlay";  
+  feedback_widget_options.company = "riotvine";
+  feedback_widget_options.placement = "right";
+  feedback_widget_options.color = "#006699";
+  feedback_widget_options.style = "question";
+  var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
+  /* ]]> */
+</script>
+{% endblock %}
+
+{% block body-id %}home{% endblock %}
+
+{% block title %}Find cool, local events with your friends! | {{ UI_SITE_TITLE }}{% endblock %}
+
+{% block utility-nav %}{% endblock %}
+
+{% comment %}{% block logo-url %}{% url home %}{% endblock %}{% endcomment %}
+
+{% block primary %}
+	<script>
+    _udn = ".riotvine.com";
+    </script>
+    <!-- Google Website Optimizer Conversion Script -->
+	<script type="text/javascript">
+	if(typeof(_gat)!='object')document.write('<sc'+'ript src="http'+
+	(document.location.protocol=='https:'?'s://ssl':'://www')+
+	'.google-analytics.com/ga.js"></sc'+'ript>')</script>
+	<script type="text/javascript">
+	function doGoal(that) {
+		try {
+		var gwoTracker=_gat._getTracker("UA-11551677-2");
+		gwoTracker._setDomainName(".riotvine.com");
+		gwoTracker._trackPageview("/2302557126/goal");
+		setTimeout('document.location = "' + that.href + '"', 100);
+		}catch(err){}
+	}
+	function doGoalDyn() {
+		try {
+		var gwoTracker=_gat._getTracker("UA-11551677-2");
+		gwoTracker._setDomainName(".riotvine.com");
+		gwoTracker._trackPageview("/2302557126/goal");
+		}catch(err){}
+	}
+	</script>
+	<!-- End of Google Website Optimizer Conversion Script -->
+
+	<!-- Google Website Optimizer Control Script -->
+	<script>
+	function utmx_section(){}function utmx(){}
+	(function(){var k='2302557126',d=document,l=d.location,c=d.cookie;function f(n){
+	if(c){var i=c.indexOf(n+'=');if(i>-1){var j=c.indexOf(';',i);return c.substring(i+n.
+	length+1,j<0?c.length:j)}}}var x=f('__utmx'),xx=f('__utmxx'),h=l.hash;
+	d.write('<sc'+'ript src="'+
+	'http'+(l.protocol=='https:'?'s://ssl':'://www')+'.google-analytics.com'
+	+'/siteopt.js?v=1&utmxkey='+k+'&utmx='+(x?x:'')+'&utmxx='+(xx?xx:'')+'&utmxtime='
+	+new Date().valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
+	'" type="text/javascript" charset="utf-8"></sc'+'ript>')})();
+	</script>
+	<!-- End of Google Website Optimizer Control Script -->
+  
+  {{ block.super }}
+  <div class="sell_points">
+  
+    <div class="sell_point_container_main sell_point_container">
+      <div class="sell_point_indiv flatpage">
+        {% common_flatpage "/site/landingpage-intro/" %}
+      </div>
+    </div>
+  
+    {% comment %}
+      <div class="sell_point_container">
+        <div class="sell_point_indiv">
+          <a href="/flat/promote-events/"><img src="{{ MEDIA_URL }}ui/images/promoteevents.png" alt="Promote Events" width="243" height="78" class="png"/></a><br />
+          <span class="subheadline">Post and share events via Twitter with a single click!</span>
+          <ul>
+            <li>Increase event buzz</li>
+            <li>RSVP with a single click</li>
+            <li>Share and retweet events with a single click</li>
+            <li>Customized Landing Pages</li>
+            <li>Target your key audience</li>
+            <li><a href="{% url create_member_event %}" class="call_to_action promote"><strong>Add</strong> an Event</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="sell_point_container">
+        <div class="sell_point_indiv">
+          <a href="{% url list_events %}"><img src="{{ MEDIA_URL }}ui/images/findevents.png" alt="Find Events" width="243" height="78" class="png" /></a><br />
+          <span class="subheadline">Now it’s easy to stay on top of events in your area.</span>
+          <ul>
+            <li>Use Twitter to find local events</li>
+            <li>See who has RSVP'ed to an event</li>
+            <li>Filter by event category</li>
+            <li>Get recommendations for events</li>
+            <li><a href="{% url list_events %}" class="call_to_action find png"><strong>Find</strong> an Event</a></li>
+          </ul>
+        </div>
+      </div>
+    {% endcomment %}
+    
+    <div class="sell_point_container">
+      <div class="sell_point_indiv lastpoint">
+        <a href="{% url list_events %}"><img src="{{ MEDIA_URL }}ui/images/startnow.png" alt="Start Now" width="243" height="78" class="png"/></a><br />
+        <span class="subheadline">It’s quick and easy because you use your existing Facebook or Twitter account.</span> 
+        {% if user.is_authenticated %}
+          <a href="{% url list_events %}" class="signup">Find Events &raquo;</a>
+        {% else %}
+          <a href="{% url signup %}?next={% if next %}{{ next }}{% else %}{{ request.get_full_path }}{% endif %}" class="login_dialogx signup" >Sign me up for free &raquo;</a> 
+          <a href="{% url signin %}?next={% if next %}{{ next }}{% else %}{{ request.get_full_path }}{% endif %}" class="login_dialogx">Already signed up? Login here!</a><br/>
+        {% endif %}<br/>
+        <a href="/flat/how-it-works/">How does RiotVine work?</a><br />
+        <a href="/lnk/tweet-us/">Tweet about RiotVine &raquo;</a> 
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  
+	<!-- Google Website Optimizer Tracking Script -->
+	<script type="text/javascript">
+	if(typeof(_gat)!='object')document.write('<sc'+'ript src="http'+
+	(document.location.protocol=='https:'?'s://ssl':'://www')+
+	'.google-analytics.com/ga.js"></sc'+'ript>')</script>
+	<script type="text/javascript">
+	try {
+	var gwoTracker=_gat._getTracker("UA-11551677-2");
+	gwoTracker._setDomainName(".riotvine.com");
+	gwoTracker._trackPageview("/2302557126/test");
+	}catch(err){}</script>
+	<!-- End of Google Website Optimizer Tracking Script -->
+{% endblock primary %}
+
+{% block secondary-wrapper %}
+  <div class="secondary_content">
+    <div class="column">
+      <h4><a href='http://ny.{{ UI_SITE_DOMAIN }}{{ UI_PORT }}{% url list_events %}'>New York</a></h4>
+      <div class="column_content">
+        {% if top_event_newyork %}
+          <div class="feature_top">
+            <a href="{{ top_event_newyork.get_absolute_url }}"><img src="{{ top_event_newyork.image_avatar_url }}" alt="placeholder" width="50" height="50" class="thumbnail" title="{{ top_event_newyork.title }}" /></a>
+            <a href="{{ top_event_newyork.get_absolute_url }}" class="event_title">{{ top_event_newyork.title }}</a>
+            <div class="clear"></div>
+          </div>
+          <div class="feature_bottom">
+            <span class="event_date">{{ top_event_newyork.event_date|date:"D m.d" }}</span> 
+            <span class="tweet_count"><a href="{{ top_event_newyork.get_absolute_url }}#event-comments">{{ top_event_newyork.tweet_count }}</a></span> 
+            <a href="{{ TWITTER_SHARER }}?status={{ top_event_newyork.title|urlencode }}+{{ top_event_newyork.get_short_url }}" title="ReTweet this Event!"><img src="{{ MEDIA_URL }}ui/images/ico_RT.gif" alt="Retweet" width="28" height="11" /></a>
+          </div>
+        {% endif %}
+        {% if top3_events_newyork %}
+          <h5>More Events in <a href='http://ny.{{ UI_SITE_DOMAIN }}{{ UI_PORT }}{% url list_events %}'>New York</a>:</h5>
+          <div class="more_events">
+            {% for e in top3_events_newyork %}
+              <a href="{{ e.get_absolute_url }}"><img src="{{ e.image_avatar_url }}" alt="" width="50" height="50" class="thumbnail" title="{{ e.title }}" /></a>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+    <div class="column">
+      <h4><a href='http://la.{{ UI_SITE_DOMAIN }}{{ UI_PORT }}{% url list_events %}'>Los Angeles</a></h4>
+      <div class="column_content">
+        {% if top_event_losangeles %}
+          <div class="feature_top">
+            <a href="{{ top_event_losangeles.get_absolute_url }}"><img src="{{ top_event_losangeles.image_avatar_url }}" alt="placeholder" width="50" height="50" class="thumbnail" title="{{ top_event_losangeles.title }}" /></a>
+            <a href="{{ top_event_losangeles.get_absolute_url }}" class="event_title">{{ top_event_losangeles.title }}</a>
+            <div class="clear"></div>
+          </div>
+          <div class="feature_bottom">
+            <span class="event_date">{{ top_event_losangeles.event_date|date:"D m.d" }}</span> 
+            <span class="tweet_count"><a href="{{ top_event_losangeles.get_absolute_url }}#event-comments">{{ top_event_losangeles.tweet_count }}</a></span> 
+            <a href="{{ TWITTER_SHARER }}?status={{ top_event_losangeles.title|urlencode }}+{{ top_event_losangeles.get_short_url }}" title="ReTweet this Event!"><img src="{{ MEDIA_URL }}ui/images/ico_RT.gif" alt="Retweet" width="28" height="11" /></a>
+          </div>
+        {% endif %}
+        {% if top3_events_losangeles %}
+          <h5>More Events in <a href='http://la.{{ UI_SITE_DOMAIN }}{{ UI_PORT }}{% url list_events %}'>Los Angeles</a>:</h5>
+          <div class="more_events">
+            {% for e in top3_events_losangeles %}
+              <a href="{{ e.get_absolute_url }}"><img src="{{ e.image_avatar_url }}" alt="" width="50" height="50" class="thumbnail" title="{{ e.title }}" /></a>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+    <div class="column">
+      <h4><a href='http://boston.{{ UI_SITE_DOMAIN }}{{ UI_PORT }}{% url list_events %}'>Boston</a></h4>
+      <div class="column_content">
+        {% if top_event_boston %}
+          <div class="feature_top">
+            <a href="{{ top_event_boston.get_absolute_url }}"><img src="{{ top_event_boston.image_avatar_url }}" alt="placeholder" width="50" height="50" class="thumbnail" title="{{ top_event_boston.title }}" /></a>
+            <a href="{{ top_event_boston.get_absolute_url }}" class="event_title">{{ top_event_boston.title }}</a>
+            <div class="clear"></div>
+          </div>
+          <div class="feature_bottom">
+            <span class="event_date">{{ top_event_boston.event_date|date:"D m.d" }}</span> 
+            <span class="tweet_count"><a href="{{ top_event_boston.get_absolute_url }}#event-comments">{{ top_event_boston.tweet_count }}</a></span> 
+            <a href="{{ TWITTER_SHARER }}?status={{ top_event_boston.title|urlencode }}+{{ top_event_boston.get_short_url }}" title="ReTweet this Event!"><img src="{{ MEDIA_URL }}ui/images/ico_RT.gif" alt="Retweet" width="28" height="11" /></a>
+          </div>
+        {% endif %}
+        {% if top3_events_boston %}
+          <h5>More Events in <a href='http://boston.{{ UI_SITE_DOMAIN }}{{ UI_PORT }}{% url list_events %}'>Boston</a>:</h5>
+          <div class="more_events">
+            {% for e in top3_events_boston %}
+              <a href="{{ e.get_absolute_url }}"><img src="{{ e.image_avatar_url }}" alt="" width="50" height="50" class="thumbnail" title="{{ e.title }}" /></a>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+    <div class="column">
+      <h4>More Cities</h4>
+      <div class="column_content twitter_feed">
+        <h5>
+          <a href="http://austin.{{ UI_SITE_DOMAIN }}{{ UI_PORT }}{% url list_events %}">Austin</a> / 
+          <a href="http://sf.{{ UI_SITE_DOMAIN }}{{ UI_PORT }}{% url list_events %}">San Francisco</a>          
+        </h5>
+        <br/>
+        We'll be in your town soon.
+        <ul>
+          <li><a href="http://twitter.com/riotvine" class="twitter_link">Follow our updates on Twitter</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+{% endblock secondary-wrapper %}
+
+{% block mobile-available %}
+  {% include "website/tags/mobile-available.html" %}
+{% endblock %}
+
+

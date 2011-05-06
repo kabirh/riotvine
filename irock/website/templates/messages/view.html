@@ -1,0 +1,32 @@
+{% extends "messages/base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "View Message" %} - {{ block.super }}{% endblock %}
+{% block h2 %}{% trans "View Message" %}{% endblock %}
+{% block primary-content %}
+  <dl class="message-headers">
+      <dt>{% trans "Subject" %}</dt><dd><strong>{{ message.subject }}</strong></dd>
+      <dt>{% trans "Sender" %}</dt>
+      {% if message.sender.get_profile.artist %}
+        <dd><a href="{{ message.sender.get_profile.artist.get_absolute_url }}">{{ message.sender }}</a></dd>
+      {% else %}
+        <dd>{{ message.sender }}</dd>
+      {% endif %}
+      <dt>{% trans "Date" %} </dt><dd>{{ message.sent_at|date:_("DATETIME_FORMAT")}}</dd>
+      <dt>{% trans "Recipient" %}</dt>
+      {% if message.recipient.get_profile.artist %}
+        <dd><a href="{{ message.recipient.get_profile.artist.get_absolute_url }}">{{ message.recipient }}</a></dd>
+      {% else %}
+        <dd>{{ message.recipient }}</dd>
+      {% endif %}
+  </dl>
+  
+  <div class="message-body">
+    {{ message.body|linebreaks }}
+  </div>
+  
+  {% ifequal message.recipient user %}
+    <div id="replyButton" class="button messageButton"><a href="{% url messages_reply message.id %}">{% trans "Reply" %}</a></div>
+  {% endifequal %}
+  <a class="cancelButton" href="{% url messages_delete message.id %}">{% trans "Delete" %}</a>
+{% endblock %}

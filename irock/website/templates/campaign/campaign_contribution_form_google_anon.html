@@ -1,0 +1,44 @@
+{% extends "campaign/campaign_contribution_form_base.html" %}
+
+{% block instructions %}
+  {% common_flatpage "/f/anonymous-donation/gco/" %}
+  <p class="ir-donate">
+    <a rel="payment" href="{% url contribute_to_campaign_by_payment_mode campaign_id=c.pk,payment_mode=payment_option.payment_mode %}">
+      Click here to create or login to your Illius Rock account&nbsp;&raquo;
+    </a>
+  </p>
+{% endblock instructions %}
+
+{% block payment-option-form %}
+  <form method="post" action="{% google_submit_url campaign.artist %}" accept-charset="utf-8">
+    <fieldset>
+      <input type="hidden" name="_type" value="checkout-shopping-cart"/>
+      
+      <input type="hidden" name="shopping-cart.items.item-1.item-name" value="{{ c|slice:"126" }}"/>
+      <input type="hidden" name="shopping-cart.items.item-1.item-description" value="{{ UI_SITE_TITLE }} campaign: {{ c }}"/>
+      
+      <div class="ctrlHolder requiredTrue">
+        <label for="id_qty">Number of contributions</label>
+        <input id="id_qty" class="textInput" type="text" name="shopping-cart.items.item-1.quantity" value="1"/>
+      </div>
+      
+      <input type="hidden" name="shopping-cart.items.item-1.unit-price" value="{{ campaign.contribution_amount }}"/>
+      
+      <input type="hidden" name="shopping-cart.items.item-1.quantity" value="1"/>
+      <input type="hidden" name="shopping-cart.items.item-1.unit-price.currency" value="{% currency_default %}"/>
+      <input type="hidden" name="shopping-cart.items.item-1.merchant-item-id" value="{{ campaign.pk }}"/> 
+      
+      <input type="hidden" name="shopping-cart.merchant-private-data" value="0~anonymous~0"/>
+
+      <input type="hidden" name="checkout-flow-support.merchant-checkout-flow-support.continue-shopping-url" value="http://{% domain %}{{ campaign.get_absolute_url }}"/>
+
+      <input class="submitButtonImage" type="image" name="Google Checkout" alt="Fast checkout through Google" src="{% google_button_image_url campaign.artist %}" height="43" width="160"/>
+      <a class="cancelButton" href="http://{% domain %}{{ campaign.get_absolute_url }}">Cancel</a>
+    </fieldset>
+  </form>
+{% endblock %}
+
+{% block secondary-instructions %}
+  {% common_flatpage "/f/anonymous-donation/gco/sidebar/" %}
+{% endblock secondary-instructions %}
+

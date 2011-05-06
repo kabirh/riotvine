@@ -1,0 +1,12 @@
+{% if event %}
+  <div class="cal-add-links slidebox" style="display:none;background-color:#ffff99;">
+    <ul>
+      <li>I'd like to add this event to my...</li>
+      <li><a href="{% url event_vcal event_id=event.pk %}">+ Outlook Calendar</a></li>
+      <li><a href="{% url event_vcal event_id=event.pk %}">+ iCal Calendar</a></li>
+      <li><a href="{{ gcal_url }}" {% popup_wide %}>+ Google Calendar</a></li>
+      <li class="close-link"><a href="#">[ close ]</a></li>
+    </ul>
+  </div>
+{% endif %}
+

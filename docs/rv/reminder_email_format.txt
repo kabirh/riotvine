@@ -1,0 +1,24 @@
+Hey %username%!
+
+Don't forget:
+
+* Event title<link to event page> - X friends are interested in this event(only include if >0)
+* Date @ Time
+* Venue name - Address<link to google maps>
+* Buy Tickets!<tracking link and then forward them to ticketmaster>(only if there's a ticket url)
+
+Ripe Picks for you:
+X friends are interested in:
+* Event title<link to event page>
+* Date @ Time
+
+X friends are interested in:
+* Event title<link to event page>
+* Date @ Time
+
+Don't want to receive these daily reminders by email? Turn them off here:
+http://riotvine.com/accounts/update-user-profile/
+
+Cheers,
+The RiotVine Team
+http://riotvine.com/

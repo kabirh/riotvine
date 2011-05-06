@@ -1,0 +1,19 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <meta name="MSSmartTagsPreventParsing" content="TRUE" />
+    <meta http-equiv="imagetoolbar" content="no" />
+    <style type="text/css" media="screen">
+		  @import "{{ MEDIA_URL }}ui/css/reset.css?v={{ UI_CSS_VERSION }}";
+		  @import "{{ MEDIA_URL }}ui/css/print.css?v={{ UI_CSS_VERSION }}";
+    </style>
+    <title>{% block title %}{{ UI_SITE_TITLE }}{% endblock %}</title>
+  </head>
+  <body id="body-{% block body-id %}{% endblock %}" class="body-class-{% block body-class %}{% endblock %}">
+    <div id="container">
+      {% block container %}
+      {% endblock container %}
+    </div><!-- container -->
+  </body>
+</html> 

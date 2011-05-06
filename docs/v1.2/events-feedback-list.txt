@@ -1,0 +1,62 @@
+>
+> Is it possible to get rid of that thin, white border around the badge?
+
+DONE + TESTED
+
+> And center the "Attending" count until it reaches double digits?
+
+DONE + TESTED
+
+> Same with the Attend Event button, change that to "Are you in?" 
+
+DONE + TESTED
+
+> Is it possible to mix event badges with campaign badges? In other words,
+> don't separate them into 3 on top, 3 on the bottom.
+
+DONE + TESTED
+
+> I know the embeddable music player is slated as an artist profile feature,
+> but can you add that to the event function? No other site on the internet
+> lets you see the details of a live show and immediately listen to the bands
+> that will be playing without being forced to follow a link or two. This
+> would be a field the artist can optionally fill in while creating the event.
+
+
+
+> I think we need to redo much of the language. Instead of "click here to
+> attend" on the badge, can you see how "are you in?" looks?
+
+
+> After you click the Attend Event button, it asks me to fill in the form with
+> my name, but the site already has my name filled in. Is there a way to skip
+> this page if the information is already present in my profile?
+
+DONE + TESTED
+
+>
+> During Event creation:
+>
+> Remove end time
+
+DONE + TEST
+
+> the one thing I would add is a function similar to the contribution
+> calculator from the campaign creation page; something that shows the user
+> what their start and end time will look like as they fill in the field, so
+> they are not confused or try compensating. 
+
+TRICKY...
+
+> And if it's possible to add 9pm
+> to the list of times that pop up when you click the watch, that would be
+> great. Does that make sense?
+
+DONE + TESTED
+
+
+> Will the Events also have SEO URLs?
+
+TBD LATER
+
+

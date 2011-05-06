@@ -1,0 +1,221 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" xmlns:fb="http://www.facebook.com/2008/fbml">
+  <head {% block headattribute %}{% endblock %}>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    {% block meta-fields %}
+	    {% tcache "3600" "rv-site-keywords" %}
+	      <meta name="keywords" content="{% site_config "keywords" %}" />
+	      <meta name="description" content="{% site_config "description" %}" />
+	    {% endtcache %}
+    {% endblock %}
+    <meta name="MSSmartTagsPreventParsing" content="TRUE" />
+    <meta http-equiv="imagetoolbar" content="no" />
+    <link href="{{ MEDIA_URL }}ui/css/reset.css?v={{ UI_CSS_VERSION }}" rel="stylesheet" type="text/css" />
+    {% block jquery-css %}
+      <link href="{{ MEDIA_URL }}ui/css/start/jquery-ui-1.7.2.custom.css?v={{ UI_CSS_VERSION }}" rel="stylesheet" type="text/css" />
+    {% endblock jquery-css %}
+    <link href="{{ MEDIA_URL }}ui/css/general.css?v={{ UI_CSS_VERSION }}" rel="stylesheet" type="text/css" />
+    <link href="{{ MEDIA_URL }}ui/css/override.css?v={{ UI_CSS_VERSION }}" rel="stylesheet" type="text/css" />
+    <!--[if lte IE 7]>
+      <link href="{{ MEDIA_URL }}ui/css/ie67_fixes.css?v={{ UI_CSS_VERSION }}" rel="stylesheet" type="text/css" />
+      <link href="{{ MEDIA_URL }}ui/css/override_ie6.css?v={{ UI_CSS_VERSION }}" rel="stylesheet" type="text/css" />
+    <![endif]-->
+    {% block main-script %}
+      {% include "website/tags/main-script.html" %}
+      {% block base-script %}{% endblock %}
+      {% block pre-script %}{% endblock %}
+      {% include "website/tags/main-script2.html" %}
+    {% endblock main-script %}
+    {% block script %}{% endblock %}
+    {% block head-extra %}{% endblock %}
+    <link rel="shortcut icon" href="{{ MEDIA_URL }}ui/images/favicon.ico" />    
+    <title>{% block title %}{{ UI_SITE_TITLE }}{% endblock %}</title>
+  </head>
+  <body id="{% block body-id %}{% endblock %}" class="{% block body-class %}{% endblock %} {% if user.is_authenticated %}registered{% else %}unregistered{% endif %}">
+    {% include "website/tags/body-top.html" %}
+    {% if not request.mobile %}
+      {% if not user.is_authenticated or request.session.fb_uid or needs_fbml %}
+        <script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php/en_US" type="text/javascript"></script>
+      {% endif %}
+    {% endif %}
+    {% block full-content %}
+      {% block alert-message %}
+        {% if user.is_authenticated and not user_profile.is_verified %}
+          <ul class="messages" id="hdr_messages2">
+            <li class="special_message">
+              You're almost there! 
+              Please check your email and follow the link to confirm your account
+              <br/>or we'll turn it off after&nbsp;{{ UI_REGISTRATION_DEACTIVATION_THRESHOLD_DAYS }}&nbsp;days&nbsp;:( 
+              {% comment %}<a href="{% url confirm_account_keyin %}?next={% if next %}{{ next }}{% else %}{{ request.get_full_path }}{% endif %}">More&nbsp;info&nbsp;&raquo;</a>{% endcomment %}
+            </li>
+          </ul>          
+        {% endif %}
+      {% endblock %}
+      {% if mesgs or messages or special_messages %}
+          <ul class="messages" id="hdr_messages">
+            {% for message in mesgs %}
+              <li>{{ message|safe }}</li>
+            {% endfor %}
+            {% for message in messages %}
+              <li>{{ message|safe }}</li>
+            {% endfor %}
+            {% for message in special_messages %}
+              <li class="special_message">{{ message|safe }}</li>
+            {% endfor %}
+          </ul>
+      {% endif %}
+      <div class="master_container" {% block master-container_style %}{% endblock %}>
+        <a name="top"></a>
+        {% block content %}
+          {% block utility-nav %}
+            <div class="utility_nav">
+              <a href="{% url home %}">RiotVine</a>&nbsp;&gt;&nbsp;<a href="{% url list_events %}">{{ request.location_name }}</a>
+              {% if request.other_cities %}
+                <span class="other-cities">
+                  <span>Other&nbsp;Cities:</span>&nbsp;&nbsp;{{ request.other_cities|safe }}
+                </span>
+              {% endif %}
+            </div>
+          {% endblock utility-nav %}
+          
+          <div class="primary_content">
+            {% block primary %}
+              <div class="masthead">
+                {% block login-container %}
+                  <div class="login_container" {% if user.is_authenticated %}id="logged_in"{% endif %}>
+                    {% if user.is_authenticated %}
+                        {% if request.session.fb_uid and user_profile.use_fb_profile %}
+	                        <div class="headshot_box fbheadshot_box">
+	                          <a href="{{ user_profile.get_absolute_url }}" class="fbprofile"><fb:profile-pic uid="{{ request.session.fb_uid }}" facebook-logo="false" linked="false" size="square"></fb:profile-pic></a>
+	                          <div class="login-box2">
+  	                              <div class="title fbtitle">
+  	                                  Welcome, {{ user_profile.username }}
+  	                              </div>
+	                              <a href="{% url account %}">My Account</a> | <a href="{% url logout %}?discardfb=y&amp;next={% if next %}{{ next }}{% else %}{{ request.get_full_path }}{% endif %}" onclick="FB.Connect.logout();">Logout</a>
+	                              {% if request.session.num_fb_new_friends %}
+	                                | <a class="alert" href="{% url fb_manage_friends %}">New&nbsp;Friends!</a>
+	                              {% endif %}
+	                          </div>
+	                         </div>
+                        {% else %}
+	                        <div class="headshot_box">
+	                          <a href="{{ user_profile.get_absolute_url }}"><img src="{{ request.user_profile.avatar_medium_url }}" width="60" height="60" class="thumbnail" /></a>
+	                          <div class="title">Welcome, {{ user_profile.username }}</div>
+	                          <a href="{% url account %}">My Account</a> | <a href="{% url logout %}?next={% if next %}{{ next }}{% else %}{{ request.get_full_path }}{% endif %}">Logout</a>
+	                          {% if request.session.fb_uid and request.session.num_fb_new_friends %}
+	                                | <a class="alert" href="{% url fb_manage_friends %}">New&nbsp;Friends!</a>
+                              {% endif %}
+	                         </div>
+                        {% endif %}
+                    {% else %}
+                      <div class="existing-user-signin">Already signed up? <a href="{% url signin %}?next={% if next %}{{ next }}{% else %}{{ request.get_full_path }}{% endif %}">Login here&nbsp;&raquo;</a></div>
+                    {% endif %}
+                  </div>
+               {% endblock login-container %}
+                <a href="{% block logo-url %}{% url list_events %}{% endblock %}" rel="home" title="{{ UI_SITE_TAGLINE }}"><img src="{{ MEDIA_URL }}ui/images/logo-rv.png" alt="RiotVine Logo" width="236" height="82" class="logo png" /></a>
+              </div>
+            {% endblock primary %}
+          </div>
+  
+          {% block secondary-wrapper %}
+            <div class="secondary_content-wrapper">
+              <div class="secondary_content">
+                {% block main-content %}
+                  <div class="three-column">
+                      <div class="padding">
+                        {% block primary-content %}
+                        {% endblock primary-content %}
+                      </div>
+                  </div>
+                  <div class="column sidebar">
+                    {% block sidebar %}
+                      <div class="padding">
+                        {% block secondary-content %}
+                        {% endblock secondary-content %}
+                      </div>
+                    {% endblock sidebar %}
+                  </div>
+                {% endblock main-content %}
+                <div class="clear"></div>
+              </div>
+            </div>
+          {% endblock secondary-wrapper %}
+  
+          {% block sponsored-content %}{% endblock sponsored-content %}
+        {% endblock content %}
+  
+        {% block footer %}
+          <div class="footer_content">
+            <a href="{% url home %}" rel="home">Home</a> | 
+            <a href="/flat/how-it-works/" rel="home">How&nbsp;RiotVine&nbsp;Works</a> | 
+            <a href="http://blog.riotvine.com">News</a> | 
+            <a href="/jobs/">Jobs</a> | 
+            <a href="/about/">About&nbsp;Us</a> | 
+            <a href="/contact/">Contact</a> | 
+            <a href="/terms-of-use/">Terms</a> 
+          </div>
+          {% block mobile-available %}{% endblock %}
+          <div class="subfooter_content">{{ UI_SITE_COPYRIGHT|safe }}</div>
+        {% endblock footer %}
+      </div>
+      
+      {% comment %}
+        {% if not user.is_authenticated %}
+          <div id="global_login_dlg" {% if show_login %}class="show_login"{% endif %} style="display:none;" title="Sign-in to {{ UI_SITE_TITLE }}">
+            <div class="sso">
+              <h3>Sign in with your Facebook or Twitter account</h3>
+              <p class="subtext">Don't worry, we NEVER update your status behind your back.</p>
+              <p class="eula">
+                  By clicking any of the buttons below, you accept our <a href="/terms-of-use/?popup=y" {% popup %}>End User License Agreement.</a>
+              </p>
+              {% include "registration/tags/sso_initiate.html" %}
+              {% include "fb/tags/fb_login.html" %}
+            </div>
+            <!-- divider -->
+            <div class="onsite">
+              {% include "registration/tags/login_tag.html" %}
+              <div class="signup_now">
+                <a href="{% url register %}?next={% if next %}{{ next }}{% else %}{{ request.get_full_path }}{% endif %}" title="Signing up is quick and easy!">
+                  Create a {{ UI_SITE_TITLE }} Account
+                </a>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      {% endcomment %}
+    
+      {% if not request.mobile %}
+        {% if not user.is_authenticated or request.session.fb_uid or needs_fbml %}
+          <script type="text/javascript">
+            /* <![CDATA[ */
+              FB_RequireFeatures(["XFBML"], function(){
+                  FB.Facebook.init("{{ FB_API_KEY }}", "/fb/xd-receiver/");
+                  {% ifequal request.GET.fb_login "y" %}fb_login();{% endifequal %}
+              });            
+            /* ]]> */
+          </script>
+        {% endif %}
+      {% endif %}
+      
+      {% block analytics %}
+        {% if UI_GOOGLE_ANALYTICS_CODE and not UI_DEV_MODE %}
+          <script type="text/javascript">
+            /* <![CDATA[ */
+              var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+              document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+              </script>
+              <script type="text/javascript">
+              var pageTracker = _gat._getTracker("{{ UI_GOOGLE_ANALYTICS_CODE }}");
+              pageTracker._trackPageview();
+            /* ]]> */
+          </script>
+        {% endif %}
+      {% endblock %}
+      <div id="debug"></div>
+      {% if UI_TEMPLATE_DEV_MODE %}
+        {% sql_connections %}
+      {% endif %}
+    {% endblock full-content %}
+    {% include "website/tags/body-bottom.html" %}
+  </body>
+</html>

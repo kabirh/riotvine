@@ -1,0 +1,35 @@
+{% extends "event/base.html" %}
+
+{% block head-extra %}
+ {{ form.media|safe }}
+{% endblock %}
+
+{% block title %}Delete Event - {{ block.super }}{% endblock %}
+
+{% block h2 %}Delete Event{% endblock %}
+
+{% block primary-content %}
+  <h3>{{ event.title }}</h3>
+  
+  <p>Please use the form below to delete your event.</p>
+  
+  {% if form.errors %}
+    <p class="error">Please correct the errors below.</p>
+    {% if form.non_field_errors %}
+      <ul class="errorlist">
+        {{ form.non_field_errors.as_ul }}
+      </ul>
+    {% endif %}
+  {% endif %}
+  
+  <form method="post" action="">
+    <fieldset>
+      {% for field in form %}
+        {% common_formfield_render field %}
+      {% endfor %}
+      <input type="submit" value="Delete Event" class="submitButton"/>
+      <a href="{% url view_event event_id=event.pk %}" class="cancelButton">Cancel</a>
+    </fieldset>
+  </form>
+{% endblock %}
+

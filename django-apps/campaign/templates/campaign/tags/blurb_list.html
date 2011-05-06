@@ -1,0 +1,18 @@
+{% if campaigns %}
+  <ul class="campaignsUl blurbsUl">
+    {% for campaign in campaigns %}
+      <li>
+        <a href="{{ campaign.get_absolute_url }}" class="campaignAvatarLink">
+          <img src="{{ campaign.image_avatar_url }}" class="campaignAvatar" alt=""/>
+        </a>
+        <p class="artistName">{{ campaign.artist.name }}</p>
+        <h3>
+          <a href="{{ campaign.get_absolute_url }}">
+            {{ campaign.title|truncatewords:"20" }}
+          </a>
+        </h3>
+        {% comment %}<p class="endDate">Campaign ends {{ campaign.end_date|date }}</p>{% endcomment %}
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}

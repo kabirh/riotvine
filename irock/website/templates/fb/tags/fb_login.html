@@ -1,0 +1,14 @@
+<div class="fb_sso">
+  <fb:login-button v="2" size="large" onlogin="fb_login();">Sign-in&nbsp;with&nbsp;Facebook</fb:login-button>
+</div>
+<script type="text/javascript">
+    /* <![CDATA[ */
+     function fb_login() {
+       FB.Connect.showPermissionDialog("offline_access", function(perms) {
+           location.href="http://{{ TRUE_HOSTNAME_AND_PORT }}{% url fb_login %}?next={% if next %}{{ next }}{% else %}{{ request.get_full_path }}{% endif %}";
+       });     
+       return true;
+     };
+    /* ]]> */
+</script>
+

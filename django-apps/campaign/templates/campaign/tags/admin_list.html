@@ -1,0 +1,20 @@
+<h3>{{ title }}</h3>
+{% if campaigns %}
+  <p class="editAction"><a href="{% url list_artist_campaigns category=campaign_type %}">view all</a></p>
+  <ul class="campaignsUl blurbsUl campaignList{{ campaign_type }}">
+    {% for c in campaigns %}
+      <li>
+        <a href="{{ c.get_absolute_url }}" class="avatarLink">
+          <img src="{{ c.image_avatar_url }}" class="avatar" alt="{{ c.title }}" />
+        </a>
+        <p><a href="{{ c.get_absolute_url }}">{{ c.title }}</a></p>
+		{% if c.stats.views %}
+    		<p class="num-views">Viewed {{ c.stats.views }} time{{ c.stats.views|pluralize }}</p>
+      	{% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p class="artistNoCampaigns">There are no campaigns in this category.</p>
+{% endif %}
+

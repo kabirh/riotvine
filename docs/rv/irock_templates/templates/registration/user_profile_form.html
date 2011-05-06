@@ -1,0 +1,39 @@
+{% extends "registration/base.html" %}
+
+{% block head-extra %}
+ {{ form.media|safe }}
+{% endblock %}
+
+{% block title %}Update Profile - {{ block.super }}{% endblock %}
+
+{% block h2-container %}
+    <h2 {% if user.get_profile.avatar %}class="avatarHeader"{% endif %}>
+      {% if user.get_profile.avatar %}
+        <img class="avatar" src="{{ user.get_profile.avatar.url }}" width="{{ user.get_profile.avatar_width }}" height="{{ user.get_profile.avatar_height }}" alt="{{ user.username }}"/>
+      {% endif %}
+      Update Profile
+    </h2>
+{% endblock %}
+
+{% block primary-content %}
+  <p>Please fill out the form below to update your profile.</p>
+
+  {% if form.errors %}
+    <p class="error">Please correct the errors below.</p>
+    {% if form.non_field_errors %}
+      <ul class="errorlist">
+        {{ form.non_field_errors.as_ul }}
+      </ul>
+    {% endif %}
+  {% endif %}
+  
+  <form method="post" action="" {% if form.is_multipart %}enctype="multipart/form-data"{% endif %}>
+    <fieldset>
+      {% for field in form %}
+        {% common_formfield_render field %}
+      {% endfor %}
+      <input type="submit" value="Update" class="submitButton"/>
+      <a href="{% url account %}" class="cancelButton">Cancel</a>
+    </fieldset>    
+  </form>
+{% endblock %}

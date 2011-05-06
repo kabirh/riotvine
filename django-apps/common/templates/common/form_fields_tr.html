@@ -1,0 +1,20 @@
+<tr id="id_tr_{{ field.html_name }}" class="required_field_{{ field.field.required|lower }} {% if field.errors %}error_field{% endif %}">
+  <td>
+    {% if not field.is_hidden and not is_checkbox %}{{ label_html }}{% endif %}
+    {% if not field.is_hidden and is_checkbox %}
+      {{ field }}
+    {% endif %}
+  </td>
+  <td>
+    {% if field.errors %}{{ field.errors|safe }}{% endif %}
+    {% if is_checkbox %}
+      {{ label_html }}
+    {% else %}
+      {{ field }}
+    {% endif %}
+    {% if not field.is_hidden %}
+      {% if field.help_text %}<div class="help_text">{{ field.help_text|safe }}</div>{% endif %}
+    {% endif %}
+  </td>
+</tr>
+

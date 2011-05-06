@@ -1,0 +1,31 @@
+      {% if UI_DEV_MODE %}
+        <script type="text/javascript" src="{{ MEDIA_URL }}ui/js/jquery-1.3.2.min.js?v={{ UI_JS_VERSION }}"></script>
+        <script type="text/javascript" src="{{ MEDIA_URL }}ui/js/jquery-ui-1.7.1.custom.min.js?v={{ UI_JS_VERSION }}"></script>
+      {% else %}
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
+      {% endif %}
+      <!--[if lt IE 7]>
+        <script type="text/javascript" src="{{ MEDIA_URL }}ui/js/jquery.bgiframe.min.js?v={{ UI_JS_VERSION }}"></script>
+        <script type="text/javascript" src="{{ MEDIA_URL }}ui/js/DD_belatedPNG_0.0.8a-min.js?v={{ UI_JS_VERSION }}"></script>
+      <![endif]-->
+      <script type="text/javascript" src="{{ MEDIA_URL }}ui/js/jquery.cookie.js?v={{ UI_JS_VERSION }}"></script>
+      <script type="text/javascript" src="{{ MEDIA_URL }}ui/js/jquery.form-2.25.min.js?v={{ UI_JS_VERSION }}"></script>
+      <script type="text/javascript" src="{{ MEDIA_URL }}ui/js/jquery.overlabel.js?v={{ UI_JS_VERSION }}"></script>
+      <script type="text/javascript">
+        /* <![CDATA[ */
+         var SIGNIN_LINK = "{% url signup %}?next={% if next %}{{ next }}{% else %}{{ request.get_full_path }}{% endif %}";
+         var COOKIE_DOMAIN = "{{ COOKIE_DOMAIN }}";
+         {% if request.session.fb_uid %}
+           var IS_FB_SESSION = true;
+           var FB_UID = "{{ request.session.fb_uid }}";
+         {% else %}
+           var IS_FB_SESSION = false;
+         {% endif %}
+         var media_url = "{{ MEDIA_URL }}";
+         var FB_API_KEY = "{{ FB_API_KEY }}";
+         var event_calendar_url = "{% url event_calendar %}";
+         var recommended_events_url = "{% url event_recommended %}";
+        /* ]]> */
+      </script>
+      <script type="text/javascript" src="{{ MEDIA_URL }}ui/js/site-features.js?v={{ UI_JS_VERSION }}"></script>  

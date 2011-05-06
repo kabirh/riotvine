@@ -1,0 +1,12 @@
+{% autoescape off %}
+A campaign approval has been requested. Here are the details.
+
+Artist: {{ campaign.artist.name }}
+Campaign: {{ campaign.title }}
+Campaign ID: {{ campaign.pk }}
+
+Link: http://{% domain %}{% url login %}?next={{ campaign.get_absolute_url }}
+
+- Illius Rock
+{% endautoescape %}
+

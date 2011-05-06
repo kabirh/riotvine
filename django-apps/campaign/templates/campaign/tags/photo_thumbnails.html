@@ -1,0 +1,20 @@
+{% if photos %}
+  {% if title %}
+    <h3><a href="{% url list_campaign_photos campaign_id=campaign.pk %}">{{ title }}</a></h3>
+  {% endif %}
+  <ul class="photoItemContainer photoItemContainer{{ aspect }}">
+    {% for thumbnail in photos %}
+      <li class="photoListItem">
+        <a href="{% url list_campaign_photos campaign_id=campaign.pk %}">
+          <img src="{{ thumbnail.image.url }}" width="{{ thumbnail.width }}" height="{{ thumbnail.height }}" alt="{{ thumbnail.title }}"/>
+        </a>
+      </li>
+    {% endfor %}
+    <li class="photoListItem moreLink">
+      <a href="{% url list_campaign_photos campaign_id=campaign.pk %}">
+        all&nbsp;photos&nbsp;<span class="arrow">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+{% endif %}
+

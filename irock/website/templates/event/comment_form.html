@@ -1,0 +1,26 @@
+{% extends "event/base.html" %}
+
+{% block head-extra %}
+ {{ comment_form.media|safe }}
+{% endblock %}
+
+{% block title %}Post Event Comment - {{ block.super }}{% endblock %}
+
+{% block primary-content %}
+  <h2>Post Comment</h2>
+  {% if form.errors %}
+    <p class="error">Please correct the errors below.</p>
+    {% if form.non_field_errors %}
+      <ul class="errorlist">
+        {{ form.non_field_errors.as_ul }}
+      </ul>
+    {% endif %}
+  {% endif %}
+
+  {% include "event/tags/comment_form.html" %}
+{% endblock %}
+
+{% block secondary-content %}
+  {% if event %}{% event_summary event %}{% endif %}
+{% endblock %}
+

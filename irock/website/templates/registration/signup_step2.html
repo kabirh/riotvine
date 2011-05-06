@@ -1,0 +1,56 @@
+{% extends "registration/base.html" %}
+
+{% block head-extra %}
+ {{ form.media|safe }}
+{% endblock %}
+
+{% block title %}Sign up - {{ block.super }}{% endblock %}
+
+{% block body-class %}tertiary{% endblock %}
+
+{% block primary-content %}
+	  <table class="form_table_stacked form_table_stacked_signup" width="830px">
+		<tbody>
+			<tr>
+				<td class="tabbed_steps">
+				  {% if existing_user %}
+				    <span class="selected"><em>Sign in</em></span>
+				  {% else %}
+					<span><em><strong>1</strong> Enter Email</em></span>
+					<span class="selected"><em><strong>2</strong> Connect with Facebook or Twitter</em></span>
+				  {% endif %}
+				</td>
+		    </tr>
+		    <tr>
+		        <td class="unified_login">
+                   
+	  		        <div class="sso {% if not existing_user %}sso_no_login{% endif %}">
+				            <h3>Sign in with your Facebook or Twitter account</h3>
+				            <p>Pick the social network where you have the most friends. You can go back and add the other one later.
+				            Don't&nbsp;worry,&nbsp;we&nbsp;NEVER update your status behind your back.</p>
+				            {% include "fb/tags/fb_login.html" %}
+				            {% include "registration/tags/sso_initiate.html" %}
+				            {% if not existing_user %}
+				              <div class="signup_now">
+				                  Don't have Facebook or Twitter?
+			                      <a href="{% url register %}?next={% if next %}{{ next }}{% else %}{{ request.get_full_path }}{% endif %}" title="Signing up is quick and easy!">
+			                        Create a {{ UI_SITE_TITLE }} account&nbsp;&raquo;
+			                      </a>
+				               </div>
+				            {% endif %}
+		           </div><!-- divider -->
+		           {% if existing_user %}
+			           <div class="onsite">
+				            {% include "registration/tags/login_tag.html" %}
+			           </div>
+                   {% endif %}
+                   {% if existing_user %}
+	                     <div class="existing-user-signin">
+	                       Don't have an account? <a href="{% url signup %}?next={% if next %}{{ next }}{% else %}{{ request.get_full_path }}{% endif %}">Sign up here&nbsp;&raquo;</a>
+	                     </div>
+                   {% endif %}	  		        
+				   </td>
+			</tr>
+	      </tbody>
+	    </table>
+{% endblock %}

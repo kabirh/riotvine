@@ -1,0 +1,266 @@
+{% extends "campaign/base.html" %}
+
+{% load comments %}
+{% load oembedtags %}
+
+{% block meta-fields %}   
+  <meta name="title" content="{{ c.title }} - Illius Rock" />
+  <meta name="description" content="" />
+{% endblock %}
+    
+{% block head-extra %}
+ {% if campaign.is_public %}
+   <meta name="medium" content="image" />
+   <link rel="image_src" href="http://{% domain %}{% url serve_badge_external campaign_id=campaign.id %}" />
+ {% endif %}
+ {% if comment_form %}{{ comment_form.media|safe }}{% endif %}
+{% endblock %}
+
+{% block title %}{{ c.title }} - {{ block.super }}{% endblock %}
+
+{% block h2 %}
+  <a href="{{ c.get_absolute_url }}" rel="bookmark">
+    {% if changes.title %}
+      <span class="changedTrue">{{ changes.title }}*</span>
+    {% else %}
+      {{ c.title }}
+    {% endif %}
+  </a>
+{% endblock %}
+
+{% block primary-content %}
+  <h3 class="bandName">
+    <img src="{{ c.artist.user_profile.avatar_url }}" class="bandAvatar userAvatar" alt="{{ c.artist.name }}"
+                width="{{ c.artist.user_profile.avatar_w }}" height="{{ c.artist.user_profile.avatar_h }}"/>
+    <span class="byLine">By <a href="{{ c.artist.get_absolute_url }}">{{ c.artist.name }}</a></span>
+  </h3>
+  
+  <div class="campaignDetail campaignOwner{{ is_owner }}" id="campaignId{{ c.pk }}">
+    {% campaign_summary c "" is_owner is_admin "" "" "separate_offering" changes %}
+  </div>
+  
+  <div class="offeringWrapper">
+    {% if changes.offering %}
+      <h3 class="offering changedTrue">Offering*</h3>
+      {{ changes.offering|safe }}
+    {% else %}
+      <h3 class="offering">Offering</h3>
+      {{ campaign.offering|safe }}
+    {% endif %}
+    <ul class="userOptions">
+      {% include "campaign/tags/contrib_buttons.html" %}
+    </ul>
+  </div>
+  
+  <div class="campaignMultimedia">
+    {% if changes.embed_url %}
+      <div class="multimediaVideo changedTrue">
+        {% oembed changes.embed_service_latest changes.embed_url %}
+      </div>
+    {% else %}
+      {% if c.embed_url %}
+        <div class="multimediaVideo">
+          {% oembed c.embed_service c.embed_url %}
+        </div>
+      {% endif %}
+    {% endif %}
+    <div class="multimediaPhotos multimediaPhotosNarrow{% if c.embed_url %}True{% endif %}">
+      {% tcache UI_CACHE_TIMEOUT "ir-campaign-photo-thumbnails" c.pk "square" "18" %}
+        {% campaign_photo_thumbnails c "square" "Photos" 18 %}
+      {% endtcache %}
+    </div>
+  </div>
+
+  {% if campaign.is_public %}
+	  <div class="campaignComments commentsWrapper" id="campaignCommentsWrapper">
+	    {% get_comment_count for campaign as comment_count  %}
+	    {% if comment_count %}
+	      <h3 class="commentsHeader">
+	        {% blocktrans count comment_count as n %}
+	          {{ n }} Comment
+	        {% plural %}
+	          {{ n }} Comments
+	        {% endblocktrans %}
+	      </h3>
+	      {% if user.is_authenticated %}
+          <div class="postYours"><a href="#post-comment">{% trans 'post yours' %}&nbsp;<span class="arrow">&raquo;</span></a></div>
+        {% endif %}
+	      {% get_comment_list for campaign as comments %}
+	      <ol class="commentList orderedList">
+	        {% for comment in comments %}
+	          <li class="{% cycle 'evenRow' 'oddRow' %} comment commentFirst{{ forloop.first }} commentLast{{ forloop.last }} {% ifequal comment.user campaign.owner %}commentCampaignOwner{% endifequal %}" id="c{{ comment.pk }}">
+	            <div class="commentNum">{{ forloop.counter }}</div>
+	            <h4 class="{% ifequal comment.user campaign.owner %}commentCampaignOwner{% endifequal %}">
+	              <span class="author authorAvatar">
+	                  {% if comment.user.get_profile.artist %}
+	                    <a href="{{ comment.user.get_profile.artist.get_absolute_url }}">
+	                      <img class="avatar" src="{{ comment.user.get_profile.avatar_url }}" width="{{ comment.user.get_profile.avatar_w }}" height="{{ comment.user.get_profile.avatar_h }}" alt="{{ comment.user.username }}"/>
+	                      {{ comment.user.username }}
+	                    </a>
+	                  {% else %}
+	                    <img class="avatar" src="{{ comment.user.get_profile.avatar_url }}" width="{{ comment.user.get_profile.avatar_w }}" height="{{ comment.user.get_profile.avatar_h }}" alt="{{ comment.user.username }}"/>
+	                    {{ comment.user.username }}
+	                  {% endif %}
+                  </span>
+	              <span class="timestamp">{{ comment.submit_date|date:"M j, Y \a\t P" }}</span>
+	              {% if forloop.last and request.REQUEST.new_c %}{% ifequal comment.user user %}<em class="newComment">new!</em>{% endifequal %}{% endif %}
+	            </h4>
+	            {% if is_admin %}
+                  <p class="commentActions"><a href="{% url home %}admin/comments/comment/{{ comment.pk }}/delete/">delete</a></p>
+	            {% endif %}
+	            <div class="commentBody">
+                {% if comment.user.is_staff %}
+                  {{ comment.comment|urlize|linebreaks }}
+                {% else %}
+                  {{ comment.comment|linebreaks }}
+                {% endif %}
+              </div>
+	          </li>
+	        {% endfor %}
+	      </ol>
+	    {% endif %}
+	    
+	    <h4 id="post-comment">Post comment</h4>
+	    {% if user.is_authenticated %}
+	      {% if not is_owner %}
+	        <p class="postCommentP">You can also <a href="{% url messages_compose_to recipient=c.artist.user_profile.user.username %}">send a private message</a> to this {{ campaign.artist.artist_or_band }}.</p>
+	      {% endif %}
+	      {% include "campaign/tags/comment_form.html" %}
+	    {% else %}
+	      <p class="postCommentP"><a href="{% url login %}?next={{ campaign.get_absolute_url }}%23post-comment">Log in now</a> to post a comment.</p>
+	    {% endif %}
+      
+	  </div> {# end campaign comments section #}
+  {% endif %}
+  
+  {# if is_owner or is_admin  #}
+   {% if campaign.is_public %}
+     {% campaign_badge_external c "embeddableBadgeWrapper" "show_code" "Embeddable Badge" is_owner is_admin %}
+     <p class="back-to-top"><a href="#container">&uarr;&nbsp;back to top</a></p>
+   {% endif %}
+  {# endif #}
+{% endblock primary-content %}
+
+
+{% block secondary-content %}
+  <ul class="userOptions">
+    {% include "campaign/tags/contrib_buttons.html" %}
+    {% if c.is_active and not c.num_online_left %}
+      <li>
+        {% if c.is_sold_out %}
+          {% campaign_error_message "SoldOutError" %}
+        {% else %}
+          {% campaign_error_message "OnlineContributionsMaxedOutError" %}
+        {% endif %}
+      </li>
+    {% endif %}
+    {% if request.user.is_authenticated and not is_owner %}
+      <li class="buttonMuted">
+        <a href="{% url messages_compose_to recipient=c.artist.user_profile.user.username %}">Send Message</a>
+      </li>
+    {% endif %}
+    {% if campaign.is_public %}
+      <li class="myspacePostTo buttonForm socialPostTo">
+        {% include "campaign/tags/myspace-post.html" %}
+      </li>
+      <li class="buttonMuted facebookPostTo socialPostTo">
+        <a href="{{ FACEBOOK_SHARER }}?u=http://{% domain %}{{ c.get_absolute_url|urlencode }}?src=fb&t={{ c.title|urlencode }}" {% popup %}>
+          <img src="{{ MEDIA_URL }}ui/images/facebook_32.gif" alt="" />
+          <span>Post to Facebook</span>
+        </a>
+      </li>
+    {% endif %}
+  </ul>
+  
+  {% campaign_sponsors campaign %}
+  
+  <div class="actions" id="actions{{ c.pk }}">    
+    {% if is_owner or is_admin %}
+      <h3 class="sidebarTitle">Actions Available </h3>
+      <ul class="adminOptions">
+        {% if is_owner and c.is_editable %}
+          <li class="buttonMuted"><a href="{% url edit_campaign campaign_id=c.pk %}">Edit Campaign</a></li>
+        {% endif %}
+        {% if not c.is_submitted and is_owner %}
+          <li class="buttonForm">
+            <form action="{% url request_approval campaign_id=c.pk %}" method="post">
+              <fieldset>
+                <p>
+                  This campaign has not yet been submitted for approval. It will not show in the public
+                  areas of Illius Rock until an administrator has approved it. Once you are ready to 
+                  request approval, please use the button below.
+                </p>
+                <input type="submit" value="Request Approval" class="submitButton submitButtonMuted"/>
+              </fieldset>
+            </form>
+          </li>
+        {% else %}
+          {% if c.is_payout_available and is_owner %}
+            <li>
+              <form action="{% url request_campaign_payout campaign_id=c.pk %}" method="post">
+                <fieldset>
+                  <p>Amount raised through Illius Rock in this campaign: ${{ c.amount_raised_online|stringformat:".2f" }}</p>
+                  <input type="submit" value="Request Payout" class="submitButton submitButtonMuted"/>
+                </fieldset>
+              </form>
+            </li>
+          {% endif %}
+          {% if c.is_submitted and not c.is_approved %}
+            <li class="message">This campaign is awaiting approval by Illius Rock admins.</li>
+          {% endif %}
+          {% if perms.campaign.can_manage_campaigns %}
+            {% if changes %}
+              <li class="buttonMuted">
+                <a href="{% url home %}admin/campaign/campaignchange/{{ changes.pk }}/">Approve Changes</a>
+              </li>
+            {% endif %}
+            {% if not c.is_approved and c.is_submitted %}
+              <li class="buttonMuted">
+                <a href="{% url home %}admin/campaign/campaign/{{ c.pk }}/">Approve Campaign</a>
+              </li>
+            {% else %}
+              {% if c.num_tickets_total %}
+                <li class="buttonMuted">
+                  <a href="{% url print_campaign_tickets campaign_id=c.pk %}">Print Tickets</a>
+                </li>
+              {% endif %}
+            {% endif %}
+          {% endif %}
+        {% endif %}
+        {% if c.are_tickets_available and is_owner %}
+          <li class="buttonMuted">
+            <a href="{% url request_campaign_tickets campaign_id=c.pk %}">Request Tickets</a>
+          </li>
+        {% endif %}
+        {% if is_owner and not c.has_ended %}
+          <li class="buttonMuted">
+            <a href="{% url delete_campaign campaign_id=c.pk %}">Delete Campaign!</a>
+          </li>
+        {% endif %}
+        {% if perms.campaign.can_manage_campaigns %}
+          <li class="buttonMuted">
+            <a href="{% url home %}admin/campaign/campaign/{{ c.pk }}/">Campaign Admin</a>
+          </li>
+        {% endif %}
+        {% if is_owner %}
+          <li class="buttonMuted"><a href="{% url upload_campaign_photo campaign_id=c.pk %}">Upload photos</a></li>
+          {% if campaign.has_photos %}
+            <li class="buttonMuted">
+              <a href="{% url edit_campaign_photos campaign_id=campaign.pk %}">
+                Manage Photos
+              </a>
+            </li>
+          {% endif %}
+          {% if campaign.is_public %}
+            <li class="buttonMuted"><a href="{% url list_contributors campaign_id=c.pk %}">Contributors</a></li>
+          {% endif %}
+        {% endif %}
+      </ul>
+      {% if campaign.is_public %}
+        <p><a href="#external-badge">Embeddable badge code&nbsp;<span class="arrow">&raquo;</span></a></p>
+      {% endif %}
+    {% endif %}    
+  </div>  
+{% endblock secondary-content %}
+
+

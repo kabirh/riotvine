@@ -1,0 +1,38 @@
+{% if c.is_active and c.num_online_left and not is_owner %}
+  {% if c.is_free %}
+    <li class="buttonMuted">
+      <a href="{% url contribute_to_campaign campaign_id=c.pk %}">{{ c.action_name|title }}</a>
+    </li>
+  {% else %}
+    {% if user.is_authenticated %}
+      {% for p in c.artist.available_payment_modes %}
+        <li class="buttonMuted tallButton buttonPaymentMode{{ p.payment_mode_name }}">
+          <a rel="payment" href="{% url contribute_to_campaign_by_payment_mode campaign_id=c.pk,payment_mode=p.payment_mode %}">
+          {{ c.action_name|title }}<br/>
+          <em class="paymentMode lineTwo">via {{ p.payment_mode_name }}</em>
+          </a>
+        </li>
+        {% ifequal p.payment_mode "paypal" %}
+          <li class="pay-info">
+            (You don't need a Paypal account to contribute!)
+          </li>
+        {% endifequal %}
+      {% endfor %}
+    {% else %}
+      {% for p in c.artist.available_payment_modes %}
+        <li class="buttonMuted tallButton buttonPaymentMode{{ p.payment_mode_name }}">
+          <a rel="payment" href="{% url anon_contribute_to_campaign_by_payment_mode campaign_id=c.pk,payment_mode=p.payment_mode %}">
+          {{ c.action_name|title }}<br/>
+          <em class="paymentMode lineTwo">via {{ p.payment_mode_name }}</em>
+          </a>
+        </li>
+        {% ifequal p.payment_mode "paypal" %}
+          <li class="pay-info">
+          (You don't need a PayPal account to contribute!)
+          </li>
+        {% endifequal %}
+      {% endfor %}
+    {% endif %}
+  {% endif %}
+{% endif %}
+

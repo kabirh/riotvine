@@ -1,0 +1,72 @@
+{% extends "event/photo/base.html" %}
+
+{% block title %}Event Photos - {{ block.super }}{% endblock %}
+
+{% block h2 %}Event Photos{% endblock %}
+
+{% block primary-content %}
+  {% include "event/tags/event_signature.html" %}
+  
+  <ul class="thumbnailPhotoListing">
+    {% for thumbnail in photos %}
+      <li class="photoListItem">
+        <a href="{% url view_event_photo thumbnail_id=thumbnail.pk %}">
+          <img src="{{ thumbnail.image.url }}" width="{{ thumbnail.width }}" height="{{ thumbnail.height }}" alt="{{ thumbnail.alt_text }}"/>
+        </a>
+      </li>
+    {% endfor %}
+    {% if is_owner %}
+      <li class="photoListItem photoListItemAction">
+        <a href="{% url upload_event_photo event_id=event.pk %}">
+          upload a<br/>
+          photo&nbsp;<span class="arrow">&raquo;</span>
+        </a>
+      </li>
+    {% endif %}
+  </ul>
+  
+  {% regroup page.object_list by owner as owner_list %}
+  
+  <div class="thumbnailMemberPhotoListing">
+    {% for o in owner_list %}
+      <div class="memberPhotoGroup memberPhotoGroup{% cycle 'Odd' 'Even' %}">
+        <ul class="memberPhotoGroupUL">
+          <li class="memberPhotoListItem">
+            <p class="before"><span class="username">{{ o.grouper.username|truncatestring:"8" }}</span><br/>has<br/>&laquo;&nbsp;added</p>
+            <p class="after"><span class="username">{{ o.grouper.username|truncatestring:"8" }}</span><br/>has<br/>added&nbsp;&raquo;</p>
+            <div class="avatarHolder">
+              <img class="avatar" src="{{ o.grouper.avatar_url }}" width="{{ o.grouper.avatar_w }}" height="{{ o.grouper.avatar_h }}" alt="{{ o.grouper.username }}"/><br/>
+            </div>
+          </li>
+          {% for thumbnail in o.list %}
+            <li class="photoListItem">
+              <a href="{% url view_event_photo thumbnail_id=thumbnail.pk %}">
+                <img src="{{ thumbnail.image.url }}" width="{{ thumbnail.width }}" height="{{ thumbnail.height }}" alt="{{ thumbnail.alt_text }}"/>
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endfor %}
+  </div>
+  
+  {% include "common/tags/pagination.html" %}
+{% endblock %}
+
+{% block secondary-content %}
+  <ul class="adminOptions">
+    <li class="buttonMuted">
+      <a href="{% url upload_event_photo_member event_id=event.pk %}">
+        Upload Photos
+      </a>
+    </li>
+    {% if is_owner %}
+      <li class="buttonMuted">
+        <a href="{% url edit_event_photos event_id=event.pk %}">
+          Manage Photos
+        </a>
+      </li>
+    {% endif %}
+  </ul>
+  {{ block.super }}
+{% endblock %}

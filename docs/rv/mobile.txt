@@ -1,0 +1,10 @@
+<meta content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport"/>
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png"/>
+<link href="http://www.gstatic.com/m/og/icons/igoogle-iphone-57x57-p.png" rel="apple-touch-icon-precomposed"/>
+
+User agents:
+
+Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en)  AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1C25 Safari/419.3
+Mozilla/5.0 (Linux; U; Android 0.5; en-us) AppleWebKit/522+ (KHTML, like Gecko) Safari/419.3
+Mozilla/5.0 (webOS/1.0; U; en-US) AppleWebKit/525.27.1 (KHTML, like Gecko) Version/1.0 Safari/525.27.1 Pre/1.0
+

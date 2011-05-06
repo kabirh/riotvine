@@ -1,0 +1,21 @@
+<div id="ctrl_{{ field.html_name }}" class="ctrlHolder checkbox{{ is_checkbox }} required{{ field.field.required }} {% if field.errors %}ctrlError{% endif %}">
+  {% if field.field.pre_html %}
+    <div class="preField">
+      {{ field.field.pre_html|safe }}
+    </div>
+  {% endif %}
+  {% if is_checkbox %}
+    {{ field }}
+    {{ label_html }}
+  {% else %}
+    {% if not field.is_hidden %}{{ label_html }}{% endif %}
+    {% if field.errors %}{{ field.errors|safe }}{% endif %}
+    {% if field.field.field_top_html %}
+      <div class="helpText fieldTop">{{ field.field.field_top_html|safe }}</div>
+    {% endif %}
+    {{ field }}
+  {% endif %}
+  {% if not field.is_hidden %}
+	  {% if field.help_text %}<div class="helpText">{{ field.help_text|safe }}</div>{% endif %}
+  {% endif %}
+</div>

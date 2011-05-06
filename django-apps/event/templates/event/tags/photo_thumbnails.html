@@ -1,0 +1,9 @@
+{% spaceless %}
+{% if photos %}
+  {% for thumbnail in photos %}
+      <a href="{% url list_event_photos event_id=event.pk %}">
+        <img src="{{ thumbnail.image.url }}" width="{{ thumbnail.width }}" height="{{ thumbnail.height }}" alt="{{ thumbnail.title }}"/>
+      </a>
+  {% endfor %}
+{% endif %}
+{% endspaceless %}

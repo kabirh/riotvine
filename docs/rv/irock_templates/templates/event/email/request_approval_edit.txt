@@ -1,0 +1,12 @@
+{% autoescape off %}
+The following event has been changed. You will need to approve these changes before they are made public.
+
+Artist: {{ event.artist.name }}
+Event: {{ event.title }}
+Event ID: {{ event.pk }}
+
+Link: http://{% domain %}{% url login %}?next={{ event.get_absolute_url }}
+
+- Illius Rock
+{% endautoescape %}
+

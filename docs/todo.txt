@@ -1,0 +1,83 @@
+June 6th
+-----------
+Campaign
+	- Add/Edit - Done
+	- Delete (by email) - Done
+	- View / Status - Done
+	- Request payout (by email) - Done
+	- Request approval (by email) - Done
+	- Approve submitted campaigns (admin) - Done
+
+Internal Badge - Done
+Request tickets - Done
+Print tickets - Done
+Print CSS - Done
+
+- Queue handler script - Done
+	- Ticket generation - Done
+	- Badge generation - Done
+	- Recompute campaign - Done
+
+- Redirect profile to artist profile if user is artist - Done
+- Page Titles - Done
+- Q cleanup before retrieval - Done
+- Parameterize template cache - Done
+- Delete old badges - Done
+- Message styling - Done
+- Badge embed tag External - Done
+- Q admin - Done
+- In profile conversion: add URL slugifier - Done
+- Code cleanup and docs - Done
+- {% if field.field.required %}*{% endif %} - Done
+- Add admin ordering - Done
+- Show Admin link on Campaign detail page - Done
+- Add <em> tags to user messages - Done
+- Show Campaign detail link on Queue list page - Done
+- Disallow 0 and O in tickets - Done
+- Prevent superuser profile from getting deleted - Done
+- Delete very old ActionItems in special cleanup - Done
+- Address + Name => Billing Address + Name for CC - Done
+- Ticket and Contribution -> after login or account creation redirect user to the campaign he was trying to reach. - Done
+- On Campaign update form, tell users to leave image field empty if it's not being changed - Done
+- Convert CSS class submitButton to button - DONE
+- Top right links (login/logout, account) - DONE
+
+- Breadcrumbs
+- Artist homepage
+- Badge -> External
+
+- Artist: Profile Public Page / Profile Comments (Add/View)
+- Fan: Profile
+- Fan: Manage contributions
+- Messaging
+- Campaign Comments (view, reply)
+- Send message to contributors
+
+- Overall CSS
+- Homepage text and image (478 x  241)
+- Don't reset admin or staff passwords
+- Welcome message on login
+- Messaging, Comments
+
+------------------ Authorize.net TEST Account -------------------------
+Card Not Present
+Login: cnpdemo123
+Password: Authnet001
+Login URL: https://test.authorize.net/
+
+API Login: 6Jc5c8QcB
+Transaction Key: 68j46u5S3RL4CCbX
+Transaction POST URL: https://test.authorize.net/gateway/transact.dll
+
+-----------------------------------
+
+
+- Compile a list of places the FAQs should be linked from
+- Select homepage photo from iStockPhoto.com
+- Paypal and Google referral links to send artists to
+- Flatpage: About
+- Flatpage: Contact
+- Flatpage: Terms of Use Agreement (final version)
+- Flatpage: Instructions for Google and Paypal setup (similar to EventBrite.com's instructions)
+- Final logo (SVG preferable)
+

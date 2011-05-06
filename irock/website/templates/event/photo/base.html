@@ -1,0 +1,8 @@
+{% extends "event/base.html" %}
+
+{% block body-id %}event-photo{% endblock %}
+
+{% block secondary-content %}
+  {% if event %}{% event_summary event %}{% endif %}
+{% endblock %}
+

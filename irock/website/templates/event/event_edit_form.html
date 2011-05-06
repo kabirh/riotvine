@@ -1,0 +1,89 @@
+{% extends "event/base.html" %}
+
+{% block head-extra %}
+  {{ form.media|safe }}
+ <script type="text/javascript">
+    /* <![CDATA[ */
+    var venue_search_url = "{% url event_venue_search %}?location={{ request.location }}";
+    var venue_search_done = false;
+    {% if event %}
+      venue_search_done = true;
+    {% endif %}
+    $(document).ready(venue_mgmt);
+    $(document).ready(do_bg_image);    
+    $(document).ready(function() {
+      do_datetime_widgets();
+      var desc = $("#id_description");
+      if (desc.length > 0) {
+        var oFCKeditor = new FCKeditor('id_description');
+        oFCKeditor.BasePath = "{{ MEDIA_URL }}ui/js/fckeditor/";
+        oFCKeditor.Config["CustomConfigurationsPath"] = "{{ MEDIA_URL }}ui/js/fckeditor_custom_config.js?v={{ UI_JS_VERSION }}";
+        oFCKeditor.ReplaceTextarea();
+      }
+    });
+    /* ]]> */
+ </script>
+{% endblock %}
+
+{% block master-container_style %}{% spaceless %}
+  {% if event.bg_image %}
+    style="background:url({{ event.bg_image.url }}) top center repeat;"
+  {% endif %}
+{% endspaceless %}{% endblock %}
+
+{% block title %}{{ mode|title }} Event - {{ block.super }}{% endblock %}
+
+
+{% block body-class %}{% ifequal step 1 %}tertiary{% endifequal %}{% endblock %}
+
+{% block primary-content %}
+  <h2>{{ mode|title }} Event</h2>
+  
+  {% if allow_city_change %}
+    <p class="city_warn">
+      Your event is being posted in <strong>{{ city }}</strong>.
+      Want to change cities?<br/>
+      Post event in:
+      {% for c in other_cities %}
+        <a href="{% url create_member_event_by_location location=c.0 %}">{{ c.1 }}</a>{% if not forloop.last %}, {% endif %}
+      {% endfor %}
+    </p>
+  {% endif %}
+
+  {% if form.errors %}
+    <p class="error">Please correct the errors below.</p>
+    {% if form.non_field_errors %}
+      <ul class="errorlist">
+        {{ form.non_field_errors.as_ul }}
+      </ul>
+    {% endif %}
+  {% endif %}
+
+  <form id="id_event_edit_form" method="post" action="" {% if form.is_multipart %}enctype="multipart/form-data"{% endif %}>
+    <table width="100%" class="form_table">
+      <tbody>
+        {% for field in form.visible_fields %}
+          {% common_formfield_render_tr field %}
+        {% endfor %}
+        <tr>
+          <td>&nbsp;</td>
+          <td>
+            {% for field in form.hidden_fields %}
+              {{ field }}
+            {% endfor %}
+            <input type="submit" value="{{ mode|title }} Event" />
+            <a href="{% if event %}{% url view_event event_id=event.pk %}{% else %}{% url home %}{% endif %}" class="cancel_btn">Cancel</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+{% endblock %}
+
+{% block secondary-content %}
+  {% ifequal step 1 %}
+  {% else %}
+    {% if event %}{% event_summary event %}{% endif %}
+  {% endifequal %}
+{% endblock %}
+

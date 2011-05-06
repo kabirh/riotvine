@@ -1,0 +1,8 @@
+{% if badge %}
+  <div class="badge badge-internal {{ classes }}">
+    <a href="{{ event.get_absolute_url }}" rel="payment">
+      <img src="{% url serve_event_badge_internal event_id=event.id %}{{ query_string }}" alt="{{ event.title }}"
+           width="{{ badge.img_width }}" height="{{ badge.img_height }}"/>
+    </a>
+  </div>
+{% endif %}

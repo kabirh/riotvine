@@ -1,0 +1,15 @@
+@charset "UTF-8";
+/* CSS Document */
+
+.sponsored-listings li { position:relative; width:318px; margin:0; padding:10px 10px 10px 125px; height:120px; outline:1px solid #000;  }
+.sponsored-listings li .thumbnail { margin-left:-125px;  }
+.footer_content a:link, .footer_content a:visited, .footer_content a:hover, .footer_content a:active {color:#FFF; }
+a.event_title:link, a.event_title:visited, a.event_title:hover, a.event_title:active { color:#069;  }
+.pagination a.selected:link, .pagination a.selected:visited, .pagination a.selected:hoaver, .pagination a.selected:active  { background-color:#069; color:#fff; text-decoration:none; }
+.search-listings li.city-event { height:120px;  }
+.comments-listings li { -height:50px;  }
+.footer_content {background-image:url(../images/bg_footer.gif);}
+.column_content .feature_top { height:60px; }
+.error_message {  background-color:#900; }
+
+.subfooter_content {background-color:#fff;}

@@ -1,0 +1,34 @@
+
+# dump reference data
+python manage.py dumpdata --format=xml --indent=4 flatpages siteconfig > website/fixtures/ref_data.xml 
+
+
+# PyLint
+pylint --disable-msg=E1101,C0301,C0103,C0111,W0142,W0231,W0232,W0612,W0141,W0614,R0903,R0904,R0201 -i y --persistent=no artist > lint.txt
+
+pylint --disable-msg=E1101,C0301,C0103,C0111,W0142,W0231,W0232,W0612,W0141,W0614,R0903,R0904,R0201 -i y --persistent=no backend > lint.txt
+
+pylint --disable-msg=E1101,C0301,C0103,C0111,W0142,W0231,W0232,W0612,W0141,W0614,R0903,R0904,R0201 -i y --persistent=no campaign > lint.txt
+
+pylint --disable-msg=E1101,C0301,C0103,C0111,W0142,W0231,W0232,W0612,W0141,W0614,R0903,R0904,R0201 -i y --persistent=no captcha > lint.txt
+
+pylint --disable-msg=E1101,C0301,C0103,C0111,W0142,W0231,W0232,W0612,W0141,W0614,R0903,R0904,R0201 -i y --persistent=no common > lint.txt
+
+pylint --disable-msg=E1101,C0301,C0103,C0111,W0142,W0231,W0232,W0612,W0141,W0614,R0903,R0904,R0201 -i y --persistent=no context_processors > lint.txt
+
+pylint --disable-msg=E1101,C0301,C0103,C0111,W0142,W0231,W0232,W0612,W0141,W0614,R0903,R0904,R0201 -i y --persistent=no extensions > lint.txt
+
+pylint --disable-msg=E1101,C0301,C0103,C0111,W0142,W0231,W0232,W0612,W0141,W0614,R0903,R0904,R0201 -i y --persistent=no middleware > lint.txt
+
+pylint --disable-msg=E1101,C0301,C0103,C0111,W0142,W0231,W0232,W0612,W0141,W0614,R0903,R0904,R0201 -i y --persistent=no payment > lint.txt
+
+pylint --disable-msg=E1101,C0301,C0103,C0111,W0142,W0231,W0232,W0612,W0141,W0614,R0903,R0904,R0201 -i y --persistent=no queue > lint.txt
+
+pylint --disable-msg=E1101,C0301,C0103,C0111,W0142,W0231,W0232,W0612,W0141,W0614,R0903,R0904,R0201 -i y --persistent=no rdutils > lint.txt
+
+pylint --disable-msg=E1101,C0301,C0103,C0111,W0142,W0231,W0232,W0612,W0141,W0614,R0903,R0904,R0201 -i y --persistent=no registration > lint.txt
+
+pylint --disable-msg=E1101,C0301,C0103,C0111,W0142,W0231,W0232,W0612,W0141,W0614,R0903,R0904,R0201 -i y --persistent=no siteconfig > lint.txt
+
+pylint --disable-msg=E1101,C0301,C0103,C0111,W0142,W0231,W0232,W0612,W0141,W0614,R0903,R0904,R0201 -i y --persistent=no website > lint.txt
+

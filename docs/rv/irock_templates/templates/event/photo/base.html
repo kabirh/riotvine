@@ -1,0 +1,14 @@
+{% extends "event/base.html" %}
+
+{% block body-id %}event-photo{% endblock %}
+
+
+{% block secondary-content %}
+  {% if event %}
+    <div class="eventDetail eventOwner{{ is_owner }}">
+      {% tcache UI_CACHE_TIMEOUT "ir-event-summary-list" event.pk %}
+        {% event_summary event "" "" "" "" "show_detail_link" %}
+      {% endtcache %}
+    </div>
+  {% endif %}
+{% endblock %}

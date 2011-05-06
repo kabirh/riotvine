@@ -1,0 +1,19 @@
+Hey Rajesh,
+Here's the email that artists should receive when they get a campaign contribution:
+Subject: Whoa! Someone just joined your campaign!
+Hey there,
+It looks like someone supports your work. Head to your campaign to find out who your newest supporter is: %LINK%
+
+
+So far, I've found two embeddable players: http://reverbnation.com and http://www.projectopus.com/players
+Let me know if it's easier for me to just send you example embed code from these in order to add them. 
+
+
+Also, I thought of an additional feature I'd like, batch photo uploads. Let me know how much this feature will run.
+
+
+Was there anything else you were waiting on from me, besides a mockup of the registration process? I'm still trying to figure out the "Newest Contributors" section.
+
+
+Thanks,
+Kabir

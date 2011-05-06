@@ -1,0 +1,13 @@
+Yes, I would love to see the "Ripe for You" section go live. Recently added is less of a priority. I think the other items I would like to see are 
+
+- clean user registration and 
+- event creation forms, and then 
+- one-time login on event pages and 
+- custom event page backgrounds. 
+
+With those out of the way, we should ready to unveil this to the general public.
+
+> Another thing about these two boxes (as well as the My Calendar box), currently I made an arbitrary decision to show only the top 20 calendar events there. Do you want the same to be true for the Recommended and Recent boxes? On all of these boxes there's a link to see "all". Can you add that to our task list as it will require a little bit of additional work on my part?
+
+
+I'll add the additional task for a full page list of the calendar/recommended/recent. I think I'd like to limit My Calendar/Ripe Picks/Recent to only 5 viewable entries. Leave it at 20 until the full page list is done though.

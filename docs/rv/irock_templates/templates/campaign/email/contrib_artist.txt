@@ -1,0 +1,7 @@
+{% autoescape off %}
+Hey there,
+
+It looks like someone supports your work. Head to your campaign at {{ UI_SITE_TITLE }} to find out who your newest supporter is: http://{% domain %}{{ campaign.get_absolute_url }}
+
+{{ EMAIL_SIGNATURE }}
+{% endautoescape %}

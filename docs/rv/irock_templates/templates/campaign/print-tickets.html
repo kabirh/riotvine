@@ -1,0 +1,60 @@
+{% extends "website/printable-base.html" %}
+
+{% block title %}Print Tickets - {{ block.super }}{% endblock %}
+{% block body-id %}print-tickets{% endblock %}
+
+{% block container %}
+  <h2>Print Tickets</h2>
+  
+  <div class="primaryContent">
+    <h3><a href="{{ c.get_absolute_url }}">{{ c.title }}</a></h3>
+    <h4>By {{ c.artist.name }}</h4>
+    <p>Campaign ends: {{ c.end_date|date }}</p>
+    
+    <div class="unprinted">
+      <h3>Tickets not yet printed</h3>
+      {% if unprinted %}
+        <ul class="unorderedList">
+          {% for t in unprinted %}
+            <li>{{ t.code_display }} <em>- Must redeem by: {{ c.ticket_redeem_by_date|date:"n/j/Y" }}</em></li>
+          {% endfor %}
+        </ul>
+        <div class="options">
+          <form method="post" action="{% url print_campaign_tickets campaign_id=c.pk %}">
+            <p>To tell the system that you have printed these tickets, 
+            use the button below.</p>
+            <input type="submit" value="Mark as printed" class="submitButton"/>
+          </form>
+        </div>
+      {% else %}
+        <p>There are no unprinted tickets for this campaign.</p>
+      {% endif %}
+    </div>
+    
+    <div class="printed">
+      <h3>Tickets printed previously but not redeemed</h3>
+      {% if printed %}
+        <ul class="unorderedList">
+          {% for t in printed %}
+            <li>{{ t.code_display }} <em>- Must redeem by: {{ c.ticket_redeem_by_date|date:"n/j/Y" }}</em></li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>There are no previously printed unredeemed tickets for this campaign.</p>
+      {% endif %}
+    </div>
+    
+    <div class="redeemed">
+      <h3>Redeemed Tickets</h3>
+      {% if redeemed %}
+        <ul class="unorderedList">
+          {% for t in redeemed %}
+            <li>{{ t.code_display }} <span class="redeemer">- by {{ t.redeemed_by.username }}</span></li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>There are no redeemed tickets for this campaign.</p>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

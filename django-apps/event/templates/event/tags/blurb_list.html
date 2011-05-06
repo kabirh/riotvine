@@ -1,0 +1,17 @@
+{% if events %}
+  <ul class="eventsUl blurbsUl">
+    {% for event in events %}
+      <li>
+        <a href="{{ event.get_absolute_url }}" class="eventAvatarLink">
+          <img src="{{ event.image_avatar_url }}" class="eventAvatar" alt=""/>
+        </a>
+        <p class="artistName">{{ event.artist.name }}</p>
+        <h3>
+          <a href="{{ event.get_absolute_url }}">
+            {{ event.title|truncatewords:"20" }}
+          </a>
+        </h3>
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}

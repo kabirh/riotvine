@@ -1,0 +1,62 @@
+{% extends "event/photo/base.html" %}
+
+{% block head-extra %}
+ {{ formset.media|safe }}
+{% endblock %}
+
+{% block title %}Edit Event Photos - {{ block.super }}{% endblock %}
+
+
+{% block primary-content %}
+  <h2>Edit Event Photos</h2>
+  
+  {% if formset.errors %}
+    <p class="error">Please correct the errors below.</p>
+    {% if formset.non_field_errors %}
+      <ul class="errorlist">
+        {{ formset.non_field_errors.as_ul }}
+      </ul>
+    {% endif %}
+  {% endif %}
+
+  <form class="photoEditFormSet" method="post" action="." {% if formset.is_multipart %}enctype="multipart/form-data"{% endif %}>
+    {{ formset.management_form }}
+    <table>
+      <thead>
+        <tr>
+          <th></th><th>Display Order</th><th>Image Caption</th><th>Delete</th>
+        </tr>      
+      </thead>
+      <tbody>
+	    {% for form in formset.forms %}
+	      <tr>
+	        <td class="photoThumbnail">
+	          {% photo_thumbnail form.initial.id photo_dict "square_thumbnail" %}
+	        </td>	        
+	        <td class="displayOrder">
+	          {{ form.display_order }}
+	        </td>
+	        <td class="title caption">
+	          {{ form.caption }}
+	        </td>
+	        <td class="deleteCheckbox">
+	          {{ form.DELETE }}
+	          {% comment %}{{ form.id }}{% endcomment %}
+            {% for hidden in form.hidden_fields %}
+              {{ hidden }}
+            {% endfor %}
+	        </td>
+	      </tr>
+	    {% endfor %}
+      <tr>
+        <td>&nbsp;</td>
+        <td>
+          <input type="submit" name="submit" value="Save"/>
+          <a href="{% url list_event_photos event_id=event.pk %}" class="cancel_btn">Cancel</a>
+        </td>
+      </tr>
+	  </tbody>
+    </table>
+  </form>
+{% endblock %}
+

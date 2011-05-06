@@ -1,0 +1,46 @@
+<a href="{% url search_events %}?filter=favorites" class="calendar_header">
+  <strong>I'm In For:</strong> ({{ calendar_count }})  
+</a> <!-- <a href="#" class="graylink">(all)</a> -->
+<br/><span class="calendar-loc">In {{ request.location_name }}</span>
+<ul>
+  
+  {% if show_add_event %}
+    <li class="add_event">
+      <a href="{% url event_add_to_calendar event_id=event.pk %}" class="add_to_calendar" {% if user.is_authenticated %}onclick="fb_share_event();"{% endif %}>Add This Event</a> Show your support for this event by adding it to your list.
+    </li>
+  {% else %}
+    {% if show_remove_event %}
+      <li class="remove_event">
+        <a href="{% url event_remove_from_calendar event_id=event.pk %}" class="remove_from_calendar">Remove This Event</a> from your list.
+      </li>
+    {% endif %}
+  {% endif %}
+  <div class="cal-box">
+    {% include "event/tags/cal_add_links_rightpanel.html" %}
+  </div>
+  
+  {% if request.user_profile.is_sso %}
+	  <li>
+	      <a href="{% url update_user_profile %}?next={% if next %}{{ next }}{% else %}{{ request.get_full_path }}{% endif %}"><strong>Add Email Address</strong></a> to get reminders 
+	      of your favorite events.<br/>
+	  </li>
+  {% endif %}
+  {% for e in events %}
+    <li>
+      <span class="event_details">
+        {{ e.event_date|date:"D m.d.y" }} |
+        <a href="{% url event_remove_from_calendar event_id=e.pk %}" class="graylink remove_from_calendar">remove</a>
+      </span><br />
+      <a href="{{ e.get_absolute_url }}" class="event_title">{{ e.title_with_tinyurl }}</a> 
+      <span class="event_details">
+        <span class="tweet_count"><a href="{{ e.get_absolute_url }}#event-comments">{{ e.tweet_count }}</a></span>
+        {% if e.interested_count %}
+          | <span class="interested_count" title="{{ e.interested_count }} {{ e.interested_count|pluralize:"person has,people have" }} added this to their calendar">{{ e.interested_count }}</span>
+        {% endif %}
+        {% if request.user_profile %}{% event_friends e request.user_profile %}{% endif %}
+        <a href="{{ TWITTER_SHARER }}?status={{ e.title|urlencode }}+{{ e.get_short_url }}" title="ReTweet this Event!"><img src="{{ MEDIA_URL }}ui/images/ico_RT.gif" alt="Retweet" width="28" height="11" class="retweet-btn" /></a>
+      </span>
+    </li>
+  {% endfor %}
+</ul>
+

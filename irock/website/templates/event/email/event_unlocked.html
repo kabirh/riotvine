@@ -1,0 +1,65 @@
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+  <title>RiotVine: {{ subject }}</title>
+</head>
+<body style="background:#ffffff;color:#333333;margin:2px 4px;padding:2px 8px 2px 8px;border:2px solid #ffffff;" bgcolor="#ffffff">
+  <p>
+    <span style="font-size:130%;">
+      Hey {% if user_profile.user__first_name %}{{ user_profile.user__first_name }}{% else %}{{ user_profile.username }}{% endif %}!
+    </span>    
+  </p>
+  
+  {% if body %}
+   {{ body|safe }}
+  {% endif %} 
+  
+  <p>
+    <strong>Thanks for helping us beta test our new Foursquare integration! We think you're at this event:</strong>
+  </p>
+  
+  <p>
+    <span style="font-size:140%;">
+      <a style="color:#14719f;" href="{{ data.event__event_url }}?src=email"><b>{{ data.event__title }}</b></a>
+    </span><br>
+    {% if data.fsq_checkins %}
+        <strong style="color:#c00;">{{ data.fsq_checkins }} {{ data.fsq_checkins|pluralize:"person's,people are" }} here now</strong>
+        <br>
+    {% endif %}	
+    {% if data.num_friends %}{{ data.num_friends|safe }}<br><br>{% endif %}
+    {{ data.event__event_date }}{% if data.event__event_start_time %} @ {{ data.event__event_start_time }} {{ data.event__event_timezone|default:"" }}{% endif %}<br>
+    <a href="{{ data.event__venue__map_url }}">{{ data.event__venue__name }}</a><br>
+    {% if data.event__venue__address %}{{ data.event__venue__address }}<br>{% endif %}
+    {% if data.event__venue__citystatezip %}{{ data.event__venue__citystatezip }}<br>{% endif %}  
+    <br>  
+    {% if data.event__ticket_url %}
+      <a href="http://{{ site.domain }}{% url event_buy_tickets event_id=data.event_id %}?src=email">Buy&nbsp;Tickets!</a> | 
+    {% endif %}
+    {% if data.event__venue__map_url %}<a href="{{ data.event__venue__map_url }}">Map</a> |{% endif %}
+    {% if data.event__short_url %}<a href="{{ TWITTER_SHARER }}?status={{ data.event__title|urlencode }}+{{ data.event__short_url }}">Tweet&nbsp;This</a> |{% endif %}
+    <a href="{{ data.event__event_url }}?src=email">More Info</a><br>
+    {% if data.event__tweet_count %}
+      <br>
+      <a href="{{ data.event__event_url }}?src=email#event-comments" style="text-decoration:none;color:#036;">{{ data.event__tweet_count }} tweet{{ data.event__tweet_count|pluralize }}! See what people are saying about this event&nbsp;&raquo;</a>
+      <br>
+    {% endif %}
+  </p>
+ 
+  <p>
+    <strong>If you're not at this event or experienced something weird, hit reply and please let us know. Thanks!</strong>
+  </p> 
+    
+  <p style="border-top:1px dashed #ccc;">
+    <br>
+    Want to turn these emails off? Hit reply and we'll be happy to remove you.
+  </p>
+  
+  <p>
+    {{ EMAIL_SIGNATURE|linebreaksbr }}
+    <br>
+    <a href="http://{{ site.domain }}/"><img src="http://{{ site.domain }}{{ MEDIA_URL }}ui/images/logo-rv.png" alt="" border="0" style="border:none;"></a>
+  </p>
+</body>
+</html>
+
+

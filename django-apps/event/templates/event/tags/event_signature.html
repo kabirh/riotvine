@@ -1,0 +1,10 @@
+<div class="eventSig">
+	<h3 class="eventTitle"><a href="{{ event.get_absolute_url }}">{{ event.title }}</a></h3>
+  {% if event.is_member_generated %}
+    {% if not event.is_auto_generated %}
+      <h4 class="bandName">Submitted by {{ event.creator }}</h4>
+    {% endif %}
+  {% else %}
+    <h4 class="bandName">By <a href="{{ event.artist.get_absolute_url }}">{{ event.artist.name }}</a></h4>    
+  {% endif %}
+</div>

@@ -1,0 +1,17 @@
+{% if badge %}
+  <div class="badge badgeExternal {{ classes }}" id="external-badge">
+    <a class="badgeLink" href="http://{% domain %}{{ campaign.get_absolute_url }}" rel="payment" style="border:none;">
+      <img src="http://{% domain %}{% url serve_badge_external campaign_id=campaign.id %}{{ query_string }}" alt="{{ campaign.title }}"
+           width="{{ badge.image.width }}" height="{{ badge.image.height }}"/>
+    </a>
+    {% if title %}<h4>{{ title }}</h4>{% endif %}
+    {% if show_code %}
+      <form class="embedForm" action=".">
+        <fieldset>
+          <p>To embed this badge, cut and paste the following HTML code into your web page.</p>
+          <textarea class="pasteCode" rows="5" cols="40">{% filter force_escape %}{% campaign_external_badge_code campaign %}{% endfilter %}</textarea>
+        </fieldset>
+      </form>
+    {% endif %}
+  </div>
+{% endif %}

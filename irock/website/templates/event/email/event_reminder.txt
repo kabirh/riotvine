@@ -1,0 +1,16 @@
+{% autoescape off %}Hey {% if data.attendee__first_name %}{{ data.attendee__first_name }}{% else %}{{ data.attendee__username|capfirst }}{% endif %}!,
+
+Don't forget:
+
+* {{ data.event__title }}
+* {{ data.event__event_date }} @ {{ data.event__event_start_time }} {{ data.event__event_timezone }}
+* {{ data.event__venue__name }}
+
+Details: http://{{ site.domain }}{% url view_event event_id=data.event_id %}?src=email
+
+Don't want to receive these daily reminders by email? Turn them off here:
+http://{{ site.domain }}{% url update_user_profile %}
+
+{{ EMAIL_SIGNATURE }}
+{% endautoescape %}
+

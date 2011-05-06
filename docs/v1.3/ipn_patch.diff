@@ -1,0 +1,38 @@
+Index: views.py
+===================================================================
+--- views.py	(revision 739)
++++ views.py	(working copy)
+@@ -676,12 +676,31 @@
+             _log.debug("Ignored unsupported currency %s", currency)
+             return processed_response
+ 
++        required_keys = (
++            'shopping-cart.items.item-1.merchant-item-id',
++            'shopping-cart.items.item-1.quantity',
++            'shopping-cart.merchant-private-data',
++            'order-total',
++            'google-order-number',
++        )
++        for key in required_keys:
++            if key not in data:
++                # We do not support this type of a response
++                _log.debug("Unsupported IPN. No %s", key)
++                return processed_response
++
++        try:
++            pending_contribution_id, username, invoice_num = data[u'shopping-cart.merchant-private-data'].split('~')
++        except ValueError:
++            # This IPN is not meant for our application
++            _log.debug("Unsupported IPN. No proper shopping-cart.merchant-private-data")
++            return processed_response
++
+         campaign_id = data[u'shopping-cart.items.item-1.merchant-item-id']
+         qty = data[u'shopping-cart.items.item-1.quantity']
+-        pending_contribution_id, username, invoice_num = data[u'shopping-cart.merchant-private-data'].split('~')
+         amount = data[u'order-total']
+         transaction_id = data[u'google-order-number']
+-              
++
+         try:
+             pending_contrib = PendingContribution.objects.get(
+                                         pk=pending_contribution_id,

@@ -1,0 +1,54 @@
+{% extends "mobile/base.html" %}
+
+{% block body-class %}homepage auth-{{ user.is_authenticated|lower }}{% endblock %}
+
+{% block logo %}  
+  {% if user.is_authenticated %}
+      <img class="logo" src="{{ MEDIA_URL }}ui/images/logo-rv-medium.png" alt="RiotVine" width="177" height="62" />
+	  {% if request.session.fb_uid and user_profile.use_fb_profile %}
+	    {% comment %}<a href="{{ user_profile.get_absolute_url }}" class="fbprofile profilepic"><fb:profile-pic uid="{{ request.session.fb_uid }}" facebook-logo="false" linked="false" size="square"></fb:profile-pic></a>{% endcomment %}
+      {% else %}
+        <a href="{{ user_profile.get_absolute_url }}" class="fbprofile profilepic"><img src="{{ request.user_profile.avatar_medium_url }}" width="60" height="60" class="thumbnail" /></a>
+	  {% endif %}
+  {% else %}
+    <img src="{{ MEDIA_URL }}ui/images/logo-rv.png" alt="RiotVine" width="236" height="82" />
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  {% if friends %}
+    <div class="twitter_heads">
+      <p class="notice2">
+        Look who's popular!<br/>
+        {% ifequal num_friends 1 %}
+          You've got a friend!
+        {% else %}
+          You've got {{ num_friends }} friends!
+        {% endifequal %}
+      </p>
+	   <ul>
+			{% for f in friends %}
+			  {% if f.user_profile2.use_fb_profile %}
+			    {% comment %}<li><fb:profile-pic uid="{{ f.user_profile2.fb_userid }}" facebook-logo="false" linked="false" size="square"></fb:profile-pic></li>{% endcomment %}
+			  {% else %}
+			    <li><img src="{{ f.user_profile2.avatar_url }}" alt="{{ f.user_profile2 }}" width="48" height="48" /></li>
+		      {% endif %}
+			{% endfor %}
+		</ul>
+	</div>
+  {% endif %}
+  <p class="discover">Discover events in:</p>
+  <ul class="cities">
+    {% if user.is_authenticated %}
+      <li>
+        <a href="{% url search_events %}?filter=recommended">Friends' Events
+          {% if num_ff %}<sup class="num">{{ num_ff }}</sup>{% endif %}
+          <span class="arrow">&nbsp;&raquo;</span>
+        </a>
+      </li>
+    {% endif %}
+    {% for c in cities %}
+      <li>{{ c|safe }}</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

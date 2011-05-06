@@ -1,0 +1,19 @@
+{% extends "website/base-site.html" %}
+
+{% load markup %}
+
+{% block title %}{{ flatpage.title }} - {{ block.super }}{% endblock %}
+{% block body-id %}flatpage{% endblock %}
+{% block body-class %}{% if request.REQUEST.popup %}popup{% endif %}{% endblock %}
+
+{% block content %}
+    <div class="flatpage">
+      {% tcache UI_CACHE_TIMEOUT "ir-flatpage" flatpage.url %}
+        {{ flatpage.content|markdown }}
+      {% endtcache %}
+      
+      {% if request.REQUEST.popup %}
+        <p class="button"><a href="#" onclick="self.close()" onkeypress="self.close()">Close Window</a></p>
+      {% endif %}
+    </div>
+{% endblock %}

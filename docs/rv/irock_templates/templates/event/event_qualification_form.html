@@ -1,0 +1,35 @@
+{% extends "event/base.html" %}
+
+{% block head-extra %}
+ {{ form.media|safe }}
+{% endblock %}
+
+{% block title %}Update Profile - {{ block.super }}{% endblock %}
+
+{% block h2 %}Update Profile{% endblock %}
+
+{% block primary-content %}
+  <p>
+   Please fill out the form below to update your profile. These fields are
+   required to attend the event <em>"{{ c.title }}"</em>.
+  </p>
+
+  {% if form.errors %}
+    <p class="error">Please correct the errors below.</p>
+    {% if form.non_field_errors %}
+      <ul class="errorlist">
+        {{ form.non_field_errors.as_ul }}
+      </ul>
+    {% endif %}
+  {% endif %}
+  
+  <form method="post" action="" enctype="multipart/form-data">
+    <fieldset>
+      {% for field in form %}
+        {% common_formfield_render field %}
+      {% endfor %}
+      <input type="submit" value="Update Profile" class="submitButton"/>
+    </fieldset>    
+  </form>
+{% endblock %}
+

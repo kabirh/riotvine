@@ -1,0 +1,68 @@
+> Artist Registration:	Move paypal e-mail address field to a new page.	I want to create a wizard out of this as well, with info about paypal registration, rates, etc. available on a single page:	Medium Priority.
+
+--------------------------------------------------------
+
+> Campaign Page:	When the max number of campaign tickets have been requested but not all have been redeemed, can you display a message on this page that says, "Sorry, online contribution for this campaign is no longer available. Don't lose heart! You might still be able to contribute to this campaign at a live show." Medium
+
+---------------------------
+
+> Campaign Page	Is there a message displayed when a campaign is sold out?
+
+No. But I will add it. I assume that "sold out" means online contributions have been filled up as well as all tickets redeemed. Is that correct?
+
+Sorry, there are no available spots open in this campaign
+
+
+=======================
+
+Campaign Preview Page:
+	"Your campaign Music video! has been created. Once you have previewed it, please submit it for approval." Please change this to: This is what your campaign page will look like. If you are happy with it, please submit it for approval. 
+	
+	It looks like the embed code works before a campaign is approved. It might make sense to move the embed code to a different screen and remove it from the campaign preview. They should only see this code after the campaign is approved. I suspect this will take some time but it's a low priority.
+	
+Campaign Badge:
+
+	Please add the artist name to the top left corner of the badge, above the campaign title. Medium priority. 
+	
+	On the embeddable badge, add "CLICK TO CONTRIBUTE" text to the top right corner. I think one of Emil's mockups had something like this, with white text on a green background and I liked the look of that. Medium priority.
+
+Registration:
+
+	Our EULA caps the age for users to 13 and older. I'm not sure the best way to handle this, but can you redirect users that are too young to a page that just says, "We're sorry. Based on the information you have submitted to us, you are ineligible to register on IlliusRock.com." Low priority. 
+
+==========================
+
+Main page:
+
+Instead of "Register donation", use "Redeem Campaign Ticket". Please make this font the same throughout. When people see "Register", they think of account registration. 
+Change "ARTISTS AREA" to "Artist Login/Registration".
+Remove "Start a campaign". We can replace this with "View more Campaigns"
+
+Create Artist Account Page:
+
+Change Username to Login name, and add this text underneath:
+
+Add to the top of this page: "All personal information provided will not be published by Illius Rock."
+
+
+After registration page:
+
+It says "account has been updated" Can you remove that text?
+Remove "Convert your account to an artist account"
+
+Create Campaign:
+
+I think there is an issue with the image upload function. I don't think we discussed a file size limitation for campaign badge images, but the images I've tried to upload sometimes hang. Is there a quick image upload applet that you can add, so that a
+
+Change Title to Campaign Title. Add character limit and "e.g. Music Video, New Instruments, etc"
+
+Instead of Maximum contributions, "Maximum number of contributors"
+Instead of Max contributions per person, Maximum number of allowed contributions per person 
+
+
+Here is the Campaign Contribution Thanks e-mail:
+Subject: Thanks for contributing!
+Rest assured, your donation goes toward feeding a starving artist, furthering the cause of better music, and making the world a better, happier place.
+
+But if you don't believe us, here's what %ARTIST NAME% has to say:
+

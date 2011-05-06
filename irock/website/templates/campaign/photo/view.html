@@ -1,0 +1,33 @@
+{% extends "campaign/photo/base.html" %}
+
+{% block title %}Campaign Photo - {{ block.super }}{% endblock %}
+
+{% block h2-container %}{% endblock %}
+
+{% block primary-content %}
+  {% ifnotequal paginator.num_pages 1 %}
+    {% photo_prev_next request paginator page index_link %}
+  {% endifnotequal %}
+
+  <ul class="mediumPhotoListing photoListing">
+    {% for photo in page.object_list %}
+      <li class="photoListItem">
+        <div class="imageWrapper">
+          <img src="{{ photo.image.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt_text }}"/>
+          {% if photo.title %}
+            <span class="title">{{ photo.title }}</span>
+          {% endif %}
+        </div>
+        {% if photo.caption %}
+          <div class="caption">{{ photo.caption|linebreaks }}</div>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+  
+{% endblock %}
+
+{% block secondary-content %}
+  <p><a href="{% url list_campaign_photos campaign_id=campaign.pk %}">View all photos&nbsp;<span class="arrow">&raquo;</span></a></p>
+  {{ block.super }}
+{% endblock %}

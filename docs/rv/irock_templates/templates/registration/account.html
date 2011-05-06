@@ -1,0 +1,61 @@
+{% extends "registration/base.html" %}
+
+{% block title %}Your Account - {{ user.username }} - {{ block.super }}{% endblock %}
+
+{% block h2-container %}
+    <h2 class="avatarHeader">
+      <img class="avatar" src="{{ user.get_profile.avatar_url }}" width="{{ user.get_profile.avatar_w }}" height="{{ user.get_profile.avatar_h }}" alt="{{ user.username }}"/>
+      Your Account
+    </h2>
+{% endblock %}
+
+{% block primary-content %}
+  <div class="user-messages">
+    <h3><a href="{% url messages_inbox %}">Messages</a></h3>
+    {% if UNREAD_MESSAGE_COUNT %}
+      <p class="new-messages">
+        You have <a href="{% url messages_inbox %}">{{ UNREAD_MESSAGE_COUNT }} new message{{ UNREAD_MESSAGE_COUNT|pluralize }}.</a>
+      </p>
+    {% else %}
+      <p>You have no new messages. <a href="{% url messages_inbox %}">Inbox&nbsp;<span class="arrow">&raquo;</span></a></p>
+    {% endif %}
+  </div>
+  
+  <div class="user-campaigns">
+    {% if contributions %}
+      <h3>Contributed Campaigns</h3>
+      <ul class="campaignsUl blurbsUl campaignListActive">
+        {% for c in contributions %}
+          <li>
+            <a href="{{ c.get_absolute_url }}" class="avatarLink">
+              <img src="{{ c.image_avatar_url }}" class="avatar" alt="{{ c.title }}"/>
+            </a>
+            <p><a href="{{ c.get_absolute_url }}">{{ c.title }}</a></p>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </div>
+  
+  {% comment %}
+    {% if not user.get_profile.is_artist %}
+      <p><a href="{% url update_artist_profile %}">Convert your account to an artist account</a></p>
+    {% endif %}
+  {% endcomment %}
+{% endblock %}
+
+
+{% block secondary-content %}
+  {% if user.is_authenticated %}
+    <ul class="userOptions">
+      {% if user.get_profile.is_artist %}
+        <li class="buttonMuted"><a href="{% url artist_admin %}">Artist Administration</a></li>
+        <li class="button"><a href="{% url create_event %}">Create a Show</a></li>
+      {% else %}
+        <li class="button"><a href="{% url create_member_event %}">Add a Show</a></li>
+      {% endif %}
+      <li class="buttonMuted"><a href="{% url change_password %}">Change Password</a></li>
+      <li class="buttonMuted"><a href="{% url update_user_profile %}">Update Profile</a></li>
+    </ul>
+  {% endif %}
+{% endblock secondary-content %}

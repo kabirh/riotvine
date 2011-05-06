@@ -1,0 +1,44 @@
+{% extends "registration/base.html" %}
+
+{% block title %}Log in / Register - {{ block.super }}{% endblock %}
+
+{% block login-container %}{% endblock %}
+
+{% block primary-content %}
+  <h2>Sign-in</h2>
+  {% if form.errors %}
+    <p class="error">The entered username or password is invalid.</p>
+  {% endif %}
+  <form method="post" action="{% url login %}">{% csrf_token %}
+    <table width="100%" class="form_table">
+      <tbody>
+        {% for field in form %}
+          {% common_formfield_render_tr field %}
+        {% endfor %}
+        <tr>
+          <td>&nbsp;</td>
+          <td>
+            <input name="next" value="{{ next }}" type="hidden"/>
+            <input type="submit" value="Login" />
+            <a href="{% url reset_password %}" class="cancel_btn">Forgot Password?</a>
+            <br/>
+            <div class="existing-user-signin">
+                Don't have an account? <a href="{% url signup %}?next={% if next %}{{ next }}{% else %}{{ request.get_full_path }}{% endif %}">Signup here&nbsp;&raquo;</a>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+{% endblock %}
+
+{% block secondary-content %}
+  {% comment %}
+	   <p><a href="{% url register %}?next={{ next }}" class="btn">Create&nbsp;an&nbsp;Account</a></p>
+	   {% if not user.is_authenticated %}
+	    {% include "registration/tags/sso_initiate.html" %}
+	    {% include "fb/tags/fb_login.html" %}
+	   {% endif %}
+  {% endcomment %}
+{% endblock %}
+

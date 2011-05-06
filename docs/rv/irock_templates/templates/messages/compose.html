@@ -1,0 +1,29 @@
+{% extends "messages/base.html" %} 
+{% load i18n %}
+
+{% block head-extra %}
+ {{ form.media|safe }}
+{% endblock %}
+
+{% block title %}{% trans "Compose Message"%} - {{ block.super }}{% endblock %}
+{% block h2 %}{% trans "Compose Message"%}{% endblock %}
+{% block primary-content %}
+  {% if form.errors %}
+    <p class="error">Please correct the errors below.</p>
+    {% if form.non_field_errors %}
+      <ul class="errorlist">
+        {{ form.non_field_errors.as_ul }}
+      </ul>
+    {% endif %}
+  {% endif %}
+  
+  <form action="" method="post" id="composeMessage">
+   <fieldset>
+      {% for field in form %}
+        {% common_formfield_render field %}
+      {% endfor %}
+      <input type="submit" value="{% trans "Send" %}" class="submitButton"/>
+      <a href="{% url messages_inbox %}" class="cancelButton">Cancel</a>
+    </fieldset>
+  </form>
+{% endblock %}

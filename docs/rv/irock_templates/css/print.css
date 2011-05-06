@@ -1,0 +1,22 @@
+/* PRINTER FRIENDLY STYLES */
+
+@page {
+  size:8.5in 11in; /* width height */
+  margin:0 0;
+}
+
+
+body {font-family:"Times New Roman", serif;font-size:12pt;padding-top:.125in;margin:0 .2in 0 .2in;background:#fff;color:#000;letter-spacing:normal;word-spacing:normal;}
+pre {font-size:90%;font-weight:normal;}
+a img {border:none;}
+a {color:#222;font-style:italic;}
+p, li {line-height:1.2;margin:.65em 0;}
+thead {display:table-header-group;} 
+.break_before {page-break-before:always;}
+/*.keep_together {page-break-inside:avoid;}*/
+.keep_together {page-break-inside:avoid;padding-top:0em;}
+table {width:5in;}
+th {text-align:center;padding:0 2em 0 .25em;font-weight:normal;}
+th {border-bottom:1px dashed #999;}
+table {font-size:85%;}
+

@@ -1,0 +1,88 @@
+{% extends "artist/base.html" %}
+
+{% block title %}Artist Administration - {{ block.super }}{% endblock %}
+
+{% block h2-container %}
+    <h2 {% if user.get_profile.avatar %}class="avatarHeader"{% endif %}>
+      {% if user.get_profile.avatar %}
+        <img class="avatar" src="{{ user.get_profile.avatar.url }}" width="{{ user.get_profile.avatar_width }}" height="{{ user.get_profile.avatar_height }}" alt="{{ user.username }}"/>
+      {% endif %}
+      Artist Administration
+    </h2>
+    <div class="artistTip">
+      {% common_rotating_flatpage "/artist/admin/tip/" %}	  
+    </div>
+{% endblock %}
+
+{% block primary-content %}
+  <h3 class="artistName">{{ artist.name }}</h3>
+  <p class="artistUrl">
+    <span>Your {{ UI_SITE_TITLE}} URL:</span>
+    <a href="{{ artist.get_absolute_url }}" title="This is your very own {{ UI_SITE_TITLE }} URL">
+      {{ artist.get_absolute_url }}
+    </a>
+  </p>
+
+  <p class="artistNote note">
+    Only 3 campaigns are shown in each category below. To view more, 
+    click <strong>view all</strong> next to the category header.
+  </p>
+  {% if user.is_authenticated and artist %}
+    <div class="adminGroupWrapper">
+      <div class="campaignGroup adminGroup firstGroup">{% campaigns_unsubmitted artist %}</div>
+      <div class="campaignGroup adminGroup">{% campaigns_pending_approval artist %}</div>
+      <div class="campaignGroup adminGroup firstGroup">{% campaigns_approved_upcoming artist %}</div>
+      <div class="campaignGroup adminGroup">{% campaigns_active artist %}</div>
+      <div class="campaignGroup adminGroup firstGroup">{% campaigns_expired artist %}</div>
+    </div>
+  {% endif %}
+
+  <p class="artistNote note">
+    Only 3 shows are shown in each category below. To view more, 
+    click <strong>view all</strong> next to the category header.
+  </p>
+  {% if user.is_authenticated and artist %}
+    <div class="adminGroupWrapper">
+      <div class="eventGroup campaignGroup adminGroup firstGroup">{% events_unsubmitted artist %}</div>
+      <div class="eventGroup campaignGroup adminGroup">{% events_pending_approval artist %}</div>
+      {% comment %}
+        <div class="eventGroup campaignGroup adminGroup firstGroup">{% events_approved_upcoming artist %}</div>
+      {% endcomment %}
+      <div class="eventGroup campaignGroup adminGroup firstGroup">{% events_active artist %}</div>
+      <div class="eventGroup campaignGroup adminGroup">{% events_expired artist %}</div>
+    </div>
+  {% endif %} 
+{% endblock %}
+
+{% block secondary-content %}
+  {% if user.is_authenticated and artist %}
+    <ul class="adminOptions">
+      <li class="button"><a href="{% url create_campaign %}">Create a Campaign</a></li>
+      <li class="button"><a href="{% url create_event %}">Create a Show</a></li>
+      <li class="buttonMuted"><a href="{% url update_artist_profile %}">Update Account</a></li>
+      <li class="buttonMuted"><a href="{% url change_password %}">Change Password</a></li>
+      <li class="buttonMuted"><a href="{% url messages_inbox %}">View Messages</a></li>
+    </ul>
+    
+    <div class="adminGroup artistAdminGroup adminGroupProfile">
+      <h3>Your Account</h3>
+      <p class="updateProfile editAction"><a href="{% url update_artist_profile %}">update account</a></p>
+      <ul>
+        <li><span>Login:</span> {{ user.username|capfirst }}</li>
+        <li><span>City:</span> {{ user.get_profile.address.city }}</li>
+        <li><span>{{ artist.artist_or_band|capfirst }}:</span> {{ artist.name }}</li>
+		{% comment %}
+	        {% if artist.is_band %}
+	          <li><span>Members:</span> {{ artist.num_members }}</li>
+	        {% endif %}
+		{% endcomment %}
+        {% if artist.website %}
+          <li>
+            <span>{{ artist.artist_or_band|capfirst }} website:</span> 
+            <a class="artistWebsite" href="{{ artist.website }}">{{ artist.website_hostname }}&nbsp;&raquo;</a>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+  {% endif %}
+{% endblock secondary-content %}

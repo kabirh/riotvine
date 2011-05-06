@@ -1,0 +1,41 @@
+{% extends "event/base.html" %}
+
+{% block head-extra %}
+ {{ form.media|safe }}
+{% endblock %}
+
+{% block title %}{{ c.action_name|title }} - {{ block.super }}{% endblock %}
+
+{% block h2 %}{{ c.action_name|title }}{% endblock %}
+
+{% block pre-message %}
+  <ul class="messages pre-messages">
+    <li>RSVP here. Your name is not shared or posted to the public.</li>
+  </ul>
+{% endblock %}
+
+{% block primary-content %}
+  <h3>{{ c.title }}</h3>
+  <h4>By <a href="{{ c.artist.get_absolute_url }}">{{ c.artist.name }}</a></h4>
+  
+  <p>RSVP here. Your name is not shared or posted to the public.</p>
+  
+  {% if form.errors %}
+    <p class="error">Please correct the errors below.</p>
+    {% if form.non_field_errors %}
+      <ul class="errorlist">
+        {{ form.non_field_errors.as_ul }}
+      </ul>
+    {% endif %}
+  {% endif %}
+  
+  <form method="post" action="" enctype="multipart/form-data">
+    <fieldset>
+      {% for field in form %}
+        {% common_formfield_render field %}
+      {% endfor %}
+      <input type="submit" value="{{ c.action_name|title }}" class="submitButton"/>
+    </fieldset>
+  </form>
+{% endblock %}
+

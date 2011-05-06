@@ -1,0 +1,12 @@
+<form method="post" action="{% url post_campaign_comment campaign_id=campaign.pk %}" {% if comment_form.is_multipart %}enctype="multipart/form-data"{% endif %}>
+  <fieldset>
+    {% for field in comment_form %}
+      {% common_formfield_render field %}
+    {% endfor %}
+    {% if user.is_authenticated and not user.get_profile.has_twitter_access_token %}
+      <a href="{% url twitter_authorize %}?next={{ request.path|urlencode }}">Connect to Twitter</a>
+    {% endif %}
+    <input type="submit" value="Post Comment" class="submitButton"/>
+    <a href="{% url view_campaign campaign_id=campaign.pk %}" class="cancelButton">Cancel</a>
+  </fieldset>
+</form>

@@ -1,0 +1,100 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=no;"/>
+    <meta name="HandheldFriendly" content="True"/>
+    <link rel="apple-touch-icon-precomposed" href="{{ MEDIA_URL }}ui/images/iphone-icon.png" />
+    <link rel="apple-touch-icon" href="{{ MEDIA_URL }}ui/images/iphone-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="no" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link href="{{ MEDIA_URL }}ui/css/mobile/reset.css?v={{ UI_CSS_VERSION }}" rel="stylesheet" type="text/css" />
+    {% block jquery-css %}
+      <link href="{{ MEDIA_URL }}ui/css/start/jquery-ui-1.7.2.custom.css?v={{ UI_CSS_VERSION }}" rel="stylesheet" type="text/css" />
+    {% endblock jquery-css %}
+    <link href="{{ MEDIA_URL }}ui/css/mobile/style.css?v={{ UI_CSS_VERSION }}" rel="stylesheet" type="text/css" />
+    {% block main-script %}
+      {% include "website/tags/main-script.html" %}
+      {% block base-script %}{% endblock %}
+      {% block pre-script %}{% endblock %}
+      {% include "website/tags/main-script2.html" %}
+    {% endblock main-script %}    
+    <script type="text/javascript">
+		if (navigator.userAgent.indexOf('iPhone') != -1) {
+		        addEventListener("load", function() {		          
+		          if (window.location.href.indexOf('#') == -1) {
+		                setTimeout(hideURLbar, 0);
+		          }
+		        }, false);
+		}		
+		function hideURLbar() {
+		        window.scrollTo(0, 1);
+		}	
+    </script>
+    {% block head-extra %}{% endblock %}
+    <title>{% block title %}{{ UI_SITE_TITLE }}{% endblock %}</title>
+  </head>
+  <body class="{% block body-class %}{% endblock %}">
+    {% comment %}<script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php/en_US" type="text/javascript"></script>{% endcomment %}
+    
+    <div id="container">    
+      {% block container %}
+          {% block top-nav %}
+	          {% if not user.is_authenticated %}
+				<ul class="account-links">
+					<li class="sign-in"><a href="{% url signin %}?next={% if next %}{{ next }}{% else %}{{ request.get_full_path }}{% endif %}">sign in</a></li>
+					<li class="sign-up"><a href="{% url signup %}?next={% if next %}{{ next }}{% else %}{{ request.get_full_path }}{% endif %}">create an account</a></li>
+				</ul>
+			  {% endif %}
+		  {% endblock %}
+	      <div id="content">
+	        <div class="logo">
+		        {% block logo %}
+		          <a href="{% url home %}" class="logo-link"><img src="{{ MEDIA_URL }}ui/images/logo-rv-small.png" alt="RiotVine" width="118" height="41" /></a>
+		        {% endblock logo %}
+	        </div>
+	        {% block content %}
+	        {% endblock %}
+	      </div>
+      {% endblock container %} 
+      <p class="mobile-options">
+        <small>
+          Mobile | 
+          <a href="?mobile=n">Desktop</a>
+          {% if user.is_authenticated %}
+             | <a href="{% url logout %}?next={% if next %}{{ next }}{% else %}{{ request.get_full_path }}{% endif %}">Logout</a>
+          {% endif %}
+        </small>
+      </p>
+      {% block bookmark %}
+	      {% if not user.is_authenticated %}
+		      {% ifequal request.mobile_type "iphone" %}
+			      <div id="bookmark-me-wrapper" class="bookmark-iphone" style="display:block">
+			        <div id="bookmark-me">
+			          Find RiotVine on the go!<hr/>
+			          Just tap <strong>+</strong> below &amp;<br/>Add to Home Screen.			          
+			        </div>
+			        <div class="arrow"></div>
+			      </div>
+		      {% else %}
+		          <div id="bookmark-me-wrapper" class="bookmark-non-iphone" style="display:block">
+			        <div id="bookmark-me">
+			          Find RiotVine on the go!<hr/>
+			          Just add this page to your Home Screen.
+			        </div>
+			      </div>
+		      {% endifequal %}
+	      {% endif %}
+	   {% endblock %}
+    </div>
+    
+    {% comment %}
+	    <script type="text/javascript">
+	      /* <![CDATA[ */
+	        FB_RequireFeatures(["XFBML"], function(){
+	            FB.Facebook.init("{{ FB_API_KEY }}", "/fb/xd-receiver/", null);
+	        });
+	      /* ]]> */
+	    </script>
+    {% endcomment %}
+        
+  </body>
+</html>

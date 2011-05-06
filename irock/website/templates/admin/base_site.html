@@ -1,0 +1,17 @@
+{% extends "admin/base.html" %}
+{% load i18n %}
+
+{% block title %}{{ title|escape }} | {% trans 'Riot Vine admin' %}{% endblock %}
+
+{% block branding %}
+<h1 id="site-name">{% trans 'Riot Vine administration' %}</h1>
+{% endblock %}
+
+{% block nav-global %}
+  {% if request.user.is_superuser %}
+    <p style="text-align:right;padding-right:1em;">
+      <strong><a href="{% url mailing_list %}">Users (CSV)</a></strong> |
+      <strong><a href="{% url home %}">Live Site</a></strong>
+    </p>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "event/base.html" %}
+
+{% block title %}{{ title }} - {{ block.super }}{% endblock %}
+
+{% block h2-container %}{% endblock %}
+
+{% block primary-content %}
+  
+  <div class="eventsIntro">
+    {% common_flatpage "/site/events-intro/" %}
+  </div> <!-- introText -->
+
+  <ul class="eventListing">
+    {% for c in page.object_list %}
+      <li class="eventListItem eventDetail" id="eventId{{ c.pk }}">
+      {% if is_owner %}
+        {% event_summary c "" is_owner "" "include_title" "show_detail_link" %}
+      {% else %}
+        {% tcache UI_CACHE_TIMEOUT "ir-event-summary-list" c.pk %}
+          {% event_summary c "" "" "" "include_title" "show_detail_link" %}
+        {% endtcache %}
+      {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+  
+  {% include "common/tags/pagination.html" %}
+{% endblock %}
+
+{% block secondary-content %}
+  <div class="eventsSidebar">
+    <ul class="userOptions">
+      {% if user.get_profile.is_artist %}
+        <li class="button"><a href="{% url create_event %}">Add Your Show</a></li>
+      {% else %}
+        {% if user.is_authenticated %}
+          <li class="button"><a href="{% url create_member_event %}">Add a Show</a></li>
+        {% else %}
+          <li class="button"><a href="{% url login %}?next={% url create_member_event %}">Add a Show</a></li>
+        {% endif %}
+      {% endif %}
+    </ul>
+    {% if user.is_authenticated %}
+      {% event_user_calendar user.get_profile %}
+    {% endif %}
+    {% common_flatpage "/site/events-sidebar/" %}
+  </div> <!-- introText -->
+{% endblock %}

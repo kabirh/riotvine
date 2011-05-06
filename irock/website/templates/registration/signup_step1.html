@@ -1,0 +1,55 @@
+{% extends "registration/base.html" %}
+
+{% block head-extra %}
+ {{ form.media|safe }}
+{% endblock %}
+
+{% block title %}Sign up - {{ block.super }}{% endblock %}
+
+{% block body-class %}tertiary{% endblock %}
+
+{% block primary-content %}
+
+  <form method="post" action="" {% if form.is_multipart %}enctype="multipart/form-data"{% endif %}>{% csrf_token %}    
+	  <table class="form_table_stacked form_table_stacked_signup" width="830px">
+		<tbody>
+			<tr>
+				<td class="tabbed_steps">
+					<span class="selected"><em><strong>1</strong> Enter Email</em></span>
+					<span><em><strong>2</strong> Connect with Facebook or Twitter</em></span>
+				</td>
+		    </tr>
+		    <tr>
+		        <td>
+	  		        <table class="form_table_nested form_table">
+	  		          <tbody>
+				        {% for field in form %}
+				          {% common_formfield_render_tr field %}
+				        {% endfor %}
+				        <tr>
+				          <td>&nbsp;</td>
+				          <td class="submit_td">
+				            <div class="eula">
+				                By submitting this form, you accept our <a href="/terms-of-use/?popup=y" {% popup %}>End User License Agreement.</a>
+				            </div>
+				            <input type="submit" value="Next" />
+				            {% if next %}
+				              <input type="hidden" name="next" value="{{ next }}"/>
+				              <a href="{{ next }}" class="cancel_btn">Cancel</a>
+				            {% else %}
+				              <a href="{% url account %}" class="cancel_btn">Cancel</a>
+				            {% endif %}
+                    <br/>
+                    <div class="existing-user-signin">
+                      Already signed up? <a href="{% url signin %}?next={% if next %}{{ next }}{% else %}{{ request.get_full_path }}{% endif %}">Login here&nbsp;&raquo;</a>
+                    </div>
+				          </td>
+				        </tr>
+				       </tbody>
+				      </table>
+				   </td>
+			</tr>
+	      </tbody>
+	    </table>
+    </form>    
+{% endblock %}

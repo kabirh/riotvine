@@ -1,0 +1,16 @@
+Sorry! I'm about to throw you another curveball: I had an idea for a new feature that will probably require adjustments to core functionality. The way our campaigns are currently laid out makes them somewhat ideal for also posting a live show, so I'd like to modify them a bit to allow bands to do that. In addition to campaigns, I'd like to give artists the ability to post "events". The information they fill out will be different, but simliar to a campaign. Fans will be able to click "Attending" instead of "Join Campaign" and it will put them on a list and place their name in an "Attending" section instead of a "Sponsors" section. Here's how I picture the flow:
+Artist enters the artist admin area.
+
+Underneath "Create a campaign" will be "Post an event"
+
+They will be able to fill in the details of their show: Date, Time, Location, Badge Image, and Description.
+
+By default, the max number of "contributors" or attendees will be infinite, but artists should be able to specify this number.
+Events will show up in a new "Events" section, which they can reach by clicking "View more events" next to "View more campaigns".
+
+Instead of "Offering" it should say "Description".
+It might be nice to add a way for artists to "link" an event and a campaign, but I haven't thought this flow through or how it should be integrated.
+Another big change for this will be in the campaign badge. Instead of the current information, it will need to display new info specific to the event and instead of "click here to help" it can say "click here to attend". Additionally, most shows use flyers to promote themselves and these are usually 8.5"x11" images, so this won't work for our badges. We may need a new badge style that is more geared to vertical style images and the option to let the band choose which style of badge they want.
+
+
+I'd like to move this feature to the top of the priority list. If you want to setup a call to go over this and hash out questions and details, please let me know.

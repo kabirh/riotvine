@@ -1,0 +1,16 @@
+{% extends "mobile/base.html" %}
+
+{% load markup %}
+
+{% block title %}{{ flatpage.title }} - {{ block.super }}{% endblock %}
+{% block body-class %}flatpage{% endblock %}
+
+{% block content %}
+  {% if user.is_staff %}
+    {{ flatpage.content|markdown }}
+  {% else %}
+      {% tcache UI_CACHE_TIMEOUT "rv-mobile-flatpage" flatpage.url %}
+        {{ flatpage.content|markdown }}
+      {% endtcache %}
+  {% endif %}
+{% endblock %}

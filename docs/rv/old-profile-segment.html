@@ -1,0 +1,5 @@
+{% if sharer_profile.use_fb_profile %}
+  <fb:profile-pic uid="{{ sharer_profile.fb_userid }}" facebook-logo="false" linked="true" size="square"></fb:profile-pic>
+{% else %}
+  <a href="{% twitter_profile_url sharer_profile.user %}" title="{{ sharer_profile }}"><img src="{{ sharer_profile.avatar_url }}" alt="{{ sharer_profile }}" width="48" height="48" /></a>
+{% endif %}

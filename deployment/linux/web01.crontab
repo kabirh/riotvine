@@ -1,0 +1,18 @@
+TERM=linux
+MAILTO=rajesh.dhawan+rvcron@gmail.com
+
+# m h  dom mon dow   command
+49 5 */2 * * /home/web/bin/start-app.sh 2>&1
+01 18 * * * /home/web/bin/runamqp.sh 2>&1
+05 * * * * /home/web/bin/fetch_event_tweets.sh 2>&1 > /dev/null
+56 */6 * * * /home/web/bin/twitter_search_count.sh 2>&1
+2 * * * * /home/web/bin/build_friendships.sh 2>&1 > /dev/null
+5 7 * * * /home/web/bin/build_recommendations.sh 2>&1
+2 8 * * * /home/web/bin/send_event_reminders.sh 2>&1 
+50 */3 * * * /home/web/bin/twitter_rate_limit.sh 2>&1
+30 8 */2 * * /bin/df --si 2>&1
+47 */2 * * * /usr/bin/top -b -n 8 -d 5 2>&1
+
+
+# Snippet: control email subject line
+# | /usr/bin/mail -t rajesh.dhawan@gmail.com  -s "[RiotVine]: Top" # Resource usage

@@ -1,0 +1,14 @@
+<div class="user_calendar">
+  {% if events %}
+    <ul class="calendar_event_list">
+    {% for e in events %}
+      <li>
+        <a href="{{ e.get_absolute_url }}">
+          {{ e.event_date|date:"n/j" }}: {{ e.title|truncatestring:"25" }}
+        </a>
+      </li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+</div>
+

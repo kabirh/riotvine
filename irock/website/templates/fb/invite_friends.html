@@ -1,0 +1,54 @@
+{% extends "registration/base.html" %}
+
+{% block title %}Invite Friends - {{ user_profile.username }} - {{ block.super }}{% endblock %}
+
+{% block body-class %}tertiary{% endblock %}
+
+{% block alert-message %}{% endblock %}
+
+
+{% block primary-content %}
+  <div class="breadcrumbs"><a href="{% url account %}">My&nbsp;Account</a>&nbsp;&raquo;&nbsp;Friends</div>
+  
+  <table class="form_table_stacked" width="830px">
+	<tbody>
+		<tr>
+			<td class="tabbed_steps">
+				<a class="selected" href="{% url fb_invite_friends %}">Invite Friends</a>
+				<a href="{% url fb_manage_friends %}">Share With Friends</a>
+				<a href="{% url friends %}">View Friends</a>
+			</td>
+	    </tr>
+  
+        <tr>
+          <td>
+              <div class="flatpage-invite-fb-friends" style="width:770px;">
+                {% common_flatpage "/invite/fb/friends/" %}
+              </div>
+			  {% if request.session.fb_uid %}
+			    <fb:serverfbml style="width:770px;">
+			      <script type="text/fbml">
+			        <fb:fbml>
+			          <fb:request-form action="http://{{ TRUE_HOSTNAME_AND_PORT }}{% url fb_invited_friends %}?next={{ next }}"
+			                  method="POST"
+			                  invite="true"
+			                  type="{{ UI_SITE_TITLE }}"
+			                  content="<fb:name uid='{{ request.session.fb_uid}}' useyou='false' /> is a member of {{ UI_SITE_DOMAIN }} and would like to share that experience with you.  To register, simply click on the Sign Up button below.<fb:req-choice url='http://{{ TRUE_HOSTNAME_AND_PORT }}/?fb_login=y' label='Sign Up' />"
+			                  <fb:multi-friend-selector
+			                          showborder="false"
+			                          rows="3"
+			                          actiontext="Invite your Facebook Friends to use {{ UI_SITE_TITLE }}"
+			                          exclude_ids="{{ exclude_ids }}"/>
+			          </fb:request-form>
+			        </fb:fbml>
+			      </script>
+			    </fb:serverfbml>
+			  {% else %}
+			    This feature is only available to Facebook-connected users at the moment. 
+          Meanwhile, you can always <a href="/lnk/tweet-us/">invite your Twitter friends&nbsp;&raquo;</a>
+			  {% endif %}
+		</td>
+	  </tr>
+    </tbody>
+  </table>
+{% endblock %}

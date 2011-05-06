@@ -1,0 +1,18 @@
+{% extends "mobile/registration/base.html" %}
+
+{% block body-class %}signup signup2 {{ block.super }}{% endblock %}
+
+{% block content %}
+  <p class="notice2">
+    <strong>Last step!</strong> Pick the network on which you have the most friends:
+  </p>
+  
+  <div class="sso">
+    {% include "mobile/registration/tags/fb_login.html" %}
+    {% include "registration/tags/sso_initiate.html" %}
+  </div>
+  
+  <p class="notice2">
+    You'll be able to share events with friends and see what they're doing.
+  </p>
+{% endblock %}

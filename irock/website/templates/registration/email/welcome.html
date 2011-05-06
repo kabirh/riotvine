@@ -1,0 +1,72 @@
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+  <title>Welcome to RiotVine!</title>
+</head>
+<body style="background:#ffffff;color:#333333;margin:2px 4px;padding:2px 8px 2px 8px;border:2px solid #ffffff;" bgcolor="#ffffff">
+  <p>
+    <span style="font-size:130%;">
+      {% if user_profile %}
+        Hey {{ user_profile.username }},
+      {% else %}
+        Hey {{ user.username }},
+      {% endif %}
+    </span>
+  </p>
+  
+  <p>
+    <strong><span style="font-size:140%;color:#f68d1f;">Welcome to {{ UI_SITE_TITLE }}</span></strong><br>
+    Thanks for joining! We're working hard to pack your 
+    social life with the best your fair city has to offer.
+  </p>
+  
+  <p>
+    Everything is better with friends, including {{ UI_SITE_TITLE }}. Help spread 
+    the word to your friends by 
+    <a href="http://{{ site.domain }}/lnk/tweet-us/?src=email">tweeting about us</a>!
+  </p>
+  
+  <p>
+    Follow us on Twitter: http://twitter.com/riotvine <br>
+    Fan us on Facebook: http://facebook.com/riotvine
+  </p>
+  
+  {% if user_profile and user_profile.activation_url and not user_profile.is_verified %}
+    <p><br>
+      <strong><span style="font-size:140%;color:#f68d1f;">IMPORTANT! Confirm your account</span></strong><br>
+      We need you to verify that the email address {{ user_profile.user.email }} belongs to you. Confirm it by visiting this link in the next 7 days:
+      <a href="http://{{ site.domain }}{{ user_profile.activation_url }}">http://{{ site.domain }}{{ user_profile.activation_url }}</a>
+      <br><br>
+      You can also type in your confirmation code <strong>{{ user_profile.activation_code }}</strong> here:<br>
+      <a href="http://{{ site.domain }}{% url confirm_account_keyin %}">http://{{ site.domain }}{% url confirm_account_keyin %}</a>
+    </p>
+  {% endif %}
+  
+  <p><br>
+    <strong><span style="font-size:140%;color:#f68d1f;">Remember...</span></strong><br>
+    {% if temp_password %}
+      <span style="font-size:120%;">
+        <b>Your login name is: {{ user.username }}</b><br>
+        <b>And your temporary password is: {{ temp_password }}</b>
+      </span><br><br>
+      You can change that password by visiting: <a href="http://{{ site.domain }}{% url change_password %}">http://{{ site.domain }}{% url change_password %}</a>
+      <br>
+      You can also pick a different login name (or make other profile changes) here: <br>
+      <a href="http://{{ site.domain }}{% url update_user_profile %}">http://{{ site.domain }}{% url update_user_profile %}</a>
+    {% else %}
+      <span style="font-size:120%;">
+        <b>Your login name is: {{ user.username }}</b><br>
+      </span>
+    {% endif %}
+  </p>
+
+  <p>
+    Cheers, <br>
+    Everyone at {{ UI_SITE_TITLE }}<br>
+    http://{{ site.domain }}/
+    <br>
+    <a href="http://{{ site.domain }}/"><img src="http://{{ site.domain }}{{ MEDIA_URL }}ui/images/logo-rv.png" alt="" border="0" style="border:none;"></a>
+  </p>
+</body>
+</html>
+

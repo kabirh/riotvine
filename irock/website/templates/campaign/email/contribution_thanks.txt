@@ -1,0 +1,13 @@
+{% autoescape off %}
+Hey {% firstname_or_username user %},
+
+Thanks for contributing to a campaign at {{ UI_SITE_TITLE }}.
+
+Rest assured, your {% if campaign.is_free %}generous support{% else %}donation{% endif %} goes toward feeding a starving artist, furthering the cause of better music, and making the world a better, happier place.
+{% if campaign.fan_note %}But if you don't believe us, here's what {{ campaign.artist.name }} has to say:
+
+{{ campaign.fan_note }}{% endif %}
+
+{{ EMAIL_SIGNATURE }}
+{% endautoescape %}
+

@@ -1,0 +1,26 @@
+Let's change the last.fm auto-generated event title format to "%artistname% at %venuename%! %date%". The Date format should be MM/DD. If Headliner = Title, regenerate the headline. If it's different, leave it the same.
+
+"Rajesh: What should be done when this title format exceeds 120 characters? Also, are you sure you meant DD/MM and not MM/DD?
+
+Kabir: Sorry, MM/DD is correct, thanks for catching that. If the format exceeds 120 characters, cut the last 2 characters after the 118 character mark and replace them with .. and then add the bit.ly URL. Let's assume the bit.ly URL takes up 20 characters.
+
+example: Pretend this is a really long, 120 character twe.. http://bit.ly/URL"
+
+-----------------
+
+
+In that case, I think it makes sense to hold off on this feature until you return. In its place, do you feel comfortable building the "Find Events" page? The estimate is currently 5 hours for that, but it doesn't need to be entirely feature complete. It would be nice if you can implement this with a few simple search options, such as filter by date, keyword search, and filters to show our picks/destination events/most popular/my calendar, that should take care of all the links on the city page that don't currently work.
+
+
+
+Also, is there a good way to test the geocode option on the live site? I dug around and found the longitude and latitude for Boston, and this search works: 
+feed://search.twitter.com/search.atom?geocode=42.37%2C-71.03%2C30km
+But I'm not sure how to add the other search terms we normally use after that. If this is a quick thing to adjust, I don't mind implementing it for a few days to see what it does to the site and then determining whether to keep or remove it.
+
+
+OK, let me add it to the site. I will include a configuration switch so I can turn the geocode part off quickly for you. Consider this done for the next release.
+
+
+I added all four, just in case it makes sense and is easy to configure. If it doesn't, I'd like to go with ny.riotvine and la.riotvine and I'll go back and remove newyork and losangeles later. If anything, we can just make these pointers to ny and la, respectively.
+
+

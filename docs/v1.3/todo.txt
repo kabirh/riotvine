@@ -1,0 +1,56 @@
+XXX - Additionally, can you make the "Add your own pictures to this show!" text on the event page a larger font size? I want to make sure it's noticeable.
+
+XXX - In the Fan Profile, instead of using the artist image to show the campaigns you've contributed to, can you display the campaign badge? This is super low priority.
+
+XXX - On the event page, can you move the "Listen to this artist:" text so that it is flush against the embedded player?
+
+XXX - The picture added notification is a little off:
+	The bright orange text with yellow links in it is too loud. Was there a lot of work involved to get it placed in the top right near the messages box? I'd prefer if the text were white and the links were yellow.
+
+
+On Mon, Mar 30, 2009 at 9:04 AM, Kabir <kabir@illiusrock.com> wrote:
+>> - What should that button say? "Post to Twitter"?
+>
+> That's perfect. Once we role out user profiles, this will also get updated
+> there.
+>>
+>> - What is the exact message posted to Twitter if I type in the name of the
+>> song and submit? I know you wanted to prefix Illius Rock to the message. If
+>> it's easier, send me an example status message.
+>
+> from http://illiusrock.com: %text%
+
+So, if I type in "Sultans of swing", the message will just say:
+
+from http://illiusrock.com: Sultans of swing
+
+and not:
+
+from http://illiusrock.com: listening to "Sultans of swing"
+
+Is that OK?
+
+
+> Ideally, a warning will pop up when they've reached the 140 character limit.
+> I am considering buying the illi.us domain, so we can tag these
+> http://illi.us/rock or just http://illi.us and have that redirect to
+> illiusrock.com. Let me know what you think of that.
+
+That's a neat idea. 
+
+>>
+>> - For users that have not authorized IR to post to their Twitter account,
+>> do you want a message or a "Connect to Twitter" button in place of the above
+>> mentioned text box?
+>
+>  
+> Yes, that's perfect.
+
+> In addition, let me know if it makes sense to add Show integration now, so
+> that when someone has their account linked and clicks, "Are you in?" it
+> posts something like, "I'm going to see %band name%! http://illiusrock.com/"
+> I know band names can be longer than twitter allows, so we might need a
+> check to shorten this to: "%band name%! http://illiusrock.com/"
+
+Yes, that does make sense to add now. I will assume you want to go ahead with this (it's no more than 1 hour to add this). Let me know if to hold off.
+
